@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('Please input Password:') !== '') {
+                alert('Password Error！');
+                if (history.length === 1) {
+                    location.replace("https://wanderros.github.io/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="Docker,Base," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="WanderROS'S Daily" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="简介容器是轻量且可移植的仓库，包含应用程序及其依赖的组件。容器是对应用程序及其依赖关系的封装。乍一看容器只是个轻量级的虚拟机，它和虚拟机 一样拥有一个被隔离的操作系统实例，用来运行应用程序。容器的目的则是使应用程序能够移植，并把所有依赖关系包含进去。容器的优势：  容器能与主机的操作系统共享资源，因而它的效率高出一个数量级； 容器具有可移植性； 容器是轻量的； 云端部署，用户可以下载并执行复杂的应">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker Start">
+<meta property="og:url" content="https://wanderros.github.io/2020/04/20/Docker-Start/index.html">
+<meta property="og:site_name" content="WanderROS&#39;S Daily">
+<meta property="og:description" content="简介容器是轻量且可移植的仓库，包含应用程序及其依赖的组件。容器是对应用程序及其依赖关系的封装。乍一看容器只是个轻量级的虚拟机，它和虚拟机 一样拥有一个被隔离的操作系统实例，用来运行应用程序。容器的目的则是使应用程序能够移植，并把所有依赖关系包含进去。容器的优势：  容器能与主机的操作系统共享资源，因而它的效率高出一个数量级； 容器具有可移植性； 容器是轻量的； 云端部署，用户可以下载并执行复杂的应">
+<meta property="article:published_time" content="2020-04-20T10:09:15.000Z">
+<meta property="article:modified_time" content="2020-10-01T08:52:15.857Z">
+<meta property="article:author" content="WanderROS">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Base">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wanderros.github.io/2020/04/20/Docker-Start/"/>
+
+
+
+
+
+  <title>Docker Start | WanderROS'S Daily</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/WanderROS" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WanderROS'S Daily</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-足迹">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            足迹
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wanderros.github.io/2020/04/20/Docker-Start/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WanderROS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WanderROS'S Daily">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Docker Start</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-20T18:09:15+08:00">
+                2020-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>容器是轻量且可移植的仓库，包含应用程序及其依赖的组件。容器是对应用程序及其依赖关系的封装。乍一看容器只是个轻量级的虚拟机，它和虚拟机 一样拥有一个被隔离的操作系统实例，用来运行应用程序。容器的目的则是使应用程序能够移植，并把所有依赖关系包含进去。容器的优势：</p>
+<ul>
+<li>容器能与主机的操作系统共享资源，因而它的效率高出一个数量级；</li>
+<li>容器具有可移植性；</li>
+<li>容器是轻量的；</li>
+<li>云端部署，用户可以下载并执行复杂的应用程序，而无需花费大量时间在配置和安装的问题上，也无需担心对系统本身的改动。</li>
+</ul>
+<hr>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="容器的特点"><a href="#容器的特点" class="headerlink" title="容器的特点"></a>容器的特点</h2><ol>
+<li>容器只能运行与主机一样的内核；</li>
+<li>容器 引擎（container engine）负责启动及停止容器；</li>
+<li>容器可以把主机上的应用程序隔离开来。</li>
+</ol>
+<h2 id="Docker与容器"><a href="#Docker与容器" class="headerlink" title="Docker与容器"></a>Docker与容器</h2><ol>
+<li>Docker 利用现有的 Linux 容器技术，以不同方式将其封装及扩展——主要是通过提供可移植的镜像，以及一个用户友好的接口——来创建一套完整的容器创建及发布方案；</li>
+<li>Docker 平台拥有两个不同部分：负责创建与运行容器的 Docker 引擎，以及用来发布容器的云服务 Docker Hub；</li>
+</ol>
+<h2 id="Docker命令"><a href="#Docker命令" class="headerlink" title="Docker命令"></a>Docker命令</h2><ol>
+<li>把容器的名称或 ID作为 docker inspect 命令的参数，来获取更多有关某个容器的信息；</li>
+<li>以容器名称作为docker logs的参数，就能得知这个容器里曾经发生过的一切事情；</li>
+<li>docker ps -a命令会列出所有容器，包括已经停止的容器；</li>
+<li>只需为镜像指定一个合适名称的仓库和标签，然后用 docker push 命令上传到 Docker Hub；</li>
+<li>正常获取 shell 的方法是执行 docker exec 命令；</li>
+<li>Docker 通过数据卷与其他容器共享，而任何修改都会直接发生在主机的文件系统里，数据卷是直接在主机挂载的文件或目录，不属于常规联合文件系统的一部分。  声明一个目录为数据卷有两种方法，第一种是在 Dockerfile 里使用 VOLUME 指令，第二种是在执行docker run 的时候使用 -v 参数，可以在主机上打开一个新的 shell，通过执行 docker inspect 命令，找出数据卷在主机上的实际位置  ；将 docker run 命令的 -v选项用法进行扩展，使到能够具体指明数据卷要绑定的主机目录，命令格式为 -v HOST_DIR:CONTAINER_DIR（其中 HOST_DIR 为主机目录，CONTAINER_DIR 为容器目录）</li>
+<li>停止所有的容器：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps -q)</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>删除所有的已停止的容器：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line"></span><br><span class="line">docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker术语"><a href="#Docker术语" class="headerlink" title="Docker术语"></a>Docker术语</h2><ol>
+<li>寄存服务(registry)：负责托管和发布镜像的服务，默认为Docker Hub；</li>
+<li>仓库（repository）：一组相关镜像的集合；</li>
+<li>标签（tag）：仓库中镜像的识别号，由英文和数字组成；</li>
+<li>Docker 守护进程：负责容器的创建、运行和监控，还负责镜像的构建和储存；</li>
+<li>Docker 客户端  ：</li>
+<li>核心技术：<ul>
+<li>cgroups，负责管理容器使用的资源（例如 CPU 和内存的使用）；</li>
+<li>Namespaces（命名空间），负责容器之间的隔离。</li>
+</ul>
+</li>
+<li>技术支持：集群管理、服务发现（service discovery）工具和更先进的联网功能，Swarm是Docker 的集群方案，Docker Compose 是负责构建和运行由多个 Docker 容器所组成的应用程序的工具，Docker Machine 可以在本地或远程资源上安装和配置 Docker 主机  ，Kitematic 用于运行和管理 Docker 容器；</li>
+<li>Docker 容器使用联合文件系统（Union File System, UFS），它允许多个文件系统以层级方式挂载，并表现为一个单一的文件系统。Docker 只需查看最上面的可读写层，便可找出曾对运行系统所作的所有改变；</li>
+<li>容器可以处于以下几种状态之一： 已创建（created）、 重启中（restarting）、 运行中（running）、 已暂停（paused）和已退出（exited）；</li>
+<li>Docker 的连接（link）是允许同一主机上的容器互相通信的最简单方法，当使用 Docker 默认的联网模型时，容器之间的通信将通过 Docker 的内部网络，这意味着主机网络无法看见这些通信；</li>
+<li>数据容器，这种容器的唯一目的就是与其他容器分享数据 ，提供了一个方便的命名空间，使数据卷可以很容易通过 –volumes-from命令进行加载 ；</li>
+</ol>
+<h2 id="Dockerfile可用指令"><a href="#Dockerfile可用指令" class="headerlink" title="Dockerfile可用指令"></a>Dockerfile可用指令</h2><ol>
+<li>ADD ：从构建环境的上下文或远程 URL 复制文件至镜像；</li>
+<li>CMD ：当容器启动时执行指定的指令，假如定义了多个 CMD 指令，那么只有最后一个生效，前面出现过的 CMD 指令全部无效；</li>
+<li>COPY：用于从构建环境的上下文复制文件至镜像；</li>
+<li>ENTRYPOINT ：设置一个于容器启动时运行的可执行文件；</li>
+<li>ENV：设置镜像内的环境变量；</li>
+<li>EXPOSE ：向 Docker 表示该容器将会有一个进程监听所指定的端口；</li>
+<li>FROM ：设置 Dockerfile 使用的基础镜像 ；</li>
+<li>MAINTAINER ：把镜像中的“作者 ”元数据设定为指定的字符串 ；</li>
+<li>ONBUILD ：指定当镜像被用作另一个镜像的基础镜像时将会执行的指令；</li>
+<li>RUN ：在容器内执行指定的指令，并把结果保存下来 ；</li>
+<li>USER ：设置任何后续的 RUN、 CMD 或 ENTRYPOINT 指令执行时所用的用户 ；</li>
+<li>VOLUME ：指定为数据卷的文件或目录 ；</li>
+<li>WORKDIR ：对任何后续的 RUN、 CMD、 ENTRYPOINT、 ADD 或 COPY 指令设置工作目录 ；</li>
+</ol>
+<h2 id="Docker部署"><a href="#Docker部署" class="headerlink" title="Docker部署"></a>Docker部署</h2><ol>
+<li><p>容器不适合构建那种发布周期以周或月为单位的大型单一架构企业软件。  相反，容器天然适合采用微服务的方式，以及探索诸如持续部署（continuous deployment）这样的技术，使得我们能安全地在一天内多次更新生产环境；</p>
+</li>
+<li><p>没有映射端口的话，可以通过下面的命令访问：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl $(docker-machine ip default):port</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以把主机上的源码目录绑定挂载（bind mount）到容器内的源码目录之上 ,防止因为改变源码而要重新部署，使用命令如下：</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p port1:port2 -v "$PWD"/app:/app identidock</span><br><span class="line">//-v "$PWD"/app:/app 参数把位于 /app 的 app 目录挂载到容器内,它将覆盖容器中 /app 目录</span><br><span class="line">的内容 ，而且在容器内还可以进行读写（如果你不希望这样，也可以把数据卷挂载为只读）;参数 -v 必须是绝对路径。</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>永远谨记设置USER：</strong>在任何 Dockerﬁle 中，把 USER 设置妥当都是非常重要的，如果你不这样做， 容器中的进程将会以 root 身份运行；</li>
+<li>当需要在一台主机上运行多个容器的时候，让 Docker 自动寻找并映射到未使用的端口， 比你自己跟踪哪些端口更轻松；</li>
+<li>微服务架构的系统非常适合横向扩展到多台机器，能够轻松快速地被其他效能更高且功能相同的服务替代；不足之处就是分布式组件带来的额外开销，服务编排和服务发现是非常需要解决的问题;</li>
+<li>Docker这种平台使得容器自然而然地演变成了一组具有明确功能的小服务,然后交互就形成了更大的系统。</li>
+</ol>
+<h2 id="Docker自动化"><a href="#Docker自动化" class="headerlink" title="Docker自动化"></a>Docker自动化</h2><ol>
+<li>使用 YAML 文件来存储不同容器的配置，节省开发者重复且容易出错的输入，以及避免了自行开发解决方案的负担；</li>
+<li>一个docker-compose的配置文件示例：</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">identidock:</span></span><br><span class="line">	<span class="attr">build:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">ports:</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">"5000:5000"</span></span><br><span class="line"><span class="attr">environment:</span></span><br><span class="line">	<span class="attr">ENV:</span> <span class="string">DEV</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">./app:/app</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>配置文件说明：</li>
+</ol>
+<ul>
+<li>“identidock”：构建的容器名称；</li>
+<li>“build: .”:告知镜像是通过当前目录下的Dockerfile构建的；</li>
+<li>“ports:”:用于声明对外开放的接口；</li>
+<li>“environment:”：相当于docker run 命令的 -e 参数， 用来设置容器的环境变量；</li>
+<li>“volumes:”：关键字相当于 docker run 的 -v 参数，用于配置数据卷。</li>
+</ul>
+<ol start="4">
+<li>docker-compose命令的参数：</li>
+</ol>
+<ul>
+<li>up：启动所有在compose文件中定义的容器，并且把它们的日志信息汇集在一起，通常使用-d参数使得在后台运行；</li>
+<li>build：重新构造由Dockerfile构建的镜像;</li>
+<li>ps：获取由compose管理的容器的状态信息;</li>
+<li>run：启动一个容器,并运行一个一次性的命令;</li>
+<li>logs：汇集由compose管理的容器的日志,并以彩色输出;</li>
+<li>stop：停止容器,但是不会删除它们;</li>
+<li>rm：删除已经停止的容器,配合-v参数删除任何由Docker管理的数据卷,当然还有其他的命令参数，这里不再一一列出了。</li>
+</ul>
+<h2 id="Docker仓库"><a href="#Docker仓库" class="headerlink" title="Docker仓库"></a>Docker仓库</h2><ol>
+<li>别让 latest 标签误导你，很多仓库都会把它作为最 新的稳定版镜像的别名，但这只不过是一个惯例，而并非出于任何严格规定，latest 标签的镜像不会自动更新——也就意味着仍需明确执行 docker pull 命令来获取最新版本；</li>
+<li>Docker Hub 是 Docker 公司提供的一个线上镜像寄存服务；</li>
+</ol>
+<h2 id="Docker日志"><a href="#Docker日志" class="headerlink" title="Docker日志"></a>Docker日志</h2><ol>
+<li><p>如果想要系统能够正常的运行，对于容器的日志进行有效的监控和记录是必不可少的，而容器的短暂生命周期特性，导致日志集中管理是必不可少的；</p>
+</li>
+<li><p>默认的日志记录直接使用docker logs container_name命令就可以取得；</p>
+</li>
+<li><p>日志记录方法可以在启动 Docker 守护进程时通过 –log-driver 参数变更:</p>
+<ol>
+<li>json-file：默认记录方式；</li>
+<li>syslog：系统日志驱动；</li>
+<li>journald：systemd 的 journal 日志；</li>
+<li>gelf：Graylog Extended Log Format（GELF）驱动；</li>
+<li>fluentd：将日志信息转发到fluentd；</li>
+<li>none：关闭日志。</li>
+</ol>
+</li>
+<li><p>把所有的日志汇总到同一个地方（日志有可能是跨主机的），这样能够利用工具对日志进行分析和监控：</p>
+<ol>
+<li>在所有的容器内运行多一个进程，这个进程的角色相当于把日志转发到汇总服务的代理；</li>
+<li>在主机上或在另一个独立的容器中，收集日志并转发到汇总服务；</li>
+</ol>
+</li>
+<li><p>使用ELK进行日志记录：</p>
+<ol>
+<li>ELK 是 Elasticsearch、Logstash 和 Kibana 的首字母缩写；</li>
+<li>Elasticsearch：接近实时搜索的文本搜索引擎；</li>
+<li>Logstash：合读取原始日志，然后对其解析和过滤，再把结果发送到其他服务，例如索引或存储；</li>
+<li>Kibana：基于 JavaScript 的 Elasticsearch 图形界面。 它可以用来运行 Elasticsearch 的查询， 并以 各种图表的形式显示结果，它还提供了仪表盘的功能，使用户对系统的状态一目了然；</li>
+</ol>
+</li>
+<li><p>Docker 自带一个基本的命令行工具，名为 docker stats，能够返回一个资源使用情况的实时流; 这个命令接受一个或多个容器名称作为参数， 并打印各种关于这些容器的统计数据，与 Unix 程序 top 很类似;</p>
+</li>
+<li><p>谷歌的 cAdvisor（Container Advisor 的缩写）是最常用的 Docker 监控工具。它对主机上运行的容器以图形化的方式展示资源使用情况及性能指标的总览;cAdvisor 能够汇总和处理各种统计数据，其他人可以通过 REST API 获取，方便进一步的处理和存储;</p>
+</li>
+<li><p>谷歌已经开发出一套建立在 cAdvisor 之上的集群监控解决方案，称为 Heapster;</p>
+</li>
+<li><p>Prometheus是由 SoundCloud开发的一个开源集群监控解决方案， 能够接受众多不同的来源作为输入，其中包括 cAdvisor。 它的目的是要支持大型的微服务架构系统，目前已在 SoundCloud 和 Docker 公司正式使用;</p>
+</li>
+</ol>
+<h2 id="Docker工具"><a href="#Docker工具" class="headerlink" title="Docker工具"></a>Docker工具</h2><ol>
+<li><p>服务发现是为某个服务的客户端自动提供连接至该服务的合适实例的信息（通常是 IP 地址和端口）的过程；服务发现的一种实现方法是让客户端只用服务名称发出请求，然后在后台以特殊方法把名称对应到合适的地址；</p>
+</li>
+<li><p>将不同主机上的容器连接起来的一种方法叫作大使容器（ambassador）。 它其实是代理容器，代替真正的容器（或服务）接收网络通信，并把流量转发至真正的服务中去，允许在无需修改任何代码的情况下，让生产环境的联网架构 有别于开发环境；</p>
+</li>
+<li><p>Docker 联网有四个可用的基本模式：网桥（bridge）、主机（host） 、容器（container）和未联网（none）；</p>
+</li>
+<li><p>集群（Clustering）：把“主机”组合并通过网络连接起来，虚拟机或裸机皆可。集群看起来应该像一个单一 资源，而不是一组互不相干的机器，Swarm是Docker 自带的集群工具；</p>
+</li>
+<li><p>编排（Orchestration）：协调各组件使它们共同运作，在适合的主机上启动容器并把它们连接起来，编排系统也 可能包括扩展的支持、自动故障切换，以及节点的负载均衡；</p>
+</li>
+<li><p>管理（Management）：监督系统及支持各种管理任务；</p>
+</li>
+<li><p>过滤器（filter）：控制哪些节点可用于运行容器，有几种过滤器是默认使用的；</p>
+</li>
+<li><p>策略：</p>
+<ol>
+<li>分散（spread）：将容器放置在负载最小的主机上；</li>
+<li>集装（binpack）：将容器放置在负载最多且还有可用空间的容器上；</li>
+<li>随机（random）：将容器随机安排在任何主机上。</li>
+</ol>
+</li>
+<li><p>安全问题：</p>
+<ol>
+<li>内核漏洞：所有容器以及主机都共同使用一个内核，因此内核漏洞的严重性将会被放大；</li>
+<li>拒绝服务（DoS）攻击：所有容器共同使用相同的内核资源；</li>
+<li>容器突破：留心潜在的权限提升攻击；</li>
+<li>镜像污染：攻击者可以欺骗你运行他的镜像， 那么主机和数据将受到威胁；</li>
+<li>密钥泄露：攻击者如果能够掌握密钥，他就能够访问这些额外的服务；</li>
+</ol>
+</li>
+<li><p>系统防御策略也应该是多重的：</p>
+<ol>
+<li>容器可以置于虚拟机中运行；</li>
+<li>可以防止攻击者到达主机或属于其他用户的容器；</li>
+<li>监控系统必须确保在侦测到异常行为时通知管理员；</li>
+<li>部署防火墙，限制从网络访问容器的权限，以缩小来自外部的攻击面等。</li>
+</ol>
+</li>
+<li><p>每个进程和容器，应以足够执行其功能的最低访问权限和资源运行；需要保证镜像的出处（provenance）的真实性，建立软件或数据出处的主要工具是安全散列，安全散列类似于数据指纹；</p>
+</li>
+<li><p><strong>永远不要以 root 用户的身份在容器内运行正式的应用</strong>，Dockerﬁle 在任何情况下都应该创建一个普通用户并利用 USER 语句或 entrypoint 脚本切换为这个用户：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="bash"> groupadd -r user_grp &amp;&amp; useradd -r -g user_grp user </span></span><br><span class="line"><span class="keyword">USER</span> <span class="keyword">user</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>容器应仅仅打开在生产环境中必须的端口，并且端口只对所需的容器开放;应用程序很可能不需要使用任何 setuid 或 setgid 的二进制文件,如果可以禁用或删除这些二进制文件，那么就能阻止攻击者利用它们来发动提权攻击;</p>
+</li>
+<li><p>限制内存使用，可以防止 DoS 攻击和应用程序的内存泄漏,docker run 的 -m 和 –memory-swap 参数可以用来限制容器能够使用的内存和虚拟内存容量;–memory-swap 设置的是<strong>总共的内存容量</strong>,如果只用 了 -m 参数而没有 –memory-swap，那么 –memory-swap 就会被设置为 -m 参数的一倍；</p>
+</li>
+<li><p>Docker 控制 CPU 占有率是依靠相对的比重，默认值为 1024，所有容器默认都有相同的 CPU 使用份额，CPU 可以使用完全公平调度器（Completely Fair Scheduler，CFS）进行分配， 方法是利用 –cpu-period 和 –cpu-quota 参数，容器会被分配一个在一段既定时间内能够使用的 CPU 配额（以微秒为单位）；</p>
+</li>
+<li><p><strong>限制重新启动：</strong>只需把重启策略由 always 改为 on-failure 即可；如下面的例子（Docker 只会最多重启容器10次）：</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=on-failure:10 my-flaky-image</span><br></pre></td></tr></table></figure>
+
+<ol start="17">
+<li>可以在执行 docker run 时使用 –read-only 参数，把容器的文件系统 设置为完全只读；</li>
+<li>进程的资源限制（ulimits）可以用于 Docker 容器，在执行docker run 时加上 –ulimit 选项，或在启动 Docker 守护进程时加上 –default-ulimit 选项给所有容器设置默认值；</li>
+</ol>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Docker的很多特性和微服务息息相关，为微服务提供了良好的平台基础，现在的服务架构再逐渐倾向于微服务，掌握Docker技术可以很方便地搭建自己的开发环境，部署自己的服务。这部分的内容只能说是大致入门Docker,还需要不断深入学习!</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="WanderROS 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="WanderROS 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/04/20/Docker-Start/">Docker Start</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 WanderROS 的个人博客">WanderROS</a></p>
+  <p><span>发布时间:</span>2020年04月20日 - 18:09</p>
+  <p><span>最后更新:</span>2020年10月01日 - 16:52</p>
+  <p><span>原始链接:</span><a href="/2020/04/20/Docker-Start/" title="Docker Start">https://wanderros.github.io/2020/04/20/Docker-Start/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://wanderros.github.io/2020/04/20/Docker-Start/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+
+      
+</div>
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+          
+            <a href="/tags/Base/" rel="tag"><i class="fa fa-tag"></i> Base</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/20/Spring-Boot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" rel="next" title="Spring Boot快速入门">
+                <i class="fa fa-chevron-left"></i> Spring Boot快速入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/21/Docker-Command/" rel="prev" title="Docker Command">
+                Docker Command <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+<div>
+		
+    	<!-- Link Gitalk 的支持文件  -->
+	<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+	<div id="gitalk-container"></div>     <script type="text/javascript">
+		var gitalk = new Gitalk({
+			clientID: 'bd073c3374c2b1a924b0',
+			clientSecret: 'e3818342fe0fa0f03ab0997cfe81ae9c450ec954',
+			repo: 'wanderros.github.io',
+			owner: 'WanderROS',
+			admin: ['WanderROS'],
+			id: location.pathname,
+			distractionFreeMode: 'true'
+		});
+		gitalk.render('gitalk-container');
+	</script> 
+	<!-- Gitalk end -->
+
+		
+	</div>
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+ <div id="gitalk-container"></div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="WanderROS" />
+            
+              <p class="site-author-name" itemprop="name">WanderROS</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">145</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wanderROS" target="_blank" title="GitHub">
+                      GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1194409532@qq.com.com" target="_blank" title="E-Mail">
+                      E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#容器的特点"><span class="nav-number">2.1.</span> <span class="nav-text">容器的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker与容器"><span class="nav-number">2.2.</span> <span class="nav-text">Docker与容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker命令"><span class="nav-number">2.3.</span> <span class="nav-text">Docker命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker术语"><span class="nav-number">2.4.</span> <span class="nav-text">Docker术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile可用指令"><span class="nav-number">2.5.</span> <span class="nav-text">Dockerfile可用指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker部署"><span class="nav-number">2.6.</span> <span class="nav-text">Docker部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker自动化"><span class="nav-number">2.7.</span> <span class="nav-text">Docker自动化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker仓库"><span class="nav-number">2.8.</span> <span class="nav-text">Docker仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker日志"><span class="nav-number">2.9.</span> <span class="nav-text">Docker日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker工具"><span class="nav-number">2.10.</span> <span class="nav-text">Docker工具</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WanderROS</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+-->
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共379.7k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

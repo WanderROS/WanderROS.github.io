@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('Please input Password:') !== '') {
+                alert('Password Error！');
+                if (history.length === 1) {
+                    location.replace("https://wanderros.github.io/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="Java,SpringBoot,SpringCloud," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="WanderROS'S Daily" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="简介架构之路从来都不是一条好走的路，需要长期的坚持，每天的持续学习！希望自己能在这个路上走下去，不会成为PPT架构师。真正地掌握技术，设计适合业务需求的架构。积累经验，拓宽视野，深度思考！程序员到架构师的技术成长之路分为几个典型的阶段：工程师 - 高级工程师 - 技术专家 -初级架构师 - 中级架构师 - 高级架构师。  开始基础积累基础知识 系统泛指由一群有关联的个体组成，根据某种规则运作，能完">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微服务架构之路">
+<meta property="og:url" content="https://wanderros.github.io/2020/07/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E4%B9%8B%E8%B7%AF/index.html">
+<meta property="og:site_name" content="WanderROS&#39;S Daily">
+<meta property="og:description" content="简介架构之路从来都不是一条好走的路，需要长期的坚持，每天的持续学习！希望自己能在这个路上走下去，不会成为PPT架构师。真正地掌握技术，设计适合业务需求的架构。积累经验，拓宽视野，深度思考！程序员到架构师的技术成长之路分为几个典型的阶段：工程师 - 高级工程师 - 技术专家 -初级架构师 - 中级架构师 - 高级架构师。  开始基础积累基础知识 系统泛指由一群有关联的个体组成，根据某种规则运作，能完">
+<meta property="og:image" content="https://app.yinxiang.com/FileSharing.action?hash=1/3a3685cab4febda9cf4dbb45b7b077c2-402733">
+<meta property="og:image" content="https://app.yinxiang.com/FileSharing.action?hash=1/c8978475683cedf1d4e7f932cfa9d237-3157057">
+<meta property="article:published_time" content="2020-07-11T13:02:43.000Z">
+<meta property="article:modified_time" content="2020-10-01T08:52:15.938Z">
+<meta property="article:author" content="WanderROS">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="SpringCloud">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://app.yinxiang.com/FileSharing.action?hash=1/3a3685cab4febda9cf4dbb45b7b077c2-402733">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wanderros.github.io/2020/07/11/微服务架构之路/"/>
+
+
+
+
+
+  <title>微服务架构之路 | WanderROS'S Daily</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/WanderROS" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WanderROS'S Daily</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-足迹">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            足迹
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wanderros.github.io/2020/07/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E4%B9%8B%E8%B7%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WanderROS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WanderROS'S Daily">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微服务架构之路</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-11T21:02:43+08:00">
+                2020-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringBoot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>架构之路从来都不是一条好走的路，需要长期的坚持，每天的持续学习！希望自己能在这个路上走下去，不会成为PPT架构师。真正地掌握技术，设计适合业务需求的架构。积累经验，拓宽视野，深度思考！程序员到架构师的技术成长之路分为几个典型的阶段：工程师 - 高级工程师 - 技术专家 -初级架构师 - 中级架构师 - 高级架构师。</p>
+<hr>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="基础积累"><a href="#基础积累" class="headerlink" title="基础积累"></a>基础积累</h2><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ol>
+<li>系统泛指由一群有关联的个体组成，根据某种规则运作，能完成个别元件不能单独完成的工作的群体；</li>
+<li>子系统是由一群有关联的个体所组成的系统，多半会是更大系统中的一部分。一个系统可能是另外一个更大系统的子系统；</li>
+<li>模块和组件都是系统的组成部分，只是从不同的角度拆分系统而已。划分模块的主要目的是职责分离；划分组件的主要目的是单元复用：<ul>
+<li>从逻辑的角度来拆分系统后，得到的单元就是“模块”</li>
+<li>从物理的角度来拆分系统后，得到的单元就是“组件”</li>
+</ul>
+</li>
+<li><strong>软件框架（Software framework）</strong>通常指的是为了实现某个业界标准或完成特定基本任务的软件组件规范，也指为了实现某个软件组件规范时，提供规范所要求之基础功能的软件产品；</li>
+<li><strong>软件架构</strong>指软件系统的“基础结构”，创造这些基础结构的准则，以及对这些结构的描述；</li>
+<li><strong>框架关注的是“规范”，架构关注 的是“结构”！</strong></li>
+<li>软件架构指软件系统的顶层结构；框架是面向编程或配置的半成品；组件是从技术维度上的复用；模块是从 业务维度上职责的划分；系统是相互协同可运行的实体!</li>
+<li>规模较大的软件系统可能面临软件架构相关的问题：<ul>
+<li>系统规模庞大，内部耦合严重，开发效率低</li>
+<li>系统耦合严重，牵一发动全身，后续修改和扩展困难</li>
+<li>系统逻辑复杂，容易出问题，出问题后很难排查和修复</li>
+</ul>
+</li>
+<li>软件开发过程包括了分析、设计、实现、测试、验证、部署、运维等多个环节。</li>
+</ol>
+<h3 id="Java-后端工程师基础技能"><a href="#Java-后端工程师基础技能" class="headerlink" title="Java 后端工程师基础技能"></a>Java 后端工程师基础技能</h3><ol>
+<li>Java 的语法、基本数据结构的使用</li>
+<li>Eclipse（或者IDEA）、Maven、Linux 命令行等各种工具</li>
+<li>数据库 CRUD 操作、缓存的基本使用等</li>
+<li>业务系统的基本流程</li>
+<li>典型书籍：《Java 编程思想》《Java 核心技术》《TCP/IP 协议》等</li>
+</ol>
+<h3 id="高级工程师"><a href="#高级工程师" class="headerlink" title="高级工程师"></a>高级工程师</h3><ol>
+<li>典型特征是“独立完成开发”，包括需求分析、方案设计、编码实现</li>
+<li>MySQL 数据库表如何设计，是设计成两个表还是三个表？</li>
+<li>是否要用缓存，缓存的 Key 和 Value 如何设计，缓存的更新策略是什么？</li>
+<li>产品提出的需求是否合理？是否有更好的方式来满足？</li>
+<li>需要“积累方案设计经验”，简单来说就是业务当前用到的相关技术的设计经验，比如Java后端需要积累表设计经验、缓存设计经验、业 务流程设计经验、接口设计经验等</li>
+<li>数据库表设计的 3 个范式、面向对象的设计模式、SOLID 设计原则、缓存设计理论（缓存穿透、缓存雪崩、缓存热点）等</li>
+<li>假设每个设计环节都有设计理论，然后带着这种假设去搜索验证看看是否真的有很熟的设计理念</li>
+<li>典型书籍：《深入理解 Java 虚拟机》《MySQL 技术内幕：InnoDB 存储引擎》等</li>
+</ol>
+<h3 id="技术专家"><a href="#技术专家" class="headerlink" title="技术专家"></a>技术专家</h3><ol>
+<li>典型的特征是“某个领域的专家”，只要是领域内的问题，技术专家都可以解决</li>
+<li>技术专家会根据需要修改、扩展、优化架构</li>
+<li>要想成为一个 Java 开发专家，需要掌握 Java 多线程、JDBC、Java 虚拟机、面向对象、设计模式、Netty、Elasticsearch、Memcache、Redis、MySQL 等众多技术</li>
+<li>拓展技术宽度并不意味着仅仅只是知道一个技术名词，而是要深入去理解每个技术的原理、优缺点、应用场景，也需要了解每种技术的差异性</li>
+</ol>
+<h3 id="初级架构师"><a href="#初级架构师" class="headerlink" title="初级架构师"></a>初级架构师</h3><ol>
+<li>典型特征就是能够“独立完成一个系统的架构设计”，可以是从 0 到 1 设计一个新系统，也可以是将架构从 1.0 重构到 2.0</li>
+<li>架构师是基于完善的架构设计方法论的指导来进行架构设计，能够清晰地阐述架构设计的理由和原因</li>
+<li>主要是形成自己的“架构设计方法论”，方法有：<ul>
+<li>系统学习架构设计方法论，包括订阅专栏或者阅读书籍等</li>
+<li>深入研究成熟开源系统的架构设计，聚焦于学习其架构设计原理和思想</li>
+<li>结合架构设计方法论，分析和总结自己团队甚至公司的各种系统的架构设计优缺点，尝试思考架构重构方案</li>
+</ul>
+</li>
+</ol>
+<h3 id="中级架构师"><a href="#中级架构师" class="headerlink" title="中级架构师"></a>中级架构师</h3><ol>
+<li>典型特征是“能够完成复杂系统的架构设计”，包含高性能、高可用、可扩展、海量存储等复杂系统</li>
+<li>中级架构师面对的系统复杂度要高于初级架构师</li>
+<li>关键的是“技术深度和技术理论的积累”：<ul>
+<li>技术理论——CAP、BASE 是异地多活的设计理论基础、Paxos 是分布式一致性的基础算法、2PC、3PC 是分布式事务的基础算法等</li>
+<li>技术深度——Kafka 用磁盘存储还能做到高效是因为磁盘顺序写；Disruptor 高性能是结合CPU预读取机制、缓存行、无锁设计等基础技术；Storm 的高效异或确认机制；Flink 的分布式快照算法等</li>
+</ul>
+</li>
+</ol>
+<h3 id="高级架构师"><a href="#高级架构师" class="headerlink" title="高级架构师"></a>高级架构师</h3><ol>
+<li>典型特征是“创造新的架构模式”</li>
+<li>高级架构师与中级架构师相比，典型区别在于“创造性”，高级架构师能够创造新的架构模式，开创新的技术潮流</li>
+<li>可能诞生创造性架构的背景条件：<ul>
+<li>足够复杂的业务场景</li>
+<li>足够强大的技术团队</li>
+<li>不满足于现状的态度</li>
+<li>尊重技术价值的文化</li>
+</ul>
+</li>
+<li>如果完全结果导向、KPI 导向，创新技术很可能在萌芽阶段就被否定</li>
+</ol>
+<h3 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h3><ol>
+<li>成长：《异类》《随机漫步的傻瓜》《一万小时天才理论》《情商》《优秀到不能被忽视》《影响力大师》</li>
+<li>技术：《UNIX 网络编程（卷 1）》《UNIX 环境高级编程》《Linux 系统编程》《TCP/IP 详解（卷 1）》《算法之美》《算法设计与应用》《Java 编程思想》《深入理解 Java 虚拟机》《C++ Primer》</li>
+<li>业务：《增长黑客》《需求》《淘宝十年产品事》《定位》《宝洁制胜战略》</li>
+</ol>
+<h2 id="架构基础"><a href="#架构基础" class="headerlink" title="架构基础"></a>架构基础</h2><h3 id="为什么要架构设计"><a href="#为什么要架构设计" class="headerlink" title="为什么要架构设计"></a>为什么要架构设计</h3><ol>
+<li>架构是为了应对软件系统复杂度而提出的一个解决方案！</li>
+<li><strong>通过熟悉和理解需求，识别系统复杂性所在的地方，然后针对这些复杂点进行架构设计；</strong></li>
+<li>架构师应该有的放矢，而不是贪大求全；</li>
+<li>架构无优劣，但是存在恰当的架构用在合适的软件系统中，而这些就是决策的结果；</li>
+<li>架构设计要贴合业务，找到适合能解决业务复杂度的设计，才是好的架构设计；<strong><em>一切脱离业务的架构设计都是耍流氓！</em></strong></li>
+</ol>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ol>
+<li>高性能，对性能孜孜不倦的追求是整个人类技术不断发展的根本驱动力；</li>
+<li>通过任务分解的方式，能够把原来大一统但复杂的业务系统，拆分成小而简单但需要多个系统配合的业务系统：<ul>
+<li>简单的系统更加容易做到高性能</li>
+<li>可以针对单个任务进行扩展</li>
+</ul>
+</li>
+<li>高性能带来的复杂度主要体现的两方面：<ul>
+<li>单台计算机内部为了高性能带来的复杂度</li>
+<li>多台计算机集群为了高性能带来的复杂度</li>
+</ul>
+</li>
+<li>衡量软件性能包括了响应时间、TPS、服务器资源利用率等客观指标；</li>
+<li>高可用，系统无中断地执行其功能的能力，代表系统的可用性程度；</li>
+<li>高可用带来的复杂度主要体现如下：<ul>
+<li>需要增加一个任务分配器，选择合适的任务分配器也是一件复杂的事情</li>
+<li>任务分配器和真正的业务服务器之间有连接和交互，需要选择合适的连接方式，并且对连接进行管理</li>
+<li>任务分配器需要增加分配算法。常见的双机算法有主备、主主，主备方案又可以细分为冷备、温备、热备</li>
+</ul>
+</li>
+<li>对于需要存储数据的系统来说，整个系统的高可用设计关键点和难点就在于“存储高可用”；</li>
+<li>无论采取什么样的方案，状态决策都不可能做到任何场景下都没有问题，但完全不做高可用方案又会产生更大的问题，如何选取适合系统的高可用方案，也是一个复杂的分析、判断和选择的过程；</li>
+<li>高可用性就是技术实力的象征，高可用性就是竞争力！</li>
+<li>可扩展性，为了应对将来需求变化而提供的一种扩展能力，当有新的需求出现时，系统不需要或者仅需要少量修改就可以支持，无须整个系统重构或者重建；</li>
+<li>可扩展意味着预测，预测变化的复杂性在于：<ul>
+<li>不能每个设计点都考虑可扩展性</li>
+<li>不能完全不考虑可扩展性</li>
+<li>所有的预测都存在出错的可能性</li>
+</ul>
+</li>
+<li>可扩展带来两个主要的复杂性相关的问题：<ul>
+<li>系统需要拆分出变化层和稳定层</li>
+<li>需要设计变化层和稳定层之间的接口</li>
+</ul>
+</li>
+<li>设计具备良好可扩展性的系统，有两个思考角度：<ul>
+<li>从业务维度。对业务深入理解，对可预计的业务变化进行预测</li>
+<li>从技术维度。利用扩展性好的技术，实现对变化的封装</li>
+</ul>
+</li>
+<li>在实际软件系统架构设计中，常通过以下技术手段实现良好的可扩展性:<ul>
+<li>使用分布式服务 (框架)构建可复用的业务平台</li>
+<li>使用分布式消息队列降低业务模块间的耦合性</li>
+</ul>
+</li>
+<li>低成本，需要减少服务器的数量才能达成低成本的目标，而且低成本本质上是与高性能和高可用冲突的；</li>
+<li>一般中小公司基本都是靠引入新技术来达到低成本的目标；而大公司更有可能自己去创造新的技术来达到低成本的目标！</li>
+<li>安全，可以分为两类：一类是功能上的安全，一类是架构上的安全；</li>
+<li>常见的 XSS 攻击、CSRF 攻击、SQL 注入、Windows 漏洞、密码破解等出现是因为系统实现有漏洞，黑客有了可乘之机；</li>
+<li>传统的架构安全主要依靠防火墙，防火墙最基本的功能就是隔离网络，通过将网络划分成不同的区域，制定出不同区域之间的访问控制策略来控制不同信任程度区域间传送的数据流!</li>
+</ol>
+<h3 id="架构设计三原则"><a href="#架构设计三原则" class="headerlink" title="架构设计三原则"></a>架构设计三原则</h3><ol>
+<li>架构设计没有像编程语言那样的语法来进行约束，更多的时候是面对多种可能性时进行选择！</li>
+<li>架构设计遵循如下原则，将有助于做出最好的选择：<ul>
+<li><strong>合适原则</strong></li>
+<li><strong>简单原则</strong></li>
+<li><strong>演化原则</strong></li>
+</ul>
+</li>
+<li>合适优于业界领先，真正优秀的架构都是在企业当前人力、条件、业务等各种约束下设计出来的，能够合理地将资源整合在一起并发挥出最大功效，并且能够快速落地才是真正的合适；</li>
+<li>挑战和踩坑都是架构设计非常关键的促进因素，单纯靠拍脑袋或者头脑风暴，是不可能和真正实战相比的！</li>
+<li>简单优于复杂，在软件领域复杂代表的不是优秀而是问题。毕竟定位一个复杂系统中的问题总是比简单系统更加困难；</li>
+<li>演化优于一步到位，软件架构需要根据业务的发展而不断变化；</li>
+<li>软件架构设计流程：<ol>
+<li>设计出来的架构要满足当时的业务需要；</li>
+<li>架构要不断地在实际应用过程中迭代，保留优秀的设计，修复有缺陷的设计，改正错误的设计，去掉无用的设计，使得架构逐渐完善</li>
+<li>当业务发生变化时，架构要扩展、重构，甚至重写。代码也许会重写，但有价值的经验、教训、逻辑、设计等（类似生物体内的基因）却可以在新架构中延续</li>
+</ol>
+</li>
+<li>合适优于先进&gt;演化优于一步到位&gt;简单优于复杂！</li>
+<li>需求驱动技术的创新演化；技术反哺业务的发展升级。</li>
+</ol>
+<h2 id="架构设计流程"><a href="#架构设计流程" class="headerlink" title="架构设计流程"></a>架构设计流程</h2><h3 id="识别复杂度"><a href="#识别复杂度" class="headerlink" title="识别复杂度"></a>识别复杂度</h3><ol>
+<li>只有正确分析出了系统的复杂性，后续的架构设计方案才不会偏离方向；</li>
+<li>架构的复杂度主要来源于“高性能”“高可用”“可扩展”等几个方面，在具体判断复 杂性的时候，不能生搬硬套；</li>
+<li>消息队列系统可以完成子系统的解耦；</li>
+<li>消息队列的复杂性主要体现在：<ul>
+<li>高性能消息读取</li>
+<li>高可用消息写入</li>
+<li>高可用消息存储</li>
+<li>高可用消息读取</li>
+</ul>
+</li>
+<li><strong>nginx负载均衡性能是3万左右；mc的读取性能5万左右；kafka号称百万级；zookeeper写入读取2万以上；http请求访问大概在2万左右；</strong></li>
+<li>系统复杂性的分析流程：<ol>
+<li>构建复杂度的来源清单——高性能、可用性、扩展性、安全、低成本、规模等</li>
+<li>结合需求、技术、团队、资源等对上述复杂度逐一分析是否需要？是否关键？</li>
+<li>按照上述的分析结论，得到复杂度按照优先级的排序清单，越是排在前面的复杂度，就越关键，就越优先解决</li>
+</ol>
+</li>
+<li>架构师需要五项能力：<ul>
+<li>技术</li>
+<li>沟通</li>
+<li>推动</li>
+<li>管理</li>
+<li>撕逼</li>
+</ul>
+</li>
+</ol>
+<h3 id="设计备选方案"><a href="#设计备选方案" class="headerlink" title="设计备选方案"></a>设计备选方案</h3><ol>
+<li>成熟的架构师需要对已经存在的技术非常熟悉，对已经经过验证的架构模式烂熟于心，然后根据自己对业务的理解，挑选合适的架构模式进行组合，再对组合后的方案进行修改和调整；</li>
+<li>成熟的技术（部分）：<ul>
+<li>NoSQL，Key-Value 的存储和数据库的索引其实是类似的，Memcache 只是把数据库的索引独立出来做成了一个缓存系统</li>
+<li>Hadoop ，大文件存储方案，基础其实是集群方案 + 数据复制方案</li>
+<li>Docker 虚拟化，基础是 LXC（Linux Containers）</li>
+<li>LevelDB ，文件存储结构是 Skip List</li>
+</ul>
+</li>
+<li>架构师需要设计多个备选方案，备选方案的数量以 3 ~ 5 个为最佳而且备选方案的差异要比较明显；当然备选方案的技术不要只局限于已经熟悉的技术；</li>
+<li>备选阶段关注的是技术选型，而不是技术细节，技术选型的差异要比较明显！</li>
+<li>架构设计备选方案的 工作更多的是从需求、团队、技术、资源等综合情况出发，对主流、成熟的架构模式进行选择、组合、调整、创新。</li>
+</ol>
+<h3 id="评估和选择备选方案"><a href="#评估和选择备选方案" class="headerlink" title="评估和选择备选方案"></a>评估和选择备选方案</h3><ol>
+<li>列出我们需要关注的质量属性点，然后分别从这些质量属性的维度去评估每个方案，再综合挑选适合当时情况的最优方案；</li>
+<li>常见的方案质量属性点有：<ul>
+<li>性能</li>
+<li>可用性</li>
+<li>硬件成本</li>
+<li>项目投入</li>
+<li>复杂度</li>
+<li>安全性</li>
+<li>可扩展性等</li>
+</ul>
+</li>
+<li>没有哪个方案是完美的，极少出现某个方案在所有对比维度上都是最优的；</li>
+<li>架构师综合当前的业务发展情况、团队人员规模和技能、业务发展预测等因素，将质量属性按照优先级排序，首先挑选满足第一优先级的，如果方案都满足，那就再看第二优先级……以此类推。</li>
+</ol>
+<h3 id="详细方案设计"><a href="#详细方案设计" class="headerlink" title="详细方案设计"></a>详细方案设计</h3><ol>
+<li>详细方案设计就是将方案涉及的关键技术细节给确定下来；</li>
+<li>架构师不但要进行备选方案设计和选型，还需要对备选方案的关键细节有较深入的理解；</li>
+<li>通过分步骤、分阶段、分系统等方式，尽量降低方案复杂度，方案本身的复杂度越高，某个细节推翻整个方案的可能性就越高，适当降低复杂性，可以减少这种风险；</li>
+<li>Nginx 的负载均衡策略：<ul>
+<li>轮询（默认）——每个请求按时间顺序逐一分配到不同的后端服务器，后端服务器分配的请求数基本一致，如果后端服务器“down 掉”，能自动剔除</li>
+<li>加权轮询——根据权重来进行轮询，权重高的服务器分配的请求更多，主要适应于后端服务器性能不均的情况，如新老服务器混用</li>
+<li>ip_hash——每个请求按访问 IP 的 hash 结果分配，这样每个访客固定访问一个后端服务器，主要用于解决 session 的问题，如购物车类的应用</li>
+<li>fair——按后端服务器的响应时间来分配请求，响应时间短的优先分配，能够最大化地平衡各后端服务器的压力，可以适用于后端服务器性能不均衡的情况，也可以防止某台后端服务器性能不足的情况下还继续接收同样多的请求从而造成雪崩效应</li>
+<li>url_hash——按访问 URL 的 hash 结果来分配请求，每个 URL 定向到同一个后端服务器，适用于后端服务器能够将 URL 的响应结果缓存的情况</li>
+</ul>
+</li>
+<li>细化更多的设计点：<ul>
+<li>数据库表如何设计</li>
+<li>数据如何复制</li>
+<li>主备服务器如何倒换</li>
+<li>业务服务器如何写入消息</li>
+<li>业务服务器如何读取消息</li>
+<li>业务服务器和消息队列服务器之间的通信协议如何设计</li>
+</ul>
+</li>
+<li>技术存在就是合理的，只是每个有每个技术的使用点，架构师应该对常见的技术栈原理非常清楚，知道什么时候应该使用什么技术；</li>
+<li>架构师不仅需要广度还需要深度，不能仅仅停留在PPT上！</li>
+</ol>
+<h2 id="成熟模式"><a href="#成熟模式" class="headerlink" title="成熟模式"></a>成熟模式</h2><h3 id="高性能数据库-读写分离"><a href="#高性能数据库-读写分离" class="headerlink" title="高性能数据库-读写分离"></a>高性能数据库-读写分离</h3><ol>
+<li>做架构设计主要都是基于已有的成熟模式，结合业务和团队的具体情况，进行一定的优化或者调整；</li>
+<li>关系数据库由于其 ACID 的特性和功能强大的 SQL 查询，目前还是各种业务系统中关键和核心的存储系统，很多场景下高性能的设计最核心的部分就是关系数据库的设计；</li>
+<li>海量用户加上海量数据导致单个数据库服务器已经难以满足业务需要，必须考虑数据库集群的方式来提升性能；</li>
+<li>高性能数据库集群的模式有：<ul>
+<li>读写分离——将访问压力分散到集群中的多个节点，但是没有分散存储压力</li>
+<li>分库分表——既可以分散访问压力，又可以分散存储压力</li>
+</ul>
+</li>
+<li>读写分离的基本实现：<ul>
+<li>数据库服务器搭建主从集群，一主一从、一主多从都可以</li>
+<li>数据库主机负责读写操作，从机只负责读操作</li>
+<li>数据库主机通过复制将数据同步到从机，每台数据库服务器都存储了所有的业务数据</li>
+<li>业务服务器将写操作发给数据库主机，将读操作发给数据库从机</li>
+</ul>
+</li>
+<li>读写分离导致的问题主要是复制延迟，解决主从复制延迟的常见方法：<ul>
+<li>写操作后的读操作指定发给数据库主服务器</li>
+<li>读从机失败后再读一次主机</li>
+<li>关键业务读写操作全部指向主机，非关键业务采用读写分离</li>
+</ul>
+</li>
+<li>不是说一有性能问题就上读写分离，而是应该先优化，例如优化慢查询，调整不合理的业务逻辑，引入缓存等，只有确定系统没有优化空间后，才考虑读写分离或者集群；</li>
+</ol>
+<h3 id="高性能数据库集群：分库分表"><a href="#高性能数据库集群：分库分表" class="headerlink" title="高性能数据库集群：分库分表"></a>高性能数据库集群：分库分表</h3><ol>
+<li>当数据量达到千万甚至上亿条的时候，单台数据库服务器的存储能力会成为系统的瓶颈，主要体现在这几个方面：<ul>
+<li>数据量太大，读写的性能会下降，即使有索引，索引也会变得很大，性能同样会下降</li>
+<li>数据文件会变得很大，数据库备份和恢复需要耗费很长时间</li>
+<li>数据文件越大，极端情况下丢失数据的风险越高</li>
+</ul>
+</li>
+<li>单个数据库服务器存储的数据量不能太大，需要控制在一定的范围内；</li>
+<li>分散存储的方法“分库分表”包含了“分库”和“分表”：<ul>
+<li>业务分库——按照业务模块将数据分散到不同的数据库服务器</li>
+<li>垂直分表和水平分表——垂直分表适合将表中某些不常用且占了大量空间的列拆分出去；水平分表适合表行数特别大的表</li>
+</ul>
+</li>
+<li>优化流程：<ol>
+<li>做硬件优化</li>
+<li>先做数据库服务器的调优操作，例如增加索引</li>
+<li>引入缓存技术，减少数据库压力</li>
+<li>程序与数据库表优化，重构</li>
+<li>在这些操作都不能大幅度优化性能的情况下，不能满足将来的发展，再考虑分库分表</li>
+</ol>
+</li>
+<li>分库分表的实施前提：<ul>
+<li>数据库存在性能问题，且用加索引、慢查询优化、缓存和读写分离都无法彻底解决问题</li>
+<li>复杂查询对应的单表数据量级一般超过千万以上，或简单查询的单表数据量级一般超过5000万以上</li>
+<li>对一致性要求不是特别高，只要求最终一致性</li>
+<li>用hadoop等大数据技术因为业务需求、技术成本、时间成本无法解决该问题</li>
+<li>业务对数据的操作主要集中在某些字段上，比较适合垂直分表</li>
+<li>业务对数据的操作在整个表层面较均匀分布，适合水平分表</li>
+</ul>
+</li>
+<li>遵循演化原则，业务真正发展起来再考虑分库分表，否则就疲于维护的复杂度等等！</li>
+</ol>
+<h3 id="非关系型数据库NoSQL"><a href="#非关系型数据库NoSQL" class="headerlink" title="非关系型数据库NoSQL"></a>非关系型数据库NoSQL</h3><ol>
+<li>常见的 NoSQL按照类型分类有：<ul>
+<li>K-V 存储——解决关系数据库无法存储数据结构的问题，以 Redis 为代表</li>
+<li>文档数据库——解决关系数据库强 schema 约束的问题，以 MongoDB 为代表</li>
+<li>列式数据库——解决关系数据库大数据场景下的 I/O 问题，以 HBase 为代表</li>
+<li>全文搜索引擎——解决关系数据库的全文搜索性能问题，以 Elasticsearch 为代表</li>
+</ul>
+</li>
+<li>Redis 的缺点主要体现在并不支持完整的 ACID 事务，Redis 虽然提供事务功能，但 Redis 的事务和关系数据库的事务不可同日而语，Redis 的事务只能保证隔离性和一致性（I 和 C），无法保证原子性和持久性（A 和 D）；</li>
+<li>文档数据库最大的特点就是 no-schema，可以存储和读取任意的数据。目前绝大部分文档数据库存储的数据格式是 JSON（或者 BSON）；</li>
+<li>列式数据库就是按照列来存储数据的数据库：<ul>
+<li>业务同时读取多个列时效率高</li>
+<li>能够一次性完成对一行中的多个列的写操作，保证了针对行数据写操作的原子性和一致性</li>
+<li>列式存储具备更高的存储压缩比，能够节省更多的存储空间</li>
+<li>列式存储应用在离线的大数据分析和统计场景中</li>
+</ul>
+</li>
+<li>全文搜索的条件可以随意排列组合，如果通过索引来满足，则索引的数量会非常多；全文搜索的模糊匹配方式，索引无法满足，只能用 like 查询，而 like 查询是整表扫描，效率非常低；</li>
+<li>全文搜索引擎的技术原理被称为“倒排索引”（Inverted index），也常被称为反向索引、置入档案或反向档案，是一种索引方法，其基本原理是建立单词到文档的索引；</li>
+<li>NoSQL数据库的选型指标：数据量、并发量、实时性、一致性要求、读写分布和类型、安全性、运维性等；</li>
+<li>需求驱动架构，无论选用RDB/NoSQL/DRDB，一定是以需求为导向，最终的数据存储方案也必然是各种权衡的设计妥协！</li>
+</ol>
+<h3 id="高性能缓存架构"><a href="#高性能缓存架构" class="headerlink" title="高性能缓存架构"></a>高性能缓存架构</h3><ol>
+<li>在某些复杂的业务场景下，单纯依靠存储系统的性能提升不够的，典型的场景有：<ul>
+<li>需要经过复杂运算后得出的数据，存储系统无能为力</li>
+<li>读多写少的数据，存储系统有心无力</li>
+</ul>
+</li>
+<li>缓存基本原理是将可能重复使用的数据放到内存中，一次生成、多次使用，避免每次使用都去访问存储系统；</li>
+<li>缓存穿透——缓存没有发挥作用，业务系统虽然去缓存查询数据，但缓存中没有数据，业务系统需要再次去存储系统查询数据；</li>
+<li>缓存雪崩——当缓存失效（过期）后引起系统性能急剧下降的情况；</li>
+<li>缓存雪崩的常见解决方法有更新锁机制和后台更新机制：<ul>
+<li>对缓存更新操作进行加锁保护，保证只有一个线程能够进行缓存更新，未能获取更新锁的线程要么等待锁释放后重新读取缓存，要么就返回空值或者默认值。分布式集群的业务系统要实现更新锁机制，需要用到分布式锁，如 ZooKeeper</li>
+<li>由后台线程来更新缓存，而不是由业务线程来更新缓存，缓存本身的有效期设置为永久，后台线程定时更新缓存</li>
+</ul>
+</li>
+<li>缓存热点的解决方案就是复制多份缓存副本，将请求分散到多个缓存服务器上，减轻缓存热点导致的单台缓存服务器压力；</li>
+<li>对于缓存雪崩问题采取双key策略：要缓存的key过期时间是t，key1没有过期时间。每次缓存读取不到key时就返回key1的内容，然后触发一个事件。这个事件会同时更新key和key1！</li>
+</ol>
+<h3 id="单服务器高性能"><a href="#单服务器高性能" class="headerlink" title="单服务器高性能"></a>单服务器高性能</h3><ol>
+<li>高性能架构设计主要集中在两方面：<ul>
+<li>尽量提升单服务器的性能，将单服务器的性能发挥到极致</li>
+<li>如果单服务器无法支撑性能，设计服务器集群方案</li>
+</ul>
+</li>
+<li>单服务器高性能的关键之一就是服务器采取的并发模型，设计要点（都和操作系统的 I/O 模型及进程模型相关）：<ul>
+<li>服务器如何管理连接</li>
+<li>服务器如何处理请求</li>
+</ul>
+</li>
+<li>PPC（Process Per Connection）指每次有新的连接就新建一个进程去专门处理这个连接的请求，这是传统的 UNIX 网络服务器所采用的模型；</li>
+<li>TPC（Thread Per Connection）指每次有新的连接就新建一个线程去专门处理这个连接的请求；</li>
+</ol>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><ol>
+<li>集群设计的复杂度主要体现在任务分配这部分，需要设计合理的任务分配策略，将计算任务分配到多台服务器上执行；</li>
+<li>任务分配器也称为“负载均衡器”，不只是为了计算单元的负载达到均衡状态；</li>
+<li>负载均衡有DNS 负载均衡、硬件负载均衡和软件负载均衡：<ul>
+<li>DNS 负载均衡——一般用来实现地理级别的均衡，本质是 DNS 解析同一个域名可以返回不同的 IP 地址</li>
+<li>硬件负载均衡——通过单独的硬件设备来实现负载均衡功能，目前业界典型的硬件负载均衡设备有F5 和A10</li>
+<li>软件负载均衡通过负载均衡软件来实现负载均衡功能，常见的有 Nginx 和 LVS，其中 Nginx 是软件的 7 层负载均衡，LVS 是 Linux 内核的 4 层负载均衡</li>
+</ul>
+</li>
+<li><strong>DNS 负载均衡用于实现地理级别的负载均衡；硬件负载均衡用于实现集群级别的负载均衡；软件负载均衡用于实现机器级别的负载均衡！</strong></li>
+<li>负载均衡算法分类：<ul>
+<li>任务平分类——将收到的任务平均分配给服务器进行处理</li>
+<li>负载均衡类——根据服务器的负载来进行分配</li>
+<li>性能最优类——根据服务器的响应时间来进行任务分配，优先将新任务分配给响应最快的服务器</li>
+<li>Hash 类——负载均衡系统根据任务中的某些关键信息进行 Hash 运算，将相同 Hash 值的请求分配到同一台服务器上</li>
+</ul>
+</li>
+</ol>
+<h2 id="架构之路"><a href="#架构之路" class="headerlink" title="架构之路"></a>架构之路</h2><h3 id="CAP"><a href="#CAP" class="headerlink" title="CAP"></a>CAP</h3><ol>
+<li>对于一个分布式计算系统，不可能同时满足一致性（Consistence）、可用性（Availability）、分区容错性（Partition Tolerance）三个设计约束。只能保证一致性（Consistence）、可用性（Availability）、分区容错性（Partition Tolerance）三者中的两个，另外一个必须被牺牲；</li>
+<li>一致性（Consistency）：对某个指定的客户端来说，读操作保证能够返回最新的写操作结果；</li>
+<li>可用性（Availability）：非故障的节点在合理的时间内返回合理的响应（不是错误和超时的响应）；</li>
+<li>分区容忍性（Partition Tolerance）：当出现网络分区后，系统能够继续“履行职责”；</li>
+<li>分布式系统理论上不可能选择 CA 架构，只能选择 CP 或者 AP 架构！</li>
+<li>CAP 关注的粒度是数据，而不是整个系统；</li>
+<li>CAP 是忽略网络延迟的；</li>
+<li>正常运行情况下，不存在 CP 和 AP 的选择，可以同时满足 CA；</li>
+<li>放弃并不等于什么都不做，需要为分区恢复后做准备；</li>
+</ol>
+<h3 id="FMEA方法"><a href="#FMEA方法" class="headerlink" title="FMEA方法"></a>FMEA方法</h3><ol>
+<li><p>高可用较高性能更复杂些，主要在于异常的场景很多，只要有一个场景遗漏，架构设计就存在可用性隐患；</p>
+</li>
+<li><p>可能出错的事情最终都会出错，架构隐患总有一天会导致系统故障；</p>
+</li>
+<li><p>FMEA（Failure mode and effects analysis，故障模式与影响分析）是一种在各行各业都有广泛应用的可用性分析方法，通过对系统范围内潜在的故障模式加以分析，并按照严重程度进行分类，以确定失效对于系统的最终影响；</p>
+</li>
+<li><p><strong>FMEA 是一套分析和思考的方法，而不是某个领域的技能或者工具！</strong></p>
+</li>
+<li><p>在架构设计领域，FMEA 的具体分析方法：</p>
+<ul>
+<li>给出初始的架构设计图</li>
+<li>假设架构中某个部件发生故障</li>
+<li>分析此故障对系统功能造成的影响</li>
+<li>根据分析结果，判断架构是否需要进行优化</li>
+</ul>
+</li>
+<li><p>FMEA分析方法就是使用一个FMEA分析表，该表格包含了功能点、故障模式、故障影响、严重程度、故障原因、故障概率、风险程度、已有措施、规避措施、解决措施、后续规划：</p>
+<ul>
+<li>功能点是从用户的角度来描述的，而不是从系统各个模块功能点划分来描述的。比如对于一个用户管理系统，使用 FMEA 分析时 “登录”“注册”才是功能点，而用户管理系统中的数据库存储功能、Redis 缓存功能不能作为FMEA 分析的功能点</li>
+<li>故障模式是系统会出现什么样的故障，包括故障点和故障形式。只需要假设出现某种故障现象即可，注意描述要尽量精确，多使用量化描述，避免使用泛化的描述</li>
+<li>故障影响是当发生故障模式中描述的故障时，功能点具体会受到什么影响。要尽量精确</li>
+<li>严重程度是站在业务的角度故障的影响程度，一般分为“致命 / 高 / 中 / 低 / 无”五个档次（存在争议）</li>
+<li>故障原因是在于不管什么故障原因，故障现象相同，对功能点的影响就相同</li>
+<li>故障概率是指某个具体故障原因发生的概率</li>
+<li>风险程度是综合严重程度和故障概率来一起判断某个故障的最终等级</li>
+<li>已有措施是针对具体的故障原因，系统现在是否提供了某些措施来应对，包含检测告警、容错、自恢复等</li>
+<li>规避措施是为了降低故障发生概率而做的一些事情，可以是技术手段，也可以是管理手段</li>
+<li>解决措施是为了能够解决问题而做的一些事情，一般都是技术手段</li>
+<li>后续规划可以是技术手段，也可以是管理手段；可以是规避措施，也可以是解决措施</li>
+</ul>
+</li>
+<li><p>FMEA分析表样例：</p>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/3a3685cab4febda9cf4dbb45b7b077c2-402733" alt="FMEA分析表"></p>
+</li>
+<li><p>经过多年的演进FMEA从定性和定量两个维度分别延伸出了FMECA和FMEDA；</p>
+</li>
+</ol>
+<h3 id="存储双机架构模式"><a href="#存储双机架构模式" class="headerlink" title="存储双机架构模式"></a>存储双机架构模式</h3><ol>
+<li>存储高可用方案的本质都是通过将数据复制到多个存储设备，通过数据冗余的方式来实现高可用，其复杂性主要体现在如何应对复制延迟和中断导致的数据不一致问题；</li>
+<li>常见的高可用存储架构有主备、主从、主主、集群、分区；</li>
+<li>主备复制是最常见也是最简单的一种存储高可用方案，几乎所有的存储系统都提供了主备复制的功能；</li>
+<li>主从复制是主机负责读写操作，从机只负责读操作，不负责写操作；</li>
+<li>双机切换是系统自动决定主机角色，并完成角色切换；</li>
+<li>中介式指的是在主备两者之外引入第三方中介，主备机之间不直接连接，而都去连接中介，并且通过中介来传递状态信息；</li>
+<li>主主复制指的是两台机器都是主机，互相将数据复制给对方，客户端可以任意挑选其中一台机器进行读写操作！</li>
+<li>集群就是多台机器组合在一起形成一个统一的系统；</li>
+<li>目前开源的数据集中集群以 ZooKeeper 为典型，ZooKeeper 通过 ZAB 算法来解决上述提到的几个问题，但 ZAB 算法的复杂度是很高的；</li>
+<li>如果采用远距离集群，网络抖动和延时就会对整个集群性能造成影响！</li>
+</ol>
+<h3 id="异地多活（很难）"><a href="#异地多活（很难）" class="headerlink" title="异地多活（很难）"></a>异地多活（很难）</h3><ol>
+<li>如果业务期望达到即使在此类灾难性故障的情况下，业务也不受影响，或者在几分钟内就能够很快恢复，那么就需要设计<strong>异地多活架构</strong>！</li>
+<li>异地多活架构中的异地是指地理位置上不同的地方；多活指不同地理位置上的系统都能够提供业务服务；</li>
+<li>异地多活架构标准：<ul>
+<li>正常情况下，用户无论访问哪一个地点的业务系统，都能够得到正确的业务服务</li>
+<li>某个地方业务异常的时候，用户访问其他地方正常的业务系统，能够得到正确的业务服务</li>
+</ul>
+</li>
+<li>异地多活代价很高：<ul>
+<li>系统复杂度会发生质的变化，需要设计复杂的异地多活架构</li>
+<li>成本会上升，毕竟要多在一个或者多个机房搭建独立的一套业务系统</li>
+</ul>
+</li>
+<li>按照地理位置上的距离划分，异地多活架构可以分为同城异区、跨城异地、跨国异地；</li>
+<li>异地多活的主要目的还是为了容灾。</li>
+<li>异地多活技巧（采用多种手段，保证绝大部分用户的核心业务异地多活）：<ul>
+<li>保证核心业务的异地多活</li>
+<li>保证核心数据最终一致性</li>
+<li>采用多种手段同步数据</li>
+<li>只保证绝大部分用户的异地多活</li>
+</ul>
+</li>
+<li>跨城异地多活架构设计步骤：<ol>
+<li>业务分级——按照一定的标准将业务进行分级，挑选出核心业务</li>
+<li>数据分类——对核心业务相关的数据进一步分析，在于识别所有的数据以及数据特征</li>
+<li>数据同步——根据不同的数据设计不同的同步方案</li>
+<li>异常处理——一旦出现极端异常的情况，总是会有部分数据出现异常的，在出现问题时采取什么措施来应对</li>
+</ol>
+</li>
+</ol>
+<h2 id="可扩展架构（传统）"><a href="#可扩展架构（传统）" class="headerlink" title="可扩展架构（传统）"></a>可扩展架构（传统）</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><ol>
+<li>软件系统的可扩展性是魅力所在，也是难点所在；</li>
+<li>基本思想是将原来大一统的系统拆分成多个规模小的部分，扩展时只修改其中一部分即可，无须整个系统到处都修改，通过这种方式来减少改动范围，降低改动风险；</li>
+<li>常见的拆分思路有（流程&gt;服务&gt;功能）：<ul>
+<li>面向流程拆分——将整个业务流程拆分为几个阶段</li>
+<li>面向服务拆分——将系统提供的服务拆分，每个服务作为一部分</li>
+<li>面向功能拆分——将系统提供的功能拆分，每个功能作为一部分</li>
+</ul>
+</li>
+<li>不同的拆分方式，本质上决定了系统的扩展方式。根据拆分方式，典型的可扩展系统架构有：<ul>
+<li>流程——分层架构</li>
+<li>服务——SOA、微服务</li>
+<li>功能——微内核架构</li>
+</ul>
+</li>
+</ol>
+<h3 id="分层架构"><a href="#分层架构" class="headerlink" title="分层架构"></a>分层架构</h3><ol>
+<li>分层架构也称为N层架构，根据不同的划分维度和对象，可以得到多种不同的分层架构；</li>
+<li>C/S架构、B/S架构划分的对象是整个业务系统，划分的维度是用户交互，即将和用户交互的部分独立为一层；</li>
+<li>MVC架构、MVP架构划分的对象是单个业务子系统，划分的维度是职责，将不同的职责划分到独立层，但是各层的依赖关系比较灵活；</li>
+<li>逻辑分层架构划分的对象可以是单个业务子系统，也可以是整个业务系统，划分的维度也是职责。典型的有操作系统内核架构、TCP/IP架构、J2EE系统架构；</li>
+<li>分层架构设计最核心的就是需要<strong>保证各层之间的差异足够清晰，边界足够明显，让人看到架构图之后就能看懂整个架构！</strong></li>
+<li>分层架构设计的本质是隔离关注点，即每个层中的组件只会处理本层的逻辑。比如说，展示层只需要处理展示逻辑、业务层只需要处理业务逻辑；</li>
+<li>分层架构的系统的特点就是层层传递，一旦层级确定，整个业务流程就按照层进行依次传递，不能在层之间进行跳跃。<strong>强制将分层依赖限定为两两依赖</strong>，降低了整体系统的复杂度；</li>
+<li>分层架构的缺点就是性能，因为每一次业务请求都需要穿透所有的架构分层，有些是多于的，多少都会有点性能浪费！</li>
+</ol>
+<h3 id="SOA"><a href="#SOA" class="headerlink" title="SOA"></a>SOA</h3><ol>
+<li>SOA（Service Oriented Architecture，面向服务的架构）在很多企业成功推广，但是在互联网行业没有大规模地实践和推广；</li>
+<li>ESB（Enterprise Service Bus，企业服务总线）将企业中各个不同的服务连接在一起。SOA使用ESB来屏蔽异构系统对外提供各种不同的接口方式，以此来达到服务间高效的互联互通；</li>
+<li>采用SOA架构之后，各个服务是相互独立运行的，甚至不清楚某个服务到底有多少对其他服务的依赖；</li>
+<li>ESB需要实现与各种系统之间的协议转换、数据转换、透明的动态路由等功能。但是要完成协议和数据格式的互相转换，工作量和复杂度都很大，而且这些转换是需要耗费大量计算性能的，如果承载的消息太多时，可能会是整个系统的性能瓶颈；</li>
+<li>ESB的存在实属无奈，但是企业在应用SOA时，各种异构的IT系统都已经存在很多年了，完全重写或者按照统一标准进行改造的成本是非常大的，只能通过ESB方式去适配已经存在的各种异构系统！</li>
+</ol>
+<h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><h3 id="基础知识-1"><a href="#基础知识-1" class="headerlink" title="基础知识"></a>基础知识</h3><ol>
+<li>微服务和SOA是两种不同的架构设计理念，只是在“服务”这个点上有点交集；</li>
+<li>SOA适合于庞大、复杂、异构的企业级系统；而微服务适合于快速、轻量级、基于Web的互联网系统；</li>
+<li>微服务需要考虑的问题：<ul>
+<li>服务划分过细，服务间关系复杂</li>
+<li>服务数量太多，团队效率急剧下降</li>
+<li>调用链太长，性能下降</li>
+<li>调用链太长，问题定位困难</li>
+<li>没有自动化的支持，无法快速交付</li>
+<li>没有服务治理，微服务数量多了后管理混乱</li>
+</ul>
+</li>
+<li>转型微服务的建议：<ul>
+<li>建设好基础设施，RPC、服务治理、日志、监控、持续集成、持续部署、运维自动化是基本的，还包括服务编排、分布式追踪等</li>
+<li>逐步演进和迭代，不能过于激进，更不能拆分过细，拆分的粒度要与团队的架构相互匹配</li>
+<li>微服务与数据库要一起拆分</li>
+</ul>
+</li>
+<li>使用微服务暴露出来的问题：<ul>
+<li>个别服务没有进行熔断，容易出现雪崩效应</li>
+<li>服务拆分过细，服务调用链过长</li>
+<li>开发人员能力不一样，代码水平不一样</li>
+<li>没有监控措施</li>
+<li>每个服务部署多台，日志查询极其恶心</li>
+<li>开发过程中经常出现访问不到需要访问的接口，因为开发人员经常启动本地服务</li>
+<li>使用了不合理的持久层框架</li>
+</ul>
+</li>
+<li>避免的陷阱：<ul>
+<li>微服务拆分过细，过分强调“small”</li>
+<li>微服务基础设施不健全，忽略了“automated”</li>
+<li>微服务并不轻量，规模扩大了后，“lightweight”不再适用</li>
+</ul>
+</li>
+</ol>
+<h3 id="微服务方法"><a href="#微服务方法" class="headerlink" title="微服务方法"></a>微服务方法</h3><ol>
+<li>一个微服务三个人负责开发，当团队扩大时，再将已有的微服务进行拆分。三个人负责开发一个系统，系统的复杂度刚好达到每个人都能全面理解整个系统，又能够进行分工的粒度。三个人的技术小组能够形成有效的讨论，又能快速达成一致意见；</li>
+<li>常见的拆分方式：<ul>
+<li>基于业务逻辑拆分——每个单独的业务模块拆分为一个独立的服务</li>
+<li>基于可扩展拆分——将系统中的业务模块按照稳定性排序，将已经成熟和改动不大的服务拆分为稳定服务，经经常变化和迭代的服务拆分为变动服务</li>
+<li>基于可靠性拆分——将系统中的业务模块按照优先级排序，将可靠性要求高的核心服务和可靠性要求低的非核心服务拆分开来，然后重点保障核心服务的高可用</li>
+<li>基于性能拆分——将性能要求高或者性能压力大的模块拆分出来，避免性能压力大的服务影响其他服务</li>
+</ul>
+</li>
+<li>要做好微服务，像服务发现、服务路由、服务容错、服务监控、服务跟踪、服务安全、自动化测试、自动化部署、配置中心、接口框架、API网关等基础设施都是比不可少的，否则微服务就会变成一个焦油坑，让业务和团队在里面不断挣扎而且无法自拔。微服务基础设施部署优先级：<ul>
+<li>服务发现、服务路由、服务容错为第一优先级</li>
+<li>接口框架、API网关为次优先级</li>
+<li>自动化部署、自动化测试、配置中心再次一级</li>
+<li>服务监控、服务跟踪、服务安全最后考虑</li>
+</ul>
+</li>
+<li>开发环境也是也可以搭建微服务，一般建议三套环境：开发、测试、线上；</li>
+<li>接口框架可以通过gRPC之类的制定自己的数据规范；</li>
+<li>对于APP多版本共存问题，要么接口向后兼容，要么接口加多版本号；</li>
+<li>每项微服务基础设施都是一个平台、一个系统、一个解决方案，如果需要实现，其过程和业务系统类似，需要经过需求分析、架构设计、开发、测试、部署上线等步骤；</li>
+<li>微服务提倡快速交付、版本周期短、版本更新频繁，需要通过自动化测试系统来完成绝大部分测试回归的工作，包含了代码级别的单元测试、单个系统级的集成测试、系统间的接口测试，如果无法做到全面覆盖，则只要要做到接口测试自动化；</li>
+<li>自动化部署系统包含版本管理、资源管理、部署操作、回退操作等功能；</li>
+<li>微服务需要一个统一的配置中心来管理所有微服务节点的配置；</li>
+<li>常见的路由算法有：随机路由、轮询路由、最小压力路由、最小连接数路由等；</li>
+<li>常见的服务容错处理有：请求重试、流控和服务隔离；</li>
+</ol>
+<h3 id="微服务使用经验"><a href="#微服务使用经验" class="headerlink" title="微服务使用经验"></a>微服务使用经验</h3><ol>
+<li><strong>邮件发送</strong>是一个耗时操作，可以直接使用多线程，但是不易扩展，无法解耦，用过就知道这有多么不方便了。引入 RabbitMQ 之后，有效的实现了系统的解耦，在未来可能有更多的地方需要发送邮件、短信等，把这些邮件发送、短信发送的服务拎出来做成单独的服务，扩展起来更加方便！</li>
+<li>RabbitMQ 虽然用着方便，有很多优势，但是也带来了很多问题，例如网络抖动怎么办？如何确保消息的可靠性？在理想的环境下这些问题都不存在，但是在复杂的生产环境中，什么都是有可能的，因此如何解决这些问题是非常关键的。</li>
+</ol>
+<h2 id="微内核架构"><a href="#微内核架构" class="headerlink" title="微内核架构"></a>微内核架构</h2><h3 id="基础知识-2"><a href="#基础知识-2" class="headerlink" title="基础知识"></a>基础知识</h3><ol>
+<li>微内核架构（Microkernel Architecture）也被称为插件化架构（Plug-in Architecture），是一种面向功能进行拆分的可扩展架构，通常用于实现基于产品的应用；</li>
+<li>微内核架构包含两类组件：核心系统（Core System）和插件模块（Plug-in modules）。核心系统负责和具体业务功能无关的通用功能，例如模块加载、模块间通信等；插件模块负责实现具体的业务逻辑；</li>
+<li>微内核架构的本质就是将变化部分封装在插件里，从而达到快速扩展的目的，而又不会影响系统的稳定性；</li>
+</ol>
+<h3 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h3><ol>
+<li>关键技术有插件管理、插件连接以及插件通信：<ul>
+<li>插件管理——负责管理插件、常见的实现方式是插件注册表机制。插件注册表包含每个插件模块的信息，比如名字、位置、加载时机等</li>
+<li>插件连接——插件如何连接到核心系统，需要制定连接规范，然后插件按照规范来实现，核心系统按照规范来加载即可</li>
+<li>插件通信——负责插件间的通信</li>
+</ul>
+</li>
+<li>OSGi是一个为了建立开放的服务规范的组织，制定了通过网络向设备提供服务建立开发的标准，称为OSGi specification；</li>
+<li>OSGi标准是目前的首选插件化标准；</li>
+<li>规则引擎架构从结构上来看也属于微内核架构的一种具体实现，其中执行引擎可以看作是微内核、执行引擎解析配置好的业务流，执行其中的条件和规则，通过这种方式来支持业务的灵活多变。规则引擎在计费、保险、促销等业务领域应用较多；主要优势在于：<ul>
+<li>可扩展</li>
+<li>易理解</li>
+<li>高效率</li>
+</ul>
+</li>
+<li>目前最为常用的规则引擎是开源的JBoss Drools，采用的Java语言编写，基于Rete算法。规则引擎Esper可以使用类sql编写规则，入门较为简单；</li>
+</ol>
+<h2 id="架构重构"><a href="#架构重构" class="headerlink" title="架构重构"></a>架构重构</h2><h3 id="有的放矢"><a href="#有的放矢" class="headerlink" title="有的放矢"></a>有的放矢</h3><ol>
+<li>绝大部分的架构演化都是通过架构重构来实现的，相比全新的架构设计来说，架构重构对架构师的要求更高。主要原因有：<ul>
+<li>业务已经上线，不能停下来</li>
+<li>关联方众多，牵一发动全身</li>
+<li>旧架构的约束</li>
+</ul>
+</li>
+<li>架构师正是需要在原来一团乱麻中找到线索，然后重新穿针引线，帮助业务进一步腾飞发展。一旦确定需要进行架构重构，就会由架构师牵头来进行架构重构的分析；</li>
+<li>架构师首要任务是<strong>从一大堆纷繁复杂的问题中识别出真正要通过架构重构来解决的问题，集中力量快速解决，而不是想着通过架构重构来解决所有的问题；</strong></li>
+<li>架构师需要透过问题表象看到问题本质，找出真正需要通过架构重构解决的核心问题，从而做到有的放矢，既不会耗费大量的人力和时间投入，又能够解决核心问题。</li>
+</ol>
+<h3 id="合纵连横"><a href="#合纵连横" class="headerlink" title="合纵连横"></a>合纵连横</h3><ol>
+<li>要想真正推动一个架构重构项目启动，需要花费大量的精力进行游说和沟通；</li>
+<li><strong>在沟通协调时，将技术语言转换为通俗语言，以事实说话，以数据说话，是沟通的关键！</strong></li>
+<li><strong>换位思考、合作双赢、关注长期</strong>。简单来说就是站在对方的角度思考，重构对他有什么好处，能够帮他解决什么问题，带来什么收益；</li>
+<li>方案上灵活一点，因为大部分需要重构的系统，需要做的事情很多，分阶段处理，在风险规避、计划安排等方面更加灵活可控。</li>
+</ol>
+<h3 id="运筹帷幄"><a href="#运筹帷幄" class="headerlink" title="运筹帷幄"></a>运筹帷幄</h3><ol>
+<li>通常情况下，需要架构重构的系统，基本上都是因为各种历史原因和历史问题没有及时处理，遗留下来逐渐积累，然后到了一个临界点，各种问题开始互相作用，集中爆发！</li>
+<li>将要解决的问题根据优先级、重要性、实施难度等划分为不同的阶段，每个阶段聚焦于一个整体的目标，集中精力和资源解决一类问题；</li>
+<li>制定“分段实施”的策略：<ul>
+<li>优先级排序——将明显且又比较紧急的事项优先落地，解决目前遇到的主要问题</li>
+<li>问题分类——将问题按照性质分类，每个阶段集中解决一类问题</li>
+<li>先易后难——一些相对简单的问题逐渐解决，会发现原来看起来很难的问题已经不那么难</li>
+<li>循序渐进——按照固定的步骤和节奏，更有利于项目推进</li>
+</ul>
+</li>
+</ol>
+<h2 id="架构设计文档模板"><a href="#架构设计文档模板" class="headerlink" title="架构设计文档模板"></a>架构设计文档模板</h2><h3 id="备选方案模板"><a href="#备选方案模板" class="headerlink" title="备选方案模板"></a>备选方案模板</h3><ol>
+<li>需求介绍（主要描述需求的背景、目标、范围等）：<ul>
+<li>系统出现明显问题，比如性能问题、耦合问题、效率问题</li>
+<li>基于上述问题，引入消息队列（什么技术）进行系统解耦（解决什么问题），将目前的同步调用改为异步通知（最终效果）</li>
+</ul>
+</li>
+<li>需求分析（主要全方位地描述需求相关的信息）（有点方法论的意思）：<ul>
+<li>5W（Who、When、What、Why、Where）<ul>
+<li>Who——需求利益干系人，包括开发者、使用者、购买者、决策者等</li>
+<li>When——需求使用时间，包括季节、时间、里程碑等</li>
+<li>What——需求的产出是什么，包括系统、数据、文件、开发库、平台等</li>
+<li>Where——需求的应用场景，包括国家、地点、环境等，例如测试平台只会在测试环境使用</li>
+<li>Why——需求需要解决的问题，通常和需求背景相关</li>
+</ul>
+</li>
+<li>1H（How）<ul>
+<li>How——不是设计方案也不是架构方案，而是<strong>关键业务流程</strong></li>
+</ul>
+</li>
+<li>8C（8个约束和限制）<ul>
+<li>Constraints，包括性能 Performance、成本 Cost、时间Time、可靠性 Reliability、安全性 Security、合规性 Compliance、技术性 Technology、兼容性 Compatibility</li>
+<li>需求中涉及的性能、成本、可靠性等仅仅是利益关联方提出的诉求，不一定准确，约束是可以调整的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>复杂度分析（分析需求的复杂度，复杂度常见的有高可用、高性能、可扩展等）</li>
+<li>备选方案（至少 3 个备选方案，每个备选方案需要描述关键的实现，无须描述具体的实现细节）</li>
+<li>备选方案评估（备选方案 360 度环评）</li>
+</ol>
+<h3 id="架构设计模板"><a href="#架构设计模板" class="headerlink" title="架构设计模板"></a>架构设计模板</h3><ol>
+<li>总体方案（从整体上描述方案的结构，其核心内容就是架构图，以及针对架构图的描述，包括模块或者子系统的职责描述、核心流程）</li>
+<li>架构总览（给出架构图以及架构的描述）</li>
+<li>核心流程<ul>
+<li>消息发送流程</li>
+<li>消息读取流程</li>
+<li>… …</li>
+</ul>
+</li>
+<li>详细设计（需要描述具体的实现细节）<ul>
+<li>消息发送可靠性</li>
+<li>消息存储可靠性</li>
+<li>消息读取可靠性</li>
+<li>身份识别</li>
+<li>队列权限</li>
+<li>… …</li>
+</ul>
+</li>
+<li>架构演进规划（规划和设计的需求比较完善，但如果一次性全部做完，项目周期可能会很长，因此可以采取分阶段实施，即：第一期做什么、第二期做什么，以此类推）</li>
+</ol>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/c8978475683cedf1d4e7f932cfa9d237-3157057" alt="架构师技术栈"></p>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>收获：</p>
+<ul>
+<li>唯一不变的是变化！</li>
+<li>做事情永远都要有B方案。</li>
+<li>发表是最好的记忆，实践是最好的成长！</li>
+<li>影响一个企业业务的发展主要有三个因素：市场、技术、管理。</li>
+</ul>
+<p>选择架构，注定不平凡，也注定要很艰辛，PPT架构师太多，希望自己不要成为这类！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="WanderROS 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="WanderROS 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/07/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E4%B9%8B%E8%B7%AF/">微服务架构之路</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 WanderROS 的个人博客">WanderROS</a></p>
+  <p><span>发布时间:</span>2020年07月11日 - 21:02</p>
+  <p><span>最后更新:</span>2020年10月01日 - 16:52</p>
+  <p><span>原始链接:</span><a href="/2020/07/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E4%B9%8B%E8%B7%AF/" title="微服务架构之路">https://wanderros.github.io/2020/07/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E4%B9%8B%E8%B7%AF/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://wanderros.github.io/2020/07/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E4%B9%8B%E8%B7%AF/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+
+      
+</div>
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          
+            <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+          
+            <a href="/tags/SpringCloud/" rel="tag"><i class="fa fa-tag"></i> SpringCloud</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/10/SpringBoot%E9%9B%86%E6%88%90%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/" rel="next" title="SpringBoot集成邮件发送">
+                <i class="fa fa-chevron-left"></i> SpringBoot集成邮件发送
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/12/SpringBoot%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" rel="prev" title="SpringBoot定时任务快速入门">
+                SpringBoot定时任务快速入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+<div>
+		
+    	<!-- Link Gitalk 的支持文件  -->
+	<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+	<div id="gitalk-container"></div>     <script type="text/javascript">
+		var gitalk = new Gitalk({
+			clientID: 'bd073c3374c2b1a924b0',
+			clientSecret: 'e3818342fe0fa0f03ab0997cfe81ae9c450ec954',
+			repo: 'wanderros.github.io',
+			owner: 'WanderROS',
+			admin: ['WanderROS'],
+			id: location.pathname,
+			distractionFreeMode: 'true'
+		});
+		gitalk.render('gitalk-container');
+	</script> 
+	<!-- Gitalk end -->
+
+		
+	</div>
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+ <div id="gitalk-container"></div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="WanderROS" />
+            
+              <p class="site-author-name" itemprop="name">WanderROS</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">145</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wanderROS" target="_blank" title="GitHub">
+                      GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1194409532@qq.com.com" target="_blank" title="E-Mail">
+                      E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础积累"><span class="nav-number">2.1.</span> <span class="nav-text">基础积累</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础知识"><span class="nav-number">2.1.1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-后端工程师基础技能"><span class="nav-number">2.1.2.</span> <span class="nav-text">Java 后端工程师基础技能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级工程师"><span class="nav-number">2.1.3.</span> <span class="nav-text">高级工程师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技术专家"><span class="nav-number">2.1.4.</span> <span class="nav-text">技术专家</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初级架构师"><span class="nav-number">2.1.5.</span> <span class="nav-text">初级架构师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中级架构师"><span class="nav-number">2.1.6.</span> <span class="nav-text">中级架构师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级架构师"><span class="nav-number">2.1.7.</span> <span class="nav-text">高级架构师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐书籍"><span class="nav-number">2.1.8.</span> <span class="nav-text">推荐书籍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构基础"><span class="nav-number">2.2.</span> <span class="nav-text">架构基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要架构设计"><span class="nav-number">2.2.1.</span> <span class="nav-text">为什么要架构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂度分析"><span class="nav-number">2.2.2.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#架构设计三原则"><span class="nav-number">2.2.3.</span> <span class="nav-text">架构设计三原则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构设计流程"><span class="nav-number">2.3.</span> <span class="nav-text">架构设计流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#识别复杂度"><span class="nav-number">2.3.1.</span> <span class="nav-text">识别复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计备选方案"><span class="nav-number">2.3.2.</span> <span class="nav-text">设计备选方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估和选择备选方案"><span class="nav-number">2.3.3.</span> <span class="nav-text">评估和选择备选方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#详细方案设计"><span class="nav-number">2.3.4.</span> <span class="nav-text">详细方案设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成熟模式"><span class="nav-number">2.4.</span> <span class="nav-text">成熟模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高性能数据库-读写分离"><span class="nav-number">2.4.1.</span> <span class="nav-text">高性能数据库-读写分离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高性能数据库集群：分库分表"><span class="nav-number">2.4.2.</span> <span class="nav-text">高性能数据库集群：分库分表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非关系型数据库NoSQL"><span class="nav-number">2.4.3.</span> <span class="nav-text">非关系型数据库NoSQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高性能缓存架构"><span class="nav-number">2.4.4.</span> <span class="nav-text">高性能缓存架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单服务器高性能"><span class="nav-number">2.4.5.</span> <span class="nav-text">单服务器高性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负载均衡"><span class="nav-number">2.4.6.</span> <span class="nav-text">负载均衡</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构之路"><span class="nav-number">2.5.</span> <span class="nav-text">架构之路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CAP"><span class="nav-number">2.5.1.</span> <span class="nav-text">CAP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FMEA方法"><span class="nav-number">2.5.2.</span> <span class="nav-text">FMEA方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储双机架构模式"><span class="nav-number">2.5.3.</span> <span class="nav-text">存储双机架构模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异地多活（很难）"><span class="nav-number">2.5.4.</span> <span class="nav-text">异地多活（很难）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可扩展架构（传统）"><span class="nav-number">2.6.</span> <span class="nav-text">可扩展架构（传统）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求"><span class="nav-number">2.6.1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分层架构"><span class="nav-number">2.6.2.</span> <span class="nav-text">分层架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SOA"><span class="nav-number">2.6.3.</span> <span class="nav-text">SOA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微服务"><span class="nav-number">2.7.</span> <span class="nav-text">微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础知识-1"><span class="nav-number">2.7.1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微服务方法"><span class="nav-number">2.7.2.</span> <span class="nav-text">微服务方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微服务使用经验"><span class="nav-number">2.7.3.</span> <span class="nav-text">微服务使用经验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微内核架构"><span class="nav-number">2.8.</span> <span class="nav-text">微内核架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础知识-2"><span class="nav-number">2.8.1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键点"><span class="nav-number">2.8.2.</span> <span class="nav-text">关键点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构重构"><span class="nav-number">2.9.</span> <span class="nav-text">架构重构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#有的放矢"><span class="nav-number">2.9.1.</span> <span class="nav-text">有的放矢</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合纵连横"><span class="nav-number">2.9.2.</span> <span class="nav-text">合纵连横</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运筹帷幄"><span class="nav-number">2.9.3.</span> <span class="nav-text">运筹帷幄</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构设计文档模板"><span class="nav-number">2.10.</span> <span class="nav-text">架构设计文档模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#备选方案模板"><span class="nav-number">2.10.1.</span> <span class="nav-text">备选方案模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#架构设计模板"><span class="nav-number">2.10.2.</span> <span class="nav-text">架构设计模板</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WanderROS</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+-->
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共379.7k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('Please input Password:') !== '') {
+                alert('Password Error！');
+                if (history.length === 1) {
+                    location.replace("https://wanderros.github.io/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="Code,Python," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="WanderROS'S Daily" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="简介前面的部分已经介绍了Python的基础语法了，这一部分注重实际操作，希望通过Python解决一些实际问题，当然也会去记录一些之前没有记录的知识点！推荐书籍：《Python编程快速上手–让繁琐工作自动化》· [美] AI Sweigart 著 王海鹏 译  开始模式匹配和正则表达式 Python 中所有正则表达式的函数都在 re 模块中，在使用的时候需要导入模块； 1import re  向 r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 繁琐事务自动化">
+<meta property="og:url" content="https://wanderros.github.io/2020/05/09/Python-%E7%B9%81%E7%90%90%E4%BA%8B%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%8C%96/index.html">
+<meta property="og:site_name" content="WanderROS&#39;S Daily">
+<meta property="og:description" content="简介前面的部分已经介绍了Python的基础语法了，这一部分注重实际操作，希望通过Python解决一些实际问题，当然也会去记录一些之前没有记录的知识点！推荐书籍：《Python编程快速上手–让繁琐工作自动化》· [美] AI Sweigart 著 王海鹏 译  开始模式匹配和正则表达式 Python 中所有正则表达式的函数都在 re 模块中，在使用的时候需要导入模块； 1import re  向 r">
+<meta property="article:published_time" content="2020-05-09T10:34:49.000Z">
+<meta property="article:modified_time" content="2020-10-01T08:52:15.891Z">
+<meta property="article:author" content="WanderROS">
+<meta property="article:tag" content="Code">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wanderros.github.io/2020/05/09/Python-繁琐事务自动化/"/>
+
+
+
+
+
+  <title>Python 繁琐事务自动化 | WanderROS'S Daily</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/WanderROS" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WanderROS'S Daily</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-足迹">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            足迹
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wanderros.github.io/2020/05/09/Python-%E7%B9%81%E7%90%90%E4%BA%8B%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WanderROS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WanderROS'S Daily">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python 繁琐事务自动化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-09T18:34:49+08:00">
+                2020-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>前面的部分已经介绍了Python的基础语法了，这一部分注重实际操作，希望通过Python解决一些实际问题，当然也会去记录一些之前没有记录的知识点！<strong><em>推荐书籍：《Python编程快速上手–让繁琐工作自动化》· [美] AI Sweigart 著 王海鹏 译</em></strong></p>
+<hr>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="模式匹配和正则表达式"><a href="#模式匹配和正则表达式" class="headerlink" title="模式匹配和正则表达式"></a>模式匹配和正则表达式</h2><ol>
+<li><p>Python 中所有正则表达式的函数都在 re 模块中，在使用的时候需要导入模块；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>向 re.compile()传入一个字符串值，表示正则表达式，将返回一个Regex模式对象；</p>
+</li>
+<li><p>Regex 对象的 search()方法查找传入的字符串，寻找该正则表达式的所有匹配：</p>
+<ul>
+<li>没有找到匹配该正则表达式时返回None；</li>
+<li>找到了则返回一个Match对象，Match对象有一个group()方法，返回被查找字符串中实际匹配的文本；</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">phoneNumRegex = re.compile(<span class="string">r'\d\d\d-\d\d\d-\d\d\d\d'</span>)</span><br><span class="line">mo = phoneNumRegex.search(<span class="string">'My number is 415-555-4242.'</span>)</span><br><span class="line">print(<span class="string">'Phone number found: '</span> + mo.group())</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加括号将在正则表达式中创建“分组”,想要一次就获取所有的分组，请使用 groups()方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">phoneNumRegex = re.compile(<span class="string">r'(\d\d\d)-(\d\d\d-\d\d\d\d)'</span>)</span><br><span class="line">mo = phoneNumRegex.search(<span class="string">'My number is 415-555-4242.'</span>)</span><br><span class="line">print(<span class="string">'Phone number found: '</span> + mo.group(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符|称为“管道”，希望匹配许多表达式中的一个时，就可以使用它；</p>
+</li>
+<li><p>字符?表明它前面的分组在这个模式中是可选的，即可以出现零次或者一次；</p>
+</li>
+<li><p>*（称为星号）意味着“匹配零次或多次”，即星号之前的分组，可以在文本中出现任意次；</p>
+</li>
+<li><p>+（加号）意味着“匹配一次或多次”；</p>
+</li>
+<li><p>如果想要一个分组重复特定次数，就在正则表达式中该分组的后面，跟上花括号包围的数字，比如(Ha){3,5}；</p>
+</li>
+<li><p>Python 的正则表达式默认是“贪心”的，这表示在有二义的情况下，会尽可能匹配最长的字符串；</p>
+</li>
+<li><p>常用字符分类的缩写代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\d              <span class="number">0</span> 到 <span class="number">9</span> 的任何数字</span><br><span class="line">\D              除 <span class="number">0</span> 到 <span class="number">9</span> 的数字以外的任何字符</span><br><span class="line">\w              任何字母、数字或下划线字符（可以认为是匹配“单词”字符）</span><br><span class="line">\W              除字母、数字和下划线以外的任何字符</span><br><span class="line">\s              空格、制表符或换行符（可以认为是匹配“空白”字符）</span><br><span class="line">\S              除空格、制表符和换行符以外的任何字符</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过在字符分类的左方括号后加上一个插入字符（^），就可以得到“非字符类”;</p>
+</li>
+<li><p>在正则表达式的开始处使用插入符号（^），表明匹配必须发生在被查找文本开始处，在正则表达式的末尾加上美元符号（$），表示该字符串必须以这个正则表达式的模式结束；</p>
+</li>
+<li><p>在正则表达式中，.（句点）字符称为“通配符”，匹配除了换行之外的所有字符；</p>
+</li>
+<li><p>用点-星（.*）表示“任意文本”；</p>
+</li>
+<li><p>总览：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">? 匹配零次或一次前面的分组。</span><br><span class="line">* 匹配零次或多次前面的分组。</span><br><span class="line">+ 匹配一次或多次前面的分组。</span><br><span class="line">&#123;n&#125; 匹配 n 次前面的分组。</span><br><span class="line">&#123;n,&#125; 匹配 n 次或更多前面的分组。</span><br><span class="line">&#123;,m&#125; 匹配零次到 m 次前面的分组。</span><br><span class="line">&#123;n,m&#125; 匹配至少 n 次、至多 m 次前面的分组。</span><br><span class="line">&#123;n,m&#125;?或*?或+?对前面的分组进行非贪心匹配。</span><br><span class="line">^spam  意味着字符串必须以 spam 开始。</span><br><span class="line">spam$ 意味着字符串必须以 spam 结束。</span><br><span class="line">. 匹配所有字符，换行符除外。</span><br><span class="line">\d、\w 和\s 分别匹配数字、单词和空格。</span><br><span class="line">\D、\W 和\S 分别匹配出数字、单词和空格外的所有字符。</span><br><span class="line">[abc] 匹配方括号内的任意字符（诸如 a、b 或 c）。</span><br><span class="line">[^abc] 匹配不在方括号内的任意字符。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><ol>
+<li>每个运行在计算机上的程序，都有一个“当前工作目录”，或 cwd，导入os，使用os.getcwd()函数可以取得当前工作路径的字符串，并可以利用 os.chdir()改变它；</li>
+<li>用 os.makedirs()函数创建新文件夹（目录）；</li>
+<li>os.path 模块包含了许多与文件名和文件路径相关的有用函数：<ul>
+<li>调用 os.path.abspath(path)将返回参数的绝对路径的字符串</li>
+<li>调用 os.path.isabs(path)，如果参数是一个绝对路径，就返回 True，否则返回False</li>
+<li>调用 os.path.relpath(path, start)将返回从 start 路径到 path 的相对路径的字符串</li>
+<li>调用 os.path.split()获得一个路径的目录名称和基本名称的元组</li>
+<li>可以调用 os.path.dirname()和 os.path.basename()获取一个路径的目录名称和基本名称</li>
+<li>调用 os.path.getsize(path)将返回 path 参数中文件的字节数</li>
+<li>调用 os.listdir(path)将返回文件名字符串的列表，包含 path 参数中的每个文件</li>
+<li>如果 path 参数所指的文件或文件夹存在，调用 os.path.exists(path)将返回 True</li>
+<li>如果 path 参数存在，并且是一个文件，调用 os.path.isfile(path)将返回 True</li>
+<li>如果 path 参数存在，并且是一个文件夹，调用 os.path.isdir(path)将返回 True</li>
+</ul>
+</li>
+<li>shutil（或称为 shell 工具）模块中包含一些函数，让你在 Python 程序中复制、移动、改名和删除文件。要使用 shutil 的函数，首先需要 import shutil；</li>
+<li>调用 shutil.copy(source, destination)，将路径 source 处的文件复制到路径 destination处的文件夹（source 和 destination 都是字符串）；</li>
+<li>调用 shutil.move(source, destination)， 将路径 source 处的文件夹移动到路径 destination，并返回新位置的绝对路径的字符串；</li>
+<li>用 os.unlink(path)将删除 path 处的文件，调用 os.rmdir(path)将删除 path 处的文件夹，要求文件夹必须为空；</li>
+<li>调用 shutil.rmtree(path)将删除 path 处的文件夹，它包含的所有文件和文件夹都会被删除；</li>
+<li>os.walk()函数被传入一个字符串值，即一个文件夹的路径，可以在一个 for循环语句中使用 os.walk()函数，遍历目录树；</li>
+<li>zipfile 模块提供了一种方法，用 Python 压缩和解压 ZIP 归档文件</li>
+</ol>
+<h2 id="Python-amp-Excel"><a href="#Python-amp-Excel" class="headerlink" title="Python&amp;Excel"></a>Python&amp;Excel</h2><ol>
+<li>openpyxl 模块让 Python 程序能读取和修改 Excel 电子表格文件，要想在Python中使用openpyxl，需要安装并导入模块，使用命令import openpyxl</li>
+<li>使用 openpyxl.load_workbook()函数接受文件名，返回一个 workbook 数据类型的值；</li>
+<li>调用 get_sheet_names()方法可以取得工作簿中所有表名的列表 ；</li>
+<li>调用 Workbook 对象的 get_active_sheet()方法，取得工作簿的活动表；</li>
+<li>调用 openpyxl.cell.column_index_from_string()函数从字母转换到数字，要从数字转换到字母则调用openpyxl.cell.get_column_letter()函数；</li>
+<li>调用 openpyxl.charts.BarChart()，创建一个条形图，调用openpyxl.charts.LineChart()、 openpyxl.charts.ScatterChart()和 openpyxl.charts.PieChart()， 创建折线图、散点图和饼图；                          </li>
+</ol>
+<h2 id="PDF以及Word处理"><a href="#PDF以及Word处理" class="headerlink" title="PDF以及Word处理"></a>PDF以及Word处理</h2><ol>
+<li>用于处理PDF的模块是PyPDF2，使用需要安装模块，然后导入import   PyPDF2<ol>
+<li>导入 PyPDF2 模块  :  import   PyPDF2</li>
+<li>以读二进制模式打开 name.pdf,保存在 pdfFileObj 中    </li>
+<li>调用 PyPDF2 .PdfFileReader()并向它传入 pdfFileObj ，保存返回对象在 pdfReader 中  </li>
+</ol>
+</li>
+<li>调用 PdfFileReader 对象的 getPage()方法，传入感兴趣的页码，从而取得 Page 对象；</li>
+<li>取得 Page 对象后，调用它的 extractText()方法，返回该页文本的字符串；</li>
+<li>所有 PdfFileReader 对象都有一个 isEncrypted 属性，如果 PDF 是加密的，它就是 True；</li>
+<li>要读取加密的 PDF，就调用 decrypt()函数，传入口令字符串；</li>
+<li>*<em>PyPDF2 写入 PDF 的能力，仅限于从其他 PDF 中拷贝页面、旋转页面、重叠页面和加密文件  *</em>   </li>
+<li>调用PdfFileWriter 对象的write()方法会实际生成文件；</li>
+<li>利用 rotateClockwise()和 rotateCounterClockwise()方法， PDF 文档的页面也可以旋转 90 度的整数倍，向这些方法传入整数 90、 180 或 270 就可以了；</li>
+<li>用 python-docx 模块，在 Python 中打开了一个.docx 文件，调用 docx.Document() ；</li>
+</ol>
+<h2 id="CSV和JSON数据"><a href="#CSV和JSON数据" class="headerlink" title="CSV和JSON数据"></a>CSV和JSON数据</h2><ol>
+<li>想要处理CSV文件，需要导入csv模块，import csv</li>
+<li>要用 csv 模块从 CSV 文件中读取数据，需要创建一个 Reader 对象， Reader 对象可以遍历CSV中的每一行；<ol>
+<li>用 open()函数打开它  </li>
+<li>将它传递给 csv.reader()函数，返回一个 Reader 对象</li>
+<li>要访问 Reader 对象中的值，最直接的方法，就是将它转换成一个普通 Python 列表， 即将它传递给 list()  </li>
+</ol>
+</li>
+<li>Writer 对象可以将数据写入 CSV 文件，使用csv.writer()函数创建改对象；<ol>
+<li>调用 open()并传入’w’，以写模式打开一个文件  </li>
+<li>将它传递给 csv.writer() ，创建一个 Writer 对象   </li>
+</ol>
+</li>
+<li>Writer 对象的 writerow()方法接受一个列表参数 ，列表中的每个词，放在输出的CSV 文件中的一个单元格中；</li>
+<li>JSON处理需要导入模块，import json，要将包含 JSON 数据的字符串转换为 Python 的值，就将它传递给 json.loads()函数，json.dumps()函数将一个 Python 值转换成 JSON 格式的数据字符串；                 </li>
+</ol>
+<h2 id="图形处理"><a href="#图形处理" class="headerlink" title="图形处理"></a>图形处理</h2><ol>
+<li><p>Pillow 是一个第三方 Python 模块， 用于处理图像文件，该模块包含一些函数，可以很容易地裁剪图像、调整图像大小，以及编辑图像的内容；</p>
+</li>
+<li><p>计算机程序通常将图像中的颜色表示为 RGBA 值，指定顔色中的红、绿、蓝和 alpha（透明度）的值；</p>
+</li>
+<li><p>像素是计算机屏幕上能显示一种顔色的最小点，像素的 RGB 设置准确地告诉它应该显示哪种颜色的色彩；</p>
+</li>
+<li><p>Pillow 提供 ImageColor.getcolor()函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageColor</span><br><span class="line">ImageColor.getcolor(<span class="string">'red'</span>, <span class="string">'RGBA'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>许多 Pillow 函数和方法需要一个矩形元组参数；</p>
+</li>
+<li><p>要加载图像，就从 Pillow 导入 Image 模块，并调用 Image.open()，传入图像的文件名，返回值是 Image 对象数据类型，通过 save()方法，对 Image 对象的所有更改都可以保存到图像文件中（也是任何格式）；</p>
+</li>
+<li><p>所有的旋转、调整大小、裁剪、绘画和其他图像操作，都通过这个 Image 对象上的方法调用来完成；</p>
+</li>
+<li><p>Image.new()返回的对象表示空白的图像，Image.new()的参数如下：</p>
+<ul>
+<li>字符串’RGBA’，将颜色模式设置为 RGBA</li>
+<li>图像开始采用的背景颜色，是一个表示 RGBA 值的四整数元组</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">im = Image.new(<span class="string">'RGBA'</span>, (<span class="number">100</span>, <span class="number">200</span>), <span class="string">'purple'</span>)</span><br><span class="line">im.save(<span class="string">'purpleImage.png'</span>)</span><br><span class="line">im2 = Image.new(<span class="string">'RGBA'</span>, (<span class="number">20</span>, <span class="number">20</span>))</span><br><span class="line">im2.save(<span class="string">'transparentImage.png'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Image 对象的 crop()方法接受一个矩形元组，返回一个 Image 对象，表示裁剪后的图像，裁剪不是在原图上发生的；</p>
+</li>
+<li><p>copy()方法返回一个新的 Image 对象，它和原来的 Image 对象具有一样的图像；</p>
+</li>
+<li><p>paste()方法在 Image 对象调用，将另一个图像粘贴在它上面；</p>
+</li>
+<li><p>resize()方法在 Image 对象上调用，返回指定宽度和高度的一个新 Image 对象，resize()方法不会在原图上修改 Image 对象，而是返回一个新的 Image 对象；</p>
+</li>
+<li><p>rotate()方法旋转，该方法返回旋转后的新 Image 对象，并保持原始Image 对象不变。rotate()的参数是一个整数或浮点数，表示图像逆时针旋转的度数；</p>
+</li>
+<li><p>transpose()方法，还可以得到图像的“镜像翻转”，必须向 transpose()方法传入 Image.FLIP_LEFT_RIGHT 或 Image.FLIP_TOP_BOTTOM；</p>
+</li>
+<li><p>单个像素的颜色可以通过 getpixel()和 putpixel()方法取得和设置；</p>
+</li>
+<li><p>ImageDraw 对象：</p>
+<ol>
+<li>text()方法，用于在图像上绘制文本</li>
+<li>point(xy, fill)方法绘制单个像素。xy 参数表示要画的点的列表；</li>
+<li>line(xy, fill, width)方法绘制一条线或一系列的线；</li>
+<li>rectangle(xy, fill, outline)方法绘制一个矩形；</li>
+<li>ellipse(xy, fill, outline)方法绘制一个椭圆；</li>
+<li>polygon(xy, fill, outline)方法绘制任意的多边形；</li>
+</ol>
+</li>
+</ol>
+<h2 id="时间、计划任务"><a href="#时间、计划任务" class="headerlink" title="时间、计划任务"></a>时间、计划任务</h2><ol>
+<li>内置的 time 模块让 Python程序能读取系统时钟的当前时间，在 time 模块中， time.time()和 time.sleep()函数是最有用的模块，使用模块时导入import time；  </li>
+<li>需要让程序暂停一下，就调用 time.sleep()函数，并传入希望程序暂停的秒数；</li>
+<li>datetime 模块有自己的 datetime 数据类型；</li>
+<li>datetime 模块还提供了 timedelta 数据类型，它表示一段时间，而不是一个时刻；</li>
+<li>利用内建的 subprocess 模块中的 Popen()函数， Python 程序可以启动计算机中的其他程序；</li>
+<li>如果想在 Python 脚本中启动一个外部程序，就将该程序的文件名传递给subprocess.Popen() ；        </li>
+</ol>
+<h2 id="GUI模拟鼠标键盘"><a href="#GUI模拟鼠标键盘" class="headerlink" title="GUI模拟鼠标键盘"></a>GUI模拟鼠标键盘</h2><ol>
+<li>pyautogui 模块包含了一些函数，可以模拟鼠标移动、按键和滚动鼠标滚轮；</li>
+<li>pyautogui 的鼠标函数使用 x、 y 坐标，pyautogui.size() 函数返回两个整数的元组，包含屏幕的宽和高的像素数 ；    </li>
+<li>pyautogui.moveTo() 函数将鼠标立即移动到屏幕的指定位置；</li>
+<li>pyautogui.moveRel() 函数相对于当前的位置移动鼠标接受 3 个参数：向右水平移动多少个像素，向下垂直移动多少个像素，以及（可选的）花多少时间完成移动；</li>
+<li>调用 pyautogui.position() 函数，可以确定鼠标当前的位置，返回函数调用时，鼠标 x、 y 坐标的元组；</li>
+<li>要向计算机发送虚拟的鼠标点击，就调用 pyautogui.click() 方法，pyautogui.click（100， 150， button=’left’）；</li>
+<li>pyautogui.doubleClick() 函数只执行双击鼠标左键，pyautogui.rightClick() 和 pyautogui.middleClick() 函数将分别执行双击右键和双击中键；</li>
+<li>PyAutoGUI 提供了 pyautogui.dragTo() 和 pyautogui.dragRel() 函数，将鼠标拖动到一个新的位置，或相对当前位置的位置。 dragTo() 和 dragRel() 的参数与moveTo() 和 moveRel() 相同；    </li>
+<li>scroll()是滚动鼠标函数，单位的意义在每个操作系统和应用上不一样；</li>
+<li>pyautogui 拥有屏幕快照的功能，可以根据当前屏幕的内容创建图形文件，调用 pyautogui.screenshot() 函数                                获取屏幕快照；</li>
+<li>pyautogui.typewrite() 函数向计算机发送虚拟按键，按键产生什么效果，取决于当前获得焦点的窗口和文本输入框；</li>
+<li>pyautogui.keyDown() 和 pyautogui.keyUp() 将向计算发送虚拟的按键和释放，pyautogui 提供了pyautogui.press() 函数，它调用这两个函数，模拟完整的击键；</li>
+<li>pyautogui.hotkey() 函数，它接受多个键字符串参数，按顺序按下，再按相反的顺序释放；  </li>
+</ol>
+<h2 id="Web相关"><a href="#Web相关" class="headerlink" title="Web相关"></a>Web相关</h2><ol>
+<li><p>webbrowser：是 Python 自带的，打开浏览器获取指定页面</p>
+</li>
+<li><p>requests：从因特网上下载文件和网页  </p>
+</li>
+<li><p>Beautiful Soup：解析 HTML，即网页编写的格式  </p>
+</li>
+<li><p>selenium：启动并控制一个 Web 浏览器，selenium 能够填写表单，并模拟鼠标在这个浏览器中点击        </p>
+</li>
+<li><p>webbrowser 模块的 open()函数可以启动一个新浏览器，打开指定的 URL ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> webbrowser</span><br><span class="line">webbrowser.open(<span class="string">'https://www.hao123.com'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>requests 模块让你很容易从 Web 下载文件，不必担心一些复杂的问题，诸如网络错误、连接问题和数据压缩，需要安装，然后导入import requests；</p>
+</li>
+<li><p>requests.get()函数接受一个要下载的 URL 字符串 ，通过在 requests.get()的返回值上调用 type()，返回一个 Response 对象，其中包含了 Web 服务器对你的请求做出的响应；</p>
+</li>
+<li><p>下载并保存到文件的完整过程如下 ：</p>
+<ol>
+<li>调用 requests.get()下载该文件</li>
+<li>用’wb’调用 open()，以写二进制的方式打开一个新文件  </li>
+<li>利用 Respose 对象的 iter_content()方法做循环</li>
+<li>在每次迭代中调用 write()，将内容写入该文件  </li>
+<li>调用 close()关闭该文件  </li>
+</ol>
+</li>
+<li><p>Beautiful Soup 是一个模块，用于从 HTML 页面中提取信息，模块的名称是 bs4，导入 import bs4  </p>
+</li>
+<li><p>bs4.BeautifulSoup()函数调用时需要一个字符串，其中包含将要解析的 HTML，返回一个 BeautifulSoup 对象 ；</p>
+</li>
+<li><p>常用 CSS 选择器的模式 ：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">soup.select('div')                所有名为<span class="tag">&lt;<span class="name">div</span>&gt;</span>的元素</span><br><span class="line">soup.select('#author')            带有 id 属性为 author 的元素</span><br><span class="line">soup.select('.notice')            所有使用 CSS class 属性名为 notice 的元素</span><br><span class="line">soup.select('div span')           所有在<span class="tag">&lt;<span class="name">div</span>&gt;</span>元素之内的<span class="tag">&lt;<span class="name">span</span>&gt;</span>元素  </span><br><span class="line">soup.select('div &gt; span')         所有直接在<span class="tag">&lt;<span class="name">div</span>&gt;</span>元素之内的<span class="tag">&lt;<span class="name">span</span>&gt;</span>元素， 中间没有其他元素</span><br><span class="line">soup.select('input[name]')        所有名为<span class="tag">&lt;<span class="name">input</span>&gt;</span>，并有一个 name 属性，其值无所谓的元素    </span><br><span class="line">soup.select('input[type="button"]') 所有名为<span class="tag">&lt;<span class="name">input</span>&gt;</span>，并有一个 type 属性，其值为 button 的元素</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>selenium 模块让 Python 直接控制浏览器，实际点击链接，填写登录信息，几乎就像是有一个人类用户在与页面交互；from selenium  import webdriver  </p>
+</li>
+<li><p>elenium 的 WebDriver 方法，用于寻找元素 ：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">browser.find_element_by_class_name(name)</span><br><span class="line">browser.find_elements_by_class_name(name)         使用 CSS 类 name 的元素</span><br><span class="line"></span><br><span class="line">browser.find_element_by_css_selector(selector)</span><br><span class="line">browser.find_elements_by_css_selector(selector)   匹配 CSS selector 的元素</span><br><span class="line"></span><br><span class="line">browser.find_element_by_id(id)</span><br><span class="line">browser.find_elements_by_id(id)                   匹配 id 属性值的元素</span><br><span class="line"></span><br><span class="line">browser.find_element_by_link_text(text)</span><br><span class="line">browser.find_elements_by_link_text(text)          完全匹配提供的 text 的<span class="tag">&lt;<span class="name">a</span>&gt;</span>元素</span><br><span class="line">    </span><br><span class="line">browser.find_element_by_partial_link_text(text)</span><br><span class="line">browser.find_elements_by_partial_link_text(text)  包含提供的 text 的<span class="tag">&lt;<span class="name">a</span>&gt;</span>元素</span><br><span class="line">    </span><br><span class="line">browser.find_element_by_name(name)</span><br><span class="line">browser.find_elements_by_name(name)               匹配 name 属性值的元素</span><br><span class="line">    </span><br><span class="line">browser.find_element_by_tag_name(name)            匹配标签 name 的元素</span><br><span class="line">browser.find_elements_by_tag_name(name)           (大小写无关， <span class="tag">&lt;<span class="name">a</span>&gt;</span>元素匹配'a'和'A')</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>find_element_<em>和 find_elements_</em>方法返回的 WebElement 对象有一个 click()方法，模拟鼠标在该元素上点击，可以用于链接跳转，选择单选按钮，点击提交按钮，或者触发该元素被鼠标点击时发生的任何事情；</p>
+</li>
+<li><p>向 Web 页面的文本字段发送击键，只要找到那个文本字段的&lt;input&gt;或&lt;textarea&gt;元素，然后调用 send_keys()方法；</p>
+</li>
+<li><p>selenium 可以模拟点击各种浏览器按钮：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">browser.back()       点击“返回”按钮</span><br><span class="line">browser.forward()    点击“前进”按钮</span><br><span class="line">browser.refresh()    点击“刷新”按钮</span><br><span class="line">browser.quit()       点击“关闭窗口”按钮</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="第三方模块（可装）"><a href="#第三方模块（可装）" class="headerlink" title="第三方模块（可装）"></a>第三方模块（可装）</h2><ol>
+<li><p>使用pip3进行安装第三方模块；</p>
+</li>
+<li><p>第三方模块名称：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pip3 install send2trash</span><br><span class="line">pip3 install requests</span><br><span class="line">pip3 install beautifulsoup4</span><br><span class="line">pip3 install selenium</span><br><span class="line">pip3 install openpyxl</span><br><span class="line">pip3 install PyPDF2</span><br><span class="line">pip3 install pillow</span><br><span class="line">pip3 install pyobjc-core</span><br><span class="line">pip3 install pyobjc</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Python第三方模块能够帮助干很多事，但是这部分需要多多练习，根据需求编写脚本，完成日常的工作。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="WanderROS 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="WanderROS 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/05/09/Python-%E7%B9%81%E7%90%90%E4%BA%8B%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%8C%96/">Python 繁琐事务自动化</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 WanderROS 的个人博客">WanderROS</a></p>
+  <p><span>发布时间:</span>2020年05月09日 - 18:34</p>
+  <p><span>最后更新:</span>2020年10月01日 - 16:52</p>
+  <p><span>原始链接:</span><a href="/2020/05/09/Python-%E7%B9%81%E7%90%90%E4%BA%8B%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%8C%96/" title="Python 繁琐事务自动化">https://wanderros.github.io/2020/05/09/Python-%E7%B9%81%E7%90%90%E4%BA%8B%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%8C%96/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://wanderros.github.io/2020/05/09/Python-%E7%B9%81%E7%90%90%E4%BA%8B%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%8C%96/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+
+      
+</div>
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Code/" rel="tag"><i class="fa fa-tag"></i> Code</a>
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/09/Python-%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/" rel="next" title="Python 深入学习第一阶段">
+                <i class="fa fa-chevron-left"></i> Python 深入学习第一阶段
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/11/Logstash-Quick-Start/" rel="prev" title="Logstash Quick Start">
+                Logstash Quick Start <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+<div>
+		
+    	<!-- Link Gitalk 的支持文件  -->
+	<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+	<div id="gitalk-container"></div>     <script type="text/javascript">
+		var gitalk = new Gitalk({
+			clientID: 'bd073c3374c2b1a924b0',
+			clientSecret: 'e3818342fe0fa0f03ab0997cfe81ae9c450ec954',
+			repo: 'wanderros.github.io',
+			owner: 'WanderROS',
+			admin: ['WanderROS'],
+			id: location.pathname,
+			distractionFreeMode: 'true'
+		});
+		gitalk.render('gitalk-container');
+	</script> 
+	<!-- Gitalk end -->
+
+		
+	</div>
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+ <div id="gitalk-container"></div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="WanderROS" />
+            
+              <p class="site-author-name" itemprop="name">WanderROS</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">145</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wanderROS" target="_blank" title="GitHub">
+                      GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1194409532@qq.com.com" target="_blank" title="E-Mail">
+                      E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模式匹配和正则表达式"><span class="nav-number">2.1.</span> <span class="nav-text">模式匹配和正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件"><span class="nav-number">2.2.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-amp-Excel"><span class="nav-number">2.3.</span> <span class="nav-text">Python&amp;Excel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PDF以及Word处理"><span class="nav-number">2.4.</span> <span class="nav-text">PDF以及Word处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSV和JSON数据"><span class="nav-number">2.5.</span> <span class="nav-text">CSV和JSON数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图形处理"><span class="nav-number">2.6.</span> <span class="nav-text">图形处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间、计划任务"><span class="nav-number">2.7.</span> <span class="nav-text">时间、计划任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GUI模拟鼠标键盘"><span class="nav-number">2.8.</span> <span class="nav-text">GUI模拟鼠标键盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web相关"><span class="nav-number">2.9.</span> <span class="nav-text">Web相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三方模块（可装）"><span class="nav-number">2.10.</span> <span class="nav-text">第三方模块（可装）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WanderROS</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+-->
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共379.7k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

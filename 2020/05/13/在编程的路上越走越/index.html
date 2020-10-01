@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('Please input Password:') !== '') {
+                alert('Password Error！');
+                if (history.length === 1) {
+                    location.replace("https://wanderros.github.io/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="Code,Joke," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="WanderROS'S Daily" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="简介编程是不是特有意思呢？我不知道，但是注释是越来越有意思，不信你看！👀  开始注释佛祖保佑123456789101112131415161718192021&#x2F;&#x2F;&#x2F;&#x2F;                            _ooOoo_&#x2F;&#x2F;                           o8888888o&#x2F;&#x2F;                           88&quot; . &quot;88&#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在编程的路上越走越...">
+<meta property="og:url" content="https://wanderros.github.io/2020/05/13/%E5%9C%A8%E7%BC%96%E7%A8%8B%E7%9A%84%E8%B7%AF%E4%B8%8A%E8%B6%8A%E8%B5%B0%E8%B6%8A/index.html">
+<meta property="og:site_name" content="WanderROS&#39;S Daily">
+<meta property="og:description" content="简介编程是不是特有意思呢？我不知道，但是注释是越来越有意思，不信你看！👀  开始注释佛祖保佑123456789101112131415161718192021&#x2F;&#x2F;&#x2F;&#x2F;                            _ooOoo_&#x2F;&#x2F;                           o8888888o&#x2F;&#x2F;                           88&quot; . &quot;88&#x2F;&#x2F;">
+<meta property="article:published_time" content="2020-05-13T11:31:13.000Z">
+<meta property="article:modified_time" content="2020-10-01T08:52:15.936Z">
+<meta property="article:author" content="WanderROS">
+<meta property="article:tag" content="Code">
+<meta property="article:tag" content="Joke">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wanderros.github.io/2020/05/13/在编程的路上越走越/"/>
+
+
+
+
+
+  <title>在编程的路上越走越... | WanderROS'S Daily</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/WanderROS" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WanderROS'S Daily</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-足迹">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            足迹
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wanderros.github.io/2020/05/13/%E5%9C%A8%E7%BC%96%E7%A8%8B%E7%9A%84%E8%B7%AF%E4%B8%8A%E8%B6%8A%E8%B5%B0%E8%B6%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WanderROS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WanderROS'S Daily">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">在编程的路上越走越...</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-13T19:31:13+08:00">
+                2020-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>编程是不是特有意思呢？我不知道，但是注释是越来越有意思，不信你看！👀</p>
+<hr>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><h3 id="佛祖保佑"><a href="#佛祖保佑" class="headerlink" title="佛祖保佑"></a>佛祖保佑</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//                            _ooOoo_</span></span><br><span class="line"><span class="comment">//                           o8888888o</span></span><br><span class="line"><span class="comment">//                           88" . "88</span></span><br><span class="line"><span class="comment">//                           (| -_- |)</span></span><br><span class="line"><span class="comment">//                           O\  =  /O</span></span><br><span class="line"><span class="comment">//                        ____/`---'\____</span></span><br><span class="line"><span class="comment">//                      .'  \\|     |//  `.</span></span><br><span class="line"><span class="comment">//                     /  \\|||  :  |||//  \</span></span><br><span class="line"><span class="comment">//                    /  _||||| -:- |||||-  \</span></span><br><span class="line"><span class="comment">//                    |   | \\\  -  /// |   |</span></span><br><span class="line"><span class="comment">//                    | \_|  ''\---/''  |   |</span></span><br><span class="line"><span class="comment">//                    \  .-\__  `-`  ___/-. /</span></span><br><span class="line"><span class="comment">//                  ___`. .'  /--.--\  `. . __</span></span><br><span class="line"><span class="comment">//               ."" '&lt;  `.___\_&lt;|&gt;_/___.'  &gt;'"".</span></span><br><span class="line"><span class="comment">//              | | :  `- \`.;`\ _ /`;.`/ - ` : | |</span></span><br><span class="line"><span class="comment">//              \  \ `-.   \_ __\ /__ _/   .-` /  /</span></span><br><span class="line"><span class="comment">//         ======`-.____`-.___\_____/___.-`____.-'======</span></span><br><span class="line"><span class="comment">//                            `=---='</span></span><br><span class="line"><span class="comment">//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span></span><br><span class="line"><span class="comment">//                      佛祖保佑       永无BUG</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="佛祖都救不了"><a href="#佛祖都救不了" class="headerlink" title="佛祖都救不了"></a>佛祖都救不了</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//_ooOoo_</span></span><br><span class="line"><span class="comment">//o8888888o</span></span><br><span class="line"><span class="comment">//88" . "88</span></span><br><span class="line"><span class="comment">//(| -_- |)</span></span><br><span class="line"><span class="comment">// O\ = /O</span></span><br><span class="line"><span class="comment">//___/`---'\____</span></span><br><span class="line"><span class="comment">//.   ' \\| |// `.</span></span><br><span class="line"><span class="comment">/// \\||| : |||// \</span></span><br><span class="line"><span class="comment">/// _||||| -:- |||||- \</span></span><br><span class="line"><span class="comment">//| | \\\ - /// | |</span></span><br><span class="line"><span class="comment">//| \_| ''\---/'' | |</span></span><br><span class="line"><span class="comment">//\ .-\__ `-` ___/-. /</span></span><br><span class="line"><span class="comment">//___`. .' /--.--\ `. . __</span></span><br><span class="line"><span class="comment">//."" '&lt; `.___\_&lt;|&gt;_/___.' &gt;'"".</span></span><br><span class="line"><span class="comment">//| | : `- \`.;`\ _ /`;.`/ - ` : | |</span></span><br><span class="line"><span class="comment">//\ \ `-. \_ __\ /__ _/ .-` / /</span></span><br><span class="line"><span class="comment">//======`-.____`-.___\_____/___.-`____.-'======</span></span><br><span class="line"><span class="comment">//`=---='</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//         .............................................</span></span><br><span class="line"><span class="comment">//          佛曰：bug泛滥，我已瘫痪！</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="无可奉告"><a href="#无可奉告" class="headerlink" title="无可奉告"></a>无可奉告</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***             无可奉告 一颗赛艇</span></span><br><span class="line"><span class="comment"> *  uJjYJYYLLv7r7vJJ5kqSFFFUUjJ7rrr7LLYLJLJ7</span></span><br><span class="line"><span class="comment"> *  JuJujuYLrvuEM@@<span class="doctag">@B</span>@@<span class="doctag">@B</span><span class="doctag">@B</span><span class="doctag">@B</span>@@<span class="doctag">@MG</span>5Y7vLjYjJL</span></span><br><span class="line"><span class="comment"> *  JYjYJvr7XM@BB8GOOE8ZEEO8GqM8OBBBMu77LLJ7</span></span><br><span class="line"><span class="comment"> *  LJLY7ru@@<span class="doctag">@BOZ</span>8O8NXFFuSkSu25X0OFZ8MZJ;vLv</span></span><br><span class="line"><span class="comment"> *  YvL7i5@BM8OGGqk22uvriiriii;r7LuSZXEMXrvr</span></span><br><span class="line"><span class="comment"> *  vv7iU@BMNkF1uY7v7rr;iiii:i:i:ii7JEPNBPir</span></span><br><span class="line"><span class="comment"> *  L7iL@BM8Xjuujvv77rr;ri;i;:iiiii:iLXFOBJ:</span></span><br><span class="line"><span class="comment"> *  7ri@B@MOFuUS2Y7L7777rii;:::::i:iirjPG@O:</span></span><br><span class="line"><span class="comment"> *  7:1B@BBOPjXXSJvrL7rr7iiii:i::::i;iv5MBB,</span></span><br><span class="line"><span class="comment"> *  r:0@BBM8SFPX2Y77rri::iirri:::::iii75O@G.</span></span><br><span class="line"><span class="comment"> *  7:SB@BBGqXPk0122UJL::i::r:::i:i;i:v2@Bk.</span></span><br><span class="line"><span class="comment"> *  ri:MB@BBEqEMGq2JLLL1u7.iX51u77LF27iSB@r,</span></span><br><span class="line"><span class="comment"> *  ri,v@B@MB8@qqNEqN1u:5B8BOFE0S7ii7qMB@F::</span></span><br><span class="line"><span class="comment"> *  ii,J80Eq1MZkqPPX5YkPE@B@iXPE52j7:vBjE7::</span></span><br><span class="line"><span class="comment"> *  ii:7MSqkS0PvLv7rrii0@L.Z1iLr::ir:rO,vi::</span></span><br><span class="line"><span class="comment"> *  ii::EZXPSkquLvii:iF@N:.,BUi7ri,::UY;r:::</span></span><br><span class="line"><span class="comment"> *  i::.2ONXqkPXS5FUUEOPP;..iSPXkjLYLLrr:::,</span></span><br><span class="line"><span class="comment"> *  :::,iMXNP0NPLriiLGZ@BB1P87;JuL7r:7ri:::,</span></span><br><span class="line"><span class="comment"> *  :::,.UGqNX0EZF2uUjUuULr:::,:7uuvv77::::.</span></span><br><span class="line"><span class="comment"> *  ::::..5OXqXNJ50NSY;i:.,,,:i77Yvr;v;,,::.</span></span><br><span class="line"><span class="comment"> *  :::,:.jOEPqPJiqBMMMO8NqP0SYLJriirv:.:,:.</span></span><br><span class="line"><span class="comment"> *  ,:,,,.,Zq0P0X7vPFqF1ujLv7r:irrr7j7.,,::.</span></span><br><span class="line"><span class="comment"> *  ,,,....0qk0080v75ujLLv7ri:i:rvj2J...,,,.</span></span><br><span class="line"><span class="comment"> *  ......8@UXqZEMNvJjr;ii::,:::7uuv...,.,,.</span></span><br><span class="line"><span class="comment"> *  .....B@BOvX88GMGk52vririiirJS1i.......,.</span></span><br><span class="line"><span class="comment"> *  .JEMB@B@BMvL0MOMMMO8PE8GPqSk2L:.........</span></span><br><span class="line"><span class="comment"> *  <span class="doctag">@B</span>@@<span class="doctag">@B</span><span class="doctag">@M</span><span class="doctag">@B</span><span class="doctag">@L</span>:7PGBOO8MOMOEP0Xri@B@Mk7,...</span></span><br><span class="line"><span class="comment"> *  B@B@BBMBB@B@0::rJP8MO0uvvu7..,B@B@B@B@Z7</span></span><br><span class="line"><span class="comment"> *  MMBM@BBB@B@B@Br:i,..:Lur:....7@OMMBM@B@@</span></span><br><span class="line"><span class="comment"> *  8OOMMMOMMMMBB@B:....,PZENNi..JBOZ8GMOOOO</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="看书"><a href="#看书" class="headerlink" title="看书"></a>看书</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *                 .-~~~~~~~~~-._       _.-~~~~~~~~~-.</span></span><br><span class="line"><span class="comment"> *             __.'              ~.   .~              `.__</span></span><br><span class="line"><span class="comment"> *           .'//                  \./                  \\`.</span></span><br><span class="line"><span class="comment"> *         .'//                     |                     \\`.</span></span><br><span class="line"><span class="comment"> *       .'// .-~"""""""~~~~-._     |     _,-~~~~"""""""~-. \\`.</span></span><br><span class="line"><span class="comment"> *     .'//.-"                 `-.  |  .-'                 "-.\\`.</span></span><br><span class="line"><span class="comment"> *   .'//______.============-..   \ | /   ..-============.______\\`.</span></span><br><span class="line"><span class="comment"> * .'______________________________\|/______________________________`.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="BadCode"><a href="#BadCode" class="headerlink" title="BadCode"></a>BadCode</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *              ,----------------,              ,---------,</span></span><br><span class="line"><span class="comment"> *         ,-----------------------,          ,"        ,"|</span></span><br><span class="line"><span class="comment"> *       ,"                      ,"|        ,"        ,"  |</span></span><br><span class="line"><span class="comment"> *      +-----------------------+  |      ,"        ,"    |</span></span><br><span class="line"><span class="comment"> *      |  .-----------------.  |  |     +---------+      |</span></span><br><span class="line"><span class="comment"> *      |  |                 |  |  |     | -==----'|      |</span></span><br><span class="line"><span class="comment"> *      |  |  I LOVE DOS!    |  |  |     |         |      |</span></span><br><span class="line"><span class="comment"> *      |  |  Bad command or |  |  |/----|`---=    |      |</span></span><br><span class="line"><span class="comment"> *      |  |  C:\&gt;_          |  |  |   ,/|==== ooo |      ;</span></span><br><span class="line"><span class="comment"> *      |  |                 |  |  |  // |(((( [33]|    ,"</span></span><br><span class="line"><span class="comment"> *      |  `-----------------'  |," .;'| |((((     |  ,"</span></span><br><span class="line"><span class="comment"> *      +-----------------------+  ;;  | |         |,"</span></span><br><span class="line"><span class="comment"> *         /_)______________(_/  //'   | +---------+</span></span><br><span class="line"><span class="comment"> *    ___________________________/___  `,</span></span><br><span class="line"><span class="comment"> *   /  oooooooooooooooo  .o.  oooo /,   \,"-----------</span></span><br><span class="line"><span class="comment"> *  / ==ooooooooooooooo==.o.  ooo= //   ,`\--&#123;)B     ,"</span></span><br><span class="line"><span class="comment"> * /_==__==========__==_ooo__ooo=_/'   /___________,"</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="胜利"><a href="#胜利" class="headerlink" title="胜利"></a>胜利</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *                        d*##$.</span></span><br><span class="line"><span class="comment"> *  zP"""""$e.           $"    $o</span></span><br><span class="line"><span class="comment"> * 4$       '$          $"      $</span></span><br><span class="line"><span class="comment"> * '$        '$        J$       $F</span></span><br><span class="line"><span class="comment"> *  'b        $k       $&gt;       $</span></span><br><span class="line"><span class="comment"> *   $k        $r     J$       d$</span></span><br><span class="line"><span class="comment"> *   '$         $     $"       $~</span></span><br><span class="line"><span class="comment"> *    '$        "$   '$E       $</span></span><br><span class="line"><span class="comment"> *     $         $L   $"      $F ...</span></span><br><span class="line"><span class="comment"> *      $.       4B   $      $$$*"""*b</span></span><br><span class="line"><span class="comment"> *      '$        $.  $$     $$      $F</span></span><br><span class="line"><span class="comment"> *       "$       R$  $F     $"      $</span></span><br><span class="line"><span class="comment"> *        $k      ?$ u*     dF      .$</span></span><br><span class="line"><span class="comment"> *        ^$.      $$"     z$      u$$$$e</span></span><br><span class="line"><span class="comment"> *         #$b             $E.dW@e$"    ?$</span></span><br><span class="line"><span class="comment"> *          #$           .o$$# d$$$$c    ?F</span></span><br><span class="line"><span class="comment"> *           $      .d$$#" . zo$&gt;   #$r .uF</span></span><br><span class="line"><span class="comment"> *           $L .u$*"      $&amp;$$$k   .$$d$$F</span></span><br><span class="line"><span class="comment"> *            $$"            ""^"$$$P"$P9$</span></span><br><span class="line"><span class="comment"> *           JP              .o$$$$u:$P $$</span></span><br><span class="line"><span class="comment"> *           $          ..ue$"      ""  $"</span></span><br><span class="line"><span class="comment"> *          d$          $F              $</span></span><br><span class="line"><span class="comment"> *          $$     ....udE             4B</span></span><br><span class="line"><span class="comment"> *           #$    """"` $r            @$</span></span><br><span class="line"><span class="comment"> *            ^$L        '$            $F</span></span><br><span class="line"><span class="comment"> *              RN        4N           $</span></span><br><span class="line"><span class="comment"> *               *$b                  d$</span></span><br><span class="line"><span class="comment"> *                $$k                 $F</span></span><br><span class="line"><span class="comment"> *                 $$b                $F</span></span><br><span class="line"><span class="comment"> *                  $""               $F</span></span><br><span class="line"><span class="comment"> *                  '$                $</span></span><br><span class="line"><span class="comment"> *                   $L               $</span></span><br><span class="line"><span class="comment"> *                   '$               $</span></span><br><span class="line"><span class="comment"> *                    $               $</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="服了"><a href="#服了" class="headerlink" title="服了"></a>服了</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *                   /88888888888888888888888888\</span></span><br><span class="line"><span class="comment"> *                   |88888888888888888888888888/</span></span><br><span class="line"><span class="comment"> *                    |~~____~~~~~~~~~"""""""""|</span></span><br><span class="line"><span class="comment"> *                   / \_________/"""""""""""""\</span></span><br><span class="line"><span class="comment"> *                  /  |              \         \</span></span><br><span class="line"><span class="comment"> *                 /   |  88    88     \         \</span></span><br><span class="line"><span class="comment"> *                /    |  88    88      \         \</span></span><br><span class="line"><span class="comment"> *               /    /                  \        |</span></span><br><span class="line"><span class="comment"> *              /     |   ________        \       |</span></span><br><span class="line"><span class="comment"> *              \     |   \______/        /       |</span></span><br><span class="line"><span class="comment"> *   /"\         \     \____________     /        |</span></span><br><span class="line"><span class="comment"> *   | |__________\_        |  |        /        /</span></span><br><span class="line"><span class="comment"> * /""""\           \_------'  '-------/       --</span></span><br><span class="line"><span class="comment"> * \____/,___________\                 -------/</span></span><br><span class="line"><span class="comment"> * ------*            |                    \</span></span><br><span class="line"><span class="comment"> *   ||               |                     \</span></span><br><span class="line"><span class="comment"> *   ||               |                 ^    \</span></span><br><span class="line"><span class="comment"> *   ||               |                | \    \</span></span><br><span class="line"><span class="comment"> *   ||               |                |  \    \</span></span><br><span class="line"><span class="comment"> *   ||               |                |   \    \</span></span><br><span class="line"><span class="comment"> *   \|              /                /"""\/    /</span></span><br><span class="line"><span class="comment"> *      -------------                |    |    /</span></span><br><span class="line"><span class="comment"> *      |\--_                        \____/___/</span></span><br><span class="line"><span class="comment"> *      |   |\-_                       |</span></span><br><span class="line"><span class="comment"> *      |   |   \_                     |</span></span><br><span class="line"><span class="comment"> *      |   |     \                    |</span></span><br><span class="line"><span class="comment"> *      |   |      \_                  |</span></span><br><span class="line"><span class="comment"> *      |   |        ----___           |</span></span><br><span class="line"><span class="comment"> *      |   |               \----------|</span></span><br><span class="line"><span class="comment"> *      /   |                     |     ----------""\</span></span><br><span class="line"><span class="comment"> * /"\--"--_|                     |               |  \</span></span><br><span class="line"><span class="comment"> * |_______/                      \______________/    )</span></span><br><span class="line"><span class="comment"> *                                               \___/</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="看什么源码"><a href="#看什么源码" class="headerlink" title="看什么源码"></a>看什么源码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *                                         ,s555SB@@&amp;</span></span><br><span class="line"><span class="comment"> *                                      :9H####@@@@<span class="doctag">@Xi</span></span></span><br><span class="line"><span class="comment"> *                                     1@@@@@@@@@@@@@@8</span></span><br><span class="line"><span class="comment"> *                                   ,8@@@@@@@@<span class="doctag">@B</span>@@@@@@8</span></span><br><span class="line"><span class="comment"> *                                  :B@@@<span class="doctag">@X</span>3hi8Bs;B@@@@<span class="doctag">@Ah</span>,</span></span><br><span class="line"><span class="comment"> *             ,8i                  r@@<span class="doctag">@B</span>:     1S ,M@@@@@@#8;</span></span><br><span class="line"><span class="comment"> *            1AB35.i:               X@@8 .   SGhr ,A@@@@@@@<span class="doctag">@S</span></span></span><br><span class="line"><span class="comment"> *            1@h31MX8                18Hhh3i .i3r ,A@@@@@@@@@5</span></span><br><span class="line"><span class="comment"> *            ;@&amp;i,58r5                 rGSS:     :B@@@@@@@@@<span class="doctag">@A</span></span></span><br><span class="line"><span class="comment"> *             1#i  . 9i                 hX.  .: .5@@@@@@@@@@@1</span></span><br><span class="line"><span class="comment"> *              sG1,  ,G53s.              9#Xi;hS5 3B@@@@@@<span class="doctag">@B</span>1</span></span><br><span class="line"><span class="comment"> *               .h8h.,A@@<span class="doctag">@MXSs</span>,           #<span class="doctag">@H</span>1:    3ssSSX@1</span></span><br><span class="line"><span class="comment"> *               s ,@@@@@@@@@@@<span class="doctag">@Xhi</span>,       r#@<span class="doctag">@X</span>1s9M8    .GA981</span></span><br><span class="line"><span class="comment"> *               ,. rS8H#@@@@@@@@@@#HG51;.  .h31i;9@r    .8@@@<span class="doctag">@BS</span>;i;</span></span><br><span class="line"><span class="comment"> *                .19AXXXAB@@@@@@@@@@@@@@#MHXG893hrX#XGGXM@@@@@@@@@<span class="doctag">@MS</span></span></span><br><span class="line"><span class="comment"> *                s@<span class="doctag">@MM</span>@@<span class="doctag">@hsX</span>#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&amp;,</span></span><br><span class="line"><span class="comment"> *              :GB@#3G@<span class="doctag">@Brs</span> ,1GM@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<span class="doctag">@B</span>,</span></span><br><span class="line"><span class="comment"> *            .hM@@@#@@#MX 51  r;iSGAM@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@8</span></span><br><span class="line"><span class="comment"> *          :3B@@@@@@@@@@@&amp;9@h :Gs   .;sSXH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:</span></span><br><span class="line"><span class="comment"> *      s&amp;HA#@@@@@@@@@@@@@<span class="doctag">@M</span>89A;.8S.       ,r3@@@@@@@@@@@@@@@@@@@@@@@@@@<span class="doctag">@r</span></span></span><br><span class="line"><span class="comment"> *   ,13B@@@@@@@@@@@@@@@@@@@5 5B3 ;.         ;@@@@@@@@@@@@@@@@@@@@@@@@@@<span class="doctag">@i</span></span></span><br><span class="line"><span class="comment"> *  5#@@#&amp;@@@@@@@@@@@@@@@@@@9  .39:          ;@@@@@@@@@@@@@@@@@@@@@@@@@@@;</span></span><br><span class="line"><span class="comment"> *  9@@<span class="doctag">@X</span>:MM@@@@@@@@@@@@@@@#;    ;31.         H@@@@@@@@@@@@@@@@@@@@@@@@@@:</span></span><br><span class="line"><span class="comment"> *   SH#<span class="doctag">@B</span>9.rM@@@@@@@@@@@@<span class="doctag">@B</span>       :.         3@@@@@@@@@@@@@@@@@@@@@@@@@@5</span></span><br><span class="line"><span class="comment"> *     ,:.   9@@@@@@@@@@@#HB5                 .M@@@@@@@@@@@@@@@@@@@@@@@@<span class="doctag">@B</span></span></span><br><span class="line"><span class="comment"> *           ,ssirhSM@&amp;1;i19911i,.             s@@@@@@@@@@@@@@@@@@@@@@@@@<span class="doctag">@S</span></span></span><br><span class="line"><span class="comment"> *              ,,,rHAri1h1rh&amp;@#353Sh:          8@@@@@@@@@@@@@@@@@@@@@@@@@#:</span></span><br><span class="line"><span class="comment"> *            .A3hH@#5S553&amp;@@#h   i:i9S          #@@@@@@@@@@@@@@@@@@@@@@@@<span class="doctag">@A</span>.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *    又看源码，看你妹妹呀！</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="喷火龙"><a href="#喷火龙" class="headerlink" title="喷火龙"></a>喷火龙</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *                                                    __----~~~~~~~~~~~------___</span></span><br><span class="line"><span class="comment"> *                                   .  .   ~~//====......          __--~ ~~</span></span><br><span class="line"><span class="comment"> *                   -.            \_|//     |||\\  ~~~~~~::::... /~</span></span><br><span class="line"><span class="comment"> *                ___-==_       _-~o~  \/    |||  \\            _/~~-</span></span><br><span class="line"><span class="comment"> *        __---~~~.==~||\=_    -_--~/_-~|-   |\\   \\        _/~</span></span><br><span class="line"><span class="comment"> *    _-~~     .=~    |  \\-_    '-~7  /-   /  ||    \      /</span></span><br><span class="line"><span class="comment"> *  .~       .~       |   \\ -_    /  /-   /   ||      \   /</span></span><br><span class="line"><span class="comment"> * /  ____  /         |     \\ ~-_/  /|- _/   .||       \ /</span></span><br><span class="line"><span class="comment"> * |~~    ~~|--~~~~--_ \     ~==-/   | \~--===~~        .\</span></span><br><span class="line"><span class="comment"> *          '         ~-|      /|    |-~\~~       __--~~</span></span><br><span class="line"><span class="comment"> *                      |-~~-_/ |    |   ~\_   _-~            /\</span></span><br><span class="line"><span class="comment"> *                           /  \     \__   \/~                \__</span></span><br><span class="line"><span class="comment"> *                       _--~ _/ | .-~~____--~-/                  ~~==.</span></span><br><span class="line"><span class="comment"> *                      ((-&gt;/~   '.|||' -_|    ~~-/ ,              . _||</span></span><br><span class="line"><span class="comment"> *                                 -_     ~\      ~~---l__i__i__i--~~_/</span></span><br><span class="line"><span class="comment"> *                                 _-~-__   ~)  \--______________--~~</span></span><br><span class="line"><span class="comment"> *                               //.-~~~-~_--~- |-------~~~~~~~~</span></span><br><span class="line"><span class="comment"> *                                      //.-~~~--\</span></span><br><span class="line"><span class="comment"> *                               神兽保佑</span></span><br><span class="line"><span class="comment"> *                              代码无BUG!</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="曹尼玛"><a href="#曹尼玛" class="headerlink" title="曹尼玛"></a>曹尼玛</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *      ┌─┐       ┌─┐ + +</span></span><br><span class="line"><span class="comment"> *   ┌──┘ ┴───────┘ ┴──┐++</span></span><br><span class="line"><span class="comment"> *   │                 │</span></span><br><span class="line"><span class="comment"> *   │       ───       │++ + + +</span></span><br><span class="line"><span class="comment"> *   ███████───███████ │+</span></span><br><span class="line"><span class="comment"> *   │                 │+</span></span><br><span class="line"><span class="comment"> *   │       ─┴─       │</span></span><br><span class="line"><span class="comment"> *   │                 │</span></span><br><span class="line"><span class="comment"> *   └───┐         ┌───┘</span></span><br><span class="line"><span class="comment"> *       │         │</span></span><br><span class="line"><span class="comment"> *       │         │   + +</span></span><br><span class="line"><span class="comment"> *       │         │</span></span><br><span class="line"><span class="comment"> *       │         └──────────────┐</span></span><br><span class="line"><span class="comment"> *       │                        │</span></span><br><span class="line"><span class="comment"> *       │                        ├─┐</span></span><br><span class="line"><span class="comment"> *       │                        ┌─┘</span></span><br><span class="line"><span class="comment"> *       │                        │</span></span><br><span class="line"><span class="comment"> *       └─┐  ┐  ┌───────┬──┐  ┌──┘  + + + +</span></span><br><span class="line"><span class="comment"> *         │ ─┤ ─┤       │ ─┤ ─┤</span></span><br><span class="line"><span class="comment"> *         └──┴──┘       └──┴──┘  + + + +</span></span><br><span class="line"><span class="comment"> *                神兽保佑</span></span><br><span class="line"><span class="comment"> *               代码无BUG!</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="曹尼玛2"><a href="#曹尼玛2" class="headerlink" title="曹尼玛2#"></a>曹尼玛2#</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *      ┌─┐       ┌─┐</span></span><br><span class="line"><span class="comment"> *   ┌──┘ ┴───────┘ ┴──┐</span></span><br><span class="line"><span class="comment"> *   │                 │</span></span><br><span class="line"><span class="comment"> *   │       ───       │</span></span><br><span class="line"><span class="comment"> *   │   &gt;        &lt;    │</span></span><br><span class="line"><span class="comment"> *   │                 │</span></span><br><span class="line"><span class="comment"> *   │   ...  ⌒  ...   │</span></span><br><span class="line"><span class="comment"> *   │                 │</span></span><br><span class="line"><span class="comment"> *   └───┐         ┌───┘</span></span><br><span class="line"><span class="comment"> *       │         │</span></span><br><span class="line"><span class="comment"> *       │         │</span></span><br><span class="line"><span class="comment"> *       │         │</span></span><br><span class="line"><span class="comment"> *       │         └──────────────┐</span></span><br><span class="line"><span class="comment"> *       │                        │</span></span><br><span class="line"><span class="comment"> *       │                        ├─┐</span></span><br><span class="line"><span class="comment"> *       │                        ┌─┘</span></span><br><span class="line"><span class="comment"> *       │                        │</span></span><br><span class="line"><span class="comment"> *       └─┐  ┐  ┌───────┬──┐  ┌──┘</span></span><br><span class="line"><span class="comment"> *         │ ─┤ ─┤       │ ─┤ ─┤</span></span><br><span class="line"><span class="comment"> *         └──┴──┘       └──┴──┘</span></span><br><span class="line"><span class="comment"> *                神兽保佑</span></span><br><span class="line"><span class="comment"> *               代码无BUG!</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="神猪"><a href="#神猪" class="headerlink" title="神猪"></a>神猪</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  ## Safety pig has arrived!</span></span><br><span class="line"><span class="comment">//  ##                               _</span></span><br><span class="line"><span class="comment">//  ##  _._ _..._ .-',     _.._(`))</span></span><br><span class="line"><span class="comment">//  ## '-. `     '  /-._.-'    ',/</span></span><br><span class="line"><span class="comment">//  ##    )         \            '.</span></span><br><span class="line"><span class="comment">//  ##   / _    _    |             \</span></span><br><span class="line"><span class="comment">//  ##  |  a    a    /              |</span></span><br><span class="line"><span class="comment">//  ##  \   .-.                     ;</span></span><br><span class="line"><span class="comment">//  ##   '-('' ).-'       ,'       ;</span></span><br><span class="line"><span class="comment">//  ##      '-;           |      .'</span></span><br><span class="line"><span class="comment">//  ##         \           \    /</span></span><br><span class="line"><span class="comment">//  ##         | 7  .__  _.-\   \</span></span><br><span class="line"><span class="comment">//  ##         | |  |  ``/  /`  /</span></span><br><span class="line"><span class="comment">//  ##        /,_|  |   /,_/   /</span></span><br><span class="line"><span class="comment">//  ##           /,_/      '`-'</span></span><br><span class="line"><span class="comment">//  ##</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="键盘"><a href="#键盘" class="headerlink" title="键盘"></a>键盘</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 标准键盘布局</span></span><br><span class="line"><span class="comment">┌───┐   ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐</span></span><br><span class="line"><span class="comment">│Esc│   │ F1│ F2│ F3│ F4│ │ F5│ F6│ F7│ F8│ │ F9│F10│F11│F12│ │P/S│S L│P/B│  ┌┐    ┌┐    ┌┐</span></span><br><span class="line"><span class="comment">└───┘   └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┘  └┘    └┘    └┘</span></span><br><span class="line"><span class="comment">┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐ ┌───┬───┬───┐ ┌───┬───┬───┬───┐</span></span><br><span class="line"><span class="comment">│~ `│! 1│@ 2│# 3│$ 4│% 5│^ 6│&amp; 7│* 8│( 9│) 0│_ -│+ =│ BacSp │ │Ins│Hom│PUp│ │N L│ / │ * │ - │</span></span><br><span class="line"><span class="comment">├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤ ├───┼───┼───┤ ├───┼───┼───┼───┤</span></span><br><span class="line"><span class="comment">│ Tab │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │&#123; [│&#125; ]│ | \ │ │Del│End│PDn│ │ 7 │ 8 │ 9 │   │</span></span><br><span class="line"><span class="comment">├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤ └───┴───┴───┘ ├───┼───┼───┤ + │</span></span><br><span class="line"><span class="comment">│ Caps │ A │ S │ D │ F │ G │ H │ J │ K │ L │: ;│" '│ Enter  │               │ 4 │ 5 │ 6 │   │</span></span><br><span class="line"><span class="comment">├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤     ┌───┐     ├───┼───┼───┼───┤</span></span><br><span class="line"><span class="comment">│ Shift  │ Z │ X │ C │ V │ B │ N │ M │&lt; ,│&gt; .│? /│  Shift   │     │ ↑ │     │ 1 │ 2 │ 3 │   │</span></span><br><span class="line"><span class="comment">├─────┬──┴─┬─┴──┬┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤ ┌───┼───┼───┐ ├───┴───┼───┤ E││</span></span><br><span class="line"><span class="comment">│ Ctrl│    │Alt │         Space         │ Alt│    │    │Ctrl│ │ ← │ ↓ │ → │ │   0   │ . │←─┘│</span></span><br><span class="line"><span class="comment">└─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="美女"><a href="#美女" class="headerlink" title="美女"></a>美女</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * https://wanderros.github.io</span></span><br><span class="line"><span class="comment"> *           _.._        ,------------.</span></span><br><span class="line"><span class="comment"> *        ,'      `.    ( We want you! )</span></span><br><span class="line"><span class="comment"> *       /  __) __` \    `-,----------'</span></span><br><span class="line"><span class="comment"> *      (  (`-`(-')  ) _.-'</span></span><br><span class="line"><span class="comment"> *      /)  \  = /  (</span></span><br><span class="line"><span class="comment"> *     /'    |--' .  \</span></span><br><span class="line"><span class="comment"> *    (  ,---|  `-.)__`</span></span><br><span class="line"><span class="comment"> *     )(  `-.,--'   _`-.</span></span><br><span class="line"><span class="comment"> *    '/,'          (  Uu",</span></span><br><span class="line"><span class="comment"> *     (_       ,    `/,-' )</span></span><br><span class="line"><span class="comment"> *     `.__,  : `-'/  /`--'</span></span><br><span class="line"><span class="comment"> *       |     `--'  |</span></span><br><span class="line"><span class="comment"> *       `   `-._   /</span></span><br><span class="line"><span class="comment"> *        \        (</span></span><br><span class="line"><span class="comment"> *        /\ .      \.  bug </span></span><br><span class="line"><span class="comment"> *       / |` \     ,-\</span></span><br><span class="line"><span class="comment"> *      /  \| .)   /   \</span></span><br><span class="line"><span class="comment"> *     ( ,'|\    ,'     :</span></span><br><span class="line"><span class="comment"> *     | \,`.`--"/      &#125;</span></span><br><span class="line"><span class="comment"> *     `,'    \  |,'    /</span></span><br><span class="line"><span class="comment"> *    / "-._   `-/      |</span></span><br><span class="line"><span class="comment"> *    "-.   "-.,'|     ;</span></span><br><span class="line"><span class="comment"> *   /        _/["---'""]</span></span><br><span class="line"><span class="comment"> *  :        /  |"-     '</span></span><br><span class="line"><span class="comment"> *  '           |      /</span></span><br><span class="line"><span class="comment"> *              `      |</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="工程师"><a href="#工程师" class="headerlink" title="工程师"></a>工程师</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *             ,%%%%%%%%,</span></span><br><span class="line"><span class="comment"> *           ,%%/\%%%%/\%%</span></span><br><span class="line"><span class="comment"> *          ,%%%\c "" J/%%%</span></span><br><span class="line"><span class="comment"> * %.       %%%%/ o  o \%%%</span></span><br><span class="line"><span class="comment"> * `%%.     %%%%    _  |%%%</span></span><br><span class="line"><span class="comment"> *  `%%     `%%%%(__Y__)%%'</span></span><br><span class="line"><span class="comment"> *  //       ;%%%%`\-/%%%'</span></span><br><span class="line"><span class="comment"> * ((       /  `%%%%%%%'</span></span><br><span class="line"><span class="comment"> *  \\    .'          |</span></span><br><span class="line"><span class="comment"> *   \\  /       \  | |</span></span><br><span class="line"><span class="comment"> *    \\/         ) | |</span></span><br><span class="line"><span class="comment"> *     \         /_ | |__</span></span><br><span class="line"><span class="comment"> *     (___________))))))) 攻城湿</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *        _       _</span></span><br><span class="line"><span class="comment"> * __   _(_)_   _(_) __ _ _ __</span></span><br><span class="line"><span class="comment"> * \ \ / / \ \ / / |/ _` |'_ \</span></span><br><span class="line"><span class="comment"> *  \ V /| |\ V /| | (_| | | | |</span></span><br><span class="line"><span class="comment"> *   \_/ |_| \_/ |_|\__,_|_| |_|</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二狗子"><a href="#二狗子" class="headerlink" title="二狗子"></a>二狗子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">       _.'__    `.</span></span><br><span class="line"><span class="comment">        .--($)($$)---/#\</span></span><br><span class="line"><span class="comment">      .' @          /###\</span></span><br><span class="line"><span class="comment">      :         ,   #####</span></span><br><span class="line"><span class="comment">       `-..__.-' _.-\###/</span></span><br><span class="line"><span class="comment">             `;_:    `"'</span></span><br><span class="line"><span class="comment">           .'"""""`.</span></span><br><span class="line"><span class="comment">          /,  ya ,\\</span></span><br><span class="line"><span class="comment">         //  404!  \\</span></span><br><span class="line"><span class="comment">         `-._______.-'</span></span><br><span class="line"><span class="comment">         ___`. | .'___</span></span><br><span class="line"><span class="comment">        (______|______)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="皮卡丘"><a href="#皮卡丘" class="headerlink" title="皮卡丘"></a>皮卡丘</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">        quu..__</span></span><br><span class="line"><span class="comment">         $$$b  `---.__</span></span><br><span class="line"><span class="comment">          "$$b        `--.                          ___.---uuudP</span></span><br><span class="line"><span class="comment">           `$$b           `.__.------.__     __.---'      $$$$"              .</span></span><br><span class="line"><span class="comment">             "$b          -'            `-.-'            $$$"              .'|</span></span><br><span class="line"><span class="comment">               ".                                       d$"             _.'  |</span></span><br><span class="line"><span class="comment">                 `.   /                              ..."             .'     |</span></span><br><span class="line"><span class="comment">                   `./                           ..::-'            _.'       |</span></span><br><span class="line"><span class="comment">                    /                         .:::-'            .-'         .'</span></span><br><span class="line"><span class="comment">                   :                          ::''\          _.'            |</span></span><br><span class="line"><span class="comment">                  .' .-.             .-.           `.      .'               |</span></span><br><span class="line"><span class="comment">                  : /'$$|           .@"$\           `.   .'              _.-'</span></span><br><span class="line"><span class="comment">                 .'|$u$$|          |$$,$$|           |  &lt;            _.-'</span></span><br><span class="line"><span class="comment">                 | `:$$:'          :$$$$$:           `.  `.       .-'</span></span><br><span class="line"><span class="comment">                 :                  `"--'             |    `-.     \</span></span><br><span class="line"><span class="comment">                :##.       ==             .###.       `.      `.    `\</span></span><br><span class="line"><span class="comment">                |##:                      :###:        |        &gt;     &gt;</span></span><br><span class="line"><span class="comment">                |#'     `..'`..'          `###'        x:      /     /</span></span><br><span class="line"><span class="comment">                 \                                   xXX|     /    ./</span></span><br><span class="line"><span class="comment">                  \                                xXXX'|    /   ./</span></span><br><span class="line"><span class="comment">                  /`-.                                  `.  /   /</span></span><br><span class="line"><span class="comment">                 :    `-  ...........,                   | /  .'</span></span><br><span class="line"><span class="comment">                 |         ``:::::::'       .            |&lt;    `.</span></span><br><span class="line"><span class="comment">                 |             ```          |           x| \ `.:``.</span></span><br><span class="line"><span class="comment">                 |                         .'    /'   xXX|  `:`M`M':.</span></span><br><span class="line"><span class="comment">                 |    |                    ;    /:' xXXX'|  -'MMMMM:'</span></span><br><span class="line"><span class="comment">                 `.  .'                   :    /:'       |-'MMMM.-'</span></span><br><span class="line"><span class="comment">                  |  |                   .'   /'        .'MMM.-'</span></span><br><span class="line"><span class="comment">                  `'`'                   :  ,'          |MMM&lt;</span></span><br><span class="line"><span class="comment">                    |                     `'            |tbap\</span></span><br><span class="line"><span class="comment">                     \                                  :MM.-'</span></span><br><span class="line"><span class="comment">                      \                 |              .''</span></span><br><span class="line"><span class="comment">                       \.               `.            /</span></span><br><span class="line"><span class="comment">                        /     .:::::::.. :           /</span></span><br><span class="line"><span class="comment">                       |     .:::::::::::`.         /</span></span><br><span class="line"><span class="comment">                       |   .:::------------\       /</span></span><br><span class="line"><span class="comment">                      /   .''               &gt;::'  /</span></span><br><span class="line"><span class="comment">                      `',:                 :    .'</span></span><br><span class="line"><span class="comment">                                           `:.:'</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="顶"><a href="#顶" class="headerlink" title="顶"></a>顶</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 頂頂頂頂頂頂頂頂頂　頂頂頂頂頂頂頂頂頂</span></span><br><span class="line"><span class="comment"> * 頂頂頂頂頂頂頂　　　　　頂頂　　　　　</span></span><br><span class="line"><span class="comment"> * 　　　頂頂　　　頂頂頂頂頂頂頂頂頂頂頂</span></span><br><span class="line"><span class="comment"> * 　　　頂頂　　　頂頂頂頂頂頂頂頂頂頂頂</span></span><br><span class="line"><span class="comment"> * 　　　頂頂　　　頂頂　　　　　　　頂頂</span></span><br><span class="line"><span class="comment"> * 　　　頂頂　　　頂頂　　頂頂頂　　頂頂</span></span><br><span class="line"><span class="comment"> * 　　　頂頂　　　頂頂　　頂頂頂　　頂頂</span></span><br><span class="line"><span class="comment"> * 　　　頂頂　　　頂頂　　頂頂頂　　頂頂</span></span><br><span class="line"><span class="comment"> * 　　　頂頂　　　頂頂　　頂頂頂　　頂頂</span></span><br><span class="line"><span class="comment"> * 　　　頂頂　　　　　　　頂頂頂　</span></span><br><span class="line"><span class="comment"> * 　　　頂頂　　　　　　頂頂　頂頂　頂頂</span></span><br><span class="line"><span class="comment"> * 　頂頂頂頂　　　頂頂頂頂頂　頂頂頂頂頂</span></span><br><span class="line"><span class="comment"> * 　頂頂頂頂　　　頂頂頂頂　　　頂頂頂頂</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二狗子·真"><a href="#二狗子·真" class="headerlink" title="二狗子·真"></a>二狗子·真</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *               ii.                                         ;9ABH,</span></span><br><span class="line"><span class="comment"> *              SA391,                                    .r9GG35&amp;G</span></span><br><span class="line"><span class="comment"> *              &amp;#ii13Gh;                               i3X31i;:,rB1</span></span><br><span class="line"><span class="comment"> *              iMs,:,i5895,                         .5G91:,:;:s1:8A</span></span><br><span class="line"><span class="comment"> *               33::::,,;5G5,                     ,58Si,,:::,sHX;iH1</span></span><br><span class="line"><span class="comment"> *                Sr.,:;rs13BBX35hh11511h5Shhh5S3GAXS:.,,::,,1AG3i,GG</span></span><br><span class="line"><span class="comment"> *                .G51S511sr;;iiiishS8G89Shsrrsh59S;.,,,,,..5A85Si,h8</span></span><br><span class="line"><span class="comment"> *               :SB9s:,............................,,,.,,,SASh53h,1G.</span></span><br><span class="line"><span class="comment"> *            .r18S;..,,,,,,,,,,,,,,,,,,,,,,,,,,,,,....,,.1H315199,rX,</span></span><br><span class="line"><span class="comment"> *          ;S89s,..,,,,,,,,,,,,,,,,,,,,,,,....,,.......,,,;r1ShS8,;Xi</span></span><br><span class="line"><span class="comment"> *        i55s:.........,,,,,,,,,,,,,,,,.,,,......,.....,,....r9&amp;5.:X1</span></span><br><span class="line"><span class="comment"> *       59;.....,.     .,,,,,,,,,,,...        .............,..:1;.:&amp;s</span></span><br><span class="line"><span class="comment"> *      s8,..;53S5S3s.   .,,,,,,,.,..      i15S5h1:.........,,,..,,:99</span></span><br><span class="line"><span class="comment"> *      93.:39s:rSGB@A;  ..,,,,.....    .SG3hhh9G&amp;BGi..,,,,,,,,,,,,.,83</span></span><br><span class="line"><span class="comment"> *      G5.G8  9#@@@@<span class="doctag">@X</span>. .,,,,,,.....  iA9,.S&amp;B###@<span class="doctag">@Mr</span>...,,,,,,,,..,.;Xh</span></span><br><span class="line"><span class="comment"> *      Gs.X8 S@@@@@@<span class="doctag">@B</span>:..,,,,,,,,,,. rA1 ,A@@@@@@@@<span class="doctag">@H</span>:........,,,,,,.iX:</span></span><br><span class="line"><span class="comment"> *     ;9. ,8A#@@@@@@#5,.,,,,,,,,,... 9A. 8@@@@@@@@@<span class="doctag">@M</span>;    ....,,,,,,,,S8</span></span><br><span class="line"><span class="comment"> *     X3    iS8XAHH8s.,,,,,,,,,,...,..58hH@@@@@@@@<span class="doctag">@Hs</span>       ...,,,,,,,:Gs</span></span><br><span class="line"><span class="comment"> *    r8,        ,,,...,,,,,,,,,,.....  ,h8XABMMHX3r.          .,,,,,,,.rX:</span></span><br><span class="line"><span class="comment"> *   :9, .    .:,..,:;;;::,.,,,,,..          .,,.               ..,,,,,,.59</span></span><br><span class="line"><span class="comment"> *  .Si      ,:.i8HBMMMMMB&amp;5,....                    .            .,,,,,.sMr</span></span><br><span class="line"><span class="comment"> *  SS       :: h@@@@@@@@@@#; .                     ...  .         ..,,,,iM5</span></span><br><span class="line"><span class="comment"> *  91  .    ;:.,1&amp;@@@@@<span class="doctag">@MXs</span>.                            .          .,,:,:&amp;S</span></span><br><span class="line"><span class="comment"> *  hS ....  .:;,,,i3MMS1;..,..... .  .     ...                     ..,:,.99</span></span><br><span class="line"><span class="comment"> *  ,8; ..... .,:,..,8Ms:;,,,...                                     .,::.83</span></span><br><span class="line"><span class="comment"> *   s&amp;: ....  .sS553B@<span class="doctag">@HX</span>3s;,.    .,;13h.                            .:::&amp;1</span></span><br><span class="line"><span class="comment"> *    SXr  .  ...;s3G99XA&amp;X88Shss11155hi.                             ,;:h&amp;,</span></span><br><span class="line"><span class="comment"> *     iH8:  . ..   ,;iiii;,::,,,,,.                                 .;irHA</span></span><br><span class="line"><span class="comment"> *      ,8X5;   .     .......                                       ,;iihS8Gi</span></span><br><span class="line"><span class="comment"> *         1831,                                                 .,;irrrrrs&amp;@</span></span><br><span class="line"><span class="comment"> *           ;5A8r.                                            .:;iiiiirrss1H</span></span><br><span class="line"><span class="comment"> *             :X@H3s.......                                .,:;iii;iiiiirsrh</span></span><br><span class="line"><span class="comment"> *              r#h:;,...,,.. .,,:;;;;;:::,...              .:;;;;;;iiiirrss1</span></span><br><span class="line"><span class="comment"> *             ,M8 ..,....,.....,,::::::,,...         .     .,;;;iiiiiirss11h</span></span><br><span class="line"><span class="comment"> *             8B;.,,,,,,,.,.....          .           ..   .:;;;;iirrsss111h</span></span><br><span class="line"><span class="comment"> *            i@5,:::,,,,,,,,.... .                   . .:::;;;;;irrrss111111</span></span><br><span class="line"><span class="comment"> *            9Bi,:,,,,......                        ..r91;;;;;iirrsss1ss1111</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="滑稽"><a href="#滑稽" class="headerlink" title="滑稽"></a>滑稽</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *            .,,       .,:;;iiiiiiiii;;:,,.     .,,</span></span><br><span class="line"><span class="comment"> *          rGB##HS,.;iirrrrriiiiiiiiiirrrrri;,s&amp;##MAS,</span></span><br><span class="line"><span class="comment"> *         r5s;:r3AH5iiiii;;;;;;;;;;;;;;;;iiirXHGSsiih1,</span></span><br><span class="line"><span class="comment"> *            .;i;;s91;;;;;;::::::::::::;;;;iS5;;;ii:</span></span><br><span class="line"><span class="comment"> *          :rsriii;;r::::::::::::::::::::::;;,;;iiirsi,</span></span><br><span class="line"><span class="comment"> *       .,iri;;::::;;;;;;::,,,,,,,,,,,,,..,,;;;;;;;;iiri,,.</span></span><br><span class="line"><span class="comment"> *    ,9BM&amp;,            .,:;;:,,,,,,,,,,,hXA8:            ..,,,.</span></span><br><span class="line"><span class="comment"> *   ,;&amp;@@#r:;;;;;::::,,.   ,r,,,,,,,,,,iA@@<span class="doctag">@s</span>,,:::;;;::,,.   .;.</span></span><br><span class="line"><span class="comment"> *    :ih1iii;;;;;::::;;;;;;;:,,,,,,,,,,;i55r;;;;;;;;;iiirrrr,..</span></span><br><span class="line"><span class="comment"> *   .ir;;iiiiiiiiii;;;;::::::,,,,,,,:::::,,:;;;iiiiiiiiiiiiri</span></span><br><span class="line"><span class="comment"> *   iriiiiiiiiiiiiiiii;;;::::::::::::::::;;;iiiiiiiiiiiiiiiir;</span></span><br><span class="line"><span class="comment"> *  ,riii;;;;;;;;;;;;;:::::::::::::::::::::::;;;;;;;;;;;;;;iiir.</span></span><br><span class="line"><span class="comment"> *  iri;;;::::,,,,,,,,,,:::::::::::::::::::::::::,::,,::::;;iir:</span></span><br><span class="line"><span class="comment"> * .rii;;::::,,,,,,,,,,,,:::::::::::::::::,,,,,,,,,,,,,::::;;iri</span></span><br><span class="line"><span class="comment"> * ,rii;;;::,,,,,,,,,,,,,:::::::::::,:::::,,,,,,,,,,,,,:::;;;iir.</span></span><br><span class="line"><span class="comment"> * ,rii;;i::,,,,,,,,,,,,,:::::::::::::::::,,,,,,,,,,,,,,::i;;iir.</span></span><br><span class="line"><span class="comment"> * ,rii;;r::,,,,,,,,,,,,,:,:::::,:,:::::::,,,,,,,,,,,,,::;r;;iir.</span></span><br><span class="line"><span class="comment"> * .rii;;rr,:,,,,,,,,,,,,,,:::::::::::::::,,,,,,,,,,,,,:,si;;iri</span></span><br><span class="line"><span class="comment"> *  ;rii;:1i,,,,,,,,,,,,,,,,,,:::::::::,,,,,,,,,,,,,,,:,ss:;iir:</span></span><br><span class="line"><span class="comment"> *  .rii;;;5r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,sh:;;iri</span></span><br><span class="line"><span class="comment"> *   ;rii;:;51,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.:hh:;;iir,</span></span><br><span class="line"><span class="comment"> *    irii;::hSr,.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.,sSs:;;iir:</span></span><br><span class="line"><span class="comment"> *     irii;;:iSSs:.,,,,,,,,,,,,,,,,,,,,,,,,,,,..:135;:;;iir:</span></span><br><span class="line"><span class="comment"> *      ;rii;;:,r535r:...,,,,,,,,,,,,,,,,,,..,;sS35i,;;iirr:</span></span><br><span class="line"><span class="comment"> *       :rrii;;:,;1S3Shs;:,............,:is533Ss:,;;;iiri,</span></span><br><span class="line"><span class="comment"> *        .;rrii;;;:,;rhS393S55hh11hh5S3393Shr:,:;;;iirr:</span></span><br><span class="line"><span class="comment"> *          .;rriii;;;::,:;is1h555555h1si;:,::;;;iirri:.</span></span><br><span class="line"><span class="comment"> *            .:irrrii;;;;;:::,,,,,,,,:::;;;;iiirrr;,</span></span><br><span class="line"><span class="comment"> *               .:irrrriiiiii;;;;;;;;iiiiiirrrr;,.</span></span><br><span class="line"><span class="comment"> *                  .,:;iirrrrrrrrrrrrrrrrri;:.</span></span><br><span class="line"><span class="comment"> *                        ..,:::;;;;:::,,.</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二狗子·二"><a href="#二狗子·二" class="headerlink" title="二狗子·二#"></a>二狗子·二#</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *          .,:,,,                                        .::,,,::.</span></span><br><span class="line"><span class="comment"> *        .::::,,;;,                                  .,;;:,,....:i:</span></span><br><span class="line"><span class="comment"> *        :i,.::::,;i:.      ....,,:::::::::,....   .;i:,.  ......;i.</span></span><br><span class="line"><span class="comment"> *        :;..:::;::::i;,,:::;:,,,,,,,,,,..,.,,:::iri:. .,:irsr:,.;i.</span></span><br><span class="line"><span class="comment"> *        ;;..,::::;;;;ri,,,.                    ..,,:;s1s1ssrr;,.;r,</span></span><br><span class="line"><span class="comment"> *        :;. ,::;ii;:,     . ...................     .;iirri;;;,,;i,</span></span><br><span class="line"><span class="comment"> *        ,i. .;ri:.   ... ............................  .,,:;:,,,;i:</span></span><br><span class="line"><span class="comment"> *        :s,.;r:... ....................................... .::;::s;</span></span><br><span class="line"><span class="comment"> *        ,1r::. .............,,,.,,:,,........................,;iir;</span></span><br><span class="line"><span class="comment"> *        ,s;...........     ..::.,;:,,.          ...............,;1s</span></span><br><span class="line"><span class="comment"> *       :i,..,.              .,:,,::,.          .......... .......;1,</span></span><br><span class="line"><span class="comment"> *      ir,....:rrssr;:,       ,,.,::.     .r5S9989398G95hr;. ....,.:s,</span></span><br><span class="line"><span class="comment"> *     ;r,..,s9855513XHAG3i   .,,,,,,,.  ,S931,.,,.;s;s&amp;BHHA8s.,..,..:r:</span></span><br><span class="line"><span class="comment"> *    :r;..rGGh,  :SAG;;G@BS:.,,,,,,,,,.r83:      hHH1sXMBHHHM3..,,,,.ir.</span></span><br><span class="line"><span class="comment"> *   ,si,.1GS,   sBMAAX&amp;MBMB5,,,,,,:,,.:&amp;8       3@HXHBMBHBBH#X,.,,,,,,rr</span></span><br><span class="line"><span class="comment"> *   ;1:,,SH:   .A@&amp;&amp;B#&amp;8H#BS,,,,,,,,,.,5XS,     3@MHABM&amp;59M#As..,,,,:,is,</span></span><br><span class="line"><span class="comment"> *  .rr,,,;9&amp;1   hBHHBB&amp;8AMGr,,,,,,,,,,,:h&amp;&amp;9s;   r9&amp;BMHBHMB9:  . .,,,,;ri.</span></span><br><span class="line"><span class="comment"> *  :1:....:5&amp;XSi;r8BMBHHA9r:,......,,,,:ii19GG88899XHHH&amp;GSr.      ...,:rs.</span></span><br><span class="line"><span class="comment"> *  ;s.     .:sS8G8GG889hi.        ....,,:;:,.:irssrriii:,.        ...,,i1,</span></span><br><span class="line"><span class="comment"> *  ;1,         ..,....,,isssi;,        .,,.                      ....,.i1,</span></span><br><span class="line"><span class="comment"> *  ;h:               i9HHBMBBHAX9:         .                     ...,,,rs,</span></span><br><span class="line"><span class="comment"> *  ,1i..            :A#MBBBBMHB##s                             ....,,,;si.</span></span><br><span class="line"><span class="comment"> *  .r1,..        ,..;3BMBBBHBB#Bh.     ..                    ....,,,,,i1;</span></span><br><span class="line"><span class="comment"> *   :h;..       .,..;,1XBMMMMBXs,.,, .. :: ,.               ....,,,,,,ss.</span></span><br><span class="line"><span class="comment"> *    ih: ..    .;;;, ;;:s58A3i,..    ,. ,.:,,.             ...,,,,,:,s1,</span></span><br><span class="line"><span class="comment"> *    .s1,....   .,;sh,  ,iSAXs;.    ,.  ,,.i85            ...,,,,,,:i1;</span></span><br><span class="line"><span class="comment"> *     .rh: ...     rXG9XBBM#M#MHAX3hss13&amp;&amp;HHXr         .....,,,,,,,ih;</span></span><br><span class="line"><span class="comment"> *      .s5: .....    i598X&amp;&amp;A&amp;AAAAAA&amp;XG851r:       ........,,,,:,,sh;</span></span><br><span class="line"><span class="comment"> *      . ihr, ...  .         ..                    ........,,,,,;11:.</span></span><br><span class="line"><span class="comment"> *         ,s1i. ...  ..,,,..,,,.,,.,,.,..       ........,,.,,.;s5i.</span></span><br><span class="line"><span class="comment"> *          .:s1r,......................       ..............;shs,</span></span><br><span class="line"><span class="comment"> *          . .:shr:.  ....                 ..............,ishs.</span></span><br><span class="line"><span class="comment"> *              .,issr;,... ...........................,is1s;.</span></span><br><span class="line"><span class="comment"> *                 .,is1si;:,....................,:;ir1sr;,</span></span><br><span class="line"><span class="comment"> *                    ..:isssssrrii;::::::;;iirsssssr;:..</span></span><br><span class="line"><span class="comment"> *                         .,::iiirsssssssssrri;;:.</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="喷火龙·飞"><a href="#喷火龙·飞" class="headerlink" title="喷火龙·飞"></a>喷火龙·飞</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *                  ___====-_  _-====___</span></span><br><span class="line"><span class="comment"> *            _--^^^#####//      \\#####^^^--_</span></span><br><span class="line"><span class="comment"> *         _-^##########// (    ) \\##########^-_</span></span><br><span class="line"><span class="comment"> *        -############//  |\^^/|  \\############-</span></span><br><span class="line"><span class="comment"> *      _/############//   (@::@)   \\############\_</span></span><br><span class="line"><span class="comment"> *     /#############((     \\//     ))#############\</span></span><br><span class="line"><span class="comment"> *    -###############\\    (oo)    //###############-</span></span><br><span class="line"><span class="comment"> *   -#################\\  / VV \  //#################-</span></span><br><span class="line"><span class="comment"> *  -###################\\/      \//###################-</span></span><br><span class="line"><span class="comment"> * _#/|##########/\######(   /\   )######/\##########|\#_</span></span><br><span class="line"><span class="comment"> * |/ |#/\#/\#/\/  \#/\##\  |  |  /##/\#/  \/\#/\#/\#| \|</span></span><br><span class="line"><span class="comment"> * `  |/  V  V  `   V  \#\| |  | |/#/  V   '  V  V  \|  '</span></span><br><span class="line"><span class="comment"> *    `   `  `      `   / | |  | | \   '      '  '   '</span></span><br><span class="line"><span class="comment"> *                     (  | |  | |  )</span></span><br><span class="line"><span class="comment"> *                    __\ | |  | | /__</span></span><br><span class="line"><span class="comment"> *                   (vvv(VVV)(VVV)vvv)</span></span><br><span class="line"><span class="comment"> *                        神兽保佑</span></span><br><span class="line"><span class="comment"> *                       代码无BUG!</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="骷髅"><a href="#骷髅" class="headerlink" title="骷髅"></a>骷髅</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// **************************************************************</span></span><br><span class="line"><span class="comment">// *                                                            *</span></span><br><span class="line"><span class="comment">// *   .=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.       *</span></span><br><span class="line"><span class="comment">// *    |                     ______                     |      *</span></span><br><span class="line"><span class="comment">// *    |                  .-"      "-.                  |      *</span></span><br><span class="line"><span class="comment">// *    |                 /            \                 |      *</span></span><br><span class="line"><span class="comment">// *    |     _          |              |          _     |      *</span></span><br><span class="line"><span class="comment">// *    |    ( \         |,  .-.  .-.  ,|         / )    |      *</span></span><br><span class="line"><span class="comment">// *    |     &gt; "=._     | )(__/  \__)( |     _.=" &lt;     |      *</span></span><br><span class="line"><span class="comment">// *    |    (_/"=._"=._ |/     /\     \| _.="_.="\_)    |      *</span></span><br><span class="line"><span class="comment">// *    |           "=._"(_     ^^     _)"_.="           |      *</span></span><br><span class="line"><span class="comment">// *    |               "=\__|IIIIII|__/="               |      *</span></span><br><span class="line"><span class="comment">// *    |              _.="| \IIIIII/ |"=._              |      *</span></span><br><span class="line"><span class="comment">// *    |    _     _.="_.="\          /"=._"=._     _    |      *</span></span><br><span class="line"><span class="comment">// *    |   ( \_.="_.="     `--------`     "=._"=._/ )   |      *</span></span><br><span class="line"><span class="comment">// *    |    &gt; _.="                            "=._ &lt;    |      *</span></span><br><span class="line"><span class="comment">// *    |   (_/                                    \_)   |      *</span></span><br><span class="line"><span class="comment">// *    |                                                |      *</span></span><br><span class="line"><span class="comment">// *    '-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-='      *</span></span><br><span class="line"><span class="comment">// *                                                            *</span></span><br><span class="line"><span class="comment">// *           LASCIATE OGNI SPERANZA, VOI CH'ENTRATE           *</span></span><br><span class="line"><span class="comment">// **************************************************************</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="老鼠"><a href="#老鼠" class="headerlink" title="老鼠"></a>老鼠</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//     .--,       .--,</span></span><br><span class="line"><span class="comment">//    ( (  \.---./  ) )</span></span><br><span class="line"><span class="comment">//     '.__/o   o\__.'</span></span><br><span class="line"><span class="comment">//        &#123;=  ^  =&#125;</span></span><br><span class="line"><span class="comment">//         &gt;  -  &lt;</span></span><br><span class="line"><span class="comment">//        /       \</span></span><br><span class="line"><span class="comment">//       //       \\</span></span><br><span class="line"><span class="comment">//      //|   .   |\\</span></span><br><span class="line"><span class="comment">//      "'\       /'"_.-~^`'-.</span></span><br><span class="line"><span class="comment">//         \  _  /--'         `</span></span><br><span class="line"><span class="comment">//       ___)( )(___</span></span><br><span class="line"><span class="comment">//      (((__) (__)))    高山仰止,景行行止.虽不能至,心向往之。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="悲伤的曹尼玛"><a href="#悲伤的曹尼玛" class="headerlink" title="悲伤的曹尼玛"></a>悲伤的曹尼玛</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//      ┏┛ ┻━━━━━┛ ┻┓</span></span><br><span class="line"><span class="comment">//      ┃　　　　　　        ┃</span></span><br><span class="line"><span class="comment">//      ┃　　　━　　　      ┃</span></span><br><span class="line"><span class="comment">//      ┃　┳┛　  ┗┳　    ┃</span></span><br><span class="line"><span class="comment">//      ┃　　　　　　       ┃</span></span><br><span class="line"><span class="comment">//      ┃　　　┻　　　    ┃</span></span><br><span class="line"><span class="comment">//      ┃　　　　　　      ┃</span></span><br><span class="line"><span class="comment">//      ┗━┓　　　┏━━━┛</span></span><br><span class="line"><span class="comment">//        ┃　　　┃   神兽保佑</span></span><br><span class="line"><span class="comment">//        ┃　　　┃   代码无BUG！</span></span><br><span class="line"><span class="comment">//        ┃　　　┗━━━━━━━━━┓</span></span><br><span class="line"><span class="comment">//        ┃　　　　　　　    ┣┓</span></span><br><span class="line"><span class="comment">//        ┃　　　　         ┏┛</span></span><br><span class="line"><span class="comment">//        ┗━┓ ┓ ┏━━━┳ ┓ ┏━┛</span></span><br><span class="line"><span class="comment">//          ┃ ┫ ┫   ┃ ┫ ┫</span></span><br><span class="line"><span class="comment">//          ┗━┻━┛   ┗━┻━┛</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="美女-1"><a href="#美女-1" class="headerlink" title="美女"></a>美女</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//                       .::::.</span></span><br><span class="line"><span class="comment">//                     .::::::::.</span></span><br><span class="line"><span class="comment">//                    :::::::::::</span></span><br><span class="line"><span class="comment">//                 ..:::::::::::'</span></span><br><span class="line"><span class="comment">//              '::::::::::::'</span></span><br><span class="line"><span class="comment">//                .::::::::::</span></span><br><span class="line"><span class="comment">//           '::::::::::::::..</span></span><br><span class="line"><span class="comment">//                ..::::::::::::.</span></span><br><span class="line"><span class="comment">//              ``::::::::::::::::</span></span><br><span class="line"><span class="comment">//               ::::``:::::::::'        .:::.</span></span><br><span class="line"><span class="comment">//              ::::'   ':::::'       .::::::::.</span></span><br><span class="line"><span class="comment">//            .::::'      ::::     .:::::::'::::.</span></span><br><span class="line"><span class="comment">//           .:::'       :::::  .:::::::::' ':::::.</span></span><br><span class="line"><span class="comment">//          .::'        :::::.:::::::::'      ':::::.</span></span><br><span class="line"><span class="comment">//         .::'         ::::::::::::::'         ``::::.</span></span><br><span class="line"><span class="comment">//     ...:::           ::::::::::::'              ``::.</span></span><br><span class="line"><span class="comment">//    ```` ':.          ':::::::::'                  ::::..</span></span><br><span class="line"><span class="comment">//                       '.:::::'                    ':'````..</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="比鲁斯"><a href="#比鲁斯" class="headerlink" title="比鲁斯"></a>比鲁斯</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　瓦瓦　　　　　　　　　　　　十　　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　十齱龠己　　　　　　　　　亅瓦車己　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　乙龍龠毋日丶　　　　　　丶乙己毋毋丶　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　十龠馬鬼車瓦　　　　　　己十瓦毋毋　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　鬼馬龠馬龠十　　　　己己毋車毋瓦　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　毋龠龠龍龠鬼乙丶丶乙車乙毋鬼車己　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　乙龠龍龍鬼龍瓦　十瓦毋乙瓦龠瓦亅　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　馬齱龍馬鬼十丶日己己己毋車乙丶　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　己齱馬鬼車十十毋日乙己己乙乙　　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　車馬齱齱日乙毋瓦己乙瓦日亅　　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　亅車齺龖瓦乙車龖龍乙乙十　　　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　日龠龠十亅車龍毋十十　　　　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　日毋己亅　己己十亅亅　　　　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　丶己十十乙　　丶丶丶丶丶　　　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　亅己十龍龖瓦　　丶　丶　乙十　　　　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　亅己十龠龖毋　丶丶　　丶己鬼鬼瓦亅　　　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　十日十十日亅丶亅丶　丶十日毋鬼馬馬車乙　　　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　十日乙十亅亅亅丶　　十乙己毋鬼鬼鬼龍齺馬乙　　　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　丶瓦己乙十十亅丶亅乙乙乙己毋鬼鬼鬼龍齱齺齺鬼十　　　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　乙乙十十十亅乙瓦瓦己日瓦毋鬼鬼龠齱齱龍龍齱齱毋丶　</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　亅十十十十乙瓦車毋瓦瓦日車馬龠龍龍龍龍龍龠龠龠馬亅</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　　十十十十己毋車瓦瓦瓦瓦鬼馬龠龍龠龠龍龠龠龠馬龠車</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　　　亅十十日毋瓦日日瓦鬼鬼鬼龠龠馬馬龠龍龍龠馬馬車</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　　　亅亅亅乙瓦瓦毋車車車馬龍龠鬼鬼馬龠龍龍龠馬馬鬼</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　丶丶乙亅亅乙車鬼鬼鬼毋車龍龍龠鬼馬馬龠龍齱齱龍馬鬼</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　亅己十十己十日鬼鬼車瓦毋龠龍龠馬馬龠龠龠齱齺齺齱龠鬼</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　亅乙乙乙十車馬車毋馬齱齱龍龠龠龠馬龠龍齱龍龠龠鬼瓦</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　　　　　丶毋龠鬼車瓦車馬龠龍龠龠龍齱齱龠馬馬鬼毋日</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　　　　　十乙己日十　　丶己鬼龍齱齺齱龍馬馬馬車毋己</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　　　丶十己乙亅丶　　　　　　亅瓦馬龠龍龠龠馬毋瓦乙</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　　丶十十乙亅十　　　　　　　　亅己瓦車馬龠鬼車瓦乙</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　　丶十乙十十丶　　　　　　　　　丶丶亅十瓦鬼車瓦己</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　　　丶亅亅丶　　　　　　　　　　　　　　　亅日瓦日</span></span><br><span class="line"><span class="comment"> *　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　丶</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="System-out-println"><a href="#System-out-println" class="headerlink" title="System.out.println"></a>System.out.println</h2><h3 id="佛祖"><a href="#佛祖" class="headerlink" title="佛祖"></a>佛祖</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"/***\n"</span> +</span><br><span class="line">        <span class="string">" *                    _ooOoo_\n"</span> +</span><br><span class="line">        <span class="string">" *                   o8888888o\n"</span> +</span><br><span class="line">        <span class="string">" *                   88\" . \"88\n"</span> +</span><br><span class="line">        <span class="string">" *                   (| -_- |)\n"</span> +</span><br><span class="line">        <span class="string">" *                    O\\ = /O\n"</span> +</span><br><span class="line">        <span class="string">" *                ____/`---'\\____\n"</span> +</span><br><span class="line">        <span class="string">" *              .   ' \\\\| |// `.\n"</span> +</span><br><span class="line">        <span class="string">" *               / \\\\||| : |||// \\\n"</span> +</span><br><span class="line">        <span class="string">" *             / _||||| -:- |||||- \\\n"</span> +</span><br><span class="line">        <span class="string">" *               | | \\\\\\ - /// | |\n"</span> +</span><br><span class="line">        <span class="string">" *             | \\_| ''\\---/'' | |\n"</span> +</span><br><span class="line">        <span class="string">" *              \\ .-\\__ `-` ___/-. /\n"</span> +</span><br><span class="line">        <span class="string">" *           ___`. .' /--.--\\ `. . __\n"</span> +</span><br><span class="line">        <span class="string">" *        .\"\" '&lt; `.___\\_&lt;|&gt;_/___.' &gt;'\"\".\n"</span> +</span><br><span class="line">        <span class="string">" *       | | : `- \\`.;`\\ _ /`;.`/ - ` : | |\n"</span> +</span><br><span class="line">        <span class="string">" *         \\ \\ `-. \\_ __\\ /__ _/ .-` / /\n"</span> +</span><br><span class="line">        <span class="string">" * ======`-.____`-.___\\_____/___.-`____.-'======\n"</span> +</span><br><span class="line">        <span class="string">" *                    `=---='\n"</span> +</span><br><span class="line">        <span class="string">" *\n"</span> +</span><br><span class="line">        <span class="string">" * .............................................\n"</span> +</span><br><span class="line">        <span class="string">" */"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="标准键盘"><a href="#标准键盘" class="headerlink" title="标准键盘"></a>标准键盘</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"\n"</span> +</span><br><span class="line">               <span class="string">"/***\n"</span> +</span><br><span class="line">               <span class="string">" * ┌───┐   ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐\n"</span> +</span><br><span class="line">               <span class="string">" * │Esc│   │ F1│ F2│ F3│ F4│ │ F5│ F6│ F7│ F8│ │ F9│F10│F11│F12│ │P/S│S L│P/B│  ┌┐    ┌┐    ┌┐\n"</span> +</span><br><span class="line">               <span class="string">" * └───┘   └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┘  └┘    └┘    └┘\n"</span> +</span><br><span class="line">               <span class="string">" * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐ ┌───┬───┬───┐ ┌───┬───┬───┬───┐\n"</span> +</span><br><span class="line">               <span class="string">" * │~ `│! 1│@ 2│# 3│$ 4│% 5│^ 6│&amp; 7│* 8│( 9│) 0│_ -│+ =│ BacSp │ │Ins│Hom│PUp│ │N L│ / │ * │ - │\n"</span> +</span><br><span class="line">               <span class="string">" * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤ ├───┼───┼───┤ ├───┼───┼───┼───┤\n"</span> +</span><br><span class="line">               <span class="string">" * │ Tab │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │&#123; [│&#125; ]│ | \\ │ │Del│End│PDn│ │ 7 │ 8 │ 9 │   │\n"</span> +</span><br><span class="line">               <span class="string">" * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤ └───┴───┴───┘ ├───┼───┼───┤ + │\n"</span> +</span><br><span class="line">               <span class="string">" * │ Caps │ A │ S │ D │ F │ G │ H │ J │ K │ L │: ;│\" '│ Enter  │               │ 4 │ 5 │ 6 │   │\n"</span> +</span><br><span class="line">               <span class="string">" * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤     ┌───┐     ├───┼───┼───┼───┤\n"</span> +</span><br><span class="line">               <span class="string">" * │ Shift  │ Z │ X │ C │ V │ B │ N │ M │&lt; ,│&gt; .│? /│  Shift   │     │ ↑ │     │ 1 │ 2 │ 3 │   │\n"</span> +</span><br><span class="line">               <span class="string">" * ├─────┬──┴─┬─┴──┬┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤ ┌───┼───┼───┐ ├───┴───┼───┤ E││\n"</span> +</span><br><span class="line">               <span class="string">" * │ Ctrl│    │Alt │         Space         │ Alt│    │    │Ctrl│ │ ← │ ↓ │ → │ │   0   │ . │←─┘│\n"</span> +</span><br><span class="line">               <span class="string">" * └─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘\n"</span> +</span><br><span class="line">               <span class="string">" */"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="曹尼玛-1"><a href="#曹尼玛-1" class="headerlink" title="曹尼玛"></a>曹尼玛</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"/***\n"</span> +</span><br><span class="line">        <span class="string">" *      ┌─┐       ┌─┐\n"</span> +</span><br><span class="line">        <span class="string">" *   ┌──┘ ┴───────┘ ┴──┐\n"</span> +</span><br><span class="line">        <span class="string">" *   │                 │\n"</span> +</span><br><span class="line">        <span class="string">" *   │       ───       │\n"</span> +</span><br><span class="line">        <span class="string">" *   │  ─┬┘       └┬─  │\n"</span> +</span><br><span class="line">        <span class="string">" *   │                 │\n"</span> +</span><br><span class="line">        <span class="string">" *   │       ─┴─       │\n"</span> +</span><br><span class="line">        <span class="string">" *   │                 │\n"</span> +</span><br><span class="line">        <span class="string">" *   └───┐         ┌───┘\n"</span> +</span><br><span class="line">        <span class="string">" *       │         │\n"</span> +</span><br><span class="line">        <span class="string">" *       │         │\n"</span> +</span><br><span class="line">        <span class="string">" *       │         │\n"</span> +</span><br><span class="line">        <span class="string">" *       │         └──────────────┐\n"</span> +</span><br><span class="line">        <span class="string">" *       │                        │\n"</span> +</span><br><span class="line">        <span class="string">" *       │                        ├─┐\n"</span> +</span><br><span class="line">        <span class="string">" *       │                        ┌─┘\n"</span> +</span><br><span class="line">        <span class="string">" *       │                        │\n"</span> +</span><br><span class="line">        <span class="string">" *       └─┐  ┐  ┌───────┬──┐  ┌──┘\n"</span> +</span><br><span class="line">        <span class="string">" *         │ ─┤ ─┤       │ ─┤ ─┤\n"</span> +</span><br><span class="line">        <span class="string">" *         └──┴──┘       └──┴──┘\n"</span> +</span><br><span class="line">        <span class="string">" *                神兽保佑\n"</span> +</span><br><span class="line">        <span class="string">" *               代码无BUG!\n"</span> +</span><br><span class="line">        <span class="string">" */"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="梦比优斯"><a href="#梦比优斯" class="headerlink" title="梦比优斯"></a>梦比优斯</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"/***\n"</span> +</span><br><span class="line">        <span class="string">" *_______________#########_______________________\n"</span> +</span><br><span class="line">        <span class="string">" *______________############_____________________\n"</span> +</span><br><span class="line">        <span class="string">" *______________#############____________________\n"</span> +</span><br><span class="line">        <span class="string">" *_____________##__###########___________________\n"</span> +</span><br><span class="line">        <span class="string">" *____________###__######_#####__________________\n"</span> +</span><br><span class="line">        <span class="string">" *____________###_#######___####_________________\n"</span> +</span><br><span class="line">        <span class="string">" *___________###__##########_####________________\n"</span> +</span><br><span class="line">        <span class="string">" *__________####__###########_####_______________\n"</span> +</span><br><span class="line">        <span class="string">" *________#####___###########__#####_____________\n"</span> +</span><br><span class="line">        <span class="string">" *_______######___###_########___#####___________\n"</span> +</span><br><span class="line">        <span class="string">" *_______#####___###___########___######_________\n"</span> +</span><br><span class="line">        <span class="string">" *______######___###__###########___######_______\n"</span> +</span><br><span class="line">        <span class="string">" *_____######___####_##############__######______\n"</span> +</span><br><span class="line">        <span class="string">" *____#######__#####################_#######_____\n"</span> +</span><br><span class="line">        <span class="string">" *____#######__##############################____\n"</span> +</span><br><span class="line">        <span class="string">" *___#######__######_#################_#######___\n"</span> +</span><br><span class="line">        <span class="string">" *___#######__######_######_#########___######___\n"</span> +</span><br><span class="line">        <span class="string">" *___#######____##__######___######_____######___\n"</span> +</span><br><span class="line">        <span class="string">" *___#######________######____#####_____#####____\n"</span> +</span><br><span class="line">        <span class="string">" *____######________#####_____#####_____####_____\n"</span> +</span><br><span class="line">        <span class="string">" *_____#####________####______#####_____###______\n"</span> +</span><br><span class="line">        <span class="string">" *______#####______;###________###______#________\n"</span> +</span><br><span class="line">        <span class="string">" *________##_______####________####______________\n"</span> +</span><br><span class="line">        <span class="string">" */"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="马"><a href="#马" class="headerlink" title="马"></a>马</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"                              _(\\_/) \n"</span> +</span><br><span class="line">               <span class="string">"                             ,((((^`\\\n"</span> +</span><br><span class="line">               <span class="string">"                            ((((  (6 \\ \n"</span> +</span><br><span class="line">               <span class="string">"                          ,((((( ,    \\\n"</span> +</span><br><span class="line">               <span class="string">"      ,,,_              ,(((((  /\"._  ,`,\n"</span> +</span><br><span class="line">               <span class="string">"     ((((\\\\ ,...       ,((((   /    `-.-'\n"</span> +</span><br><span class="line">               <span class="string">"     )))  ;'    `\"'\"'\"\"((((   (      \n"</span> +</span><br><span class="line">               <span class="string">"    (((  /            (((      \\\n"</span> +</span><br><span class="line">               <span class="string">"     )) |                      |\n"</span> +</span><br><span class="line">               <span class="string">"    ((  |        .       '     |\n"</span> +</span><br><span class="line">               <span class="string">"    ))  \\     _ '      `t   ,.')\n"</span> +</span><br><span class="line">               <span class="string">"    (   |   y;- -,-\"\"'\"-.\\   \\/  \n"</span> +</span><br><span class="line">               <span class="string">"    )   / ./  ) /         `\\  \\\n"</span> +</span><br><span class="line">               <span class="string">"       |./   ( (           / /'\n"</span> +</span><br><span class="line">               <span class="string">"       ||     \\\\          //'|\n"</span> +</span><br><span class="line">               <span class="string">"       ||      \\\\       _//'||\n"</span> +</span><br><span class="line">               <span class="string">"       ||       ))     |_/  ||\n"</span> +</span><br><span class="line">               <span class="string">"       \\_\\     |_/          ||\n"</span> +</span><br><span class="line">               <span class="string">"       `'\"                  \\_\\\n"</span> +</span><br><span class="line">               <span class="string">"                            `'\" "</span>);</span><br></pre></td></tr></table></figure>
+
+<p>二狗子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"/***\n"</span> +</span><br><span class="line">             <span class="string">" *          .,:,,,                                        .::,,,::.\n"</span> +</span><br><span class="line">             <span class="string">" *        .::::,,;;,                                  .,;;:,,....:i:\n"</span> +</span><br><span class="line">             <span class="string">" *        :i,.::::,;i:.      ....,,:::::::::,....   .;i:,.  ......;i.\n"</span> +</span><br><span class="line">             <span class="string">" *        :;..:::;::::i;,,:::;:,,,,,,,,,,..,.,,:::iri:. .,:irsr:,.;i.\n"</span> +</span><br><span class="line">             <span class="string">" *        ;;..,::::;;;;ri,,,.                    ..,,:;s1s1ssrr;,.;r,\n"</span> +</span><br><span class="line">             <span class="string">" *        :;. ,::;ii;:,     . ...................     .;iirri;;;,,;i,\n"</span> +</span><br><span class="line">             <span class="string">" *        ,i. .;ri:.   ... ............................  .,,:;:,,,;i:\n"</span> +</span><br><span class="line">             <span class="string">" *        :s,.;r:... ....................................... .::;::s;\n"</span> +</span><br><span class="line">             <span class="string">" *        ,1r::. .............,,,.,,:,,........................,;iir;\n"</span> +</span><br><span class="line">             <span class="string">" *        ,s;...........     ..::.,;:,,.          ...............,;1s\n"</span> +</span><br><span class="line">             <span class="string">" *       :i,..,.              .,:,,::,.          .......... .......;1,\n"</span> +</span><br><span class="line">             <span class="string">" *      ir,....:rrssr;:,       ,,.,::.     .r5S9989398G95hr;. ....,.:s,\n"</span> +</span><br><span class="line">             <span class="string">" *     ;r,..,s9855513XHAG3i   .,,,,,,,.  ,S931,.,,.;s;s&amp;BHHA8s.,..,..:r:\n"</span> +</span><br><span class="line">             <span class="string">" *    :r;..rGGh,  :SAG;;G@BS:.,,,,,,,,,.r83:      hHH1sXMBHHHM3..,,,,.ir.\n"</span> +</span><br><span class="line">             <span class="string">" *   ,si,.1GS,   sBMAAX&amp;MBMB5,,,,,,:,,.:&amp;8       3@HXHBMBHBBH#X,.,,,,,,rr\n"</span> +</span><br><span class="line">             <span class="string">" *   ;1:,,SH:   .A@&amp;&amp;B#&amp;8H#BS,,,,,,,,,.,5XS,     3@MHABM&amp;59M#As..,,,,:,is,\n"</span> +</span><br><span class="line">             <span class="string">" *  .rr,,,;9&amp;1   hBHHBB&amp;8AMGr,,,,,,,,,,,:h&amp;&amp;9s;   r9&amp;BMHBHMB9:  . .,,,,;ri.\n"</span> +</span><br><span class="line">             <span class="string">" *  :1:....:5&amp;XSi;r8BMBHHA9r:,......,,,,:ii19GG88899XHHH&amp;GSr.      ...,:rs.\n"</span> +</span><br><span class="line">             <span class="string">" *  ;s.     .:sS8G8GG889hi.        ....,,:;:,.:irssrriii:,.        ...,,i1,\n"</span> +</span><br><span class="line">             <span class="string">" *  ;1,         ..,....,,isssi;,        .,,.                      ....,.i1,\n"</span> +</span><br><span class="line">             <span class="string">" *  ;h:               i9HHBMBBHAX9:         .                     ...,,,rs,\n"</span> +</span><br><span class="line">             <span class="string">" *  ,1i..            :A#MBBBBMHB##s                             ....,,,;si.\n"</span> +</span><br><span class="line">             <span class="string">" *  .r1,..        ,..;3BMBBBHBB#Bh.     ..                    ....,,,,,i1;\n"</span> +</span><br><span class="line">             <span class="string">" *   :h;..       .,..;,1XBMMMMBXs,.,, .. :: ,.               ....,,,,,,ss.\n"</span> +</span><br><span class="line">             <span class="string">" *    ih: ..    .;;;, ;;:s58A3i,..    ,. ,.:,,.             ...,,,,,:,s1,\n"</span> +</span><br><span class="line">             <span class="string">" *    .s1,....   .,;sh,  ,iSAXs;.    ,.  ,,.i85            ...,,,,,,:i1;\n"</span> +</span><br><span class="line">             <span class="string">" *     .rh: ...     rXG9XBBM#M#MHAX3hss13&amp;&amp;HHXr         .....,,,,,,,ih;\n"</span> +</span><br><span class="line">             <span class="string">" *      .s5: .....    i598X&amp;&amp;A&amp;AAAAAA&amp;XG851r:       ........,,,,:,,sh;\n"</span> +</span><br><span class="line">             <span class="string">" *      . ihr, ...  .         ..                    ........,,,,,;11:.\n"</span> +</span><br><span class="line">             <span class="string">" *         ,s1i. ...  ..,,,..,,,.,,.,,.,..       ........,,.,,.;s5i.\n"</span> +</span><br><span class="line">             <span class="string">" *          .:s1r,......................       ..............;shs,\n"</span> +</span><br><span class="line">             <span class="string">" *          . .:shr:.  ....                 ..............,ishs.\n"</span> +</span><br><span class="line">             <span class="string">" *              .,issr;,... ...........................,is1s;.\n"</span> +</span><br><span class="line">             <span class="string">" *                 .,is1si;:,....................,:;ir1sr;,\n"</span> +</span><br><span class="line">             <span class="string">" *                    ..:isssssrrii;::::::;;iirsssssr;:..\n"</span> +</span><br><span class="line">             <span class="string">" *                         .,::iiirsssssssssrri;;:.\n"</span> +</span><br><span class="line">             <span class="string">" */"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="老鼠-1"><a href="#老鼠-1" class="headerlink" title="老鼠"></a>老鼠</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"/***\n"</span> +</span><br><span class="line">                <span class="string">" *  .--,       .--,\n"</span> +</span><br><span class="line">                <span class="string">" * ( (  \\.---./  ) )\n"</span> +</span><br><span class="line">                <span class="string">" *  '.__/o   o\\__.'\n"</span> +</span><br><span class="line">                <span class="string">" *     &#123;=  ^  =&#125;\n"</span> +</span><br><span class="line">                <span class="string">" *      &gt;  -  &lt;\n"</span> +</span><br><span class="line">                <span class="string">" *     /       \\\n"</span> +</span><br><span class="line">                <span class="string">" *    //       \\\\\n"</span> +</span><br><span class="line">                <span class="string">" *   //|   .   |\\\\\n"</span> +</span><br><span class="line">                <span class="string">" *   \"'\\       /'\"_.-~^`'-.\n"</span> +</span><br><span class="line">                <span class="string">" *      \\  _  /--'         `\n"</span> +</span><br><span class="line">                <span class="string">" *    ___)( )(___\n"</span> +</span><br><span class="line">                <span class="string">" *   (((__) (__)))    高山仰止,景行行止.虽不能至,心向往之。\n"</span> +</span><br><span class="line">                <span class="string">" */"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="二狗子-1"><a href="#二狗子-1" class="headerlink" title="二狗子"></a>二狗子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"\n"</span> +</span><br><span class="line">             <span class="string">"/***\n"</span> +</span><br><span class="line">             <span class="string">" * ░░░░░░░░░░░░░░░░░░░░░░░░▄░░\n"</span> +</span><br><span class="line">             <span class="string">" * ░░░░░░░░░▐█░░░░░░░░░░░▄▀▒▌░\n"</span> +</span><br><span class="line">             <span class="string">" * ░░░░░░░░▐▀▒█░░░░░░░░▄▀▒▒▒▐\n"</span> +</span><br><span class="line">             <span class="string">" * ░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐\n"</span> +</span><br><span class="line">             <span class="string">" * ░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐\n"</span> +</span><br><span class="line">             <span class="string">" * ░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌\n"</span> +</span><br><span class="line">             <span class="string">" * ░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒\n"</span> +</span><br><span class="line">             <span class="string">" * ░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐\n"</span> +</span><br><span class="line">             <span class="string">" * ░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄\n"</span> +</span><br><span class="line">             <span class="string">" * ░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒\n"</span> +</span><br><span class="line">             <span class="string">" * ▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒\n"</span> +</span><br><span class="line">             <span class="string">" * 单身狗就这样默默地看着你，一句话也不说。\n"</span> +</span><br><span class="line">             <span class="string">" */\n"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="美女-2"><a href="#美女-2" class="headerlink" title="美女"></a>美女</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"/***\n"</span> +</span><br><span class="line">               <span class="string">" *                    .::::.\n"</span> +</span><br><span class="line">               <span class="string">" *                  .::::::::.\n"</span> +</span><br><span class="line">               <span class="string">" *                 :::::::::::  \n"</span> +</span><br><span class="line">               <span class="string">" *             ..:::::::::::'\n"</span> +</span><br><span class="line">               <span class="string">" *           '::::::::::::'\n"</span> +</span><br><span class="line">               <span class="string">" *             .::::::::::\n"</span> +</span><br><span class="line">               <span class="string">" *        '::::::::::::::..\n"</span> +</span><br><span class="line">               <span class="string">" *             ..::::::::::::.\n"</span> +</span><br><span class="line">               <span class="string">" *           ``::::::::::::::::\n"</span> +</span><br><span class="line">               <span class="string">" *            ::::``:::::::::'        .:::.\n"</span> +</span><br><span class="line">               <span class="string">" *           ::::'   ':::::'       .::::::::.\n"</span> +</span><br><span class="line">               <span class="string">" *         .::::'      ::::     .:::::::'::::.\n"</span> +</span><br><span class="line">               <span class="string">" *        .:::'       :::::  .:::::::::' ':::::.\n"</span> +</span><br><span class="line">               <span class="string">" *       .::'        :::::.:::::::::'      ':::::.\n"</span> +</span><br><span class="line">               <span class="string">" *      .::'         ::::::::::::::'         ``::::.\n"</span> +</span><br><span class="line">               <span class="string">" *  ...:::           ::::::::::::'              ``::.\n"</span> +</span><br><span class="line">               <span class="string">" * ```` ':.          ':::::::::'                  ::::..\n"</span> +</span><br><span class="line">               <span class="string">" *                    '.:::::'                    ':'````..\n"</span> +</span><br><span class="line">               <span class="string">" */"</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>你懂得！虽然不太想自己的代码里出现这种注释，但是没准会出现，因为要吐槽一下！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *                                         ,s555SB@@&amp;</span></span><br><span class="line"><span class="comment"> *                                      :9H####@@@@<span class="doctag">@Xi</span></span></span><br><span class="line"><span class="comment"> *                                     1@@@@@@@@@@@@@@8</span></span><br><span class="line"><span class="comment"> *                                   ,8@@@@@@@@<span class="doctag">@B</span>@@@@@@8</span></span><br><span class="line"><span class="comment"> *                                  :B@@@<span class="doctag">@X</span>3hi8Bs;B@@@@<span class="doctag">@Ah</span>,</span></span><br><span class="line"><span class="comment"> *             ,8i                  r@@<span class="doctag">@B</span>:     1S ,M@@@@@@#8;</span></span><br><span class="line"><span class="comment"> *            1AB35.i:               X@@8 .   SGhr ,A@@@@@@@<span class="doctag">@S</span></span></span><br><span class="line"><span class="comment"> *            1@h31MX8                18Hhh3i .i3r ,A@@@@@@@@@5</span></span><br><span class="line"><span class="comment"> *            ;@&amp;i,58r5                 rGSS:     :B@@@@@@@@@<span class="doctag">@A</span></span></span><br><span class="line"><span class="comment"> *             1#i  . 9i                 hX.  .: .5@@@@@@@@@@@1</span></span><br><span class="line"><span class="comment"> *              sG1,  ,G53s.              9#Xi;hS5 3B@@@@@@<span class="doctag">@B</span>1</span></span><br><span class="line"><span class="comment"> *               .h8h.,A@@<span class="doctag">@MXSs</span>,           #<span class="doctag">@H</span>1:    3ssSSX@1</span></span><br><span class="line"><span class="comment"> *               s ,@@@@@@@@@@@<span class="doctag">@Xhi</span>,       r#@<span class="doctag">@X</span>1s9M8    .GA981</span></span><br><span class="line"><span class="comment"> *               ,. rS8H#@@@@@@@@@@#HG51;.  .h31i;9@r    .8@@@<span class="doctag">@BS</span>;i;</span></span><br><span class="line"><span class="comment"> *                .19AXXXAB@@@@@@@@@@@@@@#MHXG893hrX#XGGXM@@@@@@@@@<span class="doctag">@MS</span></span></span><br><span class="line"><span class="comment"> *                s@<span class="doctag">@MM</span>@@<span class="doctag">@hsX</span>#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&amp;,</span></span><br><span class="line"><span class="comment"> *              :GB@#3G@<span class="doctag">@Brs</span> ,1GM@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<span class="doctag">@B</span>,</span></span><br><span class="line"><span class="comment"> *            .hM@@@#@@#MX 51  r;iSGAM@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@8</span></span><br><span class="line"><span class="comment"> *          :3B@@@@@@@@@@@&amp;9@h :Gs   .;sSXH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:</span></span><br><span class="line"><span class="comment"> *      s&amp;HA#@@@@@@@@@@@@@<span class="doctag">@M</span>89A;.8S.       ,r3@@@@@@@@@@@@@@@@@@@@@@@@@@<span class="doctag">@r</span></span></span><br><span class="line"><span class="comment"> *   ,13B@@@@@@@@@@@@@@@@@@@5 5B3 ;.         ;@@@@@@@@@@@@@@@@@@@@@@@@@@<span class="doctag">@i</span></span></span><br><span class="line"><span class="comment"> *  5#@@#&amp;@@@@@@@@@@@@@@@@@@9  .39:          ;@@@@@@@@@@@@@@@@@@@@@@@@@@@;</span></span><br><span class="line"><span class="comment"> *  9@@<span class="doctag">@X</span>:MM@@@@@@@@@@@@@@@#;    ;31.         H@@@@@@@@@@@@@@@@@@@@@@@@@@:</span></span><br><span class="line"><span class="comment"> *   SH#<span class="doctag">@B</span>9.rM@@@@@@@@@@@@<span class="doctag">@B</span>       :.         3@@@@@@@@@@@@@@@@@@@@@@@@@@5</span></span><br><span class="line"><span class="comment"> *     ,:.   9@@@@@@@@@@@#HB5                 .M@@@@@@@@@@@@@@@@@@@@@@@@<span class="doctag">@B</span></span></span><br><span class="line"><span class="comment"> *           ,ssirhSM@&amp;1;i19911i,.             s@@@@@@@@@@@@@@@@@@@@@@@@@<span class="doctag">@S</span></span></span><br><span class="line"><span class="comment"> *              ,,,rHAri1h1rh&amp;@#353Sh:          8@@@@@@@@@@@@@@@@@@@@@@@@@#:</span></span><br><span class="line"><span class="comment"> *            .A3hH@#5S553&amp;@@#h   i:i9S          #@@@@@@@@@@@@@@@@@@@@@@@@<span class="doctag">@A</span>.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *    又看源码，看你妹妹呀！</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="WanderROS 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="WanderROS 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/05/13/%E5%9C%A8%E7%BC%96%E7%A8%8B%E7%9A%84%E8%B7%AF%E4%B8%8A%E8%B6%8A%E8%B5%B0%E8%B6%8A/">在编程的路上越走越...</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 WanderROS 的个人博客">WanderROS</a></p>
+  <p><span>发布时间:</span>2020年05月13日 - 19:31</p>
+  <p><span>最后更新:</span>2020年10月01日 - 16:52</p>
+  <p><span>原始链接:</span><a href="/2020/05/13/%E5%9C%A8%E7%BC%96%E7%A8%8B%E7%9A%84%E8%B7%AF%E4%B8%8A%E8%B6%8A%E8%B5%B0%E8%B6%8A/" title="在编程的路上越走越...">https://wanderros.github.io/2020/05/13/%E5%9C%A8%E7%BC%96%E7%A8%8B%E7%9A%84%E8%B7%AF%E4%B8%8A%E8%B6%8A%E8%B5%B0%E8%B6%8A/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://wanderros.github.io/2020/05/13/%E5%9C%A8%E7%BC%96%E7%A8%8B%E7%9A%84%E8%B7%AF%E4%B8%8A%E8%B6%8A%E8%B5%B0%E8%B6%8A/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+
+      
+</div>
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Code/" rel="tag"><i class="fa fa-tag"></i> Code</a>
+          
+            <a href="/tags/Joke/" rel="tag"><i class="fa fa-tag"></i> Joke</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/13/Docker-Swagger-Quick-Start/" rel="next" title="Docker Swagger Quick Start">
+                <i class="fa fa-chevron-left"></i> Docker Swagger Quick Start
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/13/%E9%A1%B9%E7%9B%AE%E8%BD%AF%E4%BB%B6%E7%AD%89%E7%9A%84%E7%89%88%E6%9C%AC/" rel="prev" title="项目软件等的版本">
+                项目软件等的版本 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+<div>
+		
+    	<!-- Link Gitalk 的支持文件  -->
+	<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+	<div id="gitalk-container"></div>     <script type="text/javascript">
+		var gitalk = new Gitalk({
+			clientID: 'bd073c3374c2b1a924b0',
+			clientSecret: 'e3818342fe0fa0f03ab0997cfe81ae9c450ec954',
+			repo: 'wanderros.github.io',
+			owner: 'WanderROS',
+			admin: ['WanderROS'],
+			id: location.pathname,
+			distractionFreeMode: 'true'
+		});
+		gitalk.render('gitalk-container');
+	</script> 
+	<!-- Gitalk end -->
+
+		
+	</div>
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+ <div id="gitalk-container"></div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="WanderROS" />
+            
+              <p class="site-author-name" itemprop="name">WanderROS</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">145</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wanderROS" target="_blank" title="GitHub">
+                      GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1194409532@qq.com.com" target="_blank" title="E-Mail">
+                      E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">2.1.</span> <span class="nav-text">注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#佛祖保佑"><span class="nav-number">2.1.1.</span> <span class="nav-text">佛祖保佑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#佛祖都救不了"><span class="nav-number">2.1.2.</span> <span class="nav-text">佛祖都救不了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无可奉告"><span class="nav-number">2.1.3.</span> <span class="nav-text">无可奉告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#看书"><span class="nav-number">2.1.4.</span> <span class="nav-text">看书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BadCode"><span class="nav-number">2.1.5.</span> <span class="nav-text">BadCode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#胜利"><span class="nav-number">2.1.6.</span> <span class="nav-text">胜利</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服了"><span class="nav-number">2.1.7.</span> <span class="nav-text">服了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#看什么源码"><span class="nav-number">2.1.8.</span> <span class="nav-text">看什么源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#喷火龙"><span class="nav-number">2.1.9.</span> <span class="nav-text">喷火龙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#曹尼玛"><span class="nav-number">2.1.10.</span> <span class="nav-text">曹尼玛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#曹尼玛2"><span class="nav-number">2.1.11.</span> <span class="nav-text">曹尼玛2#</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#神猪"><span class="nav-number">2.1.12.</span> <span class="nav-text">神猪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#键盘"><span class="nav-number">2.1.13.</span> <span class="nav-text">键盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#美女"><span class="nav-number">2.1.14.</span> <span class="nav-text">美女</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工程师"><span class="nav-number">2.1.15.</span> <span class="nav-text">工程师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二狗子"><span class="nav-number">2.1.16.</span> <span class="nav-text">二狗子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#皮卡丘"><span class="nav-number">2.1.17.</span> <span class="nav-text">皮卡丘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顶"><span class="nav-number">2.1.18.</span> <span class="nav-text">顶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二狗子·真"><span class="nav-number">2.1.19.</span> <span class="nav-text">二狗子·真</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滑稽"><span class="nav-number">2.1.20.</span> <span class="nav-text">滑稽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二狗子·二"><span class="nav-number">2.1.21.</span> <span class="nav-text">二狗子·二#</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#喷火龙·飞"><span class="nav-number">2.1.22.</span> <span class="nav-text">喷火龙·飞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#骷髅"><span class="nav-number">2.1.23.</span> <span class="nav-text">骷髅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#老鼠"><span class="nav-number">2.1.24.</span> <span class="nav-text">老鼠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#悲伤的曹尼玛"><span class="nav-number">2.1.25.</span> <span class="nav-text">悲伤的曹尼玛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#美女-1"><span class="nav-number">2.1.26.</span> <span class="nav-text">美女</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比鲁斯"><span class="nav-number">2.1.27.</span> <span class="nav-text">比鲁斯</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-out-println"><span class="nav-number">2.2.</span> <span class="nav-text">System.out.println</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#佛祖"><span class="nav-number">2.2.1.</span> <span class="nav-text">佛祖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标准键盘"><span class="nav-number">2.2.2.</span> <span class="nav-text">标准键盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#曹尼玛-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">曹尼玛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梦比优斯"><span class="nav-number">2.2.4.</span> <span class="nav-text">梦比优斯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#马"><span class="nav-number">2.2.5.</span> <span class="nav-text">马</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#老鼠-1"><span class="nav-number">2.2.6.</span> <span class="nav-text">老鼠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二狗子-1"><span class="nav-number">2.2.7.</span> <span class="nav-text">二狗子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#美女-2"><span class="nav-number">2.2.8.</span> <span class="nav-text">美女</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WanderROS</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+-->
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共379.7k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('Please input Password:') !== '') {
+                alert('Password Error！');
+                if (history.length === 1) {
+                    location.replace("https://wanderros.github.io/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="ELK,Logstash," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="WanderROS'S Daily" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="简介Logstash是一个非常强大的工具，可以进行解析、丰富、转换以及缓冲来自各种数据源的数据，ELK栈就是一种非常成熟的开源日志分析搜索引擎技术栈，其中的L就是Logstash的缩写，当然现在由于FileBeats的出现，现在的技术栈称为ELKB，Logstash可以帮利用它自己的Filter帮我们对数据进行解析，丰富，转换等！  开始环境说明 ELK版本：7.6.2 Docker版本：19.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Logstash Quick Start">
+<meta property="og:url" content="https://wanderros.github.io/2020/05/11/Logstash-Quick-Start/index.html">
+<meta property="og:site_name" content="WanderROS&#39;S Daily">
+<meta property="og:description" content="简介Logstash是一个非常强大的工具，可以进行解析、丰富、转换以及缓冲来自各种数据源的数据，ELK栈就是一种非常成熟的开源日志分析搜索引擎技术栈，其中的L就是Logstash的缩写，当然现在由于FileBeats的出现，现在的技术栈称为ELKB，Logstash可以帮利用它自己的Filter帮我们对数据进行解析，丰富，转换等！  开始环境说明 ELK版本：7.6.2 Docker版本：19.0">
+<meta property="og:image" content="https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt5939ba2e40ba0790/5d0d59d096d2d1b65a98422c/diagram-logstash-inputs.svg">
+<meta property="og:image" content="https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltd908f368097df15a/5d0d59ed970556dd5800ed8b/diagram-logstash-filters.svg">
+<meta property="og:image" content="https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt169c0535507b407e/5d0d5a0fb58121dc58ed6a40/diagram-logstash-outputs.svg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190815211442347.png">
+<meta property="article:published_time" content="2020-05-11T00:25:40.000Z">
+<meta property="article:modified_time" content="2020-10-01T08:52:15.879Z">
+<meta property="article:author" content="WanderROS">
+<meta property="article:tag" content="ELK">
+<meta property="article:tag" content="Logstash">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt5939ba2e40ba0790/5d0d59d096d2d1b65a98422c/diagram-logstash-inputs.svg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wanderros.github.io/2020/05/11/Logstash-Quick-Start/"/>
+
+
+
+
+
+  <title>Logstash Quick Start | WanderROS'S Daily</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/WanderROS" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WanderROS'S Daily</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-足迹">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            足迹
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wanderros.github.io/2020/05/11/Logstash-Quick-Start/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WanderROS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WanderROS'S Daily">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Logstash Quick Start</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-11T08:25:40+08:00">
+                2020-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ELK/" itemprop="url" rel="index">
+                    <span itemprop="name">ELK</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><a href="https://www.elastic.co/cn/logstash" target="_blank" rel="noopener">Logstash</a>是一个非常强大的工具，可以进行解析、丰富、转换以及缓冲来自各种数据源的数据，ELK栈就是一种非常成熟的开源日志分析搜索引擎技术栈，其中的L就是Logstash的缩写，当然现在由于FileBeats的出现，现在的技术栈称为ELKB，Logstash可以帮利用它自己的Filter帮我们对数据进行解析，丰富，转换等！</p>
+<hr>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><ol>
+<li>ELK版本：7.6.2</li>
+<li>Docker版本：19.03.8</li>
+<li>操作系统：macOS Catalina 10.15.4</li>
+<li>处理器： i5 四核 3.3GHz</li>
+<li>内存：8G DDR3</li>
+</ol>
+<h2 id="Logstash模块"><a href="#Logstash模块" class="headerlink" title="Logstash模块"></a>Logstash模块</h2><ol>
+<li>Logstash 能够动态地采集、转换和传输数据，不受格式或复杂度的影响。利用 Grok 从非结构化数据中派生出结构，从 IP 地址解码出地理坐标，匿名化或排除敏感字段，并简化整体处理过程；</li>
+<li><strong>输入（必须）</strong>：数据往往以各种各样的形式，或分散或集中地存在于很多系统中，可以在同一时间从众多常用来源捕捉事件、能够以连续的流式传输方式捕获日志、指标、Web 应用、数据存储以及各种 AWS 服务采集数据；<ul>
+<li><img src="https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt5939ba2e40ba0790/5d0d59d096d2d1b65a98422c/diagram-logstash-inputs.svg" alt="输入"></li>
+<li><a href="https://www.elastic.co/guide/en/logstash/current/input-plugins.html" target="_blank" rel="noopener">输入源格式</a></li>
+</ul>
+</li>
+<li><strong>过滤器（可选）</strong>：解析各个事件，识别已命名的字段以构建结构，并将它们转换成通用格式，以便更轻松、更快速地分析和实现商业价值；<ul>
+<li>利用 Grok 从非结构化数据中派生出结构</li>
+<li>从 IP 地址破译出地理坐标</li>
+<li>将 PII 数据匿名化，完全排除敏感字段</li>
+<li>简化整体处理，不受数据源、格式或架构的影响</li>
+<li><img src="https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltd908f368097df15a/5d0d59ed970556dd5800ed8b/diagram-logstash-filters.svg" alt="过滤器"></li>
+<li><a href="https://www.elastic.co/guide/en/logstash/current/filter-plugins.html" target="_blank" rel="noopener">过滤器库格式</a></li>
+</ul>
+</li>
+<li><strong>输出（必须）</strong>：Elasticsearch 是我们的首选输出方向，但是也可以导出给其他的搜索引擎以及日志分析框架；<ul>
+<li><img src="https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt169c0535507b407e/5d0d5a0fb58121dc58ed6a40/diagram-logstash-outputs.svg" alt="输出"></li>
+<li><a href="https://www.elastic.co/guide/en/logstash/current/output-plugins.html" target="_blank" rel="noopener">输出选择</a></li>
+</ul>
+</li>
+<li>插件：可插拔框架，拥有 200 多个插件（截止2020-05-11为止），可以将不同的输入选择、过滤器和输出选择混合搭配、精心安排，当然也可以去构建一个插件，官方提供了一个极好的插件开发 API 和插件生成器；</li>
+</ol>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><ol>
+<li>Logstash 可以很方便地和Beats一起合作</li>
+<li>Logstash 可以和那些著名的云厂商的服务一起合作处理数据</li>
+<li>Logstash 可以和信息消息队列类的数据分析以及存储服务，比如redis或kafka一起协作</li>
+<li>Logstash 可以使用JDBC来访问RDMS数据</li>
+<li>Logstash 可以和IoT设备一起处理它们的数据</li>
+<li>Logstash 可以输出到很多其他目的地</li>
+<li>Beats的数据可以有如下的三种方式导入到Elasticsearch中：<ul>
+<li>Beats ==&gt; Elasticsearch</li>
+<li><strong>Beats ==&gt; Logstash ==&gt; Elasticsearch</strong></li>
+<li><strong>Beats ==&gt; Kafka ==&gt; Logstash ==&gt; Elasticsearch</strong></li>
+</ul>
+</li>
+</ol>
+<h2 id="安装-amp-运行"><a href="#安装-amp-运行" class="headerlink" title="安装&amp;运行"></a>安装&amp;运行</h2><ol>
+<li><p>macOS上安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install logstash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>docker下安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull logstash:7.6.2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>基础运行：默认情况下，我们需要跟上一些选项才可以启动Logstash，否则它会退出，Logstash管道有两个必需元素，输入和输出，以及一个可选元素filter； 输入插件使用来自源的数据，过滤器插件在您指定时修改数据，输出插件将数据写入目标：</p>
+<ol>
+<li><p><img src="https://img-blog.csdnimg.cn/20190815211442347.png" alt="Logstash工作流程"></p>
+</li>
+<li><p>测试Logstash的使用，运行最基本的输入输出管道：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 直接从终端获取数据，然后直接输出</span></span><br><span class="line">logstash -e 'input &#123; stdin &#123; &#125; &#125; output &#123; stdout &#123;&#125; &#125;'</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试输出：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Sending Logstash logs to /usr/local/Cellar/logstash/7.6.2/libexec/logs which is now configured via log4j2.properties</span><br><span class="line">[2020-05-11T13:49:37,785][WARN ][logstash.config.source.multilocal] Ignoring the 'pipelines.yml' file because modules or command line options are specified</span><br><span class="line">[2020-05-11T13:49:37,899][INFO ][logstash.runner          ] Starting Logstash &#123;"logstash.version"=&gt;"7.6.2"&#125;</span><br><span class="line">[2020-05-11T13:49:39,301][INFO ][org.reflections.Reflections] Reflections took 45 ms to scan 1 urls, producing 20 keys and 40 values</span><br><span class="line">[2020-05-11T13:49:40,552][WARN ][org.logstash.instrument.metrics.gauge.LazyDelegatingGauge][main] A gauge metric of an unknown type (org.jruby.RubyArray) has been created for key: cluster_uuids. This may result in invalid serialization.  It is recommended to log an issue to the responsible developer/development team.</span><br><span class="line">[2020-05-11T13:49:40,576][INFO ][logstash.javapipeline    ][main] Starting pipeline &#123;:pipeline_id=&gt;"main", "pipeline.workers"=&gt;4, "pipeline.batch.size"=&gt;125, "pipeline.batch.delay"=&gt;50, "pipeline.max_inflight"=&gt;500, "pipeline.sources"=&gt;["config string"], :thread=&gt;"#&lt;Thread:0x4378e094 run&gt;"&#125;</span><br><span class="line">[2020-05-11T13:49:41,463][INFO ][logstash.javapipeline    ][main] Pipeline started &#123;"pipeline.id"=&gt;"main"&#125;</span><br><span class="line">The stdin plugin is now waiting for input:</span><br><span class="line">[2020-05-11T13:49:41,517][INFO ][logstash.agent           ] Pipelines running &#123;:count=&gt;1, :running_pipelines=&gt;[:main], :non_running_pipelines=&gt;[]&#125;</span><br><span class="line">[2020-05-11T13:49:41,747][INFO ][logstash.agent           ] Successfully started Logstash API endpoint &#123;:port=&gt;9600&#125;</span><br><span class="line">hello world</span><br><span class="line">/usr/local/Cellar/logstash/7.6.2/libexec/vendor/bundle/jruby/2.5.0/gems/awesome_print-1.7.0/lib/awesome_print/formatters/base_formatter.rb:31: warning: constant ::Fixnum is deprecated</span><br><span class="line">&#123;</span><br><span class="line">      "@version" =&gt; "1",</span><br><span class="line">    "@timestamp" =&gt; 2020-05-11T05:49:46.559Z,</span><br><span class="line">       "message" =&gt; "hello world",</span><br><span class="line">          "host" =&gt; "wanderROSdeiMac.local"</span><br><span class="line">&#125;</span><br><span class="line">This is a test</span><br><span class="line">&#123;</span><br><span class="line">      "@version" =&gt; "1",</span><br><span class="line">    "@timestamp" =&gt; 2020-05-11T05:49:58.031Z,</span><br><span class="line">       "message" =&gt; "This is a test",</span><br><span class="line">          "host" =&gt; "wanderROSdeiMac.local"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用配置文件进行输出：</p>
+<ol>
+<li><p>heartbeat.conf</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">input</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">heartbeat</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">interval</span> <span class="string">=&gt;</span> <span class="number">1</span></span><br><span class="line">    <span class="string">type</span> <span class="string">=&gt;</span> <span class="string">"heartbeat"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">stdout</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">codec</span> <span class="string">=&gt;</span> <span class="string">rubydebug</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash -f heartbeat.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出样式：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">          "host" =&gt; "wanderROSdeiMac.local",</span><br><span class="line">      "@version" =&gt; "1",</span><br><span class="line">    "@timestamp" =&gt; 2020-05-11T06:04:23.424Z,</span><br><span class="line">       "message" =&gt; "ok",</span><br><span class="line">          "type" =&gt; "heartbeat"</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">          "host" =&gt; "wanderROSdeiMac.local",</span><br><span class="line">      "@version" =&gt; "1",</span><br><span class="line">    "@timestamp" =&gt; 2020-05-11T06:04:24.420Z,</span><br><span class="line">       "message" =&gt; "ok",</span><br><span class="line">          "type" =&gt; "heartbeat"</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">          "host" =&gt; "wanderROSdeiMac.local",</span><br><span class="line">      "@version" =&gt; "1",</span><br><span class="line">    "@timestamp" =&gt; 2020-05-11T06:04:25.422Z,</span><br><span class="line">       "message" =&gt; "ok",</span><br><span class="line">          "type" =&gt; "heartbeat"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>TCP input 日志监听：</p>
+<ol>
+<li><p>选择下载个日志文件，比如<a href="https://ela.st/weblog-sample" target="_blank" rel="noopener">日志</a>；</p>
+</li>
+<li><p>weblog.conf:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">input</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">tcp</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">port</span> <span class="string">=&gt;</span> <span class="number">9900</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">stdout</span> <span class="string">&#123;</span> <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动logstash：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash -f weblog.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用管道等命令传输日志：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat   apache-daily-access.log |nc localhost 9900</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出（部分）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span><br><span class="line">    <span class="string">"@timestamp"</span> <span class="string">=&gt;</span> <span class="number">2020</span><span class="number">-05</span><span class="string">-11T06:17:10.710Z,</span></span><br><span class="line">          <span class="string">"port"</span> <span class="string">=&gt;</span> <span class="number">54756</span><span class="string">,</span></span><br><span class="line">      <span class="string">"@version"</span> <span class="string">=&gt;</span> <span class="string">"1"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"host"</span> <span class="string">=&gt;</span> <span class="string">"localhost"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"192.99.67.25 - - [09/May/2020:23:59:50 +0000] \"GET /item/electronics/2232 HTTP/1.1\" 200 41 \"/search/?c=Electronics\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11\""</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line">    <span class="string">"@timestamp"</span> <span class="string">=&gt;</span> <span class="number">2020</span><span class="number">-05</span><span class="string">-11T06:17:10.710Z,</span></span><br><span class="line">          <span class="string">"port"</span> <span class="string">=&gt;</span> <span class="number">54756</span><span class="string">,</span></span><br><span class="line">      <span class="string">"@version"</span> <span class="string">=&gt;</span> <span class="string">"1"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"host"</span> <span class="string">=&gt;</span> <span class="string">"localhost"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"44.114.32.84 - - [09/May/2020:23:59:55 +0000] \"GET /category/software HTTP/1.1\" 200 105 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:9.0.1) Gecko/20100101 Firefox/9.0.1\""</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>上述都是简单的logstash的数据输入与输出，想要需要进行数据格式的转换还需要过滤器进行处理，接下来部分介绍过滤器；</p>
+</li>
+</ol>
+<h2 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h2><ol>
+<li><p>在原来的配置文件中添加过滤器：</p>
+<ol>
+<li><p>修改原来的weblog.conf内容：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">input</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">tcp</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">port</span> <span class="string">=&gt;</span> <span class="number">9900</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">filter</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">grok</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">match</span> <span class="string">=&gt;</span> <span class="string">&#123;</span> <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"<span class="template-variable">%&#123;COMBINEDAPACHELOG&#125;</span>"</span> <span class="string">&#125;</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">stdout</span> <span class="string">&#123;</span> <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用该配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash -f weblog.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出（一条）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span><br><span class="line">           <span class="string">"verb"</span> <span class="string">=&gt;</span> <span class="string">"GET"</span><span class="string">,</span></span><br><span class="line">     <span class="string">"@timestamp"</span> <span class="string">=&gt;</span> <span class="number">2020</span><span class="number">-05</span><span class="string">-11T06:28:36.603Z,</span></span><br><span class="line">       <span class="string">"clientip"</span> <span class="string">=&gt;</span> <span class="string">"192.99.67.25"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"response"</span> <span class="string">=&gt;</span> <span class="string">"200"</span><span class="string">,</span></span><br><span class="line">    <span class="string">"httpversion"</span> <span class="string">=&gt;</span> <span class="string">"1.1"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"bytes"</span> <span class="string">=&gt;</span> <span class="string">"41"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"referrer"</span> <span class="string">=&gt;</span> <span class="string">"\"/search/?c=Electronics\""</span><span class="string">,</span></span><br><span class="line">           <span class="string">"host"</span> <span class="string">=&gt;</span> <span class="string">"localhost"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"@version"</span> <span class="string">=&gt;</span> <span class="string">"1"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"ident"</span> <span class="string">=&gt;</span> <span class="string">"-"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"auth"</span> <span class="string">=&gt;</span> <span class="string">"-"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"request"</span> <span class="string">=&gt;</span> <span class="string">"/item/electronics/2232"</span><span class="string">,</span></span><br><span class="line">      <span class="string">"timestamp"</span> <span class="string">=&gt;</span> <span class="string">"09/May/2020:23:59:50 +0000"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"192.99.67.25 - - [09/May/2020:23:59:50 +0000] \"GET /item/electronics/2232 HTTP/1.1\" 200 41 \"/search/?c=Electronics\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11\""</span><span class="string">,</span></span><br><span class="line">          <span class="string">"agent"</span> <span class="string">=&gt;</span> <span class="string">"\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11\""</span><span class="string">,</span></span><br><span class="line">           <span class="string">"port"</span> <span class="string">=&gt;</span> <span class="number">55383</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>通过Grok这个filter，它通过正则表达式进行匹配，并把我们的输入的非结构化的数据变为一个结构化的数据</strong>，可以看到各种被提取的字段，比如clientip, port, host等；</p>
+</li>
+</ol>
+</li>
+<li><p>进一步优化：</p>
+<ol>
+<li><p><strong>需求：</strong>上面的数据从非结构化变为结构化数据比原来的非结构化的数据已经好了很多，但是还有可以改进的地方，比如clientip，还是不知道这个IP是从哪个地方来的，具体是哪个国家，哪个地理位置</p>
+</li>
+<li><p><strong>改进：</strong>需要使用geoip过滤器来对数据进行丰富，在filter部分加入geoip；</p>
+</li>
+<li><p>配置文件修改（weblog.conf）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">input</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">tcp</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">port</span> <span class="string">=&gt;</span> <span class="number">9900</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">filter</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">grok</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">match</span> <span class="string">=&gt;</span> <span class="string">&#123;</span> <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"<span class="template-variable">%&#123;COMBINEDAPACHELOG&#125;</span>"</span> <span class="string">&#125;</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">geoip</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">source</span> <span class="string">=&gt;</span> <span class="string">"clientip"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">stdout</span> <span class="string">&#123;</span> <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行并查看输出（一条）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span><br><span class="line">           <span class="string">"host"</span> <span class="string">=&gt;</span> <span class="string">"localhost"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"clientip"</span> <span class="string">=&gt;</span> <span class="string">"44.114.32.84"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"verb"</span> <span class="string">=&gt;</span> <span class="string">"GET"</span><span class="string">,</span></span><br><span class="line">     <span class="string">"@timestamp"</span> <span class="string">=&gt;</span> <span class="number">2020</span><span class="number">-05</span><span class="string">-11T06:35:27.658Z,</span></span><br><span class="line">          <span class="string">"ident"</span> <span class="string">=&gt;</span> <span class="string">"-"</span><span class="string">,</span></span><br><span class="line">      <span class="string">"timestamp"</span> <span class="string">=&gt;</span> <span class="string">"09/May/2020:23:59:55 +0000"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"request"</span> <span class="string">=&gt;</span> <span class="string">"/category/software"</span><span class="string">,</span></span><br><span class="line">    <span class="string">"httpversion"</span> <span class="string">=&gt;</span> <span class="string">"1.1"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"44.114.32.84 - - [09/May/2020:23:59:55 +0000] \"GET /category/software HTTP/1.1\" 200 105 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:9.0.1) Gecko/20100101 Firefox/9.0.1\""</span><span class="string">,</span></span><br><span class="line">       <span class="string">"@version"</span> <span class="string">=&gt;</span> <span class="string">"1"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"response"</span> <span class="string">=&gt;</span> <span class="string">"200"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"bytes"</span> <span class="string">=&gt;</span> <span class="string">"105"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"referrer"</span> <span class="string">=&gt;</span> <span class="string">"\"-\""</span><span class="string">,</span></span><br><span class="line">           <span class="string">"auth"</span> <span class="string">=&gt;</span> <span class="string">"-"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"port"</span> <span class="string">=&gt;</span> <span class="number">55695</span><span class="string">,</span></span><br><span class="line">          <span class="string">"geoip"</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">             <span class="string">"longitude"</span> <span class="string">=&gt;</span> <span class="number">-97.822</span><span class="string">,</span></span><br><span class="line">         <span class="string">"country_code3"</span> <span class="string">=&gt;</span> <span class="string">"US"</span><span class="string">,</span></span><br><span class="line">         <span class="string">"country_code2"</span> <span class="string">=&gt;</span> <span class="string">"US"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"location"</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">            <span class="string">"lat"</span> <span class="string">=&gt;</span> <span class="number">37.751</span><span class="string">,</span></span><br><span class="line">            <span class="string">"lon"</span> <span class="string">=&gt;</span> <span class="number">-97.822</span></span><br><span class="line">        <span class="string">&#125;,</span></span><br><span class="line">                    <span class="string">"ip"</span> <span class="string">=&gt;</span> <span class="string">"44.114.32.84"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"country_name"</span> <span class="string">=&gt;</span> <span class="string">"United States"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"latitude"</span> <span class="string">=&gt;</span> <span class="number">37.751</span><span class="string">,</span></span><br><span class="line">        <span class="string">"continent_code"</span> <span class="string">=&gt;</span> <span class="string">"NA"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"timezone"</span> <span class="string">=&gt;</span> <span class="string">"America/Chicago"</span></span><br><span class="line">    <span class="string">&#125;,</span></span><br><span class="line">          <span class="string">"agent"</span> <span class="string">=&gt;</span> <span class="string">"\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:9.0.1) Gecko/20100101 Firefox/9.0.1\""</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以看到除了clientip信息之外， 数据还多了一个新的叫做geoip的字段，它里面含有location位置信息，为我们在地图上进行显示这些数据提供了方便，从而可以利用Elastic所提供的地图清楚地查看到请求是来自哪里；</p>
+</li>
+</ol>
+</li>
+<li><p>再进一步优化：</p>
+<ol>
+<li><p><strong>需求：</strong>从信息中注意到agent这个字段，非常长，虽然大致能看到浏览器什么的，但是不太直观；</p>
+</li>
+<li><p><strong>处理：</strong> 添加useragent来处理，配置文件修改（weblog.conf）,当然也可以输出到文件，如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">input</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">tcp</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">port</span> <span class="string">=&gt;</span> <span class="number">9900</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">filter</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">grok</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">match</span> <span class="string">=&gt;</span> <span class="string">&#123;</span> <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"<span class="template-variable">%&#123;COMBINEDAPACHELOG&#125;</span>"</span> <span class="string">&#125;</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">geoip</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">source</span> <span class="string">=&gt;</span> <span class="string">"clientip"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line">  <span class="string">useragent&#123;</span></span><br><span class="line">  	<span class="string">source</span> <span class="string">=&gt;</span> <span class="string">"agent"</span></span><br><span class="line">  	<span class="string">target</span> <span class="string">=&gt;</span> <span class="string">"useragent"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">stdout</span> <span class="string">&#123;</span> <span class="string">&#125;</span></span><br><span class="line"> 	<span class="string">file</span> <span class="string">&#123;</span></span><br><span class="line">      <span class="string">path</span> <span class="string">=&gt;</span> <span class="string">"/Users/wander/test/elk/logstash/output.log"</span></span><br><span class="line">   <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>输出</strong>（一条）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span><br><span class="line">        <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"44.114.32.84 - - [09/May/2020:23:59:55 +0000] \"GET /category/software HTTP/1.1\" 200 105 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:9.0.1) Gecko/20100101 Firefox/9.0.1\""</span><span class="string">,</span></span><br><span class="line">           <span class="string">"verb"</span> <span class="string">=&gt;</span> <span class="string">"GET"</span><span class="string">,</span></span><br><span class="line">    <span class="string">"httpversion"</span> <span class="string">=&gt;</span> <span class="string">"1.1"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"clientip"</span> <span class="string">=&gt;</span> <span class="string">"44.114.32.84"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"geoip"</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="string">"country_code2"</span> <span class="string">=&gt;</span> <span class="string">"US"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"location"</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">            <span class="string">"lat"</span> <span class="string">=&gt;</span> <span class="number">37.751</span><span class="string">,</span></span><br><span class="line">            <span class="string">"lon"</span> <span class="string">=&gt;</span> <span class="number">-97.822</span></span><br><span class="line">        <span class="string">&#125;,</span></span><br><span class="line">                    <span class="string">"ip"</span> <span class="string">=&gt;</span> <span class="string">"44.114.32.84"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"latitude"</span> <span class="string">=&gt;</span> <span class="number">37.751</span><span class="string">,</span></span><br><span class="line">          <span class="string">"country_name"</span> <span class="string">=&gt;</span> <span class="string">"United States"</span><span class="string">,</span></span><br><span class="line">             <span class="string">"longitude"</span> <span class="string">=&gt;</span> <span class="number">-97.822</span><span class="string">,</span></span><br><span class="line">         <span class="string">"country_code3"</span> <span class="string">=&gt;</span> <span class="string">"US"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"timezone"</span> <span class="string">=&gt;</span> <span class="string">"America/Chicago"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"continent_code"</span> <span class="string">=&gt;</span> <span class="string">"NA"</span></span><br><span class="line">    <span class="string">&#125;,</span></span><br><span class="line">     <span class="string">"@timestamp"</span> <span class="string">=&gt;</span> <span class="number">2020</span><span class="number">-05</span><span class="string">-11T06:43:02.194Z,</span></span><br><span class="line">           <span class="string">"auth"</span> <span class="string">=&gt;</span> <span class="string">"-"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"@version"</span> <span class="string">=&gt;</span> <span class="string">"1"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"response"</span> <span class="string">=&gt;</span> <span class="string">"200"</span><span class="string">,</span></span><br><span class="line">      <span class="string">"useragent"</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">           <span class="string">"major"</span> <span class="string">=&gt;</span> <span class="string">"9"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"os"</span> <span class="string">=&gt;</span> <span class="string">"Mac OS X"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"patch"</span> <span class="string">=&gt;</span> <span class="string">"1"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"os_minor"</span> <span class="string">=&gt;</span> <span class="string">"6"</span><span class="string">,</span></span><br><span class="line">            <span class="string">"name"</span> <span class="string">=&gt;</span> <span class="string">"Firefox"</span><span class="string">,</span></span><br><span class="line">         <span class="string">"os_name"</span> <span class="string">=&gt;</span> <span class="string">"Mac OS X"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"minor"</span> <span class="string">=&gt;</span> <span class="string">"0"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"device"</span> <span class="string">=&gt;</span> <span class="string">"Other"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"build"</span> <span class="string">=&gt;</span> <span class="string">""</span><span class="string">,</span></span><br><span class="line">        <span class="string">"os_major"</span> <span class="string">=&gt;</span> <span class="string">"10"</span></span><br><span class="line">    <span class="string">&#125;,</span></span><br><span class="line">        <span class="string">"request"</span> <span class="string">=&gt;</span> <span class="string">"/category/software"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"host"</span> <span class="string">=&gt;</span> <span class="string">"localhost"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"agent"</span> <span class="string">=&gt;</span> <span class="string">"\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:9.0.1) Gecko/20100101 Firefox/9.0.1\""</span><span class="string">,</span></span><br><span class="line">          <span class="string">"bytes"</span> <span class="string">=&gt;</span> <span class="string">"105"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"ident"</span> <span class="string">=&gt;</span> <span class="string">"-"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"port"</span> <span class="string">=&gt;</span> <span class="number">56095</span><span class="string">,</span></span><br><span class="line">      <span class="string">"timestamp"</span> <span class="string">=&gt;</span> <span class="string">"09/May/2020:23:59:55 +0000"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"referrer"</span> <span class="string">=&gt;</span> <span class="string">"\"-\""</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以看到多了一个<strong>useragent</strong>字段，现在关于浏览器的信息就非常直观了。</p>
+</li>
+</ol>
+</li>
+<li><p>转换：</p>
+<ol>
+<li><p><strong>需求：</strong>可以看出来bytes是一个字符串的类型，和我们实际的应用可能会有所不同；</p>
+</li>
+<li><p><strong>处理：</strong>可以使用mutate:convert过滤器进行转换；</p>
+</li>
+<li><p>修改配置文件weblog.conf：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">input</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">tcp</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">port</span> <span class="string">=&gt;</span> <span class="number">9900</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">filter</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">grok</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">match</span> <span class="string">=&gt;</span> <span class="string">&#123;</span> <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"<span class="template-variable">%&#123;COMBINEDAPACHELOG&#125;</span>"</span> <span class="string">&#125;</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">mutate</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">convert</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">      <span class="string">"bytes"</span> <span class="string">=&gt;</span> <span class="string">"integer"</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">geoip</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">source</span> <span class="string">=&gt;</span> <span class="string">"clientip"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">useragent</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">source</span> <span class="string">=&gt;</span> <span class="string">"agent"</span></span><br><span class="line">    <span class="string">target</span> <span class="string">=&gt;</span> <span class="string">"useragent"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">stdout</span> <span class="string">&#123;</span> <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出（一条）（可以看到”bytes”字段已经变成了整数形式了）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span><br><span class="line">          <span class="string">"ident"</span> <span class="string">=&gt;</span> <span class="string">"-"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"clientip"</span> <span class="string">=&gt;</span> <span class="string">"44.210.52.144"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"host"</span> <span class="string">=&gt;</span> <span class="string">"localhost"</span><span class="string">,</span></span><br><span class="line">    <span class="string">"httpversion"</span> <span class="string">=&gt;</span> <span class="string">"1.1"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"bytes"</span> <span class="string">=&gt;</span> <span class="number">79</span><span class="string">,</span></span><br><span class="line">       <span class="string">"referrer"</span> <span class="string">=&gt;</span> <span class="string">"\"-\""</span><span class="string">,</span></span><br><span class="line">          <span class="string">"geoip"</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">             <span class="string">"longitude"</span> <span class="string">=&gt;</span> <span class="number">-77.4728</span><span class="string">,</span></span><br><span class="line">         <span class="string">"country_code2"</span> <span class="string">=&gt;</span> <span class="string">"US"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"timezone"</span> <span class="string">=&gt;</span> <span class="string">"America/New_York"</span><span class="string">,</span></span><br><span class="line">                    <span class="string">"ip"</span> <span class="string">=&gt;</span> <span class="string">"44.210.52.144"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"location"</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">            <span class="string">"lon"</span> <span class="string">=&gt;</span> <span class="number">-77.4728</span><span class="string">,</span></span><br><span class="line">            <span class="string">"lat"</span> <span class="string">=&gt;</span> <span class="number">39.0481</span></span><br><span class="line">        <span class="string">&#125;,</span></span><br><span class="line">           <span class="string">"postal_code"</span> <span class="string">=&gt;</span> <span class="string">"20149"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"continent_code"</span> <span class="string">=&gt;</span> <span class="string">"NA"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"country_name"</span> <span class="string">=&gt;</span> <span class="string">"United States"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"region_name"</span> <span class="string">=&gt;</span> <span class="string">"Virginia"</span><span class="string">,</span></span><br><span class="line">             <span class="string">"city_name"</span> <span class="string">=&gt;</span> <span class="string">"Ashburn"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"latitude"</span> <span class="string">=&gt;</span> <span class="number">39.0481</span><span class="string">,</span></span><br><span class="line">              <span class="string">"dma_code"</span> <span class="string">=&gt;</span> <span class="number">511</span><span class="string">,</span></span><br><span class="line">         <span class="string">"country_code3"</span> <span class="string">=&gt;</span> <span class="string">"US"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"region_code"</span> <span class="string">=&gt;</span> <span class="string">"VA"</span></span><br><span class="line">    <span class="string">&#125;,</span></span><br><span class="line">           <span class="string">"auth"</span> <span class="string">=&gt;</span> <span class="string">"-"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"44.210.52.144 - - [09/May/2020:00:00:05 +0000] \"GET /category/software HTTP/1.1\" 200 79 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7\""</span><span class="string">,</span></span><br><span class="line">      <span class="string">"useragent"</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">             <span class="string">"os"</span> <span class="string">=&gt;</span> <span class="string">"Windows"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"patch"</span> <span class="string">=&gt;</span> <span class="string">"912"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"build"</span> <span class="string">=&gt;</span> <span class="string">""</span><span class="string">,</span></span><br><span class="line">          <span class="string">"major"</span> <span class="string">=&gt;</span> <span class="string">"16"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"name"</span> <span class="string">=&gt;</span> <span class="string">"Chrome"</span><span class="string">,</span></span><br><span class="line">         <span class="string">"device"</span> <span class="string">=&gt;</span> <span class="string">"Other"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"minor"</span> <span class="string">=&gt;</span> <span class="string">"0"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"os_name"</span> <span class="string">=&gt;</span> <span class="string">"Windows"</span></span><br><span class="line">    <span class="string">&#125;,</span></span><br><span class="line">       <span class="string">"response"</span> <span class="string">=&gt;</span> <span class="string">"200"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"agent"</span> <span class="string">=&gt;</span> <span class="string">"\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7\""</span><span class="string">,</span></span><br><span class="line">     <span class="string">"@timestamp"</span> <span class="string">=&gt;</span> <span class="number">2020</span><span class="number">-05</span><span class="string">-11T06:54:58.718Z,</span></span><br><span class="line">           <span class="string">"verb"</span> <span class="string">=&gt;</span> <span class="string">"GET"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"port"</span> <span class="string">=&gt;</span> <span class="number">56680</span><span class="string">,</span></span><br><span class="line">       <span class="string">"@version"</span> <span class="string">=&gt;</span> <span class="string">"1"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"request"</span> <span class="string">=&gt;</span> <span class="string">"/category/software"</span><span class="string">,</span></span><br><span class="line">      <span class="string">"timestamp"</span> <span class="string">=&gt;</span> <span class="string">"09/May/2020:00:00:05 +0000"</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>时间处理：</p>
+<ol>
+<li><p><strong>需求：</strong>默认的时间格式如下，有点不太直观：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"@timestamp"</span> <span class="string">=&gt;</span> <span class="number">2020</span><span class="number">-05</span><span class="string">-09T00:00:05.000Z</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>处理：</strong>使用date过滤器进行处理，修改配置文件如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">input</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">tcp</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">port</span> <span class="string">=&gt;</span> <span class="number">9900</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">filter</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">grok</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">match</span> <span class="string">=&gt;</span> <span class="string">&#123;</span> <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"<span class="template-variable">%&#123;COMBINEDAPACHELOG&#125;</span>"</span> <span class="string">&#125;</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">mutate</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">convert</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">      <span class="string">"bytes"</span> <span class="string">=&gt;</span> <span class="string">"integer"</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">geoip</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">source</span> <span class="string">=&gt;</span> <span class="string">"clientip"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">useragent</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">source</span> <span class="string">=&gt;</span> <span class="string">"agent"</span></span><br><span class="line">    <span class="string">target</span> <span class="string">=&gt;</span> <span class="string">"useragent"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> <span class="string">date</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">match</span> <span class="string">=&gt;</span> <span class="string">["timestamp",</span> <span class="string">"dd/MMM/yyyy:HH:mm:ss Z"</span><span class="string">]</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">stdout</span> <span class="string">&#123;</span> <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出（一条）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span><br><span class="line">           <span class="string">"host"</span> <span class="string">=&gt;</span> <span class="string">"localhost"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"response"</span> <span class="string">=&gt;</span> <span class="string">"200"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"request"</span> <span class="string">=&gt;</span> <span class="string">"/category/software"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"44.210.52.144 - - [09/May/2020:00:00:05 +0000] \"GET /category/software HTTP/1.1\" 200 79 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7\""</span><span class="string">,</span></span><br><span class="line">       <span class="string">"referrer"</span> <span class="string">=&gt;</span> <span class="string">"\"-\""</span><span class="string">,</span></span><br><span class="line">      <span class="string">"timestamp"</span> <span class="string">=&gt;</span> <span class="string">"09/May/2020:00:00:05 +0000"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"auth"</span> <span class="string">=&gt;</span> <span class="string">"-"</span><span class="string">,</span></span><br><span class="line">     <span class="string">"@timestamp"</span> <span class="string">=&gt;</span> <span class="number">2020</span><span class="number">-05</span><span class="string">-11T07:00:49.618Z,</span></span><br><span class="line">       <span class="string">"@version"</span> <span class="string">=&gt;</span> <span class="string">"1"</span><span class="string">,</span></span><br><span class="line">       <span class="string">"clientip"</span> <span class="string">=&gt;</span> <span class="string">"44.210.52.144"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"verb"</span> <span class="string">=&gt;</span> <span class="string">"GET"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"ident"</span> <span class="string">=&gt;</span> <span class="string">"-"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"port"</span> <span class="string">=&gt;</span> <span class="number">57002</span><span class="string">,</span></span><br><span class="line">          <span class="string">"agent"</span> <span class="string">=&gt;</span> <span class="string">"\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7\""</span><span class="string">,</span></span><br><span class="line">          <span class="string">"bytes"</span> <span class="string">=&gt;</span> <span class="number">79</span><span class="string">,</span></span><br><span class="line">           <span class="string">"tags"</span> <span class="string">=&gt;</span> <span class="string">[</span></span><br><span class="line">        <span class="string">[0]</span> <span class="string">"_dateparsefailure"</span></span><br><span class="line">    <span class="string">],</span></span><br><span class="line">          <span class="string">"geoip"</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="string">"country_code3"</span> <span class="string">=&gt;</span> <span class="string">"US"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"postal_code"</span> <span class="string">=&gt;</span> <span class="string">"20149"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"timezone"</span> <span class="string">=&gt;</span> <span class="string">"America/New_York"</span><span class="string">,</span></span><br><span class="line">             <span class="string">"city_name"</span> <span class="string">=&gt;</span> <span class="string">"Ashburn"</span><span class="string">,</span></span><br><span class="line">         <span class="string">"country_code2"</span> <span class="string">=&gt;</span> <span class="string">"US"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"latitude"</span> <span class="string">=&gt;</span> <span class="number">39.0481</span><span class="string">,</span></span><br><span class="line">           <span class="string">"region_name"</span> <span class="string">=&gt;</span> <span class="string">"Virginia"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"region_code"</span> <span class="string">=&gt;</span> <span class="string">"VA"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"location"</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">            <span class="string">"lon"</span> <span class="string">=&gt;</span> <span class="number">-77.4728</span><span class="string">,</span></span><br><span class="line">            <span class="string">"lat"</span> <span class="string">=&gt;</span> <span class="number">39.0481</span></span><br><span class="line">        <span class="string">&#125;,</span></span><br><span class="line">                    <span class="string">"ip"</span> <span class="string">=&gt;</span> <span class="string">"44.210.52.144"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"continent_code"</span> <span class="string">=&gt;</span> <span class="string">"NA"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"country_name"</span> <span class="string">=&gt;</span> <span class="string">"United States"</span><span class="string">,</span></span><br><span class="line">             <span class="string">"longitude"</span> <span class="string">=&gt;</span> <span class="number">-77.4728</span><span class="string">,</span></span><br><span class="line">              <span class="string">"dma_code"</span> <span class="string">=&gt;</span> <span class="number">511</span></span><br><span class="line">    <span class="string">&#125;,</span></span><br><span class="line">      <span class="string">"useragent"</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">          <span class="string">"major"</span> <span class="string">=&gt;</span> <span class="string">"16"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"minor"</span> <span class="string">=&gt;</span> <span class="string">"0"</span><span class="string">,</span></span><br><span class="line">        <span class="string">"os_name"</span> <span class="string">=&gt;</span> <span class="string">"Windows"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"build"</span> <span class="string">=&gt;</span> <span class="string">""</span><span class="string">,</span></span><br><span class="line">         <span class="string">"device"</span> <span class="string">=&gt;</span> <span class="string">"Other"</span><span class="string">,</span></span><br><span class="line">           <span class="string">"name"</span> <span class="string">=&gt;</span> <span class="string">"Chrome"</span><span class="string">,</span></span><br><span class="line">             <span class="string">"os"</span> <span class="string">=&gt;</span> <span class="string">"Windows"</span><span class="string">,</span></span><br><span class="line">          <span class="string">"patch"</span> <span class="string">=&gt;</span> <span class="string">"912"</span></span><br><span class="line">    <span class="string">&#125;,</span></span><br><span class="line">    <span class="string">"httpversion"</span> <span class="string">=&gt;</span> <span class="string">"1.1"</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以看到多了一个timestamp字段；</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="输出到Elasticsearch"><a href="#输出到Elasticsearch" class="headerlink" title="输出到Elasticsearch"></a>输出到Elasticsearch</h2><ol>
+<li><p>把处理后的数据输出到Elasticsearch，则在output的部分添加如下的Elasticsearch输出：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 仅仅展示输出</span></span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">stdout</span> <span class="string">&#123;</span> <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">elasticsearch</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">hosts</span> <span class="string">=&gt;</span> <span class="string">["localhost:9200"]</span></span><br><span class="line">    <span class="string">user</span> <span class="string">=&gt;</span> <span class="string">"elastic"</span></span><br><span class="line">    <span class="string">password</span> <span class="string">=&gt;</span> <span class="string">"changeme"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>同时保留两个输出：stdout及elasticsearch，事实上，<strong>可以定义很多个的输出</strong>，stdout输出对于初期的调试是非常有帮助的，等完善了所有的调试，可以把上面的stdout输出关掉；</p>
+</li>
+<li><p>上面的配置文件直接显示了配置文件的账户和密码，可以使用keystore 来保护自己的密码：</p>
+<ol>
+<li><p>启动创建：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash-keystore create</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入输出地址，添加Elasticsearch的地址：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash-keystore add ES_HOST</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建账户：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash-keystore add LS_USER</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建密码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash-keystore add LS_PWD</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件修改：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 仅仅展示输出</span></span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">stdout</span> <span class="string">&#123;</span> <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">elasticsearch</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">hosts</span> <span class="string">=&gt;</span> <span class="string">["$&#123;ES_HOST&#125;"]</span></span><br><span class="line">    <span class="string">user</span> <span class="string">=&gt;</span> <span class="string">"$&#123;LS_USER&#125;"</span></span><br><span class="line">    <span class="string">password</span> <span class="string">=&gt;</span> <span class="string">"$&#123;LS_PWD&#125;"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="Grok入门"><a href="#Grok入门" class="headerlink" title="Grok入门"></a>Grok入门</h2><ol>
+<li><p>什么是Grok：以一种格式修改信息并将其浸入另一种格式，一种将行与正则表达式匹配，将行的特定部分映射到专用字段中以及根据此映射执行操作的方法；</p>
+</li>
+<li><p>Logstash内置了超过200种Logstash模式，用于过滤AWS，Bacula，Bro，Linux-Syslog等中的单词，数字和日期等项目，如果找不到所需的模式，则可以编写自己的自定义模式，有多个匹配模式的选项，可简化表达式的编写以捕获日志数据；</p>
+</li>
+<li><p>Grok调试器：</p>
+<ol>
+<li><a href="https://grokdebug.herokuapp.com/" target="_blank" rel="noopener">专业网址</a></li>
+<li><a href="http://localhost:5601/app/kibana#/dev_tools/grokdebugger" target="_blank" rel="noopener">Kibana自带</a></li>
+</ol>
+</li>
+<li><p><a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html" target="_blank" rel="noopener">官方说明网址</a>,<a href="https://github.com/logstash-plugins/logstash-patterns-core" target="_blank" rel="noopener">GitHub网址</a></p>
+</li>
+<li><p>参考配置文件1：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">input</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">file</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">path</span> <span class="string">=&gt;</span> <span class="string">["/var/log/apache2/access.log"]</span></span><br><span class="line">    <span class="string">start_position</span> <span class="string">=&gt;</span> <span class="string">"beginning"</span></span><br><span class="line">    <span class="string">sincedb_path</span> <span class="string">=&gt;</span> <span class="string">"/dev/null"</span></span><br><span class="line">    <span class="string">type</span> <span class="string">=&gt;</span> <span class="string">"apache_access"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line">  <span class="string">file</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">path</span> <span class="string">=&gt;</span> <span class="string">["/var/log/apache2/error.log"]</span></span><br><span class="line">    <span class="string">start_position</span> <span class="string">=&gt;</span> <span class="string">"beginning"</span></span><br><span class="line">    <span class="string">sincedb_path</span> <span class="string">=&gt;</span> <span class="string">"/dev/null"</span></span><br><span class="line">    <span class="string">type</span> <span class="string">=&gt;</span> <span class="string">"apache_error"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">filter</span> <span class="string">&#123;</span></span><br><span class="line">   <span class="string">if</span> <span class="string">[type]</span> <span class="string">in</span> <span class="string">[</span> <span class="string">"apache"</span> <span class="string">,</span> <span class="string">"apache_access"</span> <span class="string">,</span> <span class="string">"apache-access"</span> <span class="string">]</span>  <span class="string">&#123;</span></span><br><span class="line">      <span class="string">grok</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="string">match</span> <span class="string">=&gt;</span> <span class="string">[</span></span><br><span class="line">         <span class="string">"message"</span> <span class="string">,</span> <span class="string">"<span class="template-variable">%&#123;COMBINEDAPACHELOG&#125;</span>+<span class="template-variable">%&#123;GREEDYDATA:extra_fields&#125;</span>"</span><span class="string">,</span></span><br><span class="line">         <span class="string">"message"</span> <span class="string">,</span> <span class="string">"<span class="template-variable">%&#123;COMMONAPACHELOG&#125;</span>+<span class="template-variable">%&#123;GREEDYDATA:extra_fields&#125;</span>"</span></span><br><span class="line">         <span class="string">]</span></span><br><span class="line">         <span class="string">overwrite</span> <span class="string">=&gt;</span> <span class="string">[</span> <span class="string">"message"</span> <span class="string">]</span></span><br><span class="line">      <span class="string">&#125;</span></span><br><span class="line">      <span class="string">mutate</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="string">convert</span> <span class="string">=&gt;</span> <span class="string">["response",</span> <span class="string">"integer"</span><span class="string">]</span></span><br><span class="line">         <span class="string">convert</span> <span class="string">=&gt;</span> <span class="string">["bytes",</span> <span class="string">"integer"</span><span class="string">]</span></span><br><span class="line">         <span class="string">convert</span> <span class="string">=&gt;</span> <span class="string">["responsetime",</span> <span class="string">"float"</span><span class="string">]</span></span><br><span class="line">      <span class="string">&#125;</span></span><br><span class="line">      <span class="string">geoip</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="string">source</span> <span class="string">=&gt;</span> <span class="string">"clientip"</span></span><br><span class="line">         <span class="string">target</span> <span class="string">=&gt;</span> <span class="string">"geoip"</span></span><br><span class="line">         <span class="string">add_tag</span> <span class="string">=&gt;</span> <span class="string">[</span> <span class="string">"apache-geoip"</span> <span class="string">]</span></span><br><span class="line">      <span class="string">&#125;</span></span><br><span class="line">      <span class="string">date</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="string">match</span> <span class="string">=&gt;</span> <span class="string">[</span> <span class="string">"timestamp"</span> <span class="string">,</span> <span class="string">"dd/MMM/YYYY:HH:mm:ss Z"</span> <span class="string">]</span></span><br><span class="line">         <span class="string">remove_field</span> <span class="string">=&gt;</span> <span class="string">[</span> <span class="string">"timestamp"</span> <span class="string">]</span></span><br><span class="line">      <span class="string">&#125;</span></span><br><span class="line">      <span class="string">useragent</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="string">source</span> <span class="string">=&gt;</span> <span class="string">"agent"</span></span><br><span class="line">      <span class="string">&#125;</span></span><br><span class="line">   <span class="string">&#125;</span></span><br><span class="line">   <span class="string">if</span> <span class="string">[type]</span> <span class="string">in</span> <span class="string">["apache_error","apache-error"]</span> <span class="string">&#123;</span></span><br><span class="line">      <span class="string">grok</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="string">match</span> <span class="string">=&gt;</span> <span class="string">["message",</span> <span class="string">"\[<span class="template-variable">%&#123;WORD:dayname&#125;</span> <span class="template-variable">%&#123;WORD:month&#125;</span> <span class="template-variable">%&#123;DATA:day&#125;</span> <span class="template-variable">%&#123;DATA:hour&#125;</span>:<span class="template-variable">%&#123;DATA:minute&#125;</span>:<span class="template-variable">%&#123;DATA:second&#125;</span> <span class="template-variable">%&#123;YEAR:year&#125;</span>\] \[<span class="template-variable">%&#123;NOTSPACE:loglevel&#125;</span>\] (?:\[client <span class="template-variable">%&#123;IPORHOST:clientip&#125;</span>\] )&#123;0,1&#125;<span class="template-variable">%&#123;GREEDYDATA:message&#125;</span>"</span><span class="string">]</span></span><br><span class="line">         <span class="string">overwrite</span> <span class="string">=&gt;</span> <span class="string">[</span> <span class="string">"message"</span> <span class="string">]</span></span><br><span class="line">      <span class="string">&#125;</span></span><br><span class="line">      <span class="string">mutate</span></span><br><span class="line">      <span class="string">&#123;</span></span><br><span class="line">         <span class="string">add_field</span> <span class="string">=&gt;</span></span><br><span class="line">         <span class="string">&#123;</span></span><br><span class="line">            <span class="string">"time_stamp"</span> <span class="string">=&gt;</span> <span class="string">"<span class="template-variable">%&#123;day&#125;</span>/<span class="template-variable">%&#123;month&#125;</span>/<span class="template-variable">%&#123;year&#125;</span>:<span class="template-variable">%&#123;hour&#125;</span>:<span class="template-variable">%&#123;minute&#125;</span>:<span class="template-variable">%&#123;second&#125;</span>"</span></span><br><span class="line">         <span class="string">&#125;</span></span><br><span class="line">      <span class="string">&#125;</span></span><br><span class="line">      <span class="string">date</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="string">match</span> <span class="string">=&gt;</span> <span class="string">["time_stamp",</span> <span class="string">"dd/MMM/YYYY:HH:mm:ss"</span><span class="string">]</span></span><br><span class="line">         <span class="string">remove_field</span> <span class="string">=&gt;</span> <span class="string">[</span> <span class="string">"time_stamp"</span><span class="string">,"day","dayname","month","hour","minute","second","year"]</span></span><br><span class="line">      <span class="string">&#125;</span></span><br><span class="line">   <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line"> <span class="string">elasticsearch</span> <span class="string">&#123;</span></span><br><span class="line">   <span class="string">hosts</span> <span class="string">=&gt;</span> <span class="string">["http://localhost:9200"]</span></span><br><span class="line">   <span class="string">user</span> <span class="string">=&gt;</span> <span class="string">"YourUserName"</span></span><br><span class="line">   <span class="string">password</span> <span class="string">=&gt;</span> <span class="string">"YourPassword"</span></span><br><span class="line">   <span class="string">index</span> <span class="string">=&gt;</span> <span class="string">"apache-<span class="template-variable">%&#123;+YYYY.MM.dd&#125;</span>"</span></span><br><span class="line"> <span class="string">&#125;</span></span><br><span class="line"> <span class="string">stdout</span> <span class="string">&#123;</span> <span class="string">codec</span> <span class="string">=&gt;</span> <span class="string">rubydebug</span> <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参考配置文件2（email）：<a href="https://www.elastic.co/guide/en/logstash/current/plugins-outputs-email.html" target="_blank" rel="noopener">参考官方</a></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">input</span> <span class="string">&#123;</span> </span><br><span class="line">  <span class="string">stdin</span> <span class="string">&#123;&#125;</span> </span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">filter</span> <span class="string">&#123;</span></span><br><span class="line">   <span class="string">if</span> <span class="string">"critical"</span> <span class="string">in</span> <span class="string">[message]</span> <span class="string">&#123;</span></span><br><span class="line">     <span class="string">mutate</span> <span class="string">&#123;</span> <span class="string">add_tag</span> <span class="string">=&gt;</span> <span class="string">"critical"</span> <span class="string">&#125;</span></span><br><span class="line">   <span class="string">&#125;</span></span><br><span class="line">   <span class="string">else</span> <span class="string">if</span> <span class="string">"error"</span> <span class="string">in</span> <span class="string">[message]</span> <span class="string">&#123;</span></span><br><span class="line">     <span class="string">mutate</span> <span class="string">&#123;</span> <span class="string">add_tag</span> <span class="string">=&gt;</span> <span class="string">"error"</span> <span class="string">&#125;</span></span><br><span class="line">   <span class="string">&#125;</span></span><br><span class="line"> <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">if</span> <span class="string">"critical"</span> <span class="string">in</span> <span class="string">[tags]</span> <span class="string">or</span> <span class="string">"error"</span> <span class="string">in</span> <span class="string">[tags]</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">stdout</span> <span class="string">&#123;</span> <span class="string">codec</span> <span class="string">=&gt;</span>  <span class="string">"rubydebug"</span> <span class="string">&#125;</span> </span><br><span class="line"> </span><br><span class="line">    <span class="string">email</span> <span class="string">&#123;</span></span><br><span class="line">      <span class="string">from</span> <span class="string">=&gt;</span> <span class="string">"liu_xiao_guo@hotmail.com"</span></span><br><span class="line">      <span class="string">subject</span> <span class="string">=&gt;</span> <span class="string">"Ignore (test run)"</span></span><br><span class="line">      <span class="string">body</span> <span class="string">=&gt;</span> <span class="string">"log-message: <span class="template-variable">%&#123;message&#125;</span>"</span></span><br><span class="line">      <span class="string">to</span> <span class="string">=&gt;</span> <span class="string">"YourEmailAccount@yahoo.com"</span></span><br><span class="line">      <span class="string">codec</span> <span class="string">=&gt;</span> <span class="string">"plain"</span></span><br><span class="line">      <span class="string">contenttype</span> <span class="string">=&gt;</span> <span class="string">"text/plain; charset=UTF-8"</span></span><br><span class="line">      <span class="string">address</span> <span class="string">=&gt;</span> <span class="string">"smtp-mail.outlook.com"</span></span><br><span class="line">      <span class="string">port</span> <span class="string">=&gt;</span> <span class="string">"587"</span></span><br><span class="line">      <span class="string">authentication</span> <span class="string">=&gt;</span> <span class="string">"plain"</span></span><br><span class="line">      <span class="string">via</span> <span class="string">=&gt;</span> <span class="string">"sendmail"</span></span><br><span class="line">      <span class="string">username</span> <span class="string">=&gt;</span> <span class="string">"YourMailAccount@hotmail.com"</span></span><br><span class="line">      <span class="string">password</span> <span class="string">=&gt;</span> <span class="string">"YourPassword"</span></span><br><span class="line">      <span class="string">use_tls</span> <span class="string">=&gt;</span> <span class="literal">true</span></span><br><span class="line">      <span class="string">debug</span> <span class="string">=&gt;</span> <span class="literal">true</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">  <span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参考配置文件（多输入）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">input</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">file</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">path</span> <span class="string">=&gt;</span> <span class="string">"/Users/liuxg/data/multi-input/apache.log"</span></span><br><span class="line">    <span class="string">start_position</span> <span class="string">=&gt;</span> <span class="string">"beginning"</span></span><br><span class="line">    <span class="string">sincedb_path</span> <span class="string">=&gt;</span> <span class="string">"/dev/null"</span></span><br><span class="line">    <span class="comment"># ignore_older =&gt; 100000</span></span><br><span class="line">    <span class="string">type</span> <span class="string">=&gt;</span> <span class="string">"apache"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">input</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">file</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">path</span> <span class="string">=&gt;</span> <span class="string">"/Users/liuxg/data/multi-input/apache-daily-access.log"</span></span><br><span class="line">    <span class="string">start_position</span> <span class="string">=&gt;</span> <span class="string">"beginning"</span></span><br><span class="line">    <span class="string">sincedb_path</span> <span class="string">=&gt;</span> <span class="string">"/dev/null"</span></span><br><span class="line">    <span class="string">type</span> <span class="string">=&gt;</span> <span class="string">"daily"</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">filter</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">grok</span> <span class="string">&#123;</span></span><br><span class="line">      <span class="string">match</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">          <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">'<span class="template-variable">%&#123;IPORHOST:clientip&#125;</span> <span class="template-variable">%&#123;USER:ident&#125;</span> <span class="template-variable">%&#123;USER:auth&#125;</span> \[<span class="template-variable">%&#123;HTTPDATE:timestamp&#125;</span>\] "<span class="template-variable">%&#123;WORD:verb&#125;</span> <span class="template-variable">%&#123;DATA:request&#125;</span> HTTP/<span class="template-variable">%&#123;NUMBER:httpversion&#125;</span>" <span class="template-variable">%&#123;NUMBER:response:int&#125;</span> (?:-|<span class="template-variable">%&#123;NUMBER:bytes:int&#125;</span>) <span class="template-variable">%&#123;QS:referrer&#125;</span> <span class="template-variable">%&#123;QS:agent&#125;</span>'</span></span><br><span class="line">      <span class="string">&#125;</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">if[type]</span> <span class="string">==</span> <span class="string">"apache"</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">mutate</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">add_tag</span> <span class="string">=&gt;</span> <span class="string">["apache"]</span></span><br><span class="line">      <span class="string">&#125;</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">if</span> <span class="string">[type]</span> <span class="string">==</span> <span class="string">"daily"</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">mutate</span> <span class="string">&#123;</span></span><br><span class="line">      <span class="string">add_tag</span> <span class="string">=&gt;</span> <span class="string">["daily"]</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">  <span class="string">&#125;</span> </span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">stdout</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">codec</span> <span class="string">=&gt;</span> <span class="string">rubydebug</span></span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">if</span> <span class="string">"apache"</span> <span class="string">in</span> <span class="string">[tags]</span> <span class="string">&#123;</span></span><br><span class="line">      <span class="string">elasticsearch</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">index</span> <span class="string">=&gt;</span> <span class="string">"apache_log"</span></span><br><span class="line">        <span class="string">template</span> <span class="string">=&gt;</span> <span class="string">"/Users/liuxg/data/apache_template.json"</span></span><br><span class="line">        <span class="string">template_name</span> <span class="string">=&gt;</span> <span class="string">"apache_elastic_example"</span></span><br><span class="line">        <span class="string">template_overwrite</span> <span class="string">=&gt;</span> <span class="literal">true</span></span><br><span class="line">    <span class="string">&#125;</span> </span><br><span class="line">  <span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line">  <span class="string">if</span> <span class="string">"daily"</span> <span class="string">in</span> <span class="string">[tags]</span> <span class="string">&#123;</span></span><br><span class="line">      <span class="string">elasticsearch</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">index</span> <span class="string">=&gt;</span> <span class="string">"apache_daily"</span></span><br><span class="line">        <span class="string">template</span> <span class="string">=&gt;</span> <span class="string">"/Users/liuxg/data/apache_template.json"</span></span><br><span class="line">        <span class="string">template_name</span> <span class="string">=&gt;</span> <span class="string">"apache_elastic_example"</span></span><br><span class="line">        <span class="string">template_overwrite</span> <span class="string">=&gt;</span> <span class="literal">true</span></span><br><span class="line">    <span class="string">&#125;</span> </span><br><span class="line">  <span class="string">&#125;</span> </span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="再看插件"><a href="#再看插件" class="headerlink" title="再看插件"></a>再看插件</h2><ol>
+<li><p>Logstash附带了许多input，codec，filter和output插件，可用于从各种应用程序，服务器和网络通道中检索，转换，过滤和发送日志和事件；<a href="http://localhost:9600/_node/plugins?pretty" target="_blank" rel="noopener">本地logstash看安装的插件</a>，目前提供的超过200多个plugin</p>
+</li>
+<li><p><strong>input插件：</strong></p>
+<ol>
+<li><p>命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash-plugin list --group input</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出（2020/05/11之前默认安装）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">logstash-input-azure_event_hubs</span><br><span class="line">logstash-input-beats</span><br><span class="line">logstash-input-couchdb_changes</span><br><span class="line">logstash-input-elasticsearch</span><br><span class="line">logstash-input-exec</span><br><span class="line">logstash-input-file</span><br><span class="line">logstash-input-ganglia</span><br><span class="line">logstash-input-gelf</span><br><span class="line">logstash-input-generator</span><br><span class="line">logstash-input-graphite</span><br><span class="line">logstash-input-heartbeat</span><br><span class="line">logstash-input-http</span><br><span class="line">logstash-input-http_poller</span><br><span class="line">logstash-input-imap</span><br><span class="line">logstash-input-jms</span><br><span class="line">logstash-input-pipe</span><br><span class="line">logstash-input-redis</span><br><span class="line">logstash-input-s3</span><br><span class="line">logstash-input-snmp</span><br><span class="line">logstash-input-snmptrap</span><br><span class="line">logstash-input-sqs</span><br><span class="line">logstash-input-stdin</span><br><span class="line">logstash-input-syslog</span><br><span class="line">logstash-input-tcp</span><br><span class="line">logstash-input-twitter</span><br><span class="line">logstash-input-udp</span><br><span class="line">logstash-input-unix</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在配置输入源时直接使用logstash-input-*后面的*即可，比如beats；</p>
+</li>
+<li><p>默认没有安装的输入插件可以使用命令进行安装，比如websocket插件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash-plugin install logstash-input-websocket</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/sitepoint-editors/websocket-demo.git</span><br><span class="line">cd websocket-demo</span><br><span class="line">npm install</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>配置文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">input</span> <span class="string">&#123;</span></span><br><span class="line"> 	<span class="string">websocket</span> <span class="string">&#123;</span></span><br><span class="line"> 		<span class="string">mode</span> <span class="string">=&gt;</span> <span class="string">"client"</span></span><br><span class="line"> 	    <span class="string">url</span> <span class="string">=&gt;</span> <span class="string">"ws://127.0.0.1:8081/"</span></span><br><span class="line"> 	    <span class="string">type</span> <span class="string">=&gt;</span> <span class="string">"string"</span></span><br><span class="line"> 	<span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line">	<span class="string">stdout</span> <span class="string">&#123;</span> </span><br><span class="line">    	<span class="string">codec</span> <span class="string">=&gt;</span> <span class="string">rubydebug</span> </span><br><span class="line">  	<span class="string">&#125;</span> </span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a href="https://www.elastic.co/guide/en/logstash/current/input-plugins.html" target="_blank" rel="noopener">其他输入插件</a>（默认未安装）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">logstash-input-google_pubsub</span></span><br><span class="line"><span class="string">logstash-input-kafka</span></span><br><span class="line"><span class="string">logstash-input-cloudwatch</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p><strong>过滤插件：</strong></p>
+<ol>
+<li><p>命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash-plugin list --group filter</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出（2020/05/11之前默认安装）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">logstash-filter-aggregate</span><br><span class="line">logstash-filter-anonymize</span><br><span class="line">logstash-filter-cidr</span><br><span class="line">logstash-filter-clone</span><br><span class="line">logstash-filter-csv</span><br><span class="line">logstash-filter-date</span><br><span class="line">logstash-filter-de_dot</span><br><span class="line">logstash-filter-dissect</span><br><span class="line">logstash-filter-dns</span><br><span class="line">logstash-filter-drop</span><br><span class="line">logstash-filter-elasticsearch</span><br><span class="line">logstash-filter-fingerprint</span><br><span class="line">logstash-filter-geoip</span><br><span class="line">logstash-filter-grok</span><br><span class="line">logstash-filter-http</span><br><span class="line">logstash-filter-json</span><br><span class="line">logstash-filter-kv</span><br><span class="line">logstash-filter-memcached</span><br><span class="line">logstash-filter-metrics</span><br><span class="line">logstash-filter-mutate</span><br><span class="line">logstash-filter-prune</span><br><span class="line">logstash-filter-ruby</span><br><span class="line">logstash-filter-sleep</span><br><span class="line">logstash-filter-split</span><br><span class="line">logstash-filter-syslog_pri</span><br><span class="line">logstash-filter-throttle</span><br><span class="line">logstash-filter-translate</span><br><span class="line">logstash-filter-truncate</span><br><span class="line">logstash-filter-urldecode</span><br><span class="line">logstash-filter-useragent</span><br><span class="line">logstash-filter-uuid</span><br><span class="line">logstash-filter-xml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在配置过滤源时直接使用logstash-filter-*后面的*即可，比如csv；</p>
+</li>
+<li><p><a href="https://www.elastic.co/guide/en/logstash/current/filter-plugins.html" target="_blank" rel="noopener">官方过滤插件</a></p>
+</li>
+</ol>
+</li>
+<li><p><strong>输出插件：</strong></p>
+<ol>
+<li><p>命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash-plugin list --group output</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出（2020/05/11之前默认安装）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">logstash-output-cloudwatch</span><br><span class="line">logstash-output-csv</span><br><span class="line">logstash-output-elastic_app_search</span><br><span class="line">logstash-output-elasticsearch</span><br><span class="line">logstash-output-email</span><br><span class="line">logstash-output-file</span><br><span class="line">logstash-output-graphite</span><br><span class="line">logstash-output-http</span><br><span class="line">logstash-output-lumberjack</span><br><span class="line">logstash-output-nagios</span><br><span class="line">logstash-output-null</span><br><span class="line">logstash-output-pipe</span><br><span class="line">logstash-output-redis</span><br><span class="line">logstash-output-s3</span><br><span class="line">logstash-output-sns</span><br><span class="line">logstash-output-sqs</span><br><span class="line">logstash-output-stdout</span><br><span class="line">logstash-output-tcp</span><br><span class="line">logstash-output-udp</span><br><span class="line">logstash-output-webhdfs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在配置过滤源时直接使用logstash-output-*后面的*即可，比如csv；</p>
+</li>
+<li><p><a href="https://www.elastic.co/guide/en/logstash/current/output-plugins.html" target="_blank" rel="noopener">官方输出插件</a></p>
+</li>
+</ol>
+</li>
+<li><p><strong>Codec插件：</strong></p>
+<ol>
+<li><p>命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash-plugin list  --group codec</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出（2020/05/11之前默认安装）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">logstash-codec-avro</span><br><span class="line">logstash-codec-cef</span><br><span class="line">logstash-codec-collectd</span><br><span class="line">logstash-codec-dots</span><br><span class="line">logstash-codec-edn</span><br><span class="line">logstash-codec-edn_lines</span><br><span class="line">logstash-codec-es_bulk</span><br><span class="line">logstash-codec-fluent</span><br><span class="line">logstash-codec-graphite</span><br><span class="line">logstash-codec-json</span><br><span class="line">logstash-codec-json_lines</span><br><span class="line">logstash-codec-line</span><br><span class="line">logstash-codec-msgpack</span><br><span class="line">logstash-codec-multiline</span><br><span class="line">logstash-codec-netflow</span><br><span class="line">logstash-codec-plain</span><br><span class="line">logstash-codec-rubydebug</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.elastic.co/guide/en/logstash/current/codec-plugins.html" target="_blank" rel="noopener">官方codec插件</a></p>
+</li>
+<li><p>常用codec：</p>
+<ol>
+<li>line：使用“message”中的数据将每行转换为logstash事件</li>
+<li>multiline：允许您为“message”构成任意边界</li>
+<li>json_lines： 解析换行符分隔的JSON数据</li>
+<li>json：解析所有JSON</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="Logstash多配置文件"><a href="#Logstash多配置文件" class="headerlink" title="Logstash多配置文件"></a>Logstash多配置文件</h2><ol>
+<li><p>一个pipeline含有一个逻辑的数据流，它从input接收数据，并把它们传入到队列里，经过worker的处理，最后输出到output；</p>
+</li>
+<li><p>logstash使用pipeline来处理多个配置文件；</p>
+</li>
+<li><p>需要修改安装文件下的配置文件pipelines.yml，本机测试环境使用brew进行安装的，因此配置目录为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/Cellar/logstash/7.6.2/libexec/config</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>样例：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">pipeline.id:</span> <span class="string">daily</span></span><br><span class="line">   <span class="attr">pipeline.workers:</span> <span class="number">1</span></span><br><span class="line">   <span class="attr">pipeline.batch.size:</span> <span class="number">1</span></span><br><span class="line">   <span class="attr">path.config:</span> <span class="string">"/Users/wander/data/multi-pipeline/daily.conf"</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">pipeline.id:</span> <span class="string">apache</span></span><br><span class="line">   <span class="attr">queue.type:</span> <span class="string">persisted</span></span><br><span class="line">   <span class="attr">path.config:</span> <span class="string">"/Users/wander/data/multi-pipeline/apache.conf"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上述样例就可以读取daily.conf以及apache.conf供logstash使用；</p>
+</li>
+</ul>
+</li>
+<li><p>直接处理一个文件夹下的配置文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">pipeline.id:</span> <span class="string">my_logs</span></span><br><span class="line">   <span class="attr">queue.type:</span> <span class="string">persisted</span></span><br><span class="line">   <span class="attr">path.config:</span> <span class="string">"/Users/wander/data/multi-pipeline/*.conf"</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="测试邮件Logstash"><a href="#测试邮件Logstash" class="headerlink" title="测试邮件Logstash"></a>测试邮件Logstash</h2><ol>
+<li><p>首先确认是否安装了logstash-input-imap，默认是安装的；然后配置输入文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">input</span> <span class="string">&#123;</span></span><br><span class="line">	<span class="string">imap</span> <span class="string">&#123;</span></span><br><span class="line">	 	<span class="string">host</span> <span class="string">=&gt;</span> <span class="string">"imap.qq.com"</span></span><br><span class="line">	 	<span class="string">user</span> <span class="string">=&gt;</span> <span class="string">"qq邮箱@qq.com"</span></span><br><span class="line">	 	<span class="string">password</span> <span class="string">=&gt;</span> <span class="string">"密码"</span></span><br><span class="line">	 	<span class="string">content_type</span> <span class="string">=&gt;</span> <span class="string">"text/plain"</span></span><br><span class="line">	 	<span class="string">secure</span> <span class="string">=&gt;</span> <span class="literal">true</span></span><br><span class="line">	 	<span class="string">port</span> <span class="string">=&gt;</span> <span class="number">993</span></span><br><span class="line">	 	<span class="string">check_interval</span> <span class="string">=&gt;</span> <span class="number">10</span></span><br><span class="line">	 	<span class="string">folder</span> <span class="string">=&gt;</span> <span class="string">"Inbox"</span></span><br><span class="line">	<span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="string">output</span> <span class="string">&#123;</span></span><br><span class="line">	<span class="string">stdout</span> <span class="string">&#123;</span> <span class="string">codec</span> <span class="string">=&gt;</span> <span class="string">rubydebug</span> <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后运行logstash加载配置文件，向邮箱发送邮件；</p>
+</li>
+<li><p>确保邮箱开启了imap，否则是无法进行读取邮件的；</p>
+</li>
+<li><p>输出：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span><br><span class="line">                      <span class="string">"x-bq-mailer"</span> <span class="string">=&gt;</span> <span class="string">"QQMail 2.x"</span><span class="string">,</span></span><br><span class="line">                         <span class="string">"x-qq-mid"</span> <span class="string">=&gt;</span> <span class="string">"mxszc46t1589197905tg6wlfm63"</span><span class="string">,</span></span><br><span class="line">                     <span class="string">"x-cm-transid"</span> <span class="string">=&gt;</span> <span class="string">"KAcSCgBXnwtNPLle9rfbAA--.31638S2"</span><span class="string">,</span></span><br><span class="line">                 <span class="string">"x-originating-ip"</span> <span class="string">=&gt;</span> <span class="string">"[49.94.67.169]"</span><span class="string">,</span></span><br><span class="line">                             <span class="string">"date"</span> <span class="string">=&gt;</span> <span class="string">"Mon, 11 May 2020 19:51:41 +0800"</span><span class="string">,</span></span><br><span class="line">                         <span class="string">"received"</span> <span class="string">=&gt;</span> <span class="string">[</span></span><br><span class="line">        <span class="string">[0]</span> <span class="string">"from 218.13.19.13 (unknown [218.13.19.13]) by newmx36.qq.com (NewMx) with SMTP id for &lt;1194409532@qq.com&gt;; Mon, 11 May 2020 19:51:45 +0800"</span><span class="string">,</span></span><br><span class="line">        <span class="string">[1]</span> <span class="string">"from iPhone (unknown [49.94.67.169]) by nanhaia6 (Coremail) with SMTP id KAcSCgBXnwtNPLle9rfbAA--.31638S2; Mon, 11 May 2020 19:51:43 +0800"</span></span><br><span class="line">    <span class="string">],</span></span><br><span class="line">                   <span class="string">"x-qq-orgsender"</span> <span class="string">=&gt;</span> <span class="string">"wangsp14@midea.com"</span><span class="string">,</span></span><br><span class="line">                        <span class="string">"x-bq-mime"</span> <span class="string">=&gt;</span> <span class="string">"TCMime 1.0 by Tencent"</span><span class="string">,</span></span><br><span class="line">                    <span class="string">"ironport-phdr"</span> <span class="string">=&gt;</span> <span class="string">"9a23:eQWNCBabkxDEQt9aARwe8nD/LSx+4OfEezUN459isYplN5qZr8+/bnLW6fgltlLVR4KTs6sC17OL9fG4Ejdfqb+681k6OKRWUBEEjchE1ycBO+WiTXPBEfjxciYhF95DXlI2t1uyMExSBdqsLwaK+i764jEdAAjwOhRoLerpBIHSk9631+ev8JHPfglEnjWwba5yIRmsqQjdqsYajIVgJ60s1hbHv3xEdvhMy2h1P1yThRH85smx/J5n7Stdvu8q+tBDX6vnYak2VKRUAzs6PW874s3rrgTDQhCU5nQASGUWkwFHDBbD4RrnQ5r+qCr6tu562CmHIc37SK0/VDq+46t3ThLjlSEKPCM7/m7KkMx9lKJVrgy8qRNw34Hab4+bOvl5cKPcZt4aRXFOU9xNWyFbHo+xbY0CBPcBM+ZCqIn9okMDoRWwBAa2AuPvxSRIhmfr0aA1yOkhFADG0xE+EN0UqnjbsNL1NKIcXe2ywqjH1zPDb/xN2Tfl9YTFfQssofSNXb1tb8Xe01MjGB/CjlWVsIHoOS6e2esRvWaB9eVgSf6vhHA9qwF3ujWiycghhpTGiI8bxF7J9zh1zJgoKNC7S0N1bt6pHpVTuiyUK4Z6X8IvTmJmtSskxLMLp4C3cSYUxJg5yBDSZeCLfo6V6RzgTOacOSp0iG5/dL6ihBu+60qtxvfzW8WoyFpHoS5InsPIu30CzRDe68qKRuFg8kqg3TuC0R3Y5PteLkAuj6XbLoYswrs3lpUOr0vOBjT2mEDqjK+OcUUk5/So5/znYrr4op+cMJd5igD4MqQygMywG+I4PRYSX2SB/OS81aDs8lPjT7lQkvI2lazZvIjbJcQduKG5HxdY3ps/5xqlEjur084UkHsdIF9KZB6Ll43pNEvPIPD8A/e/mVOskDJzyvHIJLLhBJrNLmPbkLv8crtw8EtcyAsuwt9B/Z1YEK0OIPX2WkPprtzXEgc5MxCow+bgENhxy54SVGaAD6KWLK/ftV+F6+wxL+SXfY8VoSzxJOQi5/7r3jcFngpXJPD4gcdPOS3jRL4yehzIPSa004paS08Tp0w1S+m823OYVjsGLWm7Wa0n/mhnIIenAYrKAIuqhfbVwy69EYZOPzxuD1GAHH6ufIKBDaRfIBmOK9Nsx2RXHYOqTJUsgEmj"</span><span class="string">,</span></span><br><span class="line">                    <span class="string">"x-ironport-av"</span> <span class="string">=&gt;</span> <span class="string">[</span></span><br><span class="line">        <span class="string">[0]</span> <span class="string">"E=McAfee;i=\"6000,8403,9617\"; a=\"107122629\""</span><span class="string">,</span></span><br><span class="line">        <span class="string">[1]</span> <span class="string">"E=Sophos;i=\"5.73,379,1583164800\"; d=\"scan'208,217\";a=\"107122629\""</span></span><br><span class="line">    <span class="string">],</span></span><br><span class="line">    <span class="string">"x-ironport-anti-spam-filtered"</span> <span class="string">=&gt;</span> <span class="string">"true"</span><span class="string">,</span></span><br><span class="line">                           <span class="string">"x-guid"</span> <span class="string">=&gt;</span> <span class="string">"D4E19ED0-E6A4-D528-5441-737CCCEBCC7A"</span><span class="string">,</span></span><br><span class="line">                        <span class="string">"x-qq-feat"</span> <span class="string">=&gt;</span> <span class="string">"4YfUFR6LTbWPT7g1J7q36dJc1luWQvZZ42LpyavBzJq/+9+kOq8Wl37lBEL9a rIftUJPR8kXgobTJ7k1Km4xH4KqqeFq82PX6IlyuIvqPNMANlXbeKNiNmliRU6clwTfCB4m 2W7So113X8hvY2tO/fK242xWE8bKLsmOAN2STroD5kdsgS4p01CheWFzXcwTK5an1go21Ev mj1zxt6gPfYXlSt0ZZvlxSp83qGLDCkTqOdHkMzkUKaMkYZk7eFawndCWyBa6+Vzgbyw3Kv cicES+e6x1OSAOdkq1LbO1KcjmEl4s2GHRiw=="</span><span class="string">,</span></span><br><span class="line">        <span class="string">"content-transfer-encoding"</span> <span class="string">=&gt;</span> <span class="string">"base64"</span><span class="string">,</span></span><br><span class="line">                             <span class="string">"from"</span> <span class="string">=&gt;</span> <span class="string">"\"wangsp14@midea.com\" &lt;wangsp14@midea.com&gt;"</span><span class="string">,</span></span><br><span class="line">                     <span class="string">"content-type"</span> <span class="string">=&gt;</span> <span class="string">"text/html; charset=utf-8"</span><span class="string">,</span></span><br><span class="line">                   <span class="string">"x-qq-xmailinfo"</span> <span class="string">=&gt;</span> <span class="string">"OKPacIQk4dZohzUdVHaQFxpvV6gUIWeBmViOiZ51jOAIaFX+D5qPmAoXbSQbve UnUj8s7elPv8+69QwDL3Cf1xvUZ8rjHPGVAN/A5flZz3+p2mKp4zgTRTDgymurOUv4bQvZFfgwyi kndyrfPe0xeq4/IbxHhqKWhlmLSS2p5ZfwNXJ4vQCV8ExQbA9UeqL8MfwteM0VoTRoEuLoYqlzfT OvQ/QI6Kk1n22z4YB0nrk66RjU6nGPjqiT4Frm0UacDZ/SvsNAgWPOW4XgAu6BItFltS+gD4RZd3 vjh0hTwSdRZjKt6fHXVOq+2WxqZaxYLOQncDI4IwvgKF10aOhcuK6tYrKyBV4XKijR4MUwP0MzeD ZcfVecwQS2F97Da7gKGn7JCD6qkzWkWkLMkWG7G1ezZtK0twyNAiUEgb8SP03tX+5rjQkZguWgBL h67+BPpg5XQgaFDFRS2g4dCep/kRlzmJQa0j940oLDv+3+kYixV5hTEBb39Rgtl8gKmGX7zX5hdk aoW3805Y8s34lWYwbNONpBVu9ws/7W2P4qYpckBFj3G05GfKvpmFAcfKvr3P5TaLg9PWHbTn30wu ZtUNaJxRK5R9NbvKi9Xg3JP/vQkiDAebom42cfjotOeD2c2+OQd7P0uza0SdVAQ3qSxYg+6HgT2S 9OsA=="</span><span class="string">,</span></span><br><span class="line">                          <span class="string">"subject"</span> <span class="string">=&gt;</span> <span class="string">"ceshi"</span><span class="string">,</span></span><br><span class="line">                    <span class="string">"x-ipas-result"</span> <span class="string">=&gt;</span> <span class="string">"A2Es8AAUO7le/ygHEgpmGgEBAQEBKwEJAQYBAQEBAgIBAQEBAgEBAQEDAQEBAYFeTGgKAgEBAQEBAWKBGykyNoQamx1jhRcKgQ4DgmWHQRILAQEBAQEBAQEBGxkBAgQBAYRAAgIZBy4BCIE6JEsCEAEBBgEBAQEBBQQBAQJphQpYgikSIoQJChEpNAEFAQIHDQImAgQ6DAkEBgIbhhqRdJt5gTKJNySBBYEOKAIBAQEBAQEBAYdVgh+DIYFBiVUlgkczgi0EgUEBAZALiBGZCwEGAQECgjKYXRaCNQGabhFAg0lcqE2COIFWcIFuB3cBAUxPGJ5VTTRzCAQJVQEeCBMKAYxZAYEPAQE"</span><span class="string">,</span></span><br><span class="line">      <span class="string">"x-ironport-anti-spam-result"</span> <span class="string">=&gt;</span> <span class="string">"A2Es8AAUO7le/ygHEgpmGgEBAQEBKwEJAQYBAQEBAgIBAQEBAgEBAQEDAQEBAYFeTGgKAgEBAQEBAWKBGykyNoQamx1jhRcKgQ4DgmWHQRILAQEBAQEBAQEBGxkBAgQBAYRAAgIZBy4BCIE6JEsCEAEBBgEBAQEBBQQBAQJphQpYgikSIoQJChEpNAEFAQIHDQImAgQ6DAkEBgIbhhqRdJt5gTKJNySBBYEOKAIBAQEBAQEBAYdVgh+DIYFBiVUlgkczgi0EgUEBAZALiBGZCwEGAQECgjKYXRaCNQGabhFAg0lcqE2COIFWcIFuB3cBAUxPGJ5VTTRzCAQJVQEeCBMKAYxZAYEPAQE"</span><span class="string">,</span></span><br><span class="line">                          <span class="string">"message"</span> <span class="string">=&gt;</span> <span class="string">"&lt;div style=\"min-height:22px;margin-bottom:8px;\"&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=\"min-height:22px;margin-bottom:8px;\"&gt;dhhhdd&lt;/div&gt;&lt;div id=\"QQMailSignature\" class=\"mail-footer\" aria-hidden=\"true\"&gt;&lt;hr style=\"margin: 0 0 10px 0;border: 0;border-bottom:1px solid #E6E8EB;height:0;line-height:0;font-size:0;padding: 20px 0 0 0;width: 50px;\"&gt;发自我的iPhone&lt;/div&gt;&lt;div id=\"original-content\"&gt;&lt;/div&gt;"</span><span class="string">,</span></span><br><span class="line">                  <span class="string">"x-cm-senderinfo"</span> <span class="string">=&gt;</span> <span class="string">"5zdqw2rsruqxpqwut01hwozxxghdhulrpou0/"</span><span class="string">,</span></span><br><span class="line">                         <span class="string">"@version"</span> <span class="string">=&gt;</span> <span class="string">"1"</span><span class="string">,</span></span><br><span class="line">                       <span class="string">"@timestamp"</span> <span class="string">=&gt;</span> <span class="number">2020</span><span class="number">-05</span><span class="string">-11T11:51:41.000Z,</span></span><br><span class="line">                       <span class="string">"message-id"</span> <span class="string">=&gt;</span> <span class="string">"&lt;tencent_7B8A0157FA3E8FE6ADB9CFBD@qq.com&gt;"</span><span class="string">,</span></span><br><span class="line">              <span class="string">"x-coremail-antispam"</span> <span class="string">=&gt;</span> <span class="string">"1UD129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73 VFW2AGmfu7bjvjm3AaLaJ3UjIYCTnIWjp_UUUrp7k0a2IF6ryUM7kC6x804xWl1xkIjI8I 6I8E6xAIw20EY4v20xvaj40_Wr0E3s1l1IIY67AEw4v_Jr0_Jr4l8cAvFVAK0II2c7xJM2 8CjxkF64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2IY67AKxVWDJVCq3wA2z4x0Y4vE2Ix0 cI8IcVCY1x0267AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z2 80aVCY1x0267AKxVW0oVCq3wAa7VA2z4x0Y4vE2Ix0cI8IcVCY1x0267AKxVW0oVCq3VA2 z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s0EFcxC0VAqx4xG64AKrs4lnx0E84ACjcxK6xIIjx v20xvEc7CjxVAFwI0_GcCE3s0EFcxC0VAqx4xG64AKrs4lnxkEFVAIw20F6cxK64vIFxWl nxkEFVAqjxCEFcIq020EwIxC4wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0V AKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1l Ox8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7VAKI48JM4xvF2IEb7IF0Fy264kE64k0F2 4lFcxC0VAqx4xG64AKrs4lw4CE7480Y4vE14AKx2xKxVC2ax8xM4kE6xkIj40Ew7xC0wCF 04k20xvY0x0EwIxGrwCF04k20xvE74AGY7Cv6cx26r48WwCFx2IqxVCFs4IE7xkEbVWUJV W8JwC20s026c02F40E14v26r106r1rMI8I3I0E7480Y4vE14v26r1j6r18MI8E67AF67kF 1VAFwI0_Jr0_JrylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6x IIjxv20xvEc7CjxVAFwI0_Jr0_Gr1lIxAIcVCF04k26cxKx2IYs7xG6rW3Jr0E3s1lIxAI cVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVWUJVW8JwCE64xvF2IEb7 IF0Fy7YxBIdaVFxhVjvjDU0xZFpf9x07Una93UUUUU="</span><span class="string">,</span></span><br><span class="line">                               <span class="string">"to"</span> <span class="string">=&gt;</span> <span class="string">"1194409532 &lt;1194409532@qq.com&gt;"</span><span class="string">,</span></span><br><span class="line">                    <span class="string">"x-qq-mailinfo"</span> <span class="string">=&gt;</span> <span class="string">"NbUxUzKtP+7YNW2lRqIrst/oPaUXovn7ftT5zLA6Y5xQ0r1Kbr3Z21V/c It7P3O0ON4RghKM9wG9h+qnsa0Jr/z5TNHI4VPYm9xo7oaYtuVpQm6W9cw52ncO9iRGRGhX WW9FiYo3WocFf8zXV80V7aE="</span><span class="string">,</span></span><br><span class="line">                         <span class="string">"x-mailer"</span> <span class="string">=&gt;</span> <span class="string">"QQMail 2.x"</span><span class="string">,</span></span><br><span class="line">                     <span class="string">"mime-version"</span> <span class="string">=&gt;</span> <span class="string">"1.0"</span><span class="string">,</span></span><br><span class="line">                  <span class="string">"x-outbound-spam"</span> <span class="string">=&gt;</span> <span class="string">"2"</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-imap.html" target="_blank" rel="noopener">imap官方说明</a></p>
+</li>
+<li><p>添加过滤：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 仅仅过滤条件</span></span><br><span class="line"><span class="string">filter</span> <span class="string">&#123;</span></span><br><span class="line">	<span class="string">if</span> <span class="string">"critical"</span> <span class="string">in</span> <span class="string">[subject]</span> <span class="string">&#123;</span></span><br><span class="line">		<span class="string">mutate</span> <span class="string">&#123;</span> <span class="string">add_tag</span> <span class="string">=&gt;</span> <span class="string">"critical"</span> <span class="string">&#125;</span></span><br><span class="line">	<span class="string">&#125;</span></span><br><span class="line">	<span class="string">else</span> <span class="string">if</span> <span class="string">"error"</span> <span class="string">in</span> <span class="string">[subject]</span> <span class="string">&#123;</span></span><br><span class="line">		<span class="string">mutate</span> <span class="string">&#123;</span> <span class="string">add_tag</span> <span class="string">=&gt;</span> <span class="string">"error"</span> <span class="string">&#125;</span></span><br><span class="line">	<span class="string">&#125;</span></span><br><span class="line"> <span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将电子邮件添加到ELK堆栈中的数据分析管道中肯定有一定的价值存在的！</p>
+</li>
+</ol>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ol>
+<li>为什么有数据方案：Beats ==&gt; Kafka ==&gt; Logstash ==&gt; Elasticsearch这种流程呢？<ul>
+<li>日志是不可预测的，在发生生产事件后，恰恰在您最需要它们时，日志可能突然激增并淹没您的日志记录基础结构</li>
+<li><strong>为了保护Logstash和Elasticsearch免受此类数据突发攻击，用户部署了缓冲机制以充当消息代理</strong></li>
+</ul>
+</li>
+</ol>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://www.elastic.co/cn/logstash" target="_blank" rel="noopener">官方网站</a></li>
+<li><a href="https://www.elastic.co/guide/en/logstash/current/index.html" target="_blank" rel="noopener">官方文档</a></li>
+<li><a href="https://www.elastic.co/guide/index.html" target="_blank" rel="noopener">Elastic官方指导</a></li>
+<li><a href="https://www.elastic.co/cn/blog" target="_blank" rel="noopener">官方博客</a></li>
+<li><a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-mutate.html#plugins-filters-mutate" target="_blank" rel="noopener">转换插件</a></li>
+<li><a href="https://blog.csdn.net/ubuntutouch/category_9335275.html" target="_blank" rel="noopener">CSDN官方社区博客</a></li>
+<li><a href="https://blog.csdn.net/UbuntuTouch/article/details/100606857" target="_blank" rel="noopener">一个经典案例</a></li>
+<li><a href="https://blog.csdn.net/UbuntuTouch/article/details/104865306" target="_blank" rel="noopener">Geo搜索</a></li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Logstash是ELKB中非常重要的组件，其中的filter插件又为其数据的处理贡献了太多，需要长期的积累，以及参考官方文档才能配置出比较适合的filter，这部分需要大量的练习，才能使得分析数据工作变得更加轻松，后续还需要进行一些filter的编写！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="WanderROS 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="WanderROS 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/05/11/Logstash-Quick-Start/">Logstash Quick Start</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 WanderROS 的个人博客">WanderROS</a></p>
+  <p><span>发布时间:</span>2020年05月11日 - 08:25</p>
+  <p><span>最后更新:</span>2020年10月01日 - 16:52</p>
+  <p><span>原始链接:</span><a href="/2020/05/11/Logstash-Quick-Start/" title="Logstash Quick Start">https://wanderros.github.io/2020/05/11/Logstash-Quick-Start/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://wanderros.github.io/2020/05/11/Logstash-Quick-Start/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+
+      
+</div>
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ELK/" rel="tag"><i class="fa fa-tag"></i> ELK</a>
+          
+            <a href="/tags/Logstash/" rel="tag"><i class="fa fa-tag"></i> Logstash</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/09/Python-%E7%B9%81%E7%90%90%E4%BA%8B%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%8C%96/" rel="next" title="Python 繁琐事务自动化">
+                <i class="fa fa-chevron-left"></i> Python 繁琐事务自动化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/11/Kibana-Quick-Start/" rel="prev" title="Kibana Quick Start">
+                Kibana Quick Start <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+<div>
+		
+    	<!-- Link Gitalk 的支持文件  -->
+	<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+	<div id="gitalk-container"></div>     <script type="text/javascript">
+		var gitalk = new Gitalk({
+			clientID: 'bd073c3374c2b1a924b0',
+			clientSecret: 'e3818342fe0fa0f03ab0997cfe81ae9c450ec954',
+			repo: 'wanderros.github.io',
+			owner: 'WanderROS',
+			admin: ['WanderROS'],
+			id: location.pathname,
+			distractionFreeMode: 'true'
+		});
+		gitalk.render('gitalk-container');
+	</script> 
+	<!-- Gitalk end -->
+
+		
+	</div>
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+ <div id="gitalk-container"></div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="WanderROS" />
+            
+              <p class="site-author-name" itemprop="name">WanderROS</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">145</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wanderROS" target="_blank" title="GitHub">
+                      GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1194409532@qq.com.com" target="_blank" title="E-Mail">
+                      E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境说明"><span class="nav-number">2.1.</span> <span class="nav-text">环境说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logstash模块"><span class="nav-number">2.2.</span> <span class="nav-text">Logstash模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优势"><span class="nav-number">2.3.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-amp-运行"><span class="nav-number">2.4.</span> <span class="nav-text">安装&amp;运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过滤器"><span class="nav-number">2.5.</span> <span class="nav-text">过滤器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出到Elasticsearch"><span class="nav-number">2.6.</span> <span class="nav-text">输出到Elasticsearch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grok入门"><span class="nav-number">2.7.</span> <span class="nav-text">Grok入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#再看插件"><span class="nav-number">2.8.</span> <span class="nav-text">再看插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logstash多配置文件"><span class="nav-number">2.9.</span> <span class="nav-text">Logstash多配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试邮件Logstash"><span class="nav-number">2.10.</span> <span class="nav-text">测试邮件Logstash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">2.11.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">2.12.</span> <span class="nav-text">参考文档</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WanderROS</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+-->
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共379.7k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
