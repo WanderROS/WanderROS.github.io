@@ -175,12 +175,6 @@
       <categories>
         <category>Algorithm</category>
       </categories>
-      <tags>
-        <tag>Algorithm</tag>
-        <tag>Java</tag>
-        <tag>Code</tag>
-        <tag>TODO</tag>
-      </tags>
   </entry>
   <entry>
     <title>Arduino Quick Start</title>
@@ -230,10 +224,6 @@
       <categories>
         <category>Arduino</category>
       </categories>
-      <tags>
-        <tag>Arduino</tag>
-        <tag>Hardware</tag>
-      </tags>
   </entry>
   <entry>
     <title>Bootstrap Quick Start</title>
@@ -449,10 +439,6 @@
       <categories>
         <category>Bootstrap</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>Bootstrap</tag>
-      </tags>
   </entry>
   <entry>
     <title>Docker Command</title>
@@ -531,10 +517,6 @@
       <categories>
         <category>Docker</category>
       </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>Base</tag>
-      </tags>
   </entry>
   <entry>
     <title>Clean Code</title>
@@ -588,10 +570,6 @@
       <categories>
         <category>Code</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>Base</tag>
-      </tags>
   </entry>
   <entry>
     <title>Docker Data Persistence</title>
@@ -702,9 +680,6 @@
       <categories>
         <category>Docker</category>
       </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
   </entry>
   <entry>
     <title>Docker ELK Platform</title>
@@ -812,11 +787,6 @@
       <categories>
         <category>ELK</category>
       </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>ELK</tag>
-        <tag>Linux</tag>
-      </tags>
   </entry>
   <entry>
     <title>Docker-Go</title>
@@ -880,10 +850,6 @@
       <categories>
         <category>Docker</category>
       </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>Base</tag>
-      </tags>
   </entry>
   <entry>
     <title>Elasticsearch 7.6 插件使用入门</title>
@@ -1046,9 +1012,6 @@
       <categories>
         <category>ELK</category>
       </categories>
-      <tags>
-        <tag>ELK</tag>
-      </tags>
   </entry>
   <entry>
     <title>Docker Swagger Quick Start</title>
@@ -1088,10 +1051,6 @@
       <categories>
         <category>Docker</category>
       </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>Work</tag>
-      </tags>
   </entry>
   <entry>
     <title>Docker Start</title>
@@ -1313,10 +1272,6 @@
       <categories>
         <category>Docker</category>
       </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>Base</tag>
-      </tags>
   </entry>
   <entry>
     <title>Express &amp; LoopBack</title>
@@ -1386,12 +1341,6 @@
       <categories>
         <category>Nodejs</category>
       </categories>
-      <tags>
-        <tag>TODO</tag>
-        <tag>LoopBack</tag>
-        <tag>Nodejs</tag>
-        <tag>Express</tag>
-      </tags>
   </entry>
   <entry>
     <title>Grokking Algorithms(0)</title>
@@ -1466,11 +1415,6 @@
       <categories>
         <category>Algorithm</category>
       </categories>
-      <tags>
-        <tag>Algorithm</tag>
-        <tag>Code</tag>
-        <tag>TODO</tag>
-      </tags>
   </entry>
   <entry>
     <title>Elasticsearch Quick Start</title>
@@ -1715,10 +1659,6 @@
       <categories>
         <category>ELK</category>
       </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>ELK</tag>
-      </tags>
   </entry>
   <entry>
     <title>HTML&amp;WebGL</title>
@@ -1742,10 +1682,6 @@
       <categories>
         <category>HTML</category>
       </categories>
-      <tags>
-        <tag>HTML</tag>
-        <tag>JavaScript</tag>
-      </tags>
   </entry>
   <entry>
     <title>HTML5 &amp; CSS3 Quick Start</title>
@@ -2109,10 +2045,6 @@
       <categories>
         <category>Web</category>
       </categories>
-      <tags>
-        <tag>Web</tag>
-        <tag>CSS</tag>
-      </tags>
   </entry>
   <entry>
     <title>HTML5秘籍</title>
@@ -2385,11 +2317,6 @@
       <categories>
         <category>Web</category>
       </categories>
-      <tags>
-        <tag>HTML</tag>
-        <tag>Web</tag>
-        <tag>CSS</tag>
-      </tags>
   </entry>
   <entry>
     <title>HTTP Quick Start</title>
@@ -2536,10 +2463,6 @@
       <categories>
         <category>HTTP</category>
       </categories>
-      <tags>
-        <tag>Base</tag>
-        <tag>HTTP</tag>
-      </tags>
   </entry>
   <entry>
     <title>HTTPS 权威指南</title>
@@ -2714,10 +2637,6 @@
       <categories>
         <category>Web</category>
       </categories>
-      <tags>
-        <tag>Web</tag>
-        <tag>HTTPS</tag>
-      </tags>
   </entry>
   <entry>
     <title>Hello,JavaScript</title>
@@ -2760,11 +2679,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-      <tags>
-        <tag>TODO</tag>
-        <tag>JavaScript</tag>
-        <tag>Web</tag>
-      </tags>
   </entry>
   <entry>
     <title>Hello Nodejs</title>
@@ -2951,11 +2865,6 @@
       <categories>
         <category>Nodejs</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>JavaScript</tag>
-        <tag>Server</tag>
-      </tags>
   </entry>
   <entry>
     <title>IoT 设备上报查询</title>
@@ -2998,9 +2907,6 @@
       <categories>
         <category>Work</category>
       </categories>
-      <tags>
-        <tag>Work</tag>
-      </tags>
   </entry>
   <entry>
     <title>Java 性能权威指南</title>
@@ -3012,10 +2918,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>TODO</tag>
-      </tags>
   </entry>
   <entry>
     <title>Java 代码优化</title>
@@ -3192,10 +3094,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Code</tag>
-      </tags>
   </entry>
   <entry>
     <title>Java 测试驱动开发</title>
@@ -3296,9 +3194,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
   </entry>
   <entry>
     <title>Java Base_0</title>
@@ -3921,9 +3816,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
   </entry>
   <entry>
     <title>JavaScript Algorithm &amp; Datastructure</title>
@@ -4309,10 +4201,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-      <tags>
-        <tag>Algorithm</tag>
-        <tag>JavaScript</tag>
-      </tags>
   </entry>
   <entry>
     <title>JavaScript 全栈快速开发基础</title>
@@ -4409,9 +4297,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
   </entry>
   <entry>
     <title>JavaScript 基础再度强化</title>
@@ -4575,9 +4460,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
   </entry>
   <entry>
     <title>JavaScript 基础强化</title>
@@ -4737,9 +4619,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
   </entry>
   <entry>
     <title>JavaScript 深入高级话题</title>
@@ -4961,9 +4840,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
   </entry>
   <entry>
     <title>JavaScript异步编程</title>
@@ -5077,10 +4953,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>JavaScript</tag>
-      </tags>
   </entry>
   <entry>
     <title>Java注解（Annotation）</title>
@@ -5223,9 +5095,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
   </entry>
   <entry>
     <title>Jenkins Quick Start</title>
@@ -5550,11 +5419,6 @@
       <categories>
         <category>Jenkins</category>
       </categories>
-      <tags>
-        <tag>Jenkins</tag>
-        <tag>CI/CD</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>Json Quick Start</title>
@@ -5615,10 +5479,6 @@
       <categories>
         <category>Json</category>
       </categories>
-      <tags>
-        <tag>Base</tag>
-        <tag>Json</tag>
-      </tags>
   </entry>
   <entry>
     <title>Kali Proxy</title>
@@ -5644,12 +5504,6 @@
       <categories>
         <category>Kali</category>
       </categories>
-      <tags>
-        <tag>TODO</tag>
-        <tag>Web</tag>
-        <tag>Kali</tag>
-        <tag>Security</tag>
-      </tags>
   </entry>
   <entry>
     <title>Kibana Quick Start</title>
@@ -5872,10 +5726,6 @@
       <categories>
         <category>ELK</category>
       </categories>
-      <tags>
-        <tag>ELK</tag>
-        <tag>Kibana</tag>
-      </tags>
   </entry>
   <entry>
     <title>Learn How to Bak</title>
@@ -5906,10 +5756,6 @@
       <categories>
         <category>Shell</category>
       </categories>
-      <tags>
-        <tag>Base</tag>
-        <tag>Shell</tag>
-      </tags>
   </entry>
   <entry>
     <title>Learn How to Design Your Code</title>
@@ -5960,10 +5806,6 @@
       <categories>
         <category>Code</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>Base</tag>
-      </tags>
   </entry>
   <entry>
     <title>Linux Performance Analysis &amp; Optimization</title>
@@ -5994,10 +5836,6 @@
       <categories>
         <category>Linux</category>
       </categories>
-      <tags>
-        <tag>TODO</tag>
-        <tag>Linux</tag>
-      </tags>
   </entry>
   <entry>
     <title>Linux Platform</title>
@@ -6177,10 +6015,6 @@
       <categories>
         <category>Linux</category>
       </categories>
-      <tags>
-        <tag>Base</tag>
-        <tag>Linux</tag>
-      </tags>
   </entry>
   <entry>
     <title>Linux 三剑客</title>
@@ -6358,10 +6192,6 @@
       <categories>
         <category>Linux</category>
       </categories>
-      <tags>
-        <tag>Base</tag>
-        <tag>Linux</tag>
-      </tags>
   </entry>
   <entry>
     <title>Lua 使用填坑</title>
@@ -6422,9 +6252,6 @@
       <categories>
         <category>Lua</category>
       </categories>
-      <tags>
-        <tag>Lua</tag>
-      </tags>
   </entry>
   <entry>
     <title>MongoDB Quick Start</title>
@@ -6570,10 +6397,6 @@
       <categories>
         <category>NoSQL</category>
       </categories>
-      <tags>
-        <tag>NoSQL</tag>
-        <tag>SQL</tag>
-      </tags>
   </entry>
   <entry>
     <title>Logstash Quick Start</title>
@@ -6947,10 +6770,6 @@
       <categories>
         <category>ELK</category>
       </categories>
-      <tags>
-        <tag>ELK</tag>
-        <tag>Logstash</tag>
-      </tags>
   </entry>
   <entry>
     <title>MySQL Qucik Start</title>
@@ -7604,11 +7423,6 @@
       <categories>
         <category>MySQL</category>
       </categories>
-      <tags>
-        <tag>Base</tag>
-        <tag>MySQL</tag>
-        <tag>DataBases</tag>
-      </tags>
   </entry>
   <entry>
     <title>MySQL基础强化</title>
@@ -7920,10 +7734,6 @@
       <categories>
         <category>MySQL</category>
       </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>DataBases</tag>
-      </tags>
   </entry>
   <entry>
     <title>NoSQL Qucik Start</title>
@@ -8077,10 +7887,6 @@
       <categories>
         <category>NoSQL</category>
       </categories>
-      <tags>
-        <tag>NoSQL</tag>
-        <tag>SQL</tag>
-      </tags>
   </entry>
   <entry>
     <title>Nodejs-Express</title>
@@ -8755,11 +8561,6 @@
       <categories>
         <category>Nodejs</category>
       </categories>
-      <tags>
-        <tag>Nodejs</tag>
-        <tag>Express</tag>
-        <tag>JavaScript</tag>
-      </tags>
   </entry>
   <entry>
     <title>Nodejs Web</title>
@@ -9306,11 +9107,6 @@
       <categories>
         <category>Nodejs</category>
       </categories>
-      <tags>
-        <tag>Nodejs</tag>
-        <tag>JavaScript</tag>
-        <tag>Web</tag>
-      </tags>
   </entry>
   <entry>
     <title>OMV Quick Start</title>
@@ -9442,10 +9238,6 @@
       <categories>
         <category>OMV</category>
       </categories>
-      <tags>
-        <tag>OMV</tag>
-        <tag>NAS</tag>
-      </tags>
   </entry>
   <entry>
     <title>OTA 调研</title>
@@ -9591,10 +9383,6 @@
       <categories>
         <category>Work</category>
       </categories>
-      <tags>
-        <tag>Work</tag>
-        <tag>OTA</tag>
-      </tags>
   </entry>
   <entry>
     <title>OpenResty Quick Start</title>
@@ -9683,11 +9471,6 @@
       <categories>
         <category>Nginx</category>
       </categories>
-      <tags>
-        <tag>Base</tag>
-        <tag>Lua</tag>
-        <tag>Nginx</tag>
-      </tags>
   </entry>
   <entry>
     <title>Python Data Analysis</title>
@@ -9708,11 +9491,6 @@
       <categories>
         <category>Python</category>
       </categories>
-      <tags>
-        <tag>TODO</tag>
-        <tag>Python</tag>
-        <tag>Data</tag>
-      </tags>
   </entry>
   <entry>
     <title>Python Network Quick Start</title>
@@ -9772,10 +9550,6 @@
       <categories>
         <category>Python</category>
       </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Network</tag>
-      </tags>
   </entry>
   <entry>
     <title>Python Quick Start</title>
@@ -10028,10 +9802,6 @@
       <categories>
         <category>Python</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>Python</tag>
-      </tags>
   </entry>
   <entry>
     <title>Python 测试驱动开发</title>
@@ -10142,10 +9912,6 @@
       <categories>
         <category>Python</category>
       </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Selenium</tag>
-      </tags>
   </entry>
   <entry>
     <title>Python 深入学习第一阶段</title>
@@ -10305,10 +10071,6 @@
       <categories>
         <category>Python</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>Python</tag>
-      </tags>
   </entry>
   <entry>
     <title>Python 深入学习第二阶段</title>
@@ -10394,10 +10156,6 @@
       <categories>
         <category>Python</category>
       </categories>
-      <tags>
-        <tag>TODO</tag>
-        <tag>Python</tag>
-      </tags>
   </entry>
   <entry>
     <title>Python 网络数据</title>
@@ -10511,10 +10269,6 @@
       <categories>
         <category>Python</category>
       </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Data</tag>
-      </tags>
   </entry>
   <entry>
     <title>Python 繁琐事务自动化</title>
@@ -10761,10 +10515,6 @@
       <categories>
         <category>Python</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>Python</tag>
-      </tags>
   </entry>
   <entry>
     <title>Redis快速入门</title>
@@ -10989,10 +10739,6 @@
       <categories>
         <category>Redis</category>
       </categories>
-      <tags>
-        <tag>Base</tag>
-        <tag>Redis</tag>
-      </tags>
   </entry>
   <entry>
     <title>Shell File Command</title>
@@ -11047,10 +10793,6 @@
       <categories>
         <category>Shell</category>
       </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Shell</tag>
-      </tags>
   </entry>
   <entry>
     <title>Shell Learn</title>
@@ -11305,10 +11047,6 @@
       <categories>
         <category>Linux</category>
       </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Shell</tag>
-      </tags>
   </entry>
   <entry>
     <title>Shell Manage Command</title>
@@ -11352,10 +11090,6 @@
       <categories>
         <category>Shell</category>
       </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Shell</tag>
-      </tags>
   </entry>
   <entry>
     <title>Shell Network Command</title>
@@ -11449,10 +11183,6 @@
       <categories>
         <category>Shell</category>
       </categories>
-      <tags>
-        <tag>Shell</tag>
-        <tag>Network</tag>
-      </tags>
   </entry>
   <entry>
     <title>Shell Web Command</title>
@@ -11493,10 +11223,6 @@
       <categories>
         <category>Shell</category>
       </categories>
-      <tags>
-        <tag>Web</tag>
-        <tag>Shell</tag>
-      </tags>
   </entry>
   <entry>
     <title>Spring Boot 实战</title>
@@ -11982,11 +11708,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>Spring</tag>
-      </tags>
   </entry>
   <entry>
     <title>Spring Boot 数据持久化</title>
@@ -12130,10 +11851,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>Spring Boot快速入门</title>
@@ -12321,10 +12038,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>Spring Cloud Quick Start</title>
@@ -12630,12 +12343,6 @@
       <categories>
         <category>SpringCloud</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>TODO</tag>
-        <tag>SpringBoot</tag>
-        <tag>SpringCloud</tag>
-      </tags>
   </entry>
   <entry>
     <title>Spring MVC Quick Start</title>
@@ -12714,12 +12421,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>TODO</tag>
-        <tag>SpringBoot</tag>
-        <tag>Spring</tag>
-      </tags>
   </entry>
   <entry>
     <title>Spring Security Quick Start</title>
@@ -13030,11 +12731,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>SpringSecurity</tag>
-      </tags>
   </entry>
   <entry>
     <title>Spring Security &amp; Token Quick Start</title>
@@ -13307,11 +13003,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringSecurity</tag>
-        <tag>SprinBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot AOP Quick Start</title>
@@ -13586,10 +13277,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>AOP</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot AdminUI 健康监控</title>
@@ -13628,10 +13315,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot Filter QuickStart</title>
@@ -13793,10 +13476,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>Filter</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot Json快速使用</title>
@@ -13928,11 +13607,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>Json</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot kafka Quick Start</title>
@@ -14057,11 +13731,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>Kafka</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot Mybatis Quick Start</title>
@@ -14138,10 +13807,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>Mybatis</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot MybatisPlus Quick Start</title>
@@ -14570,10 +14235,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>Mybatis</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot MybatisPlus 多租户插件学习</title>
@@ -14639,10 +14300,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>Mybatis</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot Swagger2 Quick Start</title>
@@ -14871,10 +14528,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>Swagger</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot Thymeleaf Qucik Start</title>
@@ -15087,10 +14740,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot WebSocket Quick Start</title>
@@ -15173,10 +14822,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>WebSocket</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot 处理微软文档和表格</title>
@@ -15441,10 +15086,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot 异步消息</title>
@@ -15723,10 +15364,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot 整合Redis</title>
@@ -15818,12 +15455,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>TODO</tag>
-        <tag>SpringBoot</tag>
-        <tag>Redis</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot中的JPA</title>
@@ -15879,10 +15510,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot 注解说明</title>
@@ -15969,10 +15596,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot之Web文件上传</title>
@@ -16020,11 +15643,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Web</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot国际化快速入门</title>
@@ -16325,10 +15943,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot定时任务快速入门</title>
@@ -16430,11 +16044,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Linux</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot快速整合httpClient</title>
@@ -16546,11 +16155,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>http</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot整合Dubbo&amp;Zookeeper</title>
@@ -16757,11 +16361,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>Zookeeper</tag>
-        <tag>Dubbo</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot管理工具Maven基础学习</title>
@@ -16848,11 +16447,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>Maven</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot管理Docker快速入门</title>
@@ -16952,11 +16546,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Docker</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot远程访问http服务方法汇总</title>
@@ -17348,11 +16937,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>HTTP</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot遗忘点速记</title>
@@ -17499,10 +17083,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringCloud Consul Quick Start</title>
@@ -17696,11 +17276,6 @@
       <categories>
         <category>SpringCloud</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>SpringCloud</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringCloud Eureka Quick Start</title>
@@ -18176,11 +17751,6 @@
       <categories>
         <category>SpringCloud</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>SpringCloud</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringCloud Stream Quick Start</title>
@@ -18277,11 +17847,6 @@
       <categories>
         <category>SpringCloud</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>SpringCloud</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringCloud Hystrix仪表盘</title>
@@ -18381,11 +17946,6 @@
       <categories>
         <category>SpringCloud</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>SpringCloud</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringCloud之负载均衡</title>
@@ -18634,11 +18194,6 @@
       <categories>
         <category>SpringCloud</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>SpringCloud</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringCloud服务链路追踪</title>
@@ -18790,11 +18345,6 @@
       <categories>
         <category>SpringCloud</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>SpringCloud</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringSecurity&amp;SpringDataJPA快速整合</title>
@@ -18872,11 +18422,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>SpringSecurity</tag>
-      </tags>
   </entry>
   <entry>
     <title>Team Code</title>
@@ -19002,11 +18547,6 @@
       <categories>
         <category>Code</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>Base</tag>
-        <tag>Team</tag>
-      </tags>
   </entry>
   <entry>
     <title>Vue&amp;SpringBoot前后端分离项目开发</title>
@@ -19201,12 +18741,6 @@
       <categories>
         <category>Vue</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>JavaScript</tag>
-        <tag>SpringBoot</tag>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>Vue.js快速入门</title>
@@ -19569,10 +19103,6 @@
       <categories>
         <category>Vue</category>
       </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>Vue状态管理模式组件Vuex</title>
@@ -19796,10 +19326,6 @@
       <categories>
         <category>Vue</category>
       </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>Vue进阶一期</title>
@@ -19979,10 +19505,6 @@
       <categories>
         <category>Vue</category>
       </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>Vue进阶第三期</title>
@@ -20229,10 +19751,6 @@
       <categories>
         <category>Vue</category>
       </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>Vue进阶第二期</title>
@@ -20569,10 +20087,6 @@
       <categories>
         <category>Vue</category>
       </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>Web Dev Base</title>
@@ -20681,11 +20195,6 @@
       <categories>
         <category>Web</category>
       </categories>
-      <tags>
-        <tag>Nodejs</tag>
-        <tag>JavaScript</tag>
-        <tag>Web</tag>
-      </tags>
   </entry>
   <entry>
     <title>Web安全开发基础</title>
@@ -20772,10 +20281,6 @@
       <categories>
         <category>Web</category>
       </categories>
-      <tags>
-        <tag>HTML</tag>
-        <tag>Web</tag>
-      </tags>
   </entry>
   <entry>
     <title>Web性能基础</title>
@@ -20968,10 +20473,6 @@
       <categories>
         <category>Web</category>
       </categories>
-      <tags>
-        <tag>HTML</tag>
-        <tag>Web</tag>
-      </tags>
   </entry>
   <entry>
     <title>Work Memo</title>
@@ -21045,9 +20546,6 @@
       <categories>
         <category>Work</category>
       </categories>
-      <tags>
-        <tag>Work</tag>
-      </tags>
   </entry>
   <entry>
     <title>Yaml Quick Start</title>
@@ -21100,10 +20598,6 @@
       <categories>
         <category>Code</category>
       </categories>
-      <tags>
-        <tag>Base</tag>
-        <tag>Yaml</tag>
-      </tags>
   </entry>
   <entry>
     <title>代码之外的功夫：程序员精进之路</title>
@@ -21175,10 +20669,6 @@
       <categories>
         <category>Code</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>Base</tag>
-      </tags>
   </entry>
   <entry>
     <title>jQuery Quick Start</title>
@@ -21433,10 +20923,6 @@
       <categories>
         <category>jQuery</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>jQuery</tag>
-      </tags>
   </entry>
   <entry>
     <title>你不知道的JavaScript</title>
@@ -21571,9 +21057,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
   </entry>
   <entry>
     <title>你不知道的JavaScript后续</title>
@@ -21704,9 +21187,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
   </entry>
   <entry>
     <title>前端架构设计入门</title>
@@ -21731,10 +21211,6 @@
       <categories>
         <category>Web</category>
       </categories>
-      <tags>
-        <tag>Web</tag>
-        <tag>CSS</tag>
-      </tags>
   </entry>
   <entry>
     <title>同构JavaScript基础</title>
@@ -21774,9 +21250,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
   </entry>
   <entry>
     <title>响应式Web设计</title>
@@ -21836,9 +21309,6 @@
       <categories>
         <category>Web</category>
       </categories>
-      <tags>
-        <tag>Web</tag>
-      </tags>
   </entry>
   <entry>
     <title>工具积累</title>
@@ -21866,11 +21336,6 @@
       <categories>
         <category>Tool</category>
       </categories>
-      <tags>
-        <tag>TODO</tag>
-        <tag>Base</tag>
-        <tag>Tool</tag>
-      </tags>
   </entry>
   <entry>
     <title>开发基础知识</title>
@@ -21993,10 +21458,6 @@
       <categories>
         <category>Web</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Web</tag>
-      </tags>
   </entry>
   <entry>
     <title>在编程的路上越走越...</title>
@@ -22084,10 +21545,6 @@
       <categories>
         <category>Code</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>Joke</tag>
-      </tags>
   </entry>
   <entry>
     <title>意识流编程</title>
@@ -22166,11 +21623,6 @@
       <categories>
         <category>Code</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>TODO</tag>
-        <tag>Base</tag>
-      </tags>
   </entry>
   <entry>
     <title>微服务架构之路</title>
@@ -22844,11 +22296,6 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-        <tag>SpringCloud</tag>
-      </tags>
   </entry>
   <entry>
     <title>报表基础知识</title>
@@ -22957,9 +22404,6 @@
       <categories>
         <category>Base</category>
       </categories>
-      <tags>
-        <tag>Base</tag>
-      </tags>
   </entry>
   <entry>
     <title>敏捷编程快速了解</title>
@@ -23043,11 +22487,6 @@
       <categories>
         <category>Base</category>
       </categories>
-      <tags>
-        <tag>TODO</tag>
-        <tag>Base</tag>
-        <tag>Team</tag>
-      </tags>
   </entry>
   <entry>
     <title>洗衣机数据查询</title>
@@ -23119,9 +22558,6 @@
       <categories>
         <category>Work</category>
       </categories>
-      <tags>
-        <tag>Work</tag>
-      </tags>
   </entry>
   <entry>
     <title>深入Linux内核架构</title>
@@ -23248,10 +22684,6 @@
       <categories>
         <category>Linux</category>
       </categories>
-      <tags>
-        <tag>TODO</tag>
-        <tag>Linux</tag>
-      </tags>
   </entry>
   <entry>
     <title>社会工程—基础入门</title>
@@ -23349,9 +22781,6 @@
       <categories>
         <category>社会工程</category>
       </categories>
-      <tags>
-        <tag>社会工程</tag>
-      </tags>
   </entry>
   <entry>
     <title>社会招聘</title>
@@ -23487,10 +22916,6 @@
       <categories>
         <category>Work</category>
       </categories>
-      <tags>
-        <tag>Work</tag>
-        <tag>招聘</tag>
-      </tags>
   </entry>
   <entry>
     <title>程序员要有数学基础——统计思维</title>
@@ -23606,11 +23031,6 @@
       <categories>
         <category>Python</category>
       </categories>
-      <tags>
-        <tag>TODO</tag>
-        <tag>Python</tag>
-        <tag>Math</tag>
-      </tags>
   </entry>
   <entry>
     <title>网路基础知识</title>
@@ -23796,10 +23216,6 @@
       <categories>
         <category>Base</category>
       </categories>
-      <tags>
-        <tag>Base</tag>
-        <tag>NetWork</tag>
-      </tags>
   </entry>
   <entry>
     <title>脚本语言基础原理快速入门</title>
@@ -23873,9 +23289,6 @@
       <categories>
         <category>Code</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-      </tags>
   </entry>
   <entry>
     <title>自定义通讯协议TLV</title>
@@ -23926,10 +23339,6 @@
       <categories>
         <category>Base</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>Base</tag>
-      </tags>
   </entry>
   <entry>
     <title>计算机基础知识强化</title>
@@ -23957,11 +23366,6 @@
       <categories>
         <category>Base</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>TODO</tag>
-        <tag>Base</tag>
-      </tags>
   </entry>
   <entry>
     <title>项目软件等的版本</title>
@@ -23997,10 +23401,6 @@
       <categories>
         <category>Base</category>
       </categories>
-      <tags>
-        <tag>Code</tag>
-        <tag>Base</tag>
-      </tags>
   </entry>
   <entry>
     <title>语音项目记录</title>
@@ -24081,9 +23481,6 @@
       <categories>
         <category>Work</category>
       </categories>
-      <tags>
-        <tag>Work</tag>
-      </tags>
   </entry>
   <entry>
     <title>Java 核心技术-基础知识</title>
@@ -25068,9 +24465,6 @@
       <categories>
         <category>Java</category>
       </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot ELK Quick Start</title>
@@ -25219,9 +24613,105 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-      <tags>
-        <tag>ELK</tag>
-        <tag>SpringBoot</tag>
-      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot Serializer&amp;Deserializer Quick Start</title>
+    <url>/2020/10/06/SpringBoot-Serializer-Deserializer-Quick-Start/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>序列化和反序列化是编程语言中的一个概念，在Java里是一个较为基础的知识点，但是什么是序列化和反序列化，有什么作用，底层实现原理是什么，一连问之后可能整个人会蒙。这里主要记录Java序列化、反序列化的概念以及如何进行序列化和反序列化，包括在这当中用到的工具包等。</p>
+<hr>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ol>
+<li><code>Java (Serializer)序列化</code>是指把Java对象转换为字节序列的过程，而<code>Java (Deserializer )反序列化</code>是指把字节序列恢复为Java对象的过程。</li>
+<li>主要功能：对象序列化最主要的用处就是在传递和保存对象的时候，保证对象的完整性和可传递性；对象反序列化则用于重建对象。</li>
+<li>本质：序列化就是把实体对象状态按照一定的格式写入到有序字节流，反序列化就是从有序字节流重建对象，恢复对象状态。</li>
+<li>用处：<ul>
+<li>实现了数据持久化</li>
+<li>利用序列化实现远程通信</li>
+<li>利用序列化在进程间传递对象</li>
+</ul>
+</li>
+<li>序列化以及反序列化必须保证字节流中所保存的对象状态及描述信息完整！</li>
+<li>Java中提供了对象的序列化与反序列化，但是目前常用的数据传输格式主要有<code>xml</code>、<code>json</code>，在后端开发中一般使用<code>json</code>进行接口数据传输，因此在本文中主要涉及到序列化之后的内容呈现为<code>json</code>格式。</li>
+<li>对于采用实现原生Java API的序列化接口<code>Serializable</code>的方式：<strong>为了提高serialVersionUID的独立性和确定性，强烈建议在一个可序列化类中显示的定义serialVersionUID，为它赋予明确的值。</strong></li>
+<li><code>json</code>格式规范：<ul>
+<li>英文版：<a href="https://google.github.io/styleguide/jsoncstyleguide.xml" target="_blank" rel="noopener">https://google.github.io/styleguide/jsoncstyleguide.xml</a></li>
+<li>中文版：<a href="https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md" target="_blank" rel="noopener">https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md</a></li>
+<li><code>json API</code>格式规范：<a href="http://jsonapi.org.cn/format/" target="_blank" rel="noopener">http://jsonapi.org.cn/format/</a></li>
+</ul>
+</li>
+<li>几个常用的json类库：<ul>
+<li>Gson: 谷歌开发的<code>json</code>库，功能十分全面</li>
+<li>FastJson: 阿里巴巴开发的 <code>json</code>库，性能十分优秀</li>
+<li>Jackson: 社区十分活跃且更新速度很快</li>
+</ul>
+</li>
+<li><code>Gson</code>、<code>FastJson</code>、<code>Jackson</code>要求序列化/反序列化的是标准的类，否则无法解析，因为都用到了反射！</li>
+</ol>
+<h2 id="JSON的一些经验"><a href="#JSON的一些经验" class="headerlink" title="JSON的一些经验"></a>JSON的一些经验</h2><ol>
+<li>遵循Java Beans规范与JSON规范，能减少大部分的问题。</li>
+<li>使用正常的key，尽量不要使用数字等字符开头的key，尽量使用符合Java的class或property命名规范的key，这样会减少不必要的冲突。</li>
+<li>关于日期处理尽量使用标准的日期格式，或者序列化和反序列化里都是用同样的datePattern格式。</li>
+<li>如果JSONObject与正常的POJO混用，出现问题的概率较高。</li>
+<li>尽量不要在使用过多的层次嵌套的同时使用泛型（List、Map等），可能导致类型丢失，而且问题比较难查。</li>
+<li>尽量不要在同一个Bean的层次结构里使用多个子类型对象，可能导致类型丢失，而且问题比较难查。</li>
+<li>尽量避免循环引用，这个虽然可以通过序列化特性禁掉，但是如果能避免则避免。</li>
+<li>注意编码和不可见字符！</li>
+</ol>
+<h2 id="Fastjson基础"><a href="#Fastjson基础" class="headerlink" title="Fastjson基础"></a>Fastjson基础</h2><ol>
+<li><p><code>fastjson</code>是一个阿里开源的基于<code>Java</code>语言编写的高性能功能完善的json库，非常适合用于<code>Java</code>的序列化以及反序列化。如果项目中使用maven管理依赖的话，只需在<code>pom</code>中添加如下内容：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.73<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>fastjson</code>源码地址：<a href="https://github.com/alibaba/fastjson" target="_blank" rel="noopener">https://github.com/alibaba/fastjson</a></p>
+</li>
+<li><p><code>fastjson</code>快速使用以及<a href="https://github.com/alibaba/fastjson/wiki/FastJson-文档链接" target="_blank" rel="noopener">文档链接</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String text = JSON.toJSONString(obj); <span class="comment">//序列化</span></span><br><span class="line">VO vo = JSON.parseObject(<span class="string">"&#123;...&#125;"</span>, VO<span class="class">.<span class="keyword">class</span>)</span>; <span class="comment">//反序列化</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>fastjson</code>序列化API：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.alibaba.fastjson;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">JSON</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 将Java对象序列化为JSON字符串，支持各种各种Java基本类型和JavaBean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">toJSONString</span><span class="params">(Object object, SerializerFeature... features)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将Java对象序列化为JSON字符串，返回JSON字符串的utf-8 bytes</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] toJSONBytes(Object object, SerializerFeature... features);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将Java对象序列化为JSON字符串，写入到Writer中</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writeJSONString</span><span class="params">(Writer writer, </span></span></span><br><span class="line"><span class="function"><span class="params">                                       Object object, </span></span></span><br><span class="line"><span class="function"><span class="params">                                       SerializerFeature... features)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将Java对象序列化为JSON字符串，按UTF-8编码写入到OutputStream中</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">writeJSONString</span><span class="params">(OutputStream os, // </span></span></span><br><span class="line"><span class="function"><span class="params">                                            Object object, // </span></span></span><br><span class="line"><span class="function"><span class="params">                                            SerializerFeature... features)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>fastjson</code>反序列化API：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.alibaba.fastjson;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">JSON</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 将JSON字符串反序列化为JavaBean</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">parseObject</span><span class="params">(String jsonStr, </span></span></span><br><span class="line"><span class="function"><span class="params">                                    Class&lt;T&gt; clazz, </span></span></span><br><span class="line"><span class="function"><span class="params">                                    Feature... features)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将JSON字符串反序列化为JavaBean</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">parseObject</span><span class="params">(<span class="keyword">byte</span>[] jsonBytes,  // UTF<span class="number">-8</span>格式的JSON字符串</span></span></span><br><span class="line"><span class="function"><span class="params">                                    Class&lt;T&gt; clazz, </span></span></span><br><span class="line"><span class="function"><span class="params">                                    Feature... features)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将JSON字符串反序列化为泛型类型的JavaBean</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">parseObject</span><span class="params">(String text, </span></span></span><br><span class="line"><span class="function"><span class="params">                                    TypeReference&lt;T&gt; type, </span></span></span><br><span class="line"><span class="function"><span class="params">                                    Feature... features)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将JSON字符串反序列为JSONObject</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> JSONObject <span class="title">parseObject</span><span class="params">(String text)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>fastjson</code>支持的时间格式：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String            defaultPatttern    = <span class="string">"yyyy-MM-dd HH:mm:ss"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter defaultFormatter   = DateTimeFormatter.ofPattern(defaultPatttern);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_dt19_tw  = DateTimeFormatter.ofPattern(<span class="string">"yyyy/MM/dd HH:mm:ss"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_dt19_cn  = DateTimeFormatter.ofPattern(<span class="string">"yyyy年M月d日 HH:mm:ss"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_dt19_cn_1  = DateTimeFormatter.ofPattern(<span class="string">"yyyy年M月d日 H时m分s秒"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_dt19_kr  = DateTimeFormatter.ofPattern(<span class="string">"yyyy년M월d일 HH:mm:ss"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_dt19_us  = DateTimeFormatter.ofPattern(<span class="string">"MM/dd/yyyy HH:mm:ss"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_dt19_eur = DateTimeFormatter.ofPattern(<span class="string">"dd/MM/yyyy HH:mm:ss"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_dt19_de  = DateTimeFormatter.ofPattern(<span class="string">"dd.MM.yyyy HH:mm:ss"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_dt19_in  = DateTimeFormatter.ofPattern(<span class="string">"dd-MM-yyyy HH:mm:ss"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_d8       = DateTimeFormatter.ofPattern(<span class="string">"yyyyMMdd"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_d10_tw   = DateTimeFormatter.ofPattern(<span class="string">"yyyy/MM/dd"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_d10_cn   = DateTimeFormatter.ofPattern(<span class="string">"yyyy年M月d日"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_d10_kr   = DateTimeFormatter.ofPattern(<span class="string">"yyyy년M월d일"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_d10_us   = DateTimeFormatter.ofPattern(<span class="string">"MM/dd/yyyy"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_d10_eur  = DateTimeFormatter.ofPattern(<span class="string">"dd/MM/yyyy"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_d10_de   = DateTimeFormatter.ofPattern(<span class="string">"dd.MM.yyyy"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_d10_in   = DateTimeFormatter.ofPattern(<span class="string">"dd-MM-yyyy"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter ISO_FIXED_FORMAT =</span><br><span class="line">        DateTimeFormatter.ofPattern(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>).withZone(ZoneId.systemDefault());</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String formatter_iso8601_pattern     = <span class="string">"yyyy-MM-dd'T'HH:mm:ss"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> DateTimeFormatter formatter_iso8601  = DateTimeFormatter.ofPattern(formatter_iso8601_pattern);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>fastjson</code>目前没有废弃的SerializerFeature介绍：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">QuoteFieldNames <span class="comment">// key使用引号</span></span><br><span class="line">UseSingleQuotes <span class="comment">// 使用单引号</span></span><br><span class="line">WriteMapNullValue <span class="comment">// 输出Map的null值</span></span><br><span class="line">WriteEnumUsingToString <span class="comment">// 枚举属性输出toString的结果</span></span><br><span class="line">WriteEnumUsingName <span class="comment">// 枚举数据输出name</span></span><br><span class="line">UseISO8601DateFormat <span class="comment">// 使用日期格式</span></span><br><span class="line">WriteNullListAsEmpty <span class="comment">// List为空则输出[]</span></span><br><span class="line">WriteNullStringAsEmpty <span class="comment">// String为空则输出""</span></span><br><span class="line">WriteNullNumberAsZero <span class="comment">// Number类型为空则输出0</span></span><br><span class="line">WriteNullBooleanAsFalse <span class="comment">// Boolean类型为空则输出false</span></span><br><span class="line">SkipTransientField <span class="comment">// 忽略使用了transient关键字的内容</span></span><br><span class="line">SortField <span class="comment">// 排序字段</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>支持多个SerializerFeature同时作用</li>
+</ul>
+</li>
+</ol>
+<h2 id="Gson基础"><a href="#Gson基础" class="headerlink" title="Gson基础"></a>Gson基础</h2><ol>
+<li><p>源码地址：<a href="https://github.com/google/gson" target="_blank" rel="noopener">https://github.com/google/gson</a></p>
+</li>
+<li><p>如果项目中使用maven管理依赖的话，只需在<code>pom</code>中添加如下内容：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.code.gson<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.8.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>Gson</code>序列化、反序列化：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Gson gson = <span class="keyword">new</span> Gson();</span><br><span class="line">String jsonStr = gson.toJson(beanObject); <span class="comment">// 序列化</span></span><br><span class="line">BeanType bean = gson.fromJson(jsonData, BeanType<span class="class">.<span class="keyword">class</span>)</span>; <span class="comment">// 反序列化</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>Gson</code>示例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GSONTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">//解析</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 对象嵌套数组嵌套对象</span></span><br><span class="line">        String json1 = <span class="string">"&#123;'id':1,'name':'JAVAEE-1703','stus':[&#123;'id':101,'name':'刘一','age':16&#125;]&#125;"</span>;</span><br><span class="line">        <span class="comment">// 数组</span></span><br><span class="line">        String json2 = <span class="string">"['北京','天津','杭州']"</span>;</span><br><span class="line"></span><br><span class="line">        Gson gson=<span class="keyword">new</span> Gson();</span><br><span class="line">        <span class="comment">//1、</span></span><br><span class="line">        <span class="comment">//解析对象：第一个参数：待解析的字符串 第二个参数结果数据类型的Class对象</span></span><br><span class="line">        Grade grade=gson.fromJson(json1, Grade<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        System.out.println(grade);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2、</span></span><br><span class="line">        <span class="comment">//解析数组要求使用Type</span></span><br><span class="line">        ArrayList&lt;String&gt; list=gson.fromJson(json2, </span><br><span class="line">                <span class="keyword">new</span> TypeToken&lt;ArrayList&lt;String&gt;&gt;()&#123;&#125;.getType());</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//生成</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ArrayList&lt;Student&gt; list=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">3</span>;i++)&#123;</span><br><span class="line">            list.add(<span class="keyword">new</span> Student(<span class="number">101</span>+i, <span class="string">"码子"</span>, <span class="number">20</span>+i));</span><br><span class="line">        &#125;</span><br><span class="line">        Grade grade=<span class="keyword">new</span> Grade(<span class="number">100001</span>,<span class="string">"张三"</span>, list);</span><br><span class="line">        Gson gson=<span class="keyword">new</span> Gson();</span><br><span class="line">        <span class="comment">//将对象转换为诶JSON格式字符串</span></span><br><span class="line">        String json=gson.toJson(grade);</span><br><span class="line">        System.out.println(json);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Jackson基础"><a href="#Jackson基础" class="headerlink" title="Jackson基础"></a>Jackson基础</h2><ol>
+<li><p>源码地址：<a href="https://github.com/FasterXML/jackson-databind" target="_blank" rel="noopener">https://github.com/FasterXML/jackson-databind</a></p>
+</li>
+<li><p>如果项目中使用maven管理依赖的话，只需在<code>pom</code>中添加如下内容：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.10.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>Jackson</code>示例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JackSonTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//解析</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        <span class="comment">// 对象嵌套数组嵌套对象</span></span><br><span class="line">        String json1 = <span class="string">"&#123;\"id\":1,\"name\":\"JAVAEE-1703\",\"stus\":[&#123;\"id\":101,\"name\":\"刘一\",\"age\":16&#125;]&#125;"</span>;</span><br><span class="line">        <span class="comment">// 数组</span></span><br><span class="line">        String json2 = <span class="string">"[\"北京\",\"天津\",\"杭州\"]"</span>;</span><br><span class="line">        <span class="comment">//1、</span></span><br><span class="line">        ObjectMapper mapper=<span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        Grade grade=mapper.readValue(json1, Grade<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        System.out.println(grade);</span><br><span class="line">        <span class="comment">//2、</span></span><br><span class="line">        ArrayList&lt;String&gt; list=mapper.readValue(json2, </span><br><span class="line">                <span class="keyword">new</span> TypeReference&lt;ArrayList&lt;String&gt;&gt;() &#123;</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(list);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//生成</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> <span class="keyword">throws</span> JsonProcessingException</span>&#123;</span><br><span class="line">        ArrayList&lt;Student&gt; list=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">3</span>;i++)&#123;</span><br><span class="line">            list.add(<span class="keyword">new</span> Student(<span class="number">101</span>+i, <span class="string">"码子"</span>, <span class="number">20</span>+i));</span><br><span class="line">        &#125;</span><br><span class="line">        Grade grade=<span class="keyword">new</span> Grade(<span class="number">100001</span>,<span class="string">"张三"</span>, list);</span><br><span class="line">        ObjectMapper mapper=<span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        <span class="comment">//将对象转换为JSON格式字符串</span></span><br><span class="line">        String json=mapper.writeValueAsString(grade);</span><br><span class="line">        System.out.println(json);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>序列化这部分主要是看官方文档以及一些比较有价值的博客，示例代码都不太想写了，写规范的<code>json</code>是要遵守规则的，否则会出现问题！</p>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
   </entry>
 </search>
