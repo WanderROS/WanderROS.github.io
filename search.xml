@@ -21320,7 +21320,18 @@
 <li><a href="https://www.jb51.net/books/" target="_blank" rel="noopener">脚本之家</a></li>
 </ul>
 <h1 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h1><ul>
-<li><a href="https://tool.lu/" target="_blank" rel="noopener">在线工具</a></li>
+<li><p><a href="https://tool.lu/" target="_blank" rel="noopener">在线工具</a></p>
+</li>
+<li><p><a href="https://app.diagrams.net/" target="_blank" rel="noopener">在线UML图</a></p>
+</li>
+<li><p><a href="https://processon.com/" target="_blank" rel="noopener">ProcessOn在线图</a></p>
+</li>
+<li><p><a href="https://plantuml.com/" target="_blank" rel="noopener">Plantuml</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull plantuml/plantuml-server</span><br><span class="line">docker run -d -p 8080:8080 plantuml/plantuml-server</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
 </ul>
 <iframe src="https://tool.lu/coderunner/embed/9fr.html" width="650" height="550" frameborder="0" mozallowfullscreen webkitallowfullscreen allowfullscreen></iframe>
 
@@ -21336,6 +21347,11 @@
       <categories>
         <category>Tool</category>
       </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Base</tag>
+        <tag>TODO</tag>
+      </tags>
   </entry>
   <entry>
     <title>开发基础知识</title>
@@ -24713,5 +24729,67 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
+  </entry>
+  <entry>
+    <title>PlantUML Qucik Start</title>
+    <url>/2020/10/06/PlantUML-Qucik-Start/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>从学校步入工作之后，面对的就是沟通效率问题，越发觉得用专业的图形（用例图，时序图，ER图等等）去准确表达想法是很重要的。针对某个需求绘制的的用例图，比一段乏味的文字来的更加有意义，也便于别人理解。而且很多书籍中都会使用类图，时序图等UML语言来描述逻辑关系，因此这部分主要介绍如何UML以及使用PlantUML来绘制UML图。</p>
+<hr>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="UML语言"><a href="#UML语言" class="headerlink" title="UML语言"></a>UML语言</h2><ol>
+<li><em>UML</em>语言是一种面向对象的模型语言，通过<em>UML</em>语言的组合来表达某些事物之间的逻辑关系。</li>
+<li>UML 是一种为面向对象开发系统的产品进行说明、可视化、和编制文档的标准语言。</li>
+<li>UML使得开发人员可以专注于建立产品的模型和结构，而不是选用什么程序语言和算法实现。</li>
+<li>UML中有多种关系：<ul>
+<li>依赖（Dependency）：使用的关系（一个类的实现需要另一个类的协助），带箭头的虚线，指向被使用者</li>
+<li>关联（Association）：拥有的关系（类内部变量与类的关系），带普通箭头的实心线，指向被拥有者</li>
+<li>实现（Realization）：类与接口的关系，带三角箭头的虚线，箭头指向接口</li>
+<li>泛化（Generalization）：继承关系，带三角箭头的实线，箭头指向父类</li>
+<li>聚合（Aggregation）：整体与部分的关系，带空心菱形的实心线，菱形指向整体</li>
+<li>组合（Composition）：整体与部分的关系，但部分不能离开整体而单独存在，带实心菱形的实线，菱形指向整体</li>
+</ul>
+</li>
+<li>UML中文学习网址：<a href="https://www.w3cschool.cn/uml_tutorial/" target="_blank" rel="noopener">https://www.w3cschool.cn/uml_tutorial/</a></li>
+<li>UML有用性论点：<ul>
+<li>在复杂需求中，UML图是非常必要的。所有的图都是协助团队策划稿能源更高效地厘清问题，掌握知识，高效解决问题的</li>
+<li>“假敏捷开发”太多。UML统一了各种方法对不同类型的系统、不同开发阶段以及不同内部概念的不同观点，从而有效的消除了各种建模语言之间不必要的差异</li>
+<li>UML 在业界依然在被应用。在团队开发中显得尤为重要</li>
+<li>UML 有用例图、顺序图、活动图、状态图、组件图等，每一种图都代表着工程的一个特定维度，它们的专注点是正交的，都有其独特的用处。使用 UML 来分析和设计，可以让大家对整个系统有个更全面的认知</li>
+<li>… …</li>
+</ul>
+</li>
+<li>UML然并卵：<ul>
+<li>复杂就是复杂，不会因为描述形式变了而简化。放弃了这方面。你觉得图看起来简洁，是因为图描述了骨架，但是大量细节都屏蔽掉了</li>
+<li>作为图型这货太复杂，作为语言这货没卵用，没有编译器和IDE支持或者说相较于程序设计语言支持就是个渣渣……</li>
+<li>UML是不符合程序员思维的，有一种东西比UML表现能力更强，更通用，那就是代码</li>
+<li>画图有用不等于UML有用。图没有必要按照 UML 来, 最重要的是直观 ,便于沟通</li>
+<li>… …</li>
+</ul>
+</li>
+</ol>
+<h2 id="PlanUML"><a href="#PlanUML" class="headerlink" title="PlanUML"></a>PlanUML</h2><ol>
+<li><p><code>PlatnUML</code>的优点：</p>
+<ul>
+<li>PlantUML是开源的，有一个相对比较成熟的网站，通过简单的UML语言来实现想要的效果</li>
+<li>PlantUML有比较详细的各类语言的guide文档</li>
+<li>PlantUML做了很多的适配，比如常用的编译器eclipse，IDEA intelliJ都有对应的插件</li>
+<li>PlantUML语言简单直接易学，就好像Markdown语法一样，简单高效</li>
+</ul>
+</li>
+<li><p><code>Docker</code>搭建<code>PlatnUML</code>环境：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull plantuml/plantuml-server</span><br><span class="line">docker run -d -p 8080:8080 plantuml/plantuml-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>PlatnUML</code>官网：<a href="https://plantuml.com/" target="_blank" rel="noopener">https://plantuml.com/</a></p>
+</li>
+</ol>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>就目前而言，UML个人认为还是有用的，比如时序图，绘制良好的图对于代码的开发，业务逻辑的理解还是非常有用的，多会一样东西还是没有坏处的！</p>
+]]></content>
+      <categories>
+        <category>Tool</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>UML</tag>
+      </tags>
   </entry>
 </search>
