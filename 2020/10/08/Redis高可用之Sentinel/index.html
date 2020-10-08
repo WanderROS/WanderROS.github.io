@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('Please input Password:') !== '') {
+                alert('Password Error！');
+                if (history.length === 1) {
+                    location.replace("https://wanderros.github.io/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="Base,Redis," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="WanderROS'S Daily" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="简介之前学习过Redis的基础使用，没有涉及到高可用相关的内容，在真实业务场景中可能需要Redis的高可用，不仅仅是高并发，还有当主从环境下的主机宕机情况的快速恢复服务，这就涉及到Redis的Sentinel模式和Cluster模式。本文主要记录Snetinel模式。  开始基础知识 在服务中，使用单个Redis来提供缓存服务是不可靠的，而且官方宣传单机性能可以达到10w OPS（真实环境是没有的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis高可用之Sentinel">
+<meta property="og:url" content="https://wanderros.github.io/2020/10/08/Redis%E9%AB%98%E5%8F%AF%E7%94%A8%E4%B9%8BSentinel/index.html">
+<meta property="og:site_name" content="WanderROS&#39;S Daily">
+<meta property="og:description" content="简介之前学习过Redis的基础使用，没有涉及到高可用相关的内容，在真实业务场景中可能需要Redis的高可用，不仅仅是高并发，还有当主从环境下的主机宕机情况的快速恢复服务，这就涉及到Redis的Sentinel模式和Cluster模式。本文主要记录Snetinel模式。  开始基础知识 在服务中，使用单个Redis来提供缓存服务是不可靠的，而且官方宣传单机性能可以达到10w OPS（真实环境是没有的">
+<meta property="og:image" content="https://app.yinxiang.com/FileSharing.action?hash=1/e64f47a8684956ef1de9f7c4a9ff4f07-70110">
+<meta property="og:image" content="https://app.yinxiang.com/FileSharing.action?hash=1/5c3e4c21233ba0e78b24ee69a6a5200a-47830">
+<meta property="og:image" content="https://app.yinxiang.com/FileSharing.action?hash=1/897d6a3b67b5636303d266a39c949a0f-18480">
+<meta property="article:published_time" content="2020-10-08T14:13:16.000Z">
+<meta property="article:modified_time" content="2020-10-08T15:16:15.775Z">
+<meta property="article:author" content="WanderROS">
+<meta property="article:tag" content="Base">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://app.yinxiang.com/FileSharing.action?hash=1/e64f47a8684956ef1de9f7c4a9ff4f07-70110">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wanderros.github.io/2020/10/08/Redis高可用之Sentinel/"/>
+
+
+
+
+
+  <title>Redis高可用之Sentinel | WanderROS'S Daily</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/WanderROS" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WanderROS'S Daily</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-足迹">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            足迹
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wanderros.github.io/2020/10/08/Redis%E9%AB%98%E5%8F%AF%E7%94%A8%E4%B9%8BSentinel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WanderROS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WanderROS'S Daily">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redis高可用之Sentinel</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-08T22:13:16+08:00">
+                2020-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>之前学习过Redis的基础使用，没有涉及到高可用相关的内容，在真实业务场景中可能需要Redis的高可用，不仅仅是高并发，还有当主从环境下的主机宕机情况的快速恢复服务，这就涉及到Redis的Sentinel模式和Cluster模式。本文主要记录Snetinel模式。</p>
+<hr>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ol>
+<li><p>在服务中，使用单个Redis来提供缓存服务是不可靠的，而且官方宣传单机性能可以达到10w OPS（真实环境是没有的），当出现这种状况时就要分布式<code>Redis</code>了。</p>
+</li>
+<li><p>主从切换技术的方法是：<strong>当主服务器宕机后，需要手动把一台从服务器切换为主服务器，这就需要人工干预，费事费力，还会造成一段时间内服务不可用。</strong></p>
+</li>
+<li><p><code>Redis-Sentinel</code>本身也有单点问题，当出现问题时整个redis集群系统将无法按照预期的方式切换主从。官方建议一个健康的集群部署，至少需要3个Sentinel实例。</p>
+</li>
+<li><p><code>Redis-Sentinel</code>只需要配置监控Redis主节点，而集群之间可以通过主节点相互通信。典型的<code>Redis-Sentinel</code>如下：</p>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/e64f47a8684956ef1de9f7c4a9ff4f07-70110" alt="典型模式"></p>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/5c3e4c21233ba0e78b24ee69a6a5200a-47830" alt="多哨兵"></p>
+</li>
+<li><p>Sentinel主要执行以下三个任务：</p>
+<ul>
+<li>监控 (Monitor): 检查redis主、从实例是否正常运作</li>
+<li>通知 (Notification): 监控的redis服务出现问题时，可通过API发送通知告警</li>
+<li>自动故障迁移 (Automatic Failover): 当检测到redis主节点不能正常工作时，<code>Sentinel</code>会开始做自动故障判断、迁移等操作，先是移除失效<code>Redis</code>主节点，然后将其中一个从节点升级为新的主节点，并让失效主节点的其他从节点改为复制新的主节点。当客户端试图连接失效的主节点时，集群也会向客户端返回最新主节点的地址，使得集群可以使用新的主节点来代替失效的旧主节点</li>
+</ul>
+</li>
+<li><p>Redis Sentinel 集群模式的 “仲裁会”：</p>
+<ul>
+<li>当一个master被sentinel集群监控时，需要为它指定一个参数，这个参数指定了当需要判决master为不可用，并且进行failover时，所需要的sentinel数量</li>
+<li>当failover主备切换真正被触发后，failover并不会马上进行，还需要sentinel中的大多数sentinel授权后才可以进行failover</li>
+<li>failover一旦被触发，尝试去进行failover的sentinel会去获得“大多数”sentinel的授权（如果票数比大多数还要大的时候，则询问更多的sentinel)这个区别看起来很微妙，但是很容易理解和使用</li>
+<li>例如，集群中有5个sentinel，票数被设置为2，当2个sentinel认为一个master已经不可用了以后，将会触发failover，但是，进行failover的那个sentinel必须先获得至少3个sentinel的授权才可以实行failover。如果票数被设置为5，要达到ODOWN状态，必须所有5个sentinel都主观认为master为不可用，要进行failover，那么得获得所有5个sentinel的授权</li>
+</ul>
+</li>
+<li><p>官方文档：<a href="https://redis.io/topics/sentinel" target="_blank" rel="noopener">https://redis.io/topics/sentinel</a></p>
+</li>
+<li><p>sentinel.conf是启动redis-sentinel的核心配置文件，可以从官网下载：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/redis-stable/sentinel.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改的Sentinel配置文件如下：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example sentinel.conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># *** IMPORTANT ***</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># By default Sentinel will not be reachable from interfaces different than</span></span><br><span class="line"><span class="comment"># localhost, either use the 'bind' directive to bind to a list of network</span></span><br><span class="line"><span class="comment"># interfaces, or disable protected mode with "protected-mode no" by</span></span><br><span class="line"><span class="comment"># adding it to this configuration file.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Before doing that MAKE SURE the instance is protected from the outside</span></span><br><span class="line"><span class="comment"># world via firewalling or other means.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># For example you may use one of the following:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># bind 127.0.0.1 192.168.1.1</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># protected-mode no</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># port &lt;sentinel-port&gt;</span></span><br><span class="line"><span class="comment"># The port that this sentinel instance will run on</span></span><br><span class="line"><span class="attr">port</span> <span class="string">26379</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># By default Redis Sentinel does not run as a daemon. Use 'yes' if you need it.</span></span><br><span class="line"><span class="comment"># Note that Redis will write a pid file in /var/run/redis-sentinel.pid when</span></span><br><span class="line"><span class="comment"># daemonized.</span></span><br><span class="line"><span class="attr">daemonize</span> <span class="string">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># When running daemonized, Redis Sentinel writes a pid file in</span></span><br><span class="line"><span class="comment"># /var/run/redis-sentinel.pid by default. You can specify a custom pid file</span></span><br><span class="line"><span class="comment"># location here.</span></span><br><span class="line"><span class="attr">pidfile</span> <span class="string">"/var/run/redis-sentinel.pid"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Specify the log file name. Also the empty string can be used to force</span></span><br><span class="line"><span class="comment"># Sentinel to log on the standard output. Note that if you use standard</span></span><br><span class="line"><span class="comment"># output for logging but daemonize, logs will be sent to /dev/null</span></span><br><span class="line"><span class="attr">logfile</span> <span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sentinel announce-ip &lt;ip&gt;</span></span><br><span class="line"><span class="comment"># sentinel announce-port &lt;port&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The above two configuration directives are useful in environments where,</span></span><br><span class="line"><span class="comment"># because of NAT, Sentinel is reachable from outside via a non-local address.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># When announce-ip is provided, the Sentinel will claim the specified IP address</span></span><br><span class="line"><span class="comment"># in HELLO messages used to gossip its presence, instead of auto-detecting the</span></span><br><span class="line"><span class="comment"># local address as it usually does.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Similarly when announce-port is provided and is valid and non-zero, Sentinel</span></span><br><span class="line"><span class="comment"># will announce the specified TCP port.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The two options don't need to be used together, if only announce-ip is</span></span><br><span class="line"><span class="comment"># provided, the Sentinel will announce the specified IP and the server port</span></span><br><span class="line"><span class="comment"># as specified by the "port" option. If only announce-port is provided, the</span></span><br><span class="line"><span class="comment"># Sentinel will announce the auto-detected local IP and the specified port.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel announce-ip 1.2.3.4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dir &lt;working-directory&gt;</span></span><br><span class="line"><span class="comment"># Every long running process should have a well-defined working directory.</span></span><br><span class="line"><span class="comment"># For Redis Sentinel to chdir to /tmp at startup is the simplest thing</span></span><br><span class="line"><span class="comment"># for the process to don't interfere with administrative tasks such as</span></span><br><span class="line"><span class="comment"># unmounting filesystems.</span></span><br><span class="line"><span class="attr">dir</span> <span class="string">"/tmp"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">sentinel</span> <span class="string">myid 802e66d5d163ee0477ba40d83c94d11de9e1395b</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Tells Sentinel to monitor this master, and to consider it in O_DOWN</span></span><br><span class="line"><span class="comment"># (Objectively Down) state only if at least &lt;quorum&gt; sentinels agree.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Note that whatever is the ODOWN quorum, a Sentinel will require to</span></span><br><span class="line"><span class="comment"># be elected by the majority of the known Sentinels in order to</span></span><br><span class="line"><span class="comment"># start a failover, so no failover can be performed in minority.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Replicas are auto-discovered, so you don't need to specify replicas in</span></span><br><span class="line"><span class="comment"># any way. Sentinel itself will rewrite this configuration file adding</span></span><br><span class="line"><span class="comment"># the replicas using additional configuration options.</span></span><br><span class="line"><span class="comment"># Also note that the configuration file is rewritten when a</span></span><br><span class="line"><span class="comment"># replica is promoted to master.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># <span class="doctag">Note:</span> master name should not include special characters or spaces.</span></span><br><span class="line"><span class="comment"># The valid charset is A-z 0-9 and the three characters ".-_".</span></span><br><span class="line"><span class="comment">#sentinel monitor mymaster 127.0.0.1 6379 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sentinel auth-pass &lt;master-name&gt; &lt;password&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Set the password to use to authenticate with the master and replicas.</span></span><br><span class="line"><span class="comment"># Useful if there is a password set in the Redis instances to monitor.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Note that the master password is also used for replicas, so it is not</span></span><br><span class="line"><span class="comment"># possible to set a different password in masters and replicas instances</span></span><br><span class="line"><span class="comment"># if you want to be able to monitor these instances with Sentinel.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># However you can have Redis instances without the authentication enabled</span></span><br><span class="line"><span class="comment"># mixed with Redis instances requiring the authentication (as long as the</span></span><br><span class="line"><span class="comment"># password set is the same for all the instances requiring the password) as</span></span><br><span class="line"><span class="comment"># the AUTH command will have no effect in Redis instances with authentication</span></span><br><span class="line"><span class="comment"># switched off.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel auth-pass mymaster MySUPER--secret-0123passw0rd</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sentinel auth-user &lt;master-name&gt; &lt;username&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This is useful in order to authenticate to instances having ACL capabilities,</span></span><br><span class="line"><span class="comment"># that is, running Redis 6.0 or greater. When just auth-pass is provided the</span></span><br><span class="line"><span class="comment"># Sentinel instance will authenticate to Redis using the old "AUTH &lt;pass&gt;"</span></span><br><span class="line"><span class="comment"># method. When also an username is provided, it will use "AUTH &lt;user&gt; &lt;pass&gt;".</span></span><br><span class="line"><span class="comment"># In the Redis servers side, the ACL to provide just minimal access to</span></span><br><span class="line"><span class="comment"># Sentinel instances, should be configured along the following lines:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#     user sentinel-user &gt;somepassword +client +subscribe +publish \</span></span><br><span class="line"><span class="comment">#                        +ping +info +multi +slaveof +config +client +exec on</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sentinel down-after-milliseconds &lt;master-name&gt; &lt;milliseconds&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Number of milliseconds the master (or any attached replica or sentinel) should</span></span><br><span class="line"><span class="comment"># be unreachable (as in, not acceptable reply to PING, continuously, for the</span></span><br><span class="line"><span class="comment"># specified period) in order to consider it in S_DOWN state (Subjectively</span></span><br><span class="line"><span class="comment"># Down).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Default is 30 seconds.</span></span><br><span class="line"><span class="attr">sentinel</span> <span class="string">deny-scripts-reconfig yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># requirepass &lt;password&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You can configure Sentinel itself to require a password, however when doing</span></span><br><span class="line"><span class="comment"># so Sentinel will try to authenticate with the same password to all the</span></span><br><span class="line"><span class="comment"># other Sentinels. So you need to configure all your Sentinels in a given</span></span><br><span class="line"><span class="comment"># group with the same "requirepass" password. Check the following documentation</span></span><br><span class="line"><span class="comment"># for more info: https://redis.io/topics/sentinel</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sentinel parallel-syncs &lt;master-name&gt; &lt;numreplicas&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># How many replicas we can reconfigure to point to the new replica simultaneously</span></span><br><span class="line"><span class="comment"># during the failover. Use a low number if you use the replicas to serve query</span></span><br><span class="line"><span class="comment"># to avoid that all the replicas will be unreachable at about the same</span></span><br><span class="line"><span class="comment"># time while performing the synchronization with the master.</span></span><br><span class="line"><span class="attr">sentinel</span> <span class="string">monitor myredis 172.17.0.3 6379 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sentinel failover-timeout &lt;master-name&gt; &lt;milliseconds&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Specifies the failover timeout in milliseconds. It is used in many ways:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># - The time needed to re-start a failover after a previous failover was</span></span><br><span class="line"><span class="comment">#   already tried against the same master by a given Sentinel, is two</span></span><br><span class="line"><span class="comment">#   times the failover timeout.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># - The time needed for a replica replicating to a wrong master according</span></span><br><span class="line"><span class="comment">#   to a Sentinel current configuration, to be forced to replicate</span></span><br><span class="line"><span class="comment">#   with the right master, is exactly the failover timeout (counting since</span></span><br><span class="line"><span class="comment">#   the moment a Sentinel detected the misconfiguration).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># - The time needed to cancel a failover that is already in progress but</span></span><br><span class="line"><span class="comment">#   did not produced any configuration change (SLAVEOF NO ONE yet not</span></span><br><span class="line"><span class="comment">#   acknowledged by the promoted replica).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># - The maximum time a failover in progress waits for all the replicas to be</span></span><br><span class="line"><span class="comment">#   reconfigured as replicas of the new master. However even after this time</span></span><br><span class="line"><span class="comment">#   the replicas will be reconfigured by the Sentinels anyway, but not with</span></span><br><span class="line"><span class="comment">#   the exact parallel-syncs progression as specified.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Default is 3 minutes.</span></span><br><span class="line"><span class="attr">sentinel</span> <span class="string">config-epoch myredis 8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># SCRIPTS EXECUTION</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel notification-script and sentinel reconfig-script are used in order</span></span><br><span class="line"><span class="comment"># to configure scripts that are called to notify the system administrator</span></span><br><span class="line"><span class="comment"># or to reconfigure clients after a failover. The scripts are executed</span></span><br><span class="line"><span class="comment"># with the following rules for error handling:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If script exits with "1" the execution is retried later (up to a maximum</span></span><br><span class="line"><span class="comment"># number of times currently set to 10).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If script exits with "2" (or an higher value) the script execution is</span></span><br><span class="line"><span class="comment"># not retried.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If script terminates because it receives a signal the behavior is the same</span></span><br><span class="line"><span class="comment"># as exit code 1.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># A script has a maximum running time of 60 seconds. After this limit is</span></span><br><span class="line"><span class="comment"># reached the script is terminated with a SIGKILL and the execution retried.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># NOTIFICATION SCRIPT</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel notification-script &lt;master-name&gt; &lt;script-path&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Call the specified notification script for any sentinel event that is</span></span><br><span class="line"><span class="comment"># generated in the WARNING level (for instance -sdown, -odown, and so forth).</span></span><br><span class="line"><span class="comment"># This script should notify the system administrator via email, SMS, or any</span></span><br><span class="line"><span class="comment"># other messaging system, that there is something wrong with the monitored</span></span><br><span class="line"><span class="comment"># Redis systems.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The script is called with just two arguments: the first is the event type</span></span><br><span class="line"><span class="comment"># and the second the event description.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The script must exist and be executable in order for sentinel to start if</span></span><br><span class="line"><span class="comment"># this option is provided.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel notification-script mymaster /var/redis/notify.sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># CLIENTS RECONFIGURATION SCRIPT</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel client-reconfig-script &lt;master-name&gt; &lt;script-path&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># When the master changed because of a failover a script can be called in</span></span><br><span class="line"><span class="comment"># order to perform application-specific tasks to notify the clients that the</span></span><br><span class="line"><span class="comment"># configuration has changed and the master is at a different address.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The following arguments are passed to the script:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># &lt;master-name&gt; &lt;role&gt; &lt;state&gt; &lt;from-ip&gt; &lt;from-port&gt; &lt;to-ip&gt; &lt;to-port&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># &lt;state&gt; is currently always "failover"</span></span><br><span class="line"><span class="comment"># &lt;role&gt; is either "leader" or "observer"</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The arguments from-ip, from-port, to-ip, to-port are used to communicate</span></span><br><span class="line"><span class="comment"># the old address of the master and the new address of the elected replica</span></span><br><span class="line"><span class="comment"># (now a master).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This script should be resistant to multiple invocations.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel client-reconfig-script mymaster /var/redis/reconfig.sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># SECURITY</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># By default SENTINEL SET will not be able to change the notification-script</span></span><br><span class="line"><span class="comment"># and client-reconfig-script at runtime. This avoids a trivial security issue</span></span><br><span class="line"><span class="comment"># where clients can set the script to anything and trigger a failover in order</span></span><br><span class="line"><span class="comment"># to get the program executed.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">sentinel</span> <span class="string">leader-epoch myredis 8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># REDIS COMMANDS RENAMING</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Sometimes the Redis server has certain commands, that are needed for Sentinel</span></span><br><span class="line"><span class="comment"># to work correctly, renamed to unguessable strings. This is often the case</span></span><br><span class="line"><span class="comment"># of CONFIG and SLAVEOF in the context of providers that provide Redis as</span></span><br><span class="line"><span class="comment"># a service, and don't want the customers to reconfigure the instances outside</span></span><br><span class="line"><span class="comment"># of the administration console.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># In such case it is possible to tell Sentinel to use different command names</span></span><br><span class="line"><span class="comment"># instead of the normal ones. For example if the master "mymaster", and the</span></span><br><span class="line"><span class="comment"># associated replicas, have "CONFIG" all renamed to "GUESSME", I could use:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># SENTINEL rename-command mymaster CONFIG GUESSME</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># After such configuration is set, every time Sentinel would use CONFIG it will</span></span><br><span class="line"><span class="comment"># use GUESSME instead. Note that there is no actual need to respect the command</span></span><br><span class="line"><span class="comment"># case, so writing "config guessme" is the same in the example above.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># SENTINEL SET can also be used in order to perform this configuration at runtime.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># In order to set a command back to its original name (undo the renaming), it</span></span><br><span class="line"><span class="comment"># is possible to just rename a command to itsef:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># SENTINEL rename-command mymaster CONFIG CONFIG</span></span><br><span class="line"><span class="comment"># Generated by CONFIG REWRITE</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>多个Sentinel则需要修改端口号</li>
+</ul>
+</li>
+</ol>
+<h2 id="Docker环境部署"><a href="#Docker环境部署" class="headerlink" title="Docker环境部署"></a>Docker环境部署</h2><ol>
+<li><p>一主多从：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name redis-master -p 6379:6379 redis</span><br><span class="line">docker run -itd --name redis-slave -p 6380:6379 --link redis-master:redis-master redis</span><br><span class="line">docker run -itd --name redis-slave1 -p 6381:6379 --link redis-master:redis-master redis</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>需要进入两个从节点使用客户端执行如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slaveof redis-master 6379</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在主节点中执行下面的命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">info replication</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Replication</span></span><br><span class="line">role:master</span><br><span class="line">connected_slaves:2</span><br><span class="line">slave0:ip=172.17.0.2,port=6379,state=online,offset=474223,lag=1</span><br><span class="line">slave1:ip=172.17.0.4,port=6379,state=online,offset=474357,lag=0</span><br><span class="line">master_replid:92708a81b61dcd5b6067dedd7138e8f89a8cc996</span><br><span class="line">master_replid2:8da9d74e82754291f0d18563ac2f546a5d20a240</span><br><span class="line">master_repl_offset:474491</span><br><span class="line">second_repl_offset:107113</span><br><span class="line">repl_backlog_active:1</span><br><span class="line">repl_backlog_size:1048576</span><br><span class="line">repl_backlog_first_byte_offset:90764</span><br><span class="line">repl_backlog_histlen:383728</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动三个Sentinel：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name redis-sentinel1 -p 26379:26379 -v /root/sentinel1.conf:/data/sentinel.conf -d --link redis-master:redis-master redis /bin/bash</span><br><span class="line"></span><br><span class="line">docker run -it --name redis-sentinel2 -p 26380:26380 -v /root/sentinel2.conf:/data/sentinel.conf -d --link redis-master:redis-master redis /bin/bash</span><br><span class="line"></span><br><span class="line">docker run -it --name redis-sentinel3 -p 26381:26381 -v /root/sentinel3.conf:/data/sentinel.conf -d --link redis-master:redis-master redis /bin/bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在每个Sentinel中执行如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-sentinel /data/sentinel.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在任意一个节点中使用如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">info sentinel</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Sentinel</span></span><br><span class="line">sentinel_masters:1</span><br><span class="line">sentinel_tilt:0</span><br><span class="line">sentinel_running_scripts:0</span><br><span class="line">sentinel_scripts_queue_length:0</span><br><span class="line">sentinel_simulate_failure_flags:0</span><br><span class="line">master0:name=myredis,status=ok,address=172.17.0.3:6379,slaves=2,sentinels=3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以在Redis主节点上启动客户端执行下面命令测试主节点切换：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">debug sleep 60</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上述过程人工参与的过程太多，需要考虑如何自动化操作，不然对于运维人员来说，实在是太痛苦了，有痛点的地方就有需求，之前看到搜狐有开发一款Redis运维工具，但是没有去尝试，后续可已考虑自动化。</p>
+</li>
+</ol>
+<h2 id="Java中使用哨兵模式"><a href="#Java中使用哨兵模式" class="headerlink" title="Java中使用哨兵模式"></a>Java中使用哨兵模式</h2><ol>
+<li><p>依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>客户端连接原理：</p>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/897d6a3b67b5636303d266a39c949a0f-18480" alt="客户端连接原理"></p>
+</li>
+<li><p>测试（仅供参考）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSentinels</span> </span>&#123;</span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"resource"</span>)</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSentinel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        JedisPoolConfig jedisPoolConfig = <span class="keyword">new</span> JedisPoolConfig();</span><br><span class="line">        jedisPoolConfig.setMaxTotal(<span class="number">10</span>);</span><br><span class="line">        jedisPoolConfig.setMaxIdle(<span class="number">5</span>);</span><br><span class="line">        jedisPoolConfig.setMinIdle(<span class="number">5</span>);</span><br><span class="line">        <span class="comment">// 哨兵信息</span></span><br><span class="line">        Set&lt;String&gt; sentinels = <span class="keyword">new</span> HashSet&lt;&gt;(Arrays.asList(<span class="string">"192.168.37.128:26379"</span>,</span><br><span class="line">                <span class="string">"192.168.37.128:26380"</span>,<span class="string">"192.168.37.128:26381"</span>));</span><br><span class="line">        <span class="comment">// 创建连接池</span></span><br><span class="line">        JedisSentinelPool pool = <span class="keyword">new</span> JedisSentinelPool(<span class="string">"myredis"</span>, sentinels,jedisPoolConfig,<span class="string">""</span>);</span><br><span class="line">        <span class="comment">// 获取客户端</span></span><br><span class="line">        Jedis jedis = pool.getResource();</span><br><span class="line">        <span class="comment">// 执行两个命令</span></span><br><span class="line">        jedis.set(<span class="string">"mykey"</span>, <span class="string">"myvalue"</span>);</span><br><span class="line">        String value = jedis.get(<span class="string">"mykey"</span>);</span><br><span class="line">        System.out.println(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h2><ol>
+<li>在使用的过程中，随着业务的增加不可避免的要对Redis进行扩容，熟知的扩容方式有两种，一种是垂直扩容，一种是水平扩容。</li>
+<li>垂直扩容表示通过加内存方式来增加整个缓存体系的容量比如将缓存大小由2G调整到4G,这种扩容不需要应用程序支持；水平扩容表示表示通过增加节点的方式来增加整个缓存体系的容量比如本来有1个节点变成2个节点，这种扩容方式需要应用程序支持。</li>
+<li>垂直扩容看似最便捷的扩容，但是受到机器的限制，一个机器的内存是有限的，所以垂直扩容到一定阶段不可避免的要进行水平扩容，如果预留出很多节点感觉又是对资源的一种浪费。</li>
+<li>Redis Sentinel 水平扩容一直都是程序猿心中的痛点，因为水平扩容牵涉到数据的迁移。迁移过程一方面要保证自己的业务是可用的，一方面要保证尽量不丢失数据所以数据能不迁移就尽量不迁移。</li>
+</ol>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Redis Sentinel不失为一种高可用方案，在业务量不是特别大的时候可以考虑，但是业务量大就不行，需要Cluster模式！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="WanderROS 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="WanderROS 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/10/08/Redis%E9%AB%98%E5%8F%AF%E7%94%A8%E4%B9%8BSentinel/">Redis高可用之Sentinel</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 WanderROS 的个人博客">WanderROS</a></p>
+  <p><span>发布时间:</span>2020年10月08日 - 22:13</p>
+  <p><span>最后更新:</span>2020年10月08日 - 23:16</p>
+  <p><span>原始链接:</span><a href="/2020/10/08/Redis%E9%AB%98%E5%8F%AF%E7%94%A8%E4%B9%8BSentinel/" title="Redis高可用之Sentinel">https://wanderros.github.io/2020/10/08/Redis%E9%AB%98%E5%8F%AF%E7%94%A8%E4%B9%8BSentinel/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://wanderros.github.io/2020/10/08/Redis%E9%AB%98%E5%8F%AF%E7%94%A8%E4%B9%8BSentinel/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+
+      
+</div>
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Base/" rel="tag"><i class="fa fa-tag"></i> Base</a>
+          
+            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/08/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%A6%82%E5%BF%B5/" rel="next" title="项目开发中的抽象概念">
+                <i class="fa fa-chevron-left"></i> 项目开发中的抽象概念
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+<div>
+		
+    	<!-- Link Gitalk 的支持文件  -->
+	<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+	<div id="gitalk-container"></div>     <script type="text/javascript">
+		var gitalk = new Gitalk({
+			clientID: 'bd073c3374c2b1a924b0',
+			clientSecret: 'e3818342fe0fa0f03ab0997cfe81ae9c450ec954',
+			repo: 'wanderros.github.io',
+			owner: 'WanderROS',
+			admin: ['WanderROS'],
+			id: location.pathname,
+			distractionFreeMode: 'true'
+		});
+		gitalk.render('gitalk-container');
+	</script> 
+	<!-- Gitalk end -->
+
+		
+	</div>
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+ <div id="gitalk-container"></div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="WanderROS" />
+            
+              <p class="site-author-name" itemprop="name">WanderROS</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">152</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wanderROS" target="_blank" title="GitHub">
+                      GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1194409532@qq.com.com" target="_blank" title="E-Mail">
+                      E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">2.1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker环境部署"><span class="nav-number">2.2.</span> <span class="nav-text">Docker环境部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java中使用哨兵模式"><span class="nav-number">2.3.</span> <span class="nav-text">Java中使用哨兵模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不足"><span class="nav-number">2.4.</span> <span class="nav-text">不足</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WanderROS</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+-->
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共393.5k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

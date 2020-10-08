@@ -14501,6 +14501,148 @@
 
 </li>
 </ol>
+<table>
+<thead>
+<tr>
+<th><strong>注解</strong></th>
+<th><strong>属性</strong></th>
+<th><strong>值</strong></th>
+<th><strong>备注</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@Api</code></td>
+<td>value</td>
+<td>字符串</td>
+<td>可用在<code>class</code>头上,<code>class</code>描述</td>
+</tr>
+<tr>
+<td></td>
+<td>description</td>
+<td>字符串</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code>@Api</code>(value = “xxx”, description = “xxx”)</td>
+</tr>
+<tr>
+<td><code>@ApiOperation</code></td>
+<td>value</td>
+<td>字符串</td>
+<td>可用在方法头上.参数的描述容器</td>
+</tr>
+<tr>
+<td></td>
+<td>notes</td>
+<td>字符串</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code>@ApiOperation</code>(value = “xxx”, notes = “xxx”)</td>
+</tr>
+<tr>
+<td><code>@ApiImplicitParams</code></td>
+<td>{}</td>
+<td><code>@ApiImplicitParam</code>数组</td>
+<td>可用在方法头上.参数的描述容器</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code>@ApiImplicitParams</code>({<code>@ApiImplicitParam1</code>,<code>@ApiImplicitParam2</code>,…})</td>
+</tr>
+<tr>
+<td><code>@ApiImplicitParam</code></td>
+<td>name</td>
+<td>字符串 与参数命名对应</td>
+<td>可用在<code>@ApiImplicitParams</code>里</td>
+</tr>
+<tr>
+<td></td>
+<td>value</td>
+<td>字符串</td>
+<td>参数中文描述</td>
+</tr>
+<tr>
+<td></td>
+<td>required</td>
+<td>布尔值</td>
+<td>true/false</td>
+</tr>
+<tr>
+<td></td>
+<td>dataType</td>
+<td>字符串</td>
+<td>参数类型</td>
+</tr>
+<tr>
+<td></td>
+<td>paramType</td>
+<td>字符串</td>
+<td>参数请求方式:query/path</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>query:对应<code>@RequestParam</code>?传递</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>path: 对应<code>@PathVariable</code>{}path传递</td>
+</tr>
+<tr>
+<td></td>
+<td>defaultValue</td>
+<td>字符串</td>
+<td>在api测试中默认值</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>用例参见项目中的设置</td>
+</tr>
+<tr>
+<td><code>@ApiResponses</code></td>
+<td>{}</td>
+<td><code>@ApiResponse</code>数组</td>
+<td>可用在方法头上.参数的描述容器</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code>@ApiResponses</code>({<code>@ApiResponse1</code>,<code>@ApiResponse2</code>,…})</td>
+</tr>
+<tr>
+<td><code>@ApiResponse</code></td>
+<td>code</td>
+<td>整形</td>
+<td>可用在<code>@ApiResponses</code>里</td>
+</tr>
+<tr>
+<td></td>
+<td>message</td>
+<td>字符串</td>
+<td>错误描述</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code>@ApiResponse</code>(code = 200, message = “Successful”)</td>
+</tr>
+</tbody></table>
 <h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
 <li>节省了大量手写接口文档的时间</li>
 <li>通过注解自动生成在线文档</li>
@@ -14528,6 +14670,10 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>Swagger</tag>
+      </tags>
   </entry>
   <entry>
     <title>SpringBoot Thymeleaf Qucik Start</title>
@@ -24790,6 +24936,291 @@
       <tags>
         <tag>Tool</tag>
         <tag>UML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 多线程并发编程</title>
+    <url>/2020/10/07/Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>多线程并发编程是非常重要的编程技术，需要深刻理解并掌握。在Java中，多线程主要的实现方式有四种：</p>
+<ul>
+<li>继承Thread类</li>
+<li>实现Runnable接口</li>
+<li>实现Callable接口通过FutureTask包装器来创建Thread线程</li>
+<li>使用ExecutorService、Callable、Future实现有返回结果的多线程</li>
+</ul>
+<p>其中前两种方式线程执行完后都没有返回值，而后两种是带返回值的。除了以上四种主要的线程创建方式之外，也还有很多其他的方式可以启动多线程任务！</p>
+<hr>
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><h2 id="继承Thread类创建线程"><a href="#继承Thread类创建线程" class="headerlink" title="继承Thread类创建线程"></a>继承Thread类创建线程</h2><ol>
+<li><p>Thread类本质上也是实现了Runnable接口的一个实例，代表一个线程的实例。</p>
+</li>
+<li><p>启动线程的唯一方法就是通过Thread类的start()实例方法。start()方法是一个native方法，它将启动一个新线程，并执行run()方法。</p>
+</li>
+<li><p>这种方式实现多线程比较简单，通过继承Thread类并复写run()方法，就可以启动新线程并执行自己定义的run()方法。</p>
+</li>
+<li><p>Demo：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CreateThreadDemo1</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CreateThreadDemo1</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 设置当前线程的名字</span></span><br><span class="line">        <span class="keyword">this</span>.setName(name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"当前运行的线程名为： "</span> + Thread.currentThread().getName());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 注意这里，要调用start方法才能启动线程，不能调用run方法</span></span><br><span class="line">        <span class="keyword">new</span> CreateThreadDemo1(<span class="string">"MyThread1"</span>).start();</span><br><span class="line">        <span class="keyword">new</span> CreateThreadDemo1(<span class="string">"MyThread2"</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="实现Runnable接口创建线程"><a href="#实现Runnable接口创建线程" class="headerlink" title="实现Runnable接口创建线程"></a>实现Runnable接口创建线程</h2><ol>
+<li><p>实现Runnable接口并实现其中的run方法，然后通过构造Thread实例，传入Runnable实现类，然后调用Thread的start方法即可开启一个新线程。</p>
+</li>
+<li><p>Demo:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CreateThreadDemo2</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"当前运行的线程名为： "</span> + Thread.currentThread().getName());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        CreateThreadDemo2 runnable = <span class="keyword">new</span> CreateThreadDemo2();</span><br><span class="line">        <span class="keyword">new</span> Thread(runnable, <span class="string">"MyThread1"</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(runnable, <span class="string">"MyThread2"</span>).start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="实现Callable接口通过FutureTask包装器来创建Thread线程"><a href="#实现Callable接口通过FutureTask包装器来创建Thread线程" class="headerlink" title="实现Callable接口通过FutureTask包装器来创建Thread线程"></a>实现Callable接口通过FutureTask包装器来创建Thread线程</h2><ol>
+<li><p>首先需要一个实现Callable接口的实例，然后实现该接口的唯一方法call的业务逻辑，接着把Callable实例包装成FutureTask传递给Thread实例启动新线程。</p>
+</li>
+<li><p>FutureTask本质上也实现了Runnable接口，所以同样可以用来构造Thread实例。</p>
+</li>
+<li><p>Demo：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.Callable;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.FutureTask;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CreateThreadDemo3</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 创建线程任务，lambada方式实现接口并实现call方法</span></span><br><span class="line">        Callable&lt;Integer&gt; callable = () -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">"线程任务开始执行了..."</span>);</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将任务封装为FutureTask</span></span><br><span class="line">        FutureTask&lt;Integer&gt; task = <span class="keyword">new</span> FutureTask&lt;&gt;(callable);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 开启线程，执行线程任务</span></span><br><span class="line">        <span class="keyword">new</span> Thread(task).start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ====================</span></span><br><span class="line">        <span class="comment">// 这里是在线程启动之后，线程结果返回之前</span></span><br><span class="line">        System.out.println(<span class="string">"线程启动之后，线程结果返回之前..."</span>);</span><br><span class="line">        <span class="comment">// ====================</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 线程结束之后，拿到线程的执行结果 ，线程不结束会阻塞</span></span><br><span class="line">        Integer result = task.get();</span><br><span class="line">        System.out.println(<span class="string">"主线程中拿到异步任务执行的结果为："</span> + result);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="使用ExecutorService、Callable、Future实现有返回结果的线程（线程池方式）"><a href="#使用ExecutorService、Callable、Future实现有返回结果的线程（线程池方式）" class="headerlink" title="使用ExecutorService、Callable、Future实现有返回结果的线程（线程池方式）"></a>使用ExecutorService、Callable、Future实现有返回结果的线程（线程池方式）</h2><ol>
+<li><p>ExecutorService、Callable、Future三个接口都是属于Executor框架。</p>
+</li>
+<li><p>可返回值的任务必须实现Callable接口。通过ExecutorService执行Callable任务后，可以获取到一个Future的对象，在该对象上调用get()就可以获取到Callable任务返回的结果了。</p>
+</li>
+<li><p>Demo：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Callable;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ExecutionException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ExecutorService;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executors;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Future;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CreateThreadDemo4</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(&#123; <span class="string">"rawtypes"</span>, <span class="string">"unchecked"</span> &#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"---- 主程序开始运行 ----"</span>);</span><br><span class="line">        Date startTime = <span class="keyword">new</span> Date();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> taskSize = <span class="number">5</span>;</span><br><span class="line">        <span class="comment">// 创建一个线程池,Executors提供了创建各种类型线程池的方法，具体详情请自行查阅</span></span><br><span class="line">        ExecutorService executorService = Executors.newFixedThreadPool(taskSize);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 创建多个有返回值的任务</span></span><br><span class="line">        List&lt;Future&gt; futureList = <span class="keyword">new</span> ArrayList&lt;Future&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; taskSize; i++) &#123;</span><br><span class="line">            Callable callable = <span class="keyword">new</span> MyCallable(i);</span><br><span class="line">            <span class="comment">// 执行任务并获取Future对象</span></span><br><span class="line">            Future future = executorService.submit(callable);</span><br><span class="line">            futureList.add(future);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 获取所有并发任务的运行结果</span></span><br><span class="line">        <span class="keyword">for</span> (Future future : futureList) &#123;</span><br><span class="line">            <span class="comment">// 从Future对象上获取任务的返回值，并输出到控制台</span></span><br><span class="line">            System.out.println(<span class="string">"&gt;&gt;&gt; "</span> + future.get().toString());</span><br><span class="line">        &#125;</span><br><span class="line">        Date endTime = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="comment">// 关闭线程池</span></span><br><span class="line">        executorService.shutdown();</span><br><span class="line">        System.out.println(<span class="string">"---- 主程序结束运行 ----，程序运行耗时【"</span> + (endTime.getTime() - startTime.getTime()) + <span class="string">"毫秒】"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCallable</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> taskNum;</span><br><span class="line"></span><br><span class="line">    MyCallable(<span class="keyword">int</span> taskNum) &#123;</span><br><span class="line">        <span class="keyword">this</span>.taskNum = taskNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"&gt;&gt;&gt; "</span> + taskNum + <span class="string">" 线程任务启动"</span>);</span><br><span class="line">        Date startTime = <span class="keyword">new</span> Date();</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        Date endTime = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="keyword">long</span> time = endTime.getTime() - startTime.getTime();</span><br><span class="line">        System.out.println(<span class="string">"&gt;&gt;&gt; "</span> + taskNum + <span class="string">" 线程任务终止"</span>);</span><br><span class="line">        <span class="keyword">return</span> taskNum + <span class="string">"线程任务返回运行结果, 当前任务耗时【"</span> + time + <span class="string">"毫秒】"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ol>
+<li>锁从宏观上分类，只分为两种悲观锁与乐观锁：<ul>
+<li>乐观锁的策略是认为读多写少，遇到并发写的可能性低，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，采取在写时先读出当前版本号，然后加锁操作（比较跟上一次的版本号，如果一样则更新），如果失败则要重复读-比较-写的操作。Java中的乐观锁基本都是通过CAS操作实现的，CAS是一种更新的原子操作，比较当前值跟传入值是否一样，一样则更新，否则失败</li>
+<li>悲观锁的策略是认为写多，遇到并发写的可能性高，每次去拿数据的时候都认为别人会修改，所以每次在读写数据的时候都会上锁，这样别人想读写这个数据就会block直到拿到锁。java中的悲观锁就是Synchronized，AQS框架下的锁则是先尝试CAS乐观锁去获取锁，获取不到，才会转换为悲观锁，如RetreenLock自旋锁</li>
+</ul>
+</li>
+<li>Java的线程是映射到操作系统原生线程之上的，如果要阻塞或唤醒一个线程就需要操作系统介入，需要在户态与核心态之间切换，这种切换会消耗大量的系统资源，因为用户态与内核态都有各自专用的内存空间，专用的寄存器等，用户态切换至内核态需要传递给许多变量、参数给内核，内核也需要保护好用户态在切换时的一些寄存器值、变量等，以便内核态调用结束后切换回用户态继续工作。</li>
+<li>synchronized会导致争用不到锁的线程进入阻塞状态，所以说它是<code>java</code>语言中一个重量级的同步操纵，被称为重量级锁。</li>
+<li><code>synchronized</code>可以把任意一个非<code>null</code>的对象当作锁：<ul>
+<li>作用于方法时，锁住的是对象的实例(this)</li>
+<li>作用于静态方法时，锁住的是Class实例，又因为Class的相关数据存储在永久带PermGen（jdk1.8则是metaspace），永久带是全局共享的，因此静态方法锁相当于类的一个全局锁，会锁所有调用该方法的线程</li>
+<li>作用于一个对象实例时，锁住的是所有以该对象为锁的代码块</li>
+</ul>
+</li>
+<li>还有其他的轻量级锁。</li>
+</ol>
+<h2 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h2><ol>
+<li><code>减少锁的时间</code>：不需要同步执行的代码，能不放在同步块里面执行就不要放在同步块内，可以让锁尽快释放。</li>
+<li><code>减少锁的粒度</code>：将物理上的一个锁，拆成逻辑上的多个锁，增加并行度，从而降低锁竞争。</li>
+<li><code>锁粗化</code>：（场景）假如有一个循环，循环内的操作需要加锁，我们应该把锁放到循环外面，否则每次进出循环，都进出一次临界区，效率是非常差的。</li>
+<li>使用读写锁：读操作加读锁，可以并发读，写操作使用写锁，只能单线程写。</li>
+<li>读写分离</li>
+<li>使用CAS</li>
+<li>消除缓存行的伪共享</li>
+</ol>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>并发编程调试起来很难，这部分还需要深入研究！</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot 对象存储minIO Quick Start</title>
+    <url>/2020/10/08/SpringBoot-%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8minIO-Quick-Start/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>minIO是对象存储服务的一种，与Amazon S3云存储服务兼容，非常适合存储非结构化数据，比如照片、视频、日志文件等。阿里云提供了OSS兑现存储服务，提供的服务相对来说比minIO要多，但是minIO也不失为一种自建对象存储服务的方案。本文记录minIO的部署以及使用SprinBoot项目访问对象存储服务。</p>
+<hr>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ol>
+<li><p>存储桶命名规则：</p>
+<ul>
+<li>存储桶名称必须长在 3 到 63 个字符之间</li>
+<li>存储桶名称只能由小写字母、数字、点 （.） 和连字符 （-） 组成</li>
+<li>存储桶名称必须以字母或数字开头和结尾</li>
+<li>存储桶名称不得格式化为 IP 地址（例如，192.168.5.4）</li>
+<li>存储桶名称在分区中必须是唯一的</li>
+<li>与 Amazon S3 传输加速一起使用的存储桶的名称中不能有点 （.）</li>
+</ul>
+</li>
+<li><p>对象存储是面向对象/文件的、海量的互联网存储，也可以直接被称为“云存储”。</p>
+</li>
+<li><p>对象存储没有像文件系统那样有一个很多层级的文件结构，而是只有一个“桶”（bucket）的概念（也就是存储空间），“桶”里面全部都是对象，是一种非常扁平化的存储方式。</p>
+</li>
+<li><p>对象存储（Object-based Storage）是一种新的网络存储架构，基于对象存储技术的设备就是对象存储设备（Object-based Storage Device）简称OSD。</p>
+</li>
+<li><p>对象存储是一种基于对象的存储设备，具备智能、自我管理能力，通过web服务协议(如：REST、SOAP)实现对象的读写和存储资源的访问。</p>
+</li>
+<li><p>minIO官网文档：</p>
+<ul>
+<li>英文：<a href="https://docs.min.io/" target="_blank" rel="noopener">https://docs.min.io/</a></li>
+<li>中文：<a href="https://docs.min.io/cn/" target="_blank" rel="noopener">https://docs.min.io/cn/</a></li>
+</ul>
+</li>
+</ol>
+<ol start="7">
+<li>Minio可以做为云存储的解决方案用来保存海量的图片，视频，文档。</li>
+</ol>
+<h2 id="minIO环境搭建（Docker）"><a href="#minIO环境搭建（Docker）" class="headerlink" title="minIO环境搭建（Docker）"></a>minIO环境搭建（Docker）</h2><ol>
+<li><p>拉取镜像：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull minio/minio</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实例化minIO容器：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run -p 9000:9000 --name minio \</span><br><span class="line">  -e "MINIO_ACCESS_KEY=minio" \</span><br><span class="line">  -e "MINIO_SECRET_KEY=gulimall_minio" \</span><br><span class="line">  -v /Users/wander/docker/minio/data:/data \</span><br><span class="line">  -v /Users/wander/docker/minio/config:/root/.minio \</span><br><span class="line">  -d minio/minio server /data</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问<a href="http://localhost:9000，输入minio以及gulimall_minio即可访问对象存储后台管理页面。">http://localhost:9000，输入minio以及gulimall_minio即可访问对象存储后台管理页面。</a></p>
+</li>
+</ol>
+<h2 id="SpringBoot项目访问minIO"><a href="#SpringBoot项目访问minIO" class="headerlink" title="SpringBoot项目访问minIO"></a>SpringBoot项目访问minIO</h2><ol>
+<li><p>创建一个SpringBoot项目，添加如下依赖（maven）：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.jlefebure/spring-boot-starter-minio --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.jlefebure<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-minio<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置minIO（application.yml）:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">minio:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">http://localhost:9000/</span></span><br><span class="line">    <span class="attr">access-key:</span> <span class="string">minio</span></span><br><span class="line">    <span class="attr">secret-key:</span> <span class="string">gulimall_minio</span></span><br><span class="line">    <span class="attr">bucket:</span> <span class="string">gulimall</span></span><br><span class="line">    <span class="attr">create-bucket:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建控制器：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.jlefebure.spring.boot.minio.MinioConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> com.jlefebure.spring.boot.minio.MinioException;</span><br><span class="line"><span class="keyword">import</span> com.jlefebure.spring.boot.minio.MinioService;</span><br><span class="line"><span class="keyword">import</span> io.minio.messages.Item;</span><br><span class="line"><span class="keyword">import</span> org.apache.tomcat.util.http.fileupload.IOUtils;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.io.InputStreamResource;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.multipart.MultipartFile;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.URLConnection;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Path;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Paths;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">helloController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    MinioService minioService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MinioConfigurationProperties configurationProperties;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/files"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Item&gt; <span class="title">testMinio</span><span class="params">()</span> <span class="keyword">throws</span> MinioException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> minioService.fullList();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据文件名称下载文件</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> object</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> com.jlefebure.spring.boot.minio.MinioException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"files/&#123;object&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getObject</span><span class="params">(@PathVariable(<span class="string">"object"</span>)</span> String object, HttpServletResponse response) <span class="keyword">throws</span> com.jlefebure.spring.boot.minio.MinioException, IOException, IOException, IOException </span>&#123;</span><br><span class="line">        InputStream inputStream = minioService.get(Paths.get(object));</span><br><span class="line">        InputStreamResource inputStreamResource = <span class="keyword">new</span> InputStreamResource(inputStream);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Set the content type and attachment header.</span></span><br><span class="line">        response.addHeader(<span class="string">"Content-disposition"</span>, <span class="string">"attachment;filename="</span> + object);</span><br><span class="line">        response.setContentType(URLConnection.guessContentTypeFromName(object));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Copy the stream to the response's output stream.</span></span><br><span class="line">        IOUtils.copy(inputStream, response.getOutputStream());</span><br><span class="line">        response.flushBuffer();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/upload"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addAttachement</span><span class="params">(@RequestParam(<span class="string">"file"</span>)</span> MultipartFile file) <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        System.out.println(file);</span><br><span class="line">        String filename = file.getOriginalFilename();</span><br><span class="line">        <span class="comment">// System.out.println(filename);</span></span><br><span class="line">        <span class="comment">// Path path = Paths.get(file.getResource().getURI());</span></span><br><span class="line">        Path path = Paths.get(filename);</span><br><span class="line">        String url = configurationProperties.getUrl() + <span class="string">"/"</span> + configurationProperties.getBucket() + path.toAbsolutePath();</span><br><span class="line">        <span class="comment">// System.out.println(path.toAbsolutePath());</span></span><br><span class="line">        <span class="comment">// url += path.toAbsolutePath();</span></span><br><span class="line">        System.out.println(url);</span><br><span class="line">        <span class="comment">// System.out.println(path);</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            minioService.upload(path, file.getInputStream(), file.getContentType());</span><br><span class="line">            System.out.println(<span class="string">"上传完成！！！"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (com.jlefebure.spring.boot.minio.MinioException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"The file cannot be upload on the internal storage. Please retry later"</span>, e);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"The file cannot be read"</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> io.minio.MinioClient;</span><br><span class="line"><span class="keyword">import</span> io.minio.Result;</span><br><span class="line"><span class="keyword">import</span> io.minio.errors.*;</span><br><span class="line"><span class="keyword">import</span> io.minio.messages.Item;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.xmlpull.v1.XmlPullParserException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.security.InvalidKeyException;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinoApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    MinioClient mmclient;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">t1</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InvalidKeyException, NoSuchAlgorithmException, InsufficientDataException, InvalidExpiresRangeException, InvalidResponseException, InternalException, NoResponseException, InvalidBucketNameException, XmlPullParserException, ErrorResponseException, BucketPolicyTooLargeException, InvalidObjectPrefixException </span>&#123;</span><br><span class="line">        System.out.println(mmclient);</span><br><span class="line">        Iterable&lt;Result&lt;Item&gt;&gt; results = mmclient.listObjects(<span class="string">"gulimall"</span>);</span><br><span class="line">        <span class="keyword">for</span> (Result&lt;Item&gt; result : results) &#123;</span><br><span class="line">            Item item = result.get();</span><br><span class="line">            System.out.println(item.lastModified() + <span class="string">", "</span> + item.size() + <span class="string">", "</span> + item.objectName());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//根据文件名称获取浏览地址,此种方式在不设置策略的情况下【使用默认策略】是不能直接下载文件的</span></span><br><span class="line">        String gulimall = mmclient.presignedGetObject(<span class="string">"gulimall"</span>, <span class="string">"11111.jpg"</span>);</span><br><span class="line">        System.out.println(<span class="string">"下载地址："</span>+gulimall);</span><br><span class="line">        String gulimall1 = mmclient.getBucketLifeCycle(<span class="string">"gulimall"</span>);</span><br><span class="line">        System.out.println(gulimall1);<span class="comment">// 空</span></span><br><span class="line">        String policy = mmclient.getBucketPolicy(<span class="string">"gulimall"</span>);</span><br><span class="line">        System.out.println(<span class="string">"policy:"</span>+policy);</span><br><span class="line">        <span class="comment">//通过修改桶策略即可使用返回的url直接访问minio中的文件【推荐这种方式！！！】</span></span><br><span class="line">        String objectUrl = mmclient.getObjectUrl(<span class="string">"gulimall"</span>, <span class="string">"刘德华+-+练习.ape"</span>);</span><br><span class="line">        System.out.println(<span class="string">"objectUrl:"</span> + objectUrl);</span><br><span class="line">        <span class="comment">//不能下载</span></span><br><span class="line">        String putObject = mmclient.presignedPutObject(<span class="string">"gulimall"</span>, <span class="string">"刘德华+-+练习.ape"</span>);</span><br><span class="line">        System.out.println(<span class="string">"putObject:"</span>+putObject);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>minIO的记录目前很浅显，但是作为一个mark吧，后续如果不考虑其他互联网公司的对象存储服务的话，可以考虑使用minIO搭建自己的对象存储服务。</p>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>OSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目开发中的抽象概念</title>
+    <url>/2020/10/08/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>在项目开发中，阅读不同开发人员的代码时，会因为开发人员的命名习惯不同，而出现项目中的文件夹名称晦涩难懂，因此，在这里记录开发过程中的各种抽象概念。</p>
+<hr>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="Object-对象"><a href="#Object-对象" class="headerlink" title="Object(对象)"></a>Object(对象)</h2><ol>
+<li>PO(Persistant Object)持久对象：可以看成是与数据库中的表相映射的对象。最简单的 PO 就是对应数据库中某个表中的一条记录，多个记录可以用 PO 的集合。 PO 中应该不包含任何对数据库的操作。</li>
+<li>DO(Domain Object)领域对象：从现实世界中抽象出来的有形或无形的业务实体。</li>
+<li>TO(Transfer Object)传输对象：不同的应用程序之间传输的对象。</li>
+<li>DTO(Data Transfer Object)数据传输对象：泛指用于展示层与服务层之间的数据传输对象。</li>
+<li>VO（View Object）视图对象：用于业务层之间的数据传递的对象。</li>
+<li>BO(Business Object)业务对象：用于表示业务逻辑的对象。</li>
+<li>POJO（Plain Ordinary Java Object）简单的Java对象：DO/DTO/BO/VO的统称。</li>
+<li>DAO(Data Access Object) 数据访问对象：DAO中包含了歌中歌数据库的操作方法，结合PO完成对数据库的各种操作。</li>
+</ol>
+<h2 id="Manufactuce（制造业）"><a href="#Manufactuce（制造业）" class="headerlink" title="Manufactuce（制造业）"></a>Manufactuce（制造业）</h2><ol>
+<li>OEM(Original Equipment Manufactuce)原始设备生产商：“代工生产”或“贴牌生产”。</li>
+<li>ODM(Original Design Manufactuce)原始设计制造商：客户只需向ODM服务商提出产品的功能、性能甚至只需提供产品的构思，ODM服务商就可以将产品从设想变为现实。</li>
+<li>OBM(Orignal Brand Manufactuce)原始品牌制造商：生产商自行创立产品品牌，生产、销售拥有自主品牌的产品。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Base</category>
+      </categories>
+      <tags>
+        <tag>Base</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis高可用之Sentinel</title>
+    <url>/2020/10/08/Redis%E9%AB%98%E5%8F%AF%E7%94%A8%E4%B9%8BSentinel/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>之前学习过Redis的基础使用，没有涉及到高可用相关的内容，在真实业务场景中可能需要Redis的高可用，不仅仅是高并发，还有当主从环境下的主机宕机情况的快速恢复服务，这就涉及到Redis的Sentinel模式和Cluster模式。本文主要记录Snetinel模式。</p>
+<hr>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ol>
+<li><p>在服务中，使用单个Redis来提供缓存服务是不可靠的，而且官方宣传单机性能可以达到10w OPS（真实环境是没有的），当出现这种状况时就要分布式<code>Redis</code>了。</p>
+</li>
+<li><p>主从切换技术的方法是：<strong>当主服务器宕机后，需要手动把一台从服务器切换为主服务器，这就需要人工干预，费事费力，还会造成一段时间内服务不可用。</strong></p>
+</li>
+<li><p><code>Redis-Sentinel</code>本身也有单点问题，当出现问题时整个redis集群系统将无法按照预期的方式切换主从。官方建议一个健康的集群部署，至少需要3个Sentinel实例。</p>
+</li>
+<li><p><code>Redis-Sentinel</code>只需要配置监控Redis主节点，而集群之间可以通过主节点相互通信。典型的<code>Redis-Sentinel</code>如下：</p>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/e64f47a8684956ef1de9f7c4a9ff4f07-70110" alt="典型模式"></p>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/5c3e4c21233ba0e78b24ee69a6a5200a-47830" alt="多哨兵"></p>
+</li>
+<li><p>Sentinel主要执行以下三个任务：</p>
+<ul>
+<li>监控 (Monitor): 检查redis主、从实例是否正常运作</li>
+<li>通知 (Notification): 监控的redis服务出现问题时，可通过API发送通知告警</li>
+<li>自动故障迁移 (Automatic Failover): 当检测到redis主节点不能正常工作时，<code>Sentinel</code>会开始做自动故障判断、迁移等操作，先是移除失效<code>Redis</code>主节点，然后将其中一个从节点升级为新的主节点，并让失效主节点的其他从节点改为复制新的主节点。当客户端试图连接失效的主节点时，集群也会向客户端返回最新主节点的地址，使得集群可以使用新的主节点来代替失效的旧主节点</li>
+</ul>
+</li>
+<li><p>Redis Sentinel 集群模式的 “仲裁会”：</p>
+<ul>
+<li>当一个master被sentinel集群监控时，需要为它指定一个参数，这个参数指定了当需要判决master为不可用，并且进行failover时，所需要的sentinel数量</li>
+<li>当failover主备切换真正被触发后，failover并不会马上进行，还需要sentinel中的大多数sentinel授权后才可以进行failover</li>
+<li>failover一旦被触发，尝试去进行failover的sentinel会去获得“大多数”sentinel的授权（如果票数比大多数还要大的时候，则询问更多的sentinel)这个区别看起来很微妙，但是很容易理解和使用</li>
+<li>例如，集群中有5个sentinel，票数被设置为2，当2个sentinel认为一个master已经不可用了以后，将会触发failover，但是，进行failover的那个sentinel必须先获得至少3个sentinel的授权才可以实行failover。如果票数被设置为5，要达到ODOWN状态，必须所有5个sentinel都主观认为master为不可用，要进行failover，那么得获得所有5个sentinel的授权</li>
+</ul>
+</li>
+<li><p>官方文档：<a href="https://redis.io/topics/sentinel" target="_blank" rel="noopener">https://redis.io/topics/sentinel</a></p>
+</li>
+<li><p>sentinel.conf是启动redis-sentinel的核心配置文件，可以从官网下载：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget http://download.redis.io/redis-stable/sentinel.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改的Sentinel配置文件如下：</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Example sentinel.conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># *** IMPORTANT ***</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># By default Sentinel will not be reachable from interfaces different than</span></span><br><span class="line"><span class="comment"># localhost, either use the 'bind' directive to bind to a list of network</span></span><br><span class="line"><span class="comment"># interfaces, or disable protected mode with "protected-mode no" by</span></span><br><span class="line"><span class="comment"># adding it to this configuration file.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Before doing that MAKE SURE the instance is protected from the outside</span></span><br><span class="line"><span class="comment"># world via firewalling or other means.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># For example you may use one of the following:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># bind 127.0.0.1 192.168.1.1</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># protected-mode no</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># port &lt;sentinel-port&gt;</span></span><br><span class="line"><span class="comment"># The port that this sentinel instance will run on</span></span><br><span class="line"><span class="attr">port</span> <span class="string">26379</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># By default Redis Sentinel does not run as a daemon. Use 'yes' if you need it.</span></span><br><span class="line"><span class="comment"># Note that Redis will write a pid file in /var/run/redis-sentinel.pid when</span></span><br><span class="line"><span class="comment"># daemonized.</span></span><br><span class="line"><span class="attr">daemonize</span> <span class="string">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># When running daemonized, Redis Sentinel writes a pid file in</span></span><br><span class="line"><span class="comment"># /var/run/redis-sentinel.pid by default. You can specify a custom pid file</span></span><br><span class="line"><span class="comment"># location here.</span></span><br><span class="line"><span class="attr">pidfile</span> <span class="string">"/var/run/redis-sentinel.pid"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Specify the log file name. Also the empty string can be used to force</span></span><br><span class="line"><span class="comment"># Sentinel to log on the standard output. Note that if you use standard</span></span><br><span class="line"><span class="comment"># output for logging but daemonize, logs will be sent to /dev/null</span></span><br><span class="line"><span class="attr">logfile</span> <span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sentinel announce-ip &lt;ip&gt;</span></span><br><span class="line"><span class="comment"># sentinel announce-port &lt;port&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The above two configuration directives are useful in environments where,</span></span><br><span class="line"><span class="comment"># because of NAT, Sentinel is reachable from outside via a non-local address.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># When announce-ip is provided, the Sentinel will claim the specified IP address</span></span><br><span class="line"><span class="comment"># in HELLO messages used to gossip its presence, instead of auto-detecting the</span></span><br><span class="line"><span class="comment"># local address as it usually does.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Similarly when announce-port is provided and is valid and non-zero, Sentinel</span></span><br><span class="line"><span class="comment"># will announce the specified TCP port.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The two options don't need to be used together, if only announce-ip is</span></span><br><span class="line"><span class="comment"># provided, the Sentinel will announce the specified IP and the server port</span></span><br><span class="line"><span class="comment"># as specified by the "port" option. If only announce-port is provided, the</span></span><br><span class="line"><span class="comment"># Sentinel will announce the auto-detected local IP and the specified port.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel announce-ip 1.2.3.4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dir &lt;working-directory&gt;</span></span><br><span class="line"><span class="comment"># Every long running process should have a well-defined working directory.</span></span><br><span class="line"><span class="comment"># For Redis Sentinel to chdir to /tmp at startup is the simplest thing</span></span><br><span class="line"><span class="comment"># for the process to don't interfere with administrative tasks such as</span></span><br><span class="line"><span class="comment"># unmounting filesystems.</span></span><br><span class="line"><span class="attr">dir</span> <span class="string">"/tmp"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">sentinel</span> <span class="string">myid 802e66d5d163ee0477ba40d83c94d11de9e1395b</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Tells Sentinel to monitor this master, and to consider it in O_DOWN</span></span><br><span class="line"><span class="comment"># (Objectively Down) state only if at least &lt;quorum&gt; sentinels agree.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Note that whatever is the ODOWN quorum, a Sentinel will require to</span></span><br><span class="line"><span class="comment"># be elected by the majority of the known Sentinels in order to</span></span><br><span class="line"><span class="comment"># start a failover, so no failover can be performed in minority.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Replicas are auto-discovered, so you don't need to specify replicas in</span></span><br><span class="line"><span class="comment"># any way. Sentinel itself will rewrite this configuration file adding</span></span><br><span class="line"><span class="comment"># the replicas using additional configuration options.</span></span><br><span class="line"><span class="comment"># Also note that the configuration file is rewritten when a</span></span><br><span class="line"><span class="comment"># replica is promoted to master.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># <span class="doctag">Note:</span> master name should not include special characters or spaces.</span></span><br><span class="line"><span class="comment"># The valid charset is A-z 0-9 and the three characters ".-_".</span></span><br><span class="line"><span class="comment">#sentinel monitor mymaster 127.0.0.1 6379 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sentinel auth-pass &lt;master-name&gt; &lt;password&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Set the password to use to authenticate with the master and replicas.</span></span><br><span class="line"><span class="comment"># Useful if there is a password set in the Redis instances to monitor.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Note that the master password is also used for replicas, so it is not</span></span><br><span class="line"><span class="comment"># possible to set a different password in masters and replicas instances</span></span><br><span class="line"><span class="comment"># if you want to be able to monitor these instances with Sentinel.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># However you can have Redis instances without the authentication enabled</span></span><br><span class="line"><span class="comment"># mixed with Redis instances requiring the authentication (as long as the</span></span><br><span class="line"><span class="comment"># password set is the same for all the instances requiring the password) as</span></span><br><span class="line"><span class="comment"># the AUTH command will have no effect in Redis instances with authentication</span></span><br><span class="line"><span class="comment"># switched off.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel auth-pass mymaster MySUPER--secret-0123passw0rd</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sentinel auth-user &lt;master-name&gt; &lt;username&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This is useful in order to authenticate to instances having ACL capabilities,</span></span><br><span class="line"><span class="comment"># that is, running Redis 6.0 or greater. When just auth-pass is provided the</span></span><br><span class="line"><span class="comment"># Sentinel instance will authenticate to Redis using the old "AUTH &lt;pass&gt;"</span></span><br><span class="line"><span class="comment"># method. When also an username is provided, it will use "AUTH &lt;user&gt; &lt;pass&gt;".</span></span><br><span class="line"><span class="comment"># In the Redis servers side, the ACL to provide just minimal access to</span></span><br><span class="line"><span class="comment"># Sentinel instances, should be configured along the following lines:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#     user sentinel-user &gt;somepassword +client +subscribe +publish \</span></span><br><span class="line"><span class="comment">#                        +ping +info +multi +slaveof +config +client +exec on</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sentinel down-after-milliseconds &lt;master-name&gt; &lt;milliseconds&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Number of milliseconds the master (or any attached replica or sentinel) should</span></span><br><span class="line"><span class="comment"># be unreachable (as in, not acceptable reply to PING, continuously, for the</span></span><br><span class="line"><span class="comment"># specified period) in order to consider it in S_DOWN state (Subjectively</span></span><br><span class="line"><span class="comment"># Down).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Default is 30 seconds.</span></span><br><span class="line"><span class="attr">sentinel</span> <span class="string">deny-scripts-reconfig yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># requirepass &lt;password&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You can configure Sentinel itself to require a password, however when doing</span></span><br><span class="line"><span class="comment"># so Sentinel will try to authenticate with the same password to all the</span></span><br><span class="line"><span class="comment"># other Sentinels. So you need to configure all your Sentinels in a given</span></span><br><span class="line"><span class="comment"># group with the same "requirepass" password. Check the following documentation</span></span><br><span class="line"><span class="comment"># for more info: https://redis.io/topics/sentinel</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sentinel parallel-syncs &lt;master-name&gt; &lt;numreplicas&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># How many replicas we can reconfigure to point to the new replica simultaneously</span></span><br><span class="line"><span class="comment"># during the failover. Use a low number if you use the replicas to serve query</span></span><br><span class="line"><span class="comment"># to avoid that all the replicas will be unreachable at about the same</span></span><br><span class="line"><span class="comment"># time while performing the synchronization with the master.</span></span><br><span class="line"><span class="attr">sentinel</span> <span class="string">monitor myredis 172.17.0.3 6379 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sentinel failover-timeout &lt;master-name&gt; &lt;milliseconds&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Specifies the failover timeout in milliseconds. It is used in many ways:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># - The time needed to re-start a failover after a previous failover was</span></span><br><span class="line"><span class="comment">#   already tried against the same master by a given Sentinel, is two</span></span><br><span class="line"><span class="comment">#   times the failover timeout.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># - The time needed for a replica replicating to a wrong master according</span></span><br><span class="line"><span class="comment">#   to a Sentinel current configuration, to be forced to replicate</span></span><br><span class="line"><span class="comment">#   with the right master, is exactly the failover timeout (counting since</span></span><br><span class="line"><span class="comment">#   the moment a Sentinel detected the misconfiguration).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># - The time needed to cancel a failover that is already in progress but</span></span><br><span class="line"><span class="comment">#   did not produced any configuration change (SLAVEOF NO ONE yet not</span></span><br><span class="line"><span class="comment">#   acknowledged by the promoted replica).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># - The maximum time a failover in progress waits for all the replicas to be</span></span><br><span class="line"><span class="comment">#   reconfigured as replicas of the new master. However even after this time</span></span><br><span class="line"><span class="comment">#   the replicas will be reconfigured by the Sentinels anyway, but not with</span></span><br><span class="line"><span class="comment">#   the exact parallel-syncs progression as specified.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Default is 3 minutes.</span></span><br><span class="line"><span class="attr">sentinel</span> <span class="string">config-epoch myredis 8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># SCRIPTS EXECUTION</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel notification-script and sentinel reconfig-script are used in order</span></span><br><span class="line"><span class="comment"># to configure scripts that are called to notify the system administrator</span></span><br><span class="line"><span class="comment"># or to reconfigure clients after a failover. The scripts are executed</span></span><br><span class="line"><span class="comment"># with the following rules for error handling:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If script exits with "1" the execution is retried later (up to a maximum</span></span><br><span class="line"><span class="comment"># number of times currently set to 10).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If script exits with "2" (or an higher value) the script execution is</span></span><br><span class="line"><span class="comment"># not retried.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If script terminates because it receives a signal the behavior is the same</span></span><br><span class="line"><span class="comment"># as exit code 1.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># A script has a maximum running time of 60 seconds. After this limit is</span></span><br><span class="line"><span class="comment"># reached the script is terminated with a SIGKILL and the execution retried.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># NOTIFICATION SCRIPT</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel notification-script &lt;master-name&gt; &lt;script-path&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Call the specified notification script for any sentinel event that is</span></span><br><span class="line"><span class="comment"># generated in the WARNING level (for instance -sdown, -odown, and so forth).</span></span><br><span class="line"><span class="comment"># This script should notify the system administrator via email, SMS, or any</span></span><br><span class="line"><span class="comment"># other messaging system, that there is something wrong with the monitored</span></span><br><span class="line"><span class="comment"># Redis systems.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The script is called with just two arguments: the first is the event type</span></span><br><span class="line"><span class="comment"># and the second the event description.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The script must exist and be executable in order for sentinel to start if</span></span><br><span class="line"><span class="comment"># this option is provided.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel notification-script mymaster /var/redis/notify.sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># CLIENTS RECONFIGURATION SCRIPT</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel client-reconfig-script &lt;master-name&gt; &lt;script-path&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># When the master changed because of a failover a script can be called in</span></span><br><span class="line"><span class="comment"># order to perform application-specific tasks to notify the clients that the</span></span><br><span class="line"><span class="comment"># configuration has changed and the master is at a different address.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The following arguments are passed to the script:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># &lt;master-name&gt; &lt;role&gt; &lt;state&gt; &lt;from-ip&gt; &lt;from-port&gt; &lt;to-ip&gt; &lt;to-port&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># &lt;state&gt; is currently always "failover"</span></span><br><span class="line"><span class="comment"># &lt;role&gt; is either "leader" or "observer"</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The arguments from-ip, from-port, to-ip, to-port are used to communicate</span></span><br><span class="line"><span class="comment"># the old address of the master and the new address of the elected replica</span></span><br><span class="line"><span class="comment"># (now a master).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This script should be resistant to multiple invocations.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># sentinel client-reconfig-script mymaster /var/redis/reconfig.sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># SECURITY</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># By default SENTINEL SET will not be able to change the notification-script</span></span><br><span class="line"><span class="comment"># and client-reconfig-script at runtime. This avoids a trivial security issue</span></span><br><span class="line"><span class="comment"># where clients can set the script to anything and trigger a failover in order</span></span><br><span class="line"><span class="comment"># to get the program executed.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">sentinel</span> <span class="string">leader-epoch myredis 8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># REDIS COMMANDS RENAMING</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Sometimes the Redis server has certain commands, that are needed for Sentinel</span></span><br><span class="line"><span class="comment"># to work correctly, renamed to unguessable strings. This is often the case</span></span><br><span class="line"><span class="comment"># of CONFIG and SLAVEOF in the context of providers that provide Redis as</span></span><br><span class="line"><span class="comment"># a service, and don't want the customers to reconfigure the instances outside</span></span><br><span class="line"><span class="comment"># of the administration console.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># In such case it is possible to tell Sentinel to use different command names</span></span><br><span class="line"><span class="comment"># instead of the normal ones. For example if the master "mymaster", and the</span></span><br><span class="line"><span class="comment"># associated replicas, have "CONFIG" all renamed to "GUESSME", I could use:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># SENTINEL rename-command mymaster CONFIG GUESSME</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># After such configuration is set, every time Sentinel would use CONFIG it will</span></span><br><span class="line"><span class="comment"># use GUESSME instead. Note that there is no actual need to respect the command</span></span><br><span class="line"><span class="comment"># case, so writing "config guessme" is the same in the example above.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># SENTINEL SET can also be used in order to perform this configuration at runtime.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># In order to set a command back to its original name (undo the renaming), it</span></span><br><span class="line"><span class="comment"># is possible to just rename a command to itsef:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># SENTINEL rename-command mymaster CONFIG CONFIG</span></span><br><span class="line"><span class="comment"># Generated by CONFIG REWRITE</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>多个Sentinel则需要修改端口号</li>
+</ul>
+</li>
+</ol>
+<h2 id="Docker环境部署"><a href="#Docker环境部署" class="headerlink" title="Docker环境部署"></a>Docker环境部署</h2><ol>
+<li><p>一主多从：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run -itd --name redis-master -p 6379:6379 redis</span><br><span class="line">docker run -itd --name redis-slave -p 6380:6379 --link redis-master:redis-master redis</span><br><span class="line">docker run -itd --name redis-slave1 -p 6381:6379 --link redis-master:redis-master redis</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>需要进入两个从节点使用客户端执行如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">slaveof redis-master 6379</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在主节点中执行下面的命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">info replication</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Replication</span></span><br><span class="line">role:master</span><br><span class="line">connected_slaves:2</span><br><span class="line">slave0:ip=172.17.0.2,port=6379,state=online,offset=474223,lag=1</span><br><span class="line">slave1:ip=172.17.0.4,port=6379,state=online,offset=474357,lag=0</span><br><span class="line">master_replid:92708a81b61dcd5b6067dedd7138e8f89a8cc996</span><br><span class="line">master_replid2:8da9d74e82754291f0d18563ac2f546a5d20a240</span><br><span class="line">master_repl_offset:474491</span><br><span class="line">second_repl_offset:107113</span><br><span class="line">repl_backlog_active:1</span><br><span class="line">repl_backlog_size:1048576</span><br><span class="line">repl_backlog_first_byte_offset:90764</span><br><span class="line">repl_backlog_histlen:383728</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动三个Sentinel：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run -it --name redis-sentinel1 -p 26379:26379 -v /root/sentinel1.conf:/data/sentinel.conf -d --link redis-master:redis-master redis /bin/bash</span><br><span class="line"></span><br><span class="line">docker run -it --name redis-sentinel2 -p 26380:26380 -v /root/sentinel2.conf:/data/sentinel.conf -d --link redis-master:redis-master redis /bin/bash</span><br><span class="line"></span><br><span class="line">docker run -it --name redis-sentinel3 -p 26381:26381 -v /root/sentinel3.conf:/data/sentinel.conf -d --link redis-master:redis-master redis /bin/bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在每个Sentinel中执行如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">redis-sentinel /data/sentinel.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在任意一个节点中使用如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">info sentinel</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Sentinel</span></span><br><span class="line">sentinel_masters:1</span><br><span class="line">sentinel_tilt:0</span><br><span class="line">sentinel_running_scripts:0</span><br><span class="line">sentinel_scripts_queue_length:0</span><br><span class="line">sentinel_simulate_failure_flags:0</span><br><span class="line">master0:name=myredis,status=ok,address=172.17.0.3:6379,slaves=2,sentinels=3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以在Redis主节点上启动客户端执行下面命令测试主节点切换：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">debug sleep 60</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上述过程人工参与的过程太多，需要考虑如何自动化操作，不然对于运维人员来说，实在是太痛苦了，有痛点的地方就有需求，之前看到搜狐有开发一款Redis运维工具，但是没有去尝试，后续可已考虑自动化。</p>
+</li>
+</ol>
+<h2 id="Java中使用哨兵模式"><a href="#Java中使用哨兵模式" class="headerlink" title="Java中使用哨兵模式"></a>Java中使用哨兵模式</h2><ol>
+<li><p>依赖：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>客户端连接原理：</p>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/897d6a3b67b5636303d266a39c949a0f-18480" alt="客户端连接原理"></p>
+</li>
+<li><p>测试（仅供参考）：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSentinels</span> </span>&#123;</span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"resource"</span>)</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSentinel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        JedisPoolConfig jedisPoolConfig = <span class="keyword">new</span> JedisPoolConfig();</span><br><span class="line">        jedisPoolConfig.setMaxTotal(<span class="number">10</span>);</span><br><span class="line">        jedisPoolConfig.setMaxIdle(<span class="number">5</span>);</span><br><span class="line">        jedisPoolConfig.setMinIdle(<span class="number">5</span>);</span><br><span class="line">        <span class="comment">// 哨兵信息</span></span><br><span class="line">        Set&lt;String&gt; sentinels = <span class="keyword">new</span> HashSet&lt;&gt;(Arrays.asList(<span class="string">"192.168.37.128:26379"</span>,</span><br><span class="line">                <span class="string">"192.168.37.128:26380"</span>,<span class="string">"192.168.37.128:26381"</span>));</span><br><span class="line">        <span class="comment">// 创建连接池</span></span><br><span class="line">        JedisSentinelPool pool = <span class="keyword">new</span> JedisSentinelPool(<span class="string">"myredis"</span>, sentinels,jedisPoolConfig,<span class="string">""</span>);</span><br><span class="line">        <span class="comment">// 获取客户端</span></span><br><span class="line">        Jedis jedis = pool.getResource();</span><br><span class="line">        <span class="comment">// 执行两个命令</span></span><br><span class="line">        jedis.set(<span class="string">"mykey"</span>, <span class="string">"myvalue"</span>);</span><br><span class="line">        String value = jedis.get(<span class="string">"mykey"</span>);</span><br><span class="line">        System.out.println(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h2><ol>
+<li>在使用的过程中，随着业务的增加不可避免的要对Redis进行扩容，熟知的扩容方式有两种，一种是垂直扩容，一种是水平扩容。</li>
+<li>垂直扩容表示通过加内存方式来增加整个缓存体系的容量比如将缓存大小由2G调整到4G,这种扩容不需要应用程序支持；水平扩容表示表示通过增加节点的方式来增加整个缓存体系的容量比如本来有1个节点变成2个节点，这种扩容方式需要应用程序支持。</li>
+<li>垂直扩容看似最便捷的扩容，但是受到机器的限制，一个机器的内存是有限的，所以垂直扩容到一定阶段不可避免的要进行水平扩容，如果预留出很多节点感觉又是对资源的一种浪费。</li>
+<li>Redis Sentinel 水平扩容一直都是程序猿心中的痛点，因为水平扩容牵涉到数据的迁移。迁移过程一方面要保证自己的业务是可用的，一方面要保证尽量不丢失数据所以数据能不迁移就尽量不迁移。</li>
+</ol>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Redis Sentinel不失为一种高可用方案，在业务量不是特别大的时候可以考虑，但是业务量大就不行，需要Cluster模式！</p>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+      <tags>
+        <tag>Base</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
 </search>
