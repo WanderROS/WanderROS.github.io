@@ -118,14 +118,14 @@
 
 
 
-<meta name="description" content="搜索引擎 鸠摩搜书 Forfrigg 书伴 脚本之家  开发工具 在线工具  在线UML图  ProcessOn在线图  Plantuml 12docker pull plantuml&#x2F;plantuml-serverdocker run -d -p 8080:8080 plantuml&#x2F;plantuml-server          下载工具 Motrix  Mac软件 精品应用">
+<meta name="description" content="搜索引擎 鸠摩搜书 Forfrigg 书伴 脚本之家  开发工具 在线工具  在线UML图  ProcessOn在线图  Plantuml 12docker pull plantuml&#x2F;plantuml-serverdocker run -d -p 8080:8080 plantuml&#x2F;plantuml-server  Docker.io 12docker pull fjudith&#x2F;draw.io">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工具积累">
 <meta property="og:url" content="https://wanderros.github.io/2020/05/14/%E5%B7%A5%E5%85%B7%E7%A7%AF%E7%B4%AF/index.html">
 <meta property="og:site_name" content="WanderROS&#39;S Daily">
-<meta property="og:description" content="搜索引擎 鸠摩搜书 Forfrigg 书伴 脚本之家  开发工具 在线工具  在线UML图  ProcessOn在线图  Plantuml 12docker pull plantuml&#x2F;plantuml-serverdocker run -d -p 8080:8080 plantuml&#x2F;plantuml-server          下载工具 Motrix  Mac软件 精品应用">
+<meta property="og:description" content="搜索引擎 鸠摩搜书 Forfrigg 书伴 脚本之家  开发工具 在线工具  在线UML图  ProcessOn在线图  Plantuml 12docker pull plantuml&#x2F;plantuml-serverdocker run -d -p 8080:8080 plantuml&#x2F;plantuml-server  Docker.io 12docker pull fjudith&#x2F;draw.io">
 <meta property="article:published_time" content="2020-05-14T08:05:27.000Z">
-<meta property="article:modified_time" content="2020-10-06T11:26:57.917Z">
+<meta property="article:modified_time" content="2020-10-19T13:36:52.241Z">
 <meta property="article:author" content="WanderROS">
 <meta property="article:tag" content="Tool">
 <meta property="article:tag" content="Base">
@@ -444,9 +444,33 @@
 </li>
 <li><p><a href="https://plantuml.com/" target="_blank" rel="noopener">Plantuml</a></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull plantuml/plantuml-server</span><br><span class="line">docker run -d -p 8080:8080 plantuml/plantuml-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Docker.io</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull fjudith/draw.io</span><br><span class="line">docker run -dit --restart=always --name=draw -p 8080:8080 fjudith/draw.io</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Bing图像接口：</p>
+<ul>
+<li><p>地址：<a href="https://cn.bing.com/HPImageArchive.aspx?n=1" target="_blank" rel="noopener">https://cn.bing.com/HPImageArchive.aspx?n=1</a></p>
+</li>
+<li><p>支持参数：</p>
+<ul>
+<li><code>n</code>必填，返回照片数量</li>
+<li><code>idx</code>非必填，用于指定获取哪天的壁纸，0表示当天，1表示昨天，2表示前天，依此类推</li>
+<li><code>format</code>非必填，用于指定输出格式，默认是 XML 的，传入 js 表示返回 JSON 格式</li>
+<li><code>mkt</code>非必填，用于指定推送地区，如：en-US，zh-CN，ja-JP，en-AU，en-UK，de-DE，en-NZ，en-CA</li>
+</ul>
+</li>
+<li><p>取参数中的<code>url</code>字段内容，拼接到<code>https://bing.com/</code>后面形成完整的图片url。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"images"</span>: [</span><br><span class="line">&#123;</span><br><span class="line"><span class="attr">"startdate"</span>: <span class="string">"20201018"</span>,</span><br><span class="line"><span class="attr">"fullstartdate"</span>: <span class="string">"202010181600"</span>,</span><br><span class="line"><span class="attr">"enddate"</span>: <span class="string">"20201019"</span>,</span><br><span class="line"><span class="attr">"url"</span>: <span class="string">"/th?id=OHR.MatiSiTemple_ZH-CN1153907273_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg&amp;pid=hp"</span>,</span><br><span class="line"><span class="attr">"urlbase"</span>: <span class="string">"/th?id=OHR.MatiSiTemple_ZH-CN1153907273"</span>,</span><br><span class="line"><span class="attr">"copyright"</span>: <span class="string">"马蹄寺风景区内的马蹄寺和石窟，中国甘肃省 (© Ana Flašker/Alamy)"</span>,</span><br><span class="line"><span class="attr">"copyrightlink"</span>: <span class="string">"https://www.bing.com/search?q=%E9%A9%AC%E8%B9%84%E5%AF%BA%E9%A3%8E%E6%99%AF%E5%8C%BA&amp;form=hpcapt&amp;mkt=zh-cn"</span>,</span><br><span class="line"><span class="attr">"title"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="attr">"quiz"</span>: <span class="string">"/search?q=Bing+homepage+quiz&amp;filters=WQOskey:%22HPQuiz_20201018_MatiSiTemple%22&amp;FORM=HPQUIZ"</span>,</span><br><span class="line"><span class="attr">"wp"</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="attr">"hsh"</span>: <span class="string">"8a3ced35988c8c229e5e775c61bac652"</span>,</span><br><span class="line"><span class="attr">"drk"</span>: <span class="number">1</span>,</span><br><span class="line"><span class="attr">"top"</span>: <span class="number">1</span>,</span><br><span class="line"><span class="attr">"bot"</span>: <span class="number">1</span>,</span><br><span class="line"><span class="attr">"hs"</span>: []</span><br><span class="line">&#125;</span><br><span class="line">],</span><br><span class="line"><span class="attr">"tooltips"</span>: &#123;</span><br><span class="line"><span class="attr">"loading"</span>: <span class="string">"正在加载..."</span>,</span><br><span class="line"><span class="attr">"previous"</span>: <span class="string">"上一个图像"</span>,</span><br><span class="line"><span class="attr">"next"</span>: <span class="string">"下一个图像"</span>,</span><br><span class="line"><span class="attr">"walle"</span>: <span class="string">"此图片不能下载用作壁纸。"</span>,</span><br><span class="line"><span class="attr">"walls"</span>: <span class="string">"下载今日美图。仅限用作桌面壁纸。"</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
+
+
+</li>
+</ul>
 </li>
 </ul>
 <iframe src="https://tool.lu/coderunner/embed/9fr.html" width="650" height="550" frameborder="0" mozallowfullscreen webkitallowfullscreen allowfullscreen></iframe>
@@ -513,7 +537,7 @@
   <p><span>本文标题:</span><a href="/2020/05/14/%E5%B7%A5%E5%85%B7%E7%A7%AF%E7%B4%AF/">工具积累</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 WanderROS 的个人博客">WanderROS</a></p>
   <p><span>发布时间:</span>2020年05月14日 - 16:05</p>
-  <p><span>最后更新:</span>2020年10月06日 - 19:26</p>
+  <p><span>最后更新:</span>2020年10月19日 - 21:36</p>
   <p><span>原始链接:</span><a href="/2020/05/14/%E5%B7%A5%E5%85%B7%E7%A7%AF%E7%B4%AF/" title="工具积累">https://wanderros.github.io/2020/05/14/%E5%B7%A5%E5%85%B7%E7%A7%AF%E7%B4%AF/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://wanderros.github.io/2020/05/14/%E5%B7%A5%E5%85%B7%E7%A7%AF%E7%B4%AF/"  aria-label="复制成功！"></i></span>
   </p>
@@ -685,7 +709,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">152</span>
+                  <span class="site-state-item-count">164</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -696,7 +720,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -707,7 +731,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -812,7 +836,7 @@
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共393.5k字</span>
+  <span class="post-count">博客全站共415.4k字</span>
 </div>
 
         

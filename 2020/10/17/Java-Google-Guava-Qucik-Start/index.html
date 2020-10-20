@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('Please input Password:') !== '') {
+                alert('Password Error！');
+                if (history.length === 1) {
+                    location.replace("https://wanderros.github.io/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="Java,Guava," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="WanderROS'S Daily" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="简介Guava是谷歌开源的Java库，提供了用于集合，缓存，支持原语，并发性，常见注解，字符串处理，I&#x2F;O和验证的实用方法。谷歌里的很多项目都使用了Guava，优秀的Java开发人员都在用，有什么理由不用？  开始基础知识 Guava产生背景：谷歌作为大公司，当然会从日常的工作中提取中很多高效率的方法出来，因而产生了Guava。  Guava的源码地址：https:&#x2F;&#x2F;github.com&#x2F;goo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Google Guava Qucik Start">
+<meta property="og:url" content="https://wanderros.github.io/2020/10/17/Java-Google-Guava-Qucik-Start/index.html">
+<meta property="og:site_name" content="WanderROS&#39;S Daily">
+<meta property="og:description" content="简介Guava是谷歌开源的Java库，提供了用于集合，缓存，支持原语，并发性，常见注解，字符串处理，I&#x2F;O和验证的实用方法。谷歌里的很多项目都使用了Guava，优秀的Java开发人员都在用，有什么理由不用？  开始基础知识 Guava产生背景：谷歌作为大公司，当然会从日常的工作中提取中很多高效率的方法出来，因而产生了Guava。  Guava的源码地址：https:&#x2F;&#x2F;github.com&#x2F;goo">
+<meta property="og:image" content="https://app.yinxiang.com/FileSharing.action?hash=1/4a2adccee81303ad83bdcfb59e429e08-134817">
+<meta property="og:image" content="https://app.yinxiang.com/FileSharing.action?hash=1/599fd663f4793946268f951c60d8d31e-42505">
+<meta property="og:image" content="https://app.yinxiang.com/FileSharing.action?hash=1/e4ac6d904f745d15cbc95bf0de60f906-59416">
+<meta property="og:image" content="https://app.yinxiang.com/FileSharing.action?hash=1/aeda84325e7287641fbe472243111dc2-17265">
+<meta property="article:published_time" content="2020-10-17T08:23:35.000Z">
+<meta property="article:modified_time" content="2020-10-19T13:36:52.234Z">
+<meta property="article:author" content="WanderROS">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Guava">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://app.yinxiang.com/FileSharing.action?hash=1/4a2adccee81303ad83bdcfb59e429e08-134817">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wanderros.github.io/2020/10/17/Java-Google-Guava-Qucik-Start/"/>
+
+
+
+
+
+  <title>Java Google Guava Qucik Start | WanderROS'S Daily</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/WanderROS" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WanderROS'S Daily</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-足迹">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            足迹
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wanderros.github.io/2020/10/17/Java-Google-Guava-Qucik-Start/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WanderROS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WanderROS'S Daily">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java Google Guava Qucik Start</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-17T16:23:35+08:00">
+                2020-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Guava是谷歌开源的Java库，提供了用于集合，缓存，支持原语，并发性，常见注解，字符串处理，I/O和验证的实用方法。谷歌里的很多项目都使用了Guava，优秀的Java开发人员都在用，有什么理由不用？</p>
+<hr>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ol>
+<li><p>Guava产生背景：谷歌作为大公司，当然会从日常的工作中提取中很多高效率的方法出来，因而产生了Guava。</p>
+</li>
+<li><p>Guava的源码地址：<a href="https://github.com/google/guava" target="_blank" rel="noopener">https://github.com/google/guava</a></p>
+</li>
+<li><p>Guava的优势：</p>
+<ul>
+<li>标准化——Guava库是由谷歌托管</li>
+<li>高效可靠——被Google的开发者设计，实现和使用</li>
+<li>高效优化</li>
+<li>函数式编程</li>
+<li>实用工具函数</li>
+<li>提供标准的故障安全验证机制</li>
+<li>最佳实践</li>
+</ul>
+</li>
+<li><p>Maven引入：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.guava<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>guava<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>29.0-jre<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="字符串工具类"><a href="#字符串工具类" class="headerlink" title="字符串工具类"></a>字符串工具类</h2><p>截止目前为止，Guava提供了如下的类来处理字符串：</p>
+<ul>
+<li><code>Joiner</code>（连接器）会按照指定的分隔符等将输入内容连接起来形成需要的格式的字符串</li>
+<li><code>Splitter</code>（拆分器）会按照指定的模式来对输入字符串进行拆分获得指定格式的类型，同<code>Joiner</code>属于逆向操作</li>
+<li><code>CharMatcher</code>（字符匹配器）会对字符内容按照指定格式进行匹配</li>
+<li><code>Charsets</code>（字符集）针对所有Java平台的六种字符集提供了常量引用</li>
+<li><code>CaseFormat</code>（大小写格式）用来在各种ASCII 大小写规范间转换字符串</li>
+<li><code>Strings</code>封装了通用型的字符串工具类</li>
+</ul>
+<h3 id="Joiner（连接器）"><a href="#Joiner（连接器）" class="headerlink" title="Joiner（连接器）"></a>Joiner（连接器）</h3><ol>
+<li><p><code>Joiner</code>可以使用<code>on</code>方法来定义连接的字符或者字符串；可以使用<code>skipNulls</code>方法来忽略要连接的为<code>null</code>的字符串；可以使用<code>useForNull</code>方法来替换为<code>null</code>的字符串的连接，<code>skipNulls</code>和<code>useForNull</code>不能同时使用；可以使用<code>withKeyValueSeparator</code>来为键值对类型添加键值对分隔符。</p>
+</li>
+<li><p><code>Joiner</code>可以用来连接对象类型，连接对象时会把对象的<code>toString</code>方法的值连接起来。</p>
+</li>
+<li><p><code>Joiner</code>对象实例总是不可变的，用来定义<code>Joiner</code>目标语义的配置方法总会返回一个新的<code>Joiner</code>实例，因而<code>Joiner</code>实例都是线程安全的，可以将其定义为<code>static final</code>常量。</p>
+</li>
+<li><p>示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Joiner joiner = Joiner.on(<span class="string">","</span>).skipNulls();</span><br><span class="line">String str1 = joiner.join(<span class="string">"Harry"</span>, <span class="keyword">null</span>, <span class="string">"Ron"</span>, <span class="string">"Hermione"</span>);</span><br><span class="line"><span class="comment">// str1="Harry,Ron,Hermione"</span></span><br><span class="line">String str2 = Joiner.on(<span class="string">","</span>).join(Arrays.asList(<span class="number">1</span>, <span class="number">5</span>, <span class="number">7</span>));</span><br><span class="line"><span class="comment">// str2="1,5,7"</span></span><br><span class="line">Joiner.MapJoiner joiner1 = Joiner.on(<span class="string">","</span>).withKeyValueSeparator(<span class="string">"=="</span>);</span><br><span class="line">Map&lt;String,Person&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">Person person1=<span class="keyword">new</span> Person(<span class="string">"lisi"</span>,<span class="number">23</span>,<span class="string">"Beijing"</span>); <span class="comment">// 自定义类Person，并重写了toString方法</span></span><br><span class="line">Person person2=<span class="keyword">new</span> Person(<span class="string">"wangwu"</span>,<span class="number">24</span>,<span class="string">"Xian"</span>);</span><br><span class="line">map.put(<span class="string">"first"</span>,person1);</span><br><span class="line">map.put(<span class="string">"second"</span>,person2);</span><br><span class="line">String str3=joiner1.join(map);</span><br><span class="line"><span class="comment">// str3="first==Person&#123;name='lisi', age=23, address='Beijing'&#125;,second==Person&#123;name='wangwu', age=24, address='Xian'&#125;"</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="Splitter（拆分器）"><a href="#Splitter（拆分器）" class="headerlink" title="Splitter（拆分器）"></a>Splitter（拆分器）</h3><ol>
+<li><p><code>Splitter</code>可以按照多种模式来拆分字符串，而且不会出现异常情况，目前可以通过<code>on</code>方法设置的模式有：</p>
+<ul>
+<li>按单个字符拆分</li>
+<li>按字符匹配器拆分</li>
+<li>按字符串拆分</li>
+<li>按正则表达式拆分</li>
+<li>按固定长度拆分</li>
+</ul>
+</li>
+<li><p>拆分器支持多种修饰符：</p>
+<ul>
+<li><code>omitEmptyStrings</code>从结果中自动忽略空字符串</li>
+<li><code>trimResults</code>移除结果字符串的前导空白和尾部空白</li>
+<li><code>trimResults(CharMatcher)</code>给定匹配器，移除结果字符串的前导匹配字符和尾部匹配字符</li>
+<li><code>limit</code>限制拆分出的字符串数量，如果拆分有剩余则追加到最后一个拆分的字符串上</li>
+</ul>
+</li>
+<li><p>实际使用时通常将<code>omitEmptyStrings</code>和<code>trimResults</code>一起使用才能到达想要的效果。</p>
+</li>
+<li><p><code>Splitter</code>对象实例总是不可变的，同样也是线程安全的，可以将其定义为<code>static final</code>常量。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list1 = Splitter.fixedLength(<span class="number">2</span>).trimResults().omitEmptyStrings().splitToList(<span class="string">"  1223110f0e0d1e       "</span>);</span><br><span class="line"><span class="comment">// list1 = [12, 23, 11, 0f, 0e, 0d, 1e]</span></span><br><span class="line">List&lt;String&gt; list2 = Splitter.fixedLength(<span class="number">2</span>).trimResults().omitEmptyStrings().limit(<span class="number">3</span>).splitToList(<span class="string">"  1223110f0e0d1e       "</span>);</span><br><span class="line"><span class="comment">// list2 = [12, 23, 110f0e0d1e]</span></span><br><span class="line">List&lt;String&gt; list3 = Splitter.fixedLength(<span class="number">2</span>).splitToList(<span class="string">"  1223110f0e0d1e       "</span>);</span><br><span class="line"><span class="comment">// list3 = [  , 12, 23, 11, 0f, 0e, 0d, 1e,   ,   ,   ,  ]</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="CharMatcher（字符匹配器）"><a href="#CharMatcher（字符匹配器）" class="headerlink" title="CharMatcher（字符匹配器）"></a>CharMatcher（字符匹配器）</h3><ol>
+<li><p>直观上可以认为一个<code>CharMatcher</code>实例代表着某一类字符，如数字或空白字符。本质上<code>CharMatcher</code>实例就是对字符的布尔判断。</p>
+</li>
+<li><p><code>CharMatcher</code>提供了修剪[trim]、折叠[collapse]、移除[remove]、保留[retain]等一系列对字符作特定类型的操作。</p>
+</li>
+<li><p>对匹配串操作的常用方法有：</p>
+<ul>
+<li><code>retainFrom</code>保留匹配串</li>
+<li><code>removeFrom</code>删除匹配串</li>
+<li><code>replaceFrom</code>替换匹配串</li>
+<li><code>collapseFrom</code>去掉接连匹配的字符串，并用指定字符代替</li>
+<li><code>trimFrom</code>删除首尾匹配串</li>
+<li><code>countIn</code>统计匹配串</li>
+<li><code>matchesAnyOf</code>判断是否匹配任一字符</li>
+<li><code>trimLeadingFrom</code>删除首部匹配串</li>
+<li><code>trimTrailingFrom</code>删除尾部匹配串</li>
+<li><code>matchesAnyOf(CharSequence sequence)</code>只要sequence中有任意字符能匹配Matcher,返回true</li>
+<li><code>matchesAllOf(CharSequence sequence)</code>sequence中所有字符都能匹配Matcher,返回true</li>
+<li><code>matchesNoneOf(CharSequence sequence)</code>sequence中所有字符都不能匹配Matcher,返回true</li>
+<li><code>indexIn(CharSequence sequence)</code>返回sequence中匹配到的第一个字符的坐标</li>
+<li><code>indexIn(CharSequence sequence, int start)</code>返回从start开始,在sequence中匹配到的第一个字符的坐标</li>
+</ul>
+</li>
+<li><p>支持使用<code>or</code>(或)、<code>negate</code>(取反)、<code>and</code>(并)进行逻辑组合。</p>
+</li>
+<li><p>常用匹配策略（创建CharMatcher的静态方法）：</p>
+<ul>
+<li><code>any</code>匹配任意字符</li>
+<li><code>none</code>不匹配任何字符</li>
+<li><code>whitespace</code>匹配空格</li>
+<li><code>breakingWhitespace</code>所有可换行的空白字符(不包括非换行空白字符）</li>
+<li><code>ascii</code>匹配ASCII字符（字符数值小于128）</li>
+<li><code>javaIsoControl</code>匹配ISO控制字符</li>
+<li><code>is</code>匹配指定字符</li>
+<li><code>isNot</code>不匹配指定字符</li>
+<li><code>anyOf(CharSequence sequence)</code>匹配sequence中任意字符</li>
+<li><code>noneOf(CharSequence sequence)</code>不匹配sequence中任何一个字符</li>
+<li><code>inRange(char startInclusive, char endIncludesive)</code>匹配范围内任意字符</li>
+</ul>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个匹配数字字符的CharMatcher</span></span><br><span class="line">CharMatcher numMatcher = CharMatcher.inRange(<span class="string">'0'</span>, <span class="string">'9'</span>);</span><br><span class="line"><span class="comment">// 创建匹配任何字符的Matcher</span></span><br><span class="line">CharMatcher anyMatcher = CharMatcher.any();</span><br><span class="line"><span class="comment">// 创建了一个匹配字母的Matcher</span></span><br><span class="line">CharMatcher letterMatcher = CharMatcher.inRange(<span class="string">'a'</span>, <span class="string">'z'</span>).or(CharMatcher.inRange(<span class="string">'A'</span>, <span class="string">'Z'</span>));</span><br><span class="line"><span class="comment">// 非字母的Matcher negate()规则相反</span></span><br><span class="line">CharMatcher notLetterMatcher = letterMatcher.negate();</span><br><span class="line"><span class="comment">// 创建了一个只匹配a字母的Matcher</span></span><br><span class="line">CharMatcher letterMatcher = CharMatcher.is(<span class="string">'a'</span>);</span><br><span class="line"><span class="keyword">boolean</span> res=numMatcher.matches(<span class="string">'a'</span>); <span class="comment">// res = false</span></span><br><span class="line">res=numMatcher.matches(<span class="string">'2'</span>); <span class="comment">// res = true</span></span><br><span class="line">String str=numMatcher.retainFrom(<span class="string">"123abc789"</span>); <span class="comment">// str = "123789"</span></span><br><span class="line">str=numMatcher.removeFrom(<span class="string">"123abc789"</span>);<span class="comment">// str = "abc"</span></span><br><span class="line">str = letterMatcher.collapseFrom(<span class="string">"abc123aaabc中"</span>,<span class="string">'-'</span>); <span class="comment">// str ="-bc123-bc"</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>CharMatcher</code>可以通过静态方法创建出各种符合要求的<code>Matcher</code>，然后使用该<code>Matcher</code>以及方法就可以对字符串进行判断或者操作</li>
+</ul>
+</li>
+</ol>
+<h3 id="Charset（字符集）"><a href="#Charset（字符集）" class="headerlink" title="Charset（字符集）"></a>Charset（字符集）</h3><ol>
+<li><p>本质上是对字符集进行封装，然后提供常量引用，目的就是规范。</p>
+</li>
+<li><p>定义的字符集有：</p>
+<ul>
+<li><code>US_ASCII</code></li>
+<li><code>ISO_8859_1</code></li>
+<li><code>UTF_8</code></li>
+<li><code>UTF_16BE</code></li>
+<li><code>UTF_16LE</code></li>
+<li><code>UTF_16</code></li>
+</ul>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String string = <span class="string">"hello world"</span>;</span><br><span class="line"><span class="keyword">byte</span>[] bytes = string.getBytes(Charsets.UTF_8);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="CaseFormat（字符串格式）"><a href="#CaseFormat（字符串格式）" class="headerlink" title="CaseFormat（字符串格式）"></a>CaseFormat（字符串格式）</h3><ol>
+<li><p><code>CaseFormat</code>可以方便地在各种ASCII大小写规范间转换字符串，比如编程语言的命名规范，在编写代码生成器的时候就比较有用。</p>
+</li>
+<li><p>目前支持的格式有：</p>
+<ul>
+<li><code>LOWER_HYPHEN</code>（小写横杠）如lower-hyphen</li>
+<li><code>LOWER_UNDERSCORE</code>（小写下划线）如lower_underscore</li>
+<li><code>LOWER_CAMEL</code>（小驼峰）如lowerCamel</li>
+<li><code>UPPER_CAMEL</code>（大驼峰）如UpperCamel</li>
+<li><code>UPPER_UNDERSCORE</code>（大写下划线）如UPPER_UNDERSCORE</li>
+</ul>
+</li>
+<li><p>需要注意的是<code>CaseFormat</code>提供的是格式之间的相互转换。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = CaseFormat.LOWER_HYPHEN.to(CaseFormat.UPPER_CAMEL, <span class="string">"constant-name"</span>);</span><br><span class="line"><span class="comment">// str = ConstantName</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="Strings（字符串类）"><a href="#Strings（字符串类）" class="headerlink" title="Strings（字符串类）"></a>Strings（字符串类）</h3><ol>
+<li><p>提供一些常用的字符串相关的静态方法。灵活使用<code>Strings</code>工具类，会使开发省时省力，并且代码健壮性和可读性更高，更简洁。</p>
+</li>
+<li><p><code>Strings</code>工具类提供以下方法：</p>
+<ul>
+<li><code>nullToEmpty</code>将值为<code>null</code>的字符串返回空字符串</li>
+<li><code>emptyToNull</code>将值为空字符串的返回为<code>null</code></li>
+<li><code>isNullOrEmpty</code>判断一个字符串的值是否为空或者<code>null</code></li>
+<li><code>padStart</code>在给定字符串前填充指定的字符以达到最短字符长度要求然后返回拼接后的字符串</li>
+<li><code>padEnd</code>在给定字符串尾部填充指定的字符以达到最短字符长度要求然后返回拼接后的字符串</li>
+<li><code>repeat</code>获得一个字符串重复指定次数的字符串（重复次数大于等于0）</li>
+<li><code>commonPrefix</code>获得字符串的公共前缀</li>
+<li><code>commonSuffix</code>获得字符串的公共后缀</li>
+<li><code>lenientFormat</code>格式化输出字符串</li>
+</ul>
+</li>
+<li><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">String str1 = Strings.nullToEmpty(<span class="keyword">null</span>);</span><br><span class="line"><span class="comment">// str1 = ""</span></span><br><span class="line">String str2 = Strings.emptyToNull(<span class="string">""</span>);</span><br><span class="line"><span class="comment">// str2 = null</span></span><br><span class="line"><span class="keyword">boolean</span> res = Strings.isNullOrEmpty(<span class="string">""</span>);</span><br><span class="line"><span class="comment">// res = true</span></span><br><span class="line">String str3 = Strings.padStart(<span class="string">"123"</span>,<span class="number">6</span>,<span class="string">' '</span>);</span><br><span class="line"><span class="comment">// str3 = "   123"</span></span><br><span class="line">String str4 = Strings.padEnd(<span class="string">"123"</span>,<span class="number">6</span>,<span class="string">'x'</span>);</span><br><span class="line"><span class="comment">// str4 = "123xxx"</span></span><br><span class="line">String str5 = Strings.repeat(<span class="string">"123"</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">// str5 = "123123"</span></span><br><span class="line">String str6 = Strings.commonPrefix(<span class="string">"123"</span>,<span class="string">"125"</span>);</span><br><span class="line"><span class="comment">// str6 = "12"</span></span><br><span class="line">String str7 = Strings.commonSuffix(<span class="string">"123"</span>,<span class="string">"1223"</span>);</span><br><span class="line"><span class="comment">// str7 = "23"</span></span><br><span class="line">String str8 = Strings.lenientFormat(<span class="string">"&#123;%s+%s=%s,%s&#125;"</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">"hello"</span>);</span><br><span class="line"><span class="comment">// str8 = "&#123;1+2=3,hello&#125;"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从应用的角度来讲，<code>Strings</code>工具类提供的方法略微有点少，可能不完全满足日常开发，可以考虑<code>Apache</code>的工具库。</p>
+</li>
+</ol>
+<h2 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h2><p>程序世界的算法都要在时间，资源占用甚至正确率等多种因素间进行平衡。同样的问题所属的量级或场景不同，所用算法也会不同，其中也会涉及很多的权衡。如何判断一个值是否存在于已有的集合问题在很多场景下都会遇到，比如说防止缓存击穿，爬虫重复URL检测，字典纠缠和CDN代理缓存等。</p>
+<h3 id="基础知识-1"><a href="#基础知识-1" class="headerlink" title="基础知识"></a>基础知识</h3><ol>
+<li><p><a href="https://www.jasondavies.com/bloomfilter/?spm=a2c4e.11153940.blogcont683602.11.21181fe6hVAGjH" target="_blank" rel="noopener">布隆过滤器演示</a></p>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/4a2adccee81303ad83bdcfb59e429e08-134817" alt="原理"></p>
+</li>
+<li><p>Bloom Filter（布隆过滤器）是一种空间效率很高的随机数据结构，它利用位数组很简洁地表示一个集合，并能判断一个元素是否属于这个集合，如果一个元素不在集合中，那么它一定是不在的，但是判断该元素在集合中，有可能是不在集合中的，即存在假阳性问题。</p>
+</li>
+<li><p>布隆过滤器的特点：</p>
+<ul>
+<li>空间效率高的概率型数据结构，用来检查一个元素是否在一个集合中</li>
+<li>对于一个元素检测是否存在的调用，布隆过滤器会告诉调用者两个结果之一：可能存在或者一定不存在</li>
+</ul>
+</li>
+<li><p>布隆过滤器的应用场景：</p>
+<ul>
+<li>网络爬虫</li>
+<li>处理缓存击穿</li>
+<li>避免磁盘读取等</li>
+<li>Goole Bigtable，Apache HBase和Postgresql等都使用了布隆过滤器</li>
+<li>检查单词是否拼写正确、网络爬虫的URL去重、黑名单检验，微博中昵称不能重复的检测等</li>
+</ul>
+</li>
+<li><p>布隆过滤器是由一个长度为m比特的位数组（bit array）与k个哈希函数（hash function）组成的数据结构。</p>
+</li>
+<li><p>布隆过滤器的优点：</p>
+<ul>
+<li>不需要存储数据本身，只用比特表示，因此空间占用相对于传统方式有巨大的优势，并且能够保密数据</li>
+<li>时间效率也较高，插入和查询的时间复杂度均为O(k)</li>
+<li>哈希函数之间相互独立，可以在硬件指令层面并行计算</li>
+</ul>
+</li>
+<li><p>布隆过滤器的缺点：</p>
+<ul>
+<li>存在假阳性的概率，不适用于任何要求100%准确率的场景</li>
+<li>只能插入和查询元素，不能删除元素</li>
+</ul>
+</li>
+<li><p>Guava引入了一个叫做<code>Funnel</code>的类，<code>Funnel</code>类定义了如何把一个具体的对象类型分解为原生字段值，从而将值分解为Byte以供后面BloomFilter进行hash运算。通过使用这个类，我们可以自己定义一个属于自己类的Funnel。而且Guava预定义了一些原生类型的Funnel，如String、Long、Integer。</p>
+</li>
+<li><p>Guava库中的布隆过滤器使用示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">BloomFilter&lt;String&gt; b = BloomFilter.create(Funnels.stringFunnel(Charsets.UTF_8), <span class="number">1000</span>, <span class="number">0.000001</span>);</span><br><span class="line">b.put(<span class="string">"121"</span>);</span><br><span class="line">b.put(<span class="string">"122"</span>);</span><br><span class="line">b.put(<span class="string">"123"</span>);</span><br><span class="line">System.out.println(b.mightContain(<span class="string">"121"</span>)); <span class="comment">// true</span></span><br><span class="line">System.out.println(b.mightContain(<span class="string">"12123"</span>)); <span class="comment">// false</span></span><br><span class="line">BloomFilter&lt;String&gt; b1 = BloomFilter.create(Funnels.stringFunnel(Charsets.UTF_8), <span class="number">1000</span>, <span class="number">0.000001</span>);</span><br><span class="line">b1.put(<span class="string">"aba"</span>);</span><br><span class="line">b1.put(<span class="string">"abb"</span>);</span><br><span class="line">b1.put(<span class="string">"abc"</span>);</span><br><span class="line">b1.putAll(b); <span class="comment">// "将布隆过滤器b的已经存在的元素放入b1中"</span></span><br><span class="line">System.out.println(b1.mightContain(<span class="string">"123"</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>布隆缓存过滤器示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BloomCacheFilter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> BloomFilter&lt;Integer&gt; bloomFilter = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> DynamicQuery dynamicQuery; <span class="comment">// 查询数据库类的注入</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 初始化</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostConstruct</span> <span class="comment">// 运行时执行一次</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String nativeSql = <span class="string">"SELECT id FROM blog"</span>;</span><br><span class="line">        List&lt;Object&gt; list = dynamicQuery.query(nativeSql,<span class="keyword">new</span> Object[]&#123;&#125;);</span><br><span class="line">        bloomFilter = BloomFilter.create(Funnels.integerFunnel(), list.size());<span class="comment">// 创建布隆过滤器</span></span><br><span class="line">        list.forEach(blog -&gt;bloomFilter.put(Integer.parseInt(blog.toString()))); <span class="comment">// 将元素加入布隆过滤器</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断key是否存在</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">mightContain</span><span class="params">(<span class="keyword">long</span> key)</span></span>&#123; <span class="comment">// 判断key值是否在布隆过滤器中</span></span><br><span class="line">        <span class="keyword">return</span> bloomFilter.mightContain((<span class="keyword">int</span>)key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上述示例主要用于解决缓存穿透问题</li>
+<li>比如 90% 的请求数据都不在缓存中，那么这些请求就都会落到数据库上，这就是缓存穿透</li>
+<li>将已存在的缓存放到布隆中，当黑客访问不存在的缓存时迅速返回避免缓存及数据库挂掉</li>
+<li>正确估计预期插入数量是非常关键的</li>
+</ul>
+</li>
+<li><p>缓存场景：</p>
+<ol>
+<li><p>一般业务流程：</p>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/599fd663f4793946268f951c60d8d31e-42505" alt="一般业务流程"></p>
+</li>
+<li><p>redis缓存：</p>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/e4ac6d904f745d15cbc95bf0de60f906-59416" alt="redis缓存"></p>
+</li>
+<li><p>布隆过滤器：</p>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/aeda84325e7287641fbe472243111dc2-17265" alt="布隆过滤器"></p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="Redis实现布隆过滤器"><a href="#Redis实现布隆过滤器" class="headerlink" title="Redis实现布隆过滤器"></a>Redis实现布隆过滤器</h3><ol>
+<li><p>Redis v4.0 之后有了 Module（模块/插件） 功能，Redis Modules 让 Redis 可以使用外部模块扩展其功能 。布隆过滤器就是其中的 Module。当然也可以使用Docker来快速使用。</p>
+</li>
+<li><p>Docker镜像：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redislabs/rebloom:latest # 拉取镜像</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis-redisbloom redislabs/rebloom:latest #运行容器</span><br><span class="line">docker exec -it redis-redisbloom bash</span><br><span class="line">redis-cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Redis布隆过滤器基本指令：</p>
+<ul>
+<li><code>bf.add</code> 添加元素到布隆过滤器</li>
+<li><code>bf.exists</code> 判断元素是否在布隆过滤器</li>
+<li><code>bf.madd</code> 添加多个元素到布隆过滤器，bf.add 只能添加一个</li>
+<li><code>bf.mexists</code> 判断多个元素是否在布隆过滤器</li>
+</ul>
+</li>
+</ol>
+<h3 id="SpringBoot项目中使用"><a href="#SpringBoot项目中使用" class="headerlink" title="SpringBoot项目中使用"></a>SpringBoot项目中使用</h3><ol>
+<li><p>创建一个配置类（示例）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BloomFilter&lt;String&gt; <span class="title">initBloomFilter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BloomFilter.create(Funnels.stringFunnel(Charset.defaultCharset()),<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>BloomFilterService</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BloomFilterService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> BloomFilter&lt;String&gt; bloomFilter;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        bloomFilter.put(s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contain</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bloomFilter.mightContain(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在Controller层中就可以使用<code>BloomFilterService</code>。</p>
+</li>
+</ol>
+<h2 id="缓存实现接口防止重复点击"><a href="#缓存实现接口防止重复点击" class="headerlink" title="缓存实现接口防止重复点击"></a>缓存实现接口防止重复点击</h2><ol>
+<li><p>实现接口防刷帮助类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.google.common.cache.Cache;</span><br><span class="line"><span class="keyword">import</span> com.google.common.cache.CacheBuilder;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 接口防重复点击帮助类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IdempotentHelper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger logger = LoggerFactory.getLogger(IdempotentHelper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 缓存 */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Cache&lt;String, Object&gt; cache = CacheBuilder.newBuilder()</span><br><span class="line">            .maximumSize(<span class="number">1000</span>) <span class="comment">// 最大 Key 数</span></span><br><span class="line">            .expireAfterWrite(<span class="number">3</span>, TimeUnit.SECONDS) <span class="comment">// 3 秒超期，一般接口 3 秒足够执行完成了。</span></span><br><span class="line">            .build();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 给 Key 加锁</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">boolean</span> <span class="title">lock</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        Object obj = cache.getIfPresent(key);</span><br><span class="line">        <span class="keyword">if</span> (obj != <span class="keyword">null</span>) &#123;</span><br><span class="line">            logger.error(<span class="string">"Try lock key: &#123;&#125; fail."</span>, key);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>; <span class="comment">// 加锁失败</span></span><br><span class="line">        &#125;</span><br><span class="line">        cache.put(key, <span class="keyword">new</span> Object());</span><br><span class="line">        logger.info(<span class="string">"Lock key: &#123;&#125; success."</span>, key);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 加锁失败抛出异常</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">lockThrowException</span><span class="params">(String key)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!lock(key)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"系统正在处理中，请勿重复操作！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 释放锁</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"Unlock key: &#123;&#125;"</span>, key);</span><br><span class="line">        cache.invalidate(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在接口中使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMethod;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">controller</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/order/submit.do"</span>, method = RequestMethod.POST)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">submit</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String orderId)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">        String key = <span class="string">"SUBMIT_ORDER_"</span> + orderId;</span><br><span class="line">        IdempotentHelper.lockThrowException(key); <span class="comment">// 尝试加锁，加锁失败直接抛异常</span></span><br><span class="line">        Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// TODO 具体的业务处理逻辑</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">"SUCCESS"</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            IdempotentHelper.unlock(key); <span class="comment">// finally 释放锁</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 Guava 的本地缓存，不用调用远程服务</li>
+<li>推荐在内部管理系统中使用</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>字符串处理工具类的灵活使用，可以使得开发中效率急速上升，实际上很多逻辑处理都和字符串相关，使用像Guava这种大型企业级的工具包能让开发更加得心应手。Guava中还有很多其他内容没有学习与使用，后续慢慢深入学习吧！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="WanderROS 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="WanderROS 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/10/17/Java-Google-Guava-Qucik-Start/">Java Google Guava Qucik Start</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 WanderROS 的个人博客">WanderROS</a></p>
+  <p><span>发布时间:</span>2020年10月17日 - 16:23</p>
+  <p><span>最后更新:</span>2020年10月19日 - 21:36</p>
+  <p><span>原始链接:</span><a href="/2020/10/17/Java-Google-Guava-Qucik-Start/" title="Java Google Guava Qucik Start">https://wanderros.github.io/2020/10/17/Java-Google-Guava-Qucik-Start/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://wanderros.github.io/2020/10/17/Java-Google-Guava-Qucik-Start/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+
+      
+</div>
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          
+            <a href="/tags/Guava/" rel="tag"><i class="fa fa-tag"></i> Guava</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/13/nexus%E7%A7%81%E5%BA%93%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/" rel="next" title="nexus私库搭建与使用">
+                <i class="fa fa-chevron-left"></i> nexus私库搭建与使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/19/Java-QrCode-Qucik-Start/" rel="prev" title="Java QrCode Qucik Start">
+                Java QrCode Qucik Start <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+<div>
+		
+    	<!-- Link Gitalk 的支持文件  -->
+	<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+	<div id="gitalk-container"></div>     <script type="text/javascript">
+		var gitalk = new Gitalk({
+			clientID: 'bd073c3374c2b1a924b0',
+			clientSecret: 'e3818342fe0fa0f03ab0997cfe81ae9c450ec954',
+			repo: 'wanderros.github.io',
+			owner: 'WanderROS',
+			admin: ['WanderROS'],
+			id: location.pathname,
+			distractionFreeMode: 'true'
+		});
+		gitalk.render('gitalk-container');
+	</script> 
+	<!-- Gitalk end -->
+
+		
+	</div>
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+ <div id="gitalk-container"></div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="WanderROS" />
+            
+              <p class="site-author-name" itemprop="name">WanderROS</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">164</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wanderROS" target="_blank" title="GitHub">
+                      GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1194409532@qq.com.com" target="_blank" title="E-Mail">
+                      E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">2.1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串工具类"><span class="nav-number">2.2.</span> <span class="nav-text">字符串工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Joiner（连接器）"><span class="nav-number">2.2.1.</span> <span class="nav-text">Joiner（连接器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Splitter（拆分器）"><span class="nav-number">2.2.2.</span> <span class="nav-text">Splitter（拆分器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CharMatcher（字符匹配器）"><span class="nav-number">2.2.3.</span> <span class="nav-text">CharMatcher（字符匹配器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Charset（字符集）"><span class="nav-number">2.2.4.</span> <span class="nav-text">Charset（字符集）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CaseFormat（字符串格式）"><span class="nav-number">2.2.5.</span> <span class="nav-text">CaseFormat（字符串格式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Strings（字符串类）"><span class="nav-number">2.2.6.</span> <span class="nav-text">Strings（字符串类）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布隆过滤器"><span class="nav-number">2.3.</span> <span class="nav-text">布隆过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础知识-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis实现布隆过滤器"><span class="nav-number">2.3.2.</span> <span class="nav-text">Redis实现布隆过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot项目中使用"><span class="nav-number">2.3.3.</span> <span class="nav-text">SpringBoot项目中使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存实现接口防止重复点击"><span class="nav-number">2.4.</span> <span class="nav-text">缓存实现接口防止重复点击</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WanderROS</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+-->
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共415.4k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
